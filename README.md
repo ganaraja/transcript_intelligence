@@ -80,6 +80,24 @@ uv sync --extra notebook
 In VS Code, open the notebook and select the `src/backend/.venv` Python
 interpreter as its kernel. The Jupyter extension is required.
 
+### Run tests
+
+Backend tests use pytest and FastAPI's test client:
+
+```bash
+cd src/backend
+uv sync --extra test
+uv run pytest
+```
+
+Frontend tests use Vitest and Testing Library:
+
+```bash
+cd src/frontend
+npm install
+npm test
+```
+
 ### Optional LLM theme refine
 
 Copy `.env.example` to `.env` and set `OPENAI_API_KEY`. Then:

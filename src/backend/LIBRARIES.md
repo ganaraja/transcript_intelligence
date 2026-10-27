@@ -28,3 +28,4 @@ uv sync --extra notebook
 | llm | openai | JSON theme refine when `OPENAI_API_KEY` is set |
 | embeddings | sentence-transformers, scikit-learn | Unsupervised cluster audit (not required for the demo) |
 | notebook | ipykernel | Run `notebooks/walkthrough.ipynb` in VS Code or Jupyter |
+| test | pytest, httpx | Backend unit tests and FastAPI endpoint tests |

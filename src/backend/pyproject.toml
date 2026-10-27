@@ -23,6 +23,10 @@ embeddings = [
 notebook = [
     "ipykernel>=6.29.0",
 ]
+test = [
+    "httpx>=0.27.0",
+    "pytest>=8.0.0",
+]
 
 [project.scripts]
 transcript-pipeline = "pipeline.run:main"
