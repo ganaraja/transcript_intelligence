@@ -1,0 +1,173 @@
+[
+  {
+    "theme_id": "comply_launch_audit",
+    "label": "Comply v2 / audit readiness",
+    "count": 21,
+    "by_call_type": {
+      "support": 6,
+      "external": 8,
+      "internal": 7
+    },
+    "example_meeting_ids": [
+      "01KQ9A6BE09D73A9BB5798C7",
+      "01KQ85D10E82A26A8F754FB8",
+      "01KQ0CAE7F064EC93F0540CA",
+      "01KQ1267C6AA7D9B3125FEC8",
+      "01KQAFB8DBF6E1E2FDEF0B75"
+    ],
+    "rationale": "Primary theme 'Comply v2 / audit readiness' scored highest with title weighted above provided topics and transcript keywords."
+  },
+  {
+    "theme_id": "renewal_commercial",
+    "label": "Renewal & commercial",
+    "count": 18,
+    "by_call_type": {
+      "support": 3,
+      "external": 15
+    },
+    "example_meeting_ids": [
+      "01KQ0C1280EDA4E70AAD7C35",
+      "01KQFFC0F889AE8CFEE7A00D",
+      "01KQAEA50436D047BC39CFC7",
+      "01KQ1DC6CA536DE1B31ED8F5",
+      "01KQ773D68723289E4A98889"
+    ],
+    "rationale": "Primary theme 'Renewal & commercial' scored highest with title weighted above provided topics and transcript keywords."
+  },
+  {
+    "theme_id": "sso_identity_failure",
+    "label": "SSO / Identity failures",
+    "count": 10,
+    "by_call_type": {
+      "support": 6,
+      "external": 2,
+      "internal": 2
+    },
+    "example_meeting_ids": [
+      "01KQADC32D89E2B76B698E84",
+      "01KQC3A2EBC501837E973B16",
+      "01KQ9772B2348F500FB09D1E",
+      "01KQCA6EA8B603EBB6C9FE34",
+      "01KQ5F364545B542671FF9CE"
+    ],
+    "rationale": "Primary theme 'SSO / Identity failures' scored highest with title weighted above provided topics and transcript keywords."
+  },
+  {
+    "theme_id": "detect_outage",
+    "label": "Detect reliability / outage",
+    "count": 10,
+    "by_call_type": {
+      "internal": 4,
+      "support": 6
+    },
+    "example_meeting_ids": [
+      "01KQ38C4101D6774F2F02331",
+      "01KQEDB92E33CF9945A7F71B",
+      "01KQ46A9DE0AECB006D897A0",
+      "01KQ7BF0D56037FF89DC89B6",
+      "01KQ351E141926AB7CAB668D"
+    ],
+    "rationale": "Primary theme 'Detect reliability / outage' scored highest with title weighted above provided topics and transcript keywords."
+  },
+  {
+    "theme_id": "incident_communication",
+    "label": "Incident communication gaps",
+    "count": 9,
+    "by_call_type": {
+      "support": 4,
+      "internal": 3,
+      "external": 2
+    },
+    "example_meeting_ids": [
+      "01KQDD5172176D02DB51360A",
+      "01KQ2331EFD78BF3B1CAB747",
+      "01KQ2D93184912F0147315E7",
+      "01KQ2217B066855A3B7814CB",
+      "01KQ8C5A044F54EE1774D53C"
+    ],
+    "rationale": "Primary theme 'Incident communication gaps' scored highest with title weighted above provided topics and transcript keywords."
+  },
+  {
+    "theme_id": "product_roadmap",
+    "label": "Product roadmap & planning",
+    "count": 8,
+    "by_call_type": {
+      "internal": 5,
+      "external": 3
+    },
+    "example_meeting_ids": [
+      "01KQ4EE836687F95080D92AB",
+      "01KQ4D504CE09A8F6ECA1F5A",
+      "01KQB3B16F255B65F39597D0",
+      "01KQ51DC4345D9DAE005678C",
+      "01KQAC572C34475A8791F2C3"
+    ],
+    "rationale": "Primary theme 'Product roadmap & planning' scored highest with title weighted above provided topics and transcript keywords."
+  },
+  {
+    "theme_id": "protect_backup",
+    "label": "Protect / backup & restore",
+    "count": 7,
+    "by_call_type": {
+      "support": 6,
+      "external": 1
+    },
+    "example_meeting_ids": [
+      "01KQBB7C4D4789DB2F3DA9C2",
+      "01KQ1A6B7E81B06F4A13B60D",
+      "01KQA1AFDC1306A000B0C7D9",
+      "01KQ3C837D7EF689408DCF95",
+      "01KQ25D8AED944B5D2A9FF60"
+    ],
+    "rationale": "Primary theme 'Protect / backup & restore' scored highest with title weighted above provided topics and transcript keywords."
+  },
+  {
+    "theme_id": "onboarding_adoption",
+    "label": "Onboarding & adoption",
+    "count": 6,
+    "by_call_type": {
+      "external": 6
+    },
+    "example_meeting_ids": [
+      "01KQ9BB82FD97C9607D57E90",
+      "01KQ77F2867FC54E13A8C495",
+      "01KQ41FB5CCFD9EA583FB020",
+      "01KQ4D01DCB15C69672AB5AF",
+      "01KQ560FF1570C5E7F71D752"
+    ],
+    "rationale": "Primary theme 'Onboarding & adoption' scored highest with title weighted above provided topics and transcript keywords."
+  },
+  {
+    "theme_id": "competitive_evaluation",
+    "label": "Competitive evaluation",
+    "count": 6,
+    "by_call_type": {
+      "internal": 4,
+      "external": 2
+    },
+    "example_meeting_ids": [
+      "01KQ7F58A2E07B857C24624D",
+      "01KQ298F2846EFE59B0D70E2",
+      "01KQA0F0BE68E74D66EB4171",
+      "01KQ6CAA850EAFDC48B52846",
+      "01KQ45F6F7349D0A620571F1"
+    ],
+    "rationale": "Primary theme 'Competitive evaluation' scored highest with title weighted above provided topics and transcript keywords."
+  },
+  {
+    "theme_id": "engineering_ops",
+    "label": "Internal engineering ops",
+    "count": 5,
+    "by_call_type": {
+      "internal": 5
+    },
+    "example_meeting_ids": [
+      "01KQADF3D76E82BF8BA19AF2",
+      "01KQD1270E98A7DFC55ADCF8",
+      "01KQ445B1B5B890316C9E300",
+      "01KQ7B802912366FC0A24D4F",
+      "01KQF9600A904ADE8605B3F0"
+    ],
+    "rationale": "Primary theme 'Internal engineering ops' scored highest with title weighted above provided topics and transcript keywords."
+  }
+]

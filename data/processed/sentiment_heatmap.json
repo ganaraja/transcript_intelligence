@@ -1,0 +1,110 @@
+[
+  {
+    "module": "billing",
+    "call_type": "external",
+    "mean": 0.2074,
+    "n": 27
+  },
+  {
+    "module": "billing",
+    "call_type": "internal",
+    "mean": 0.1385,
+    "n": 9
+  },
+  {
+    "module": "billing",
+    "call_type": "support",
+    "mean": -0.5389,
+    "n": 11
+  },
+  {
+    "module": "comply",
+    "call_type": "external",
+    "mean": 0.2546,
+    "n": 34
+  },
+  {
+    "module": "comply",
+    "call_type": "internal",
+    "mean": 0.1542,
+    "n": 19
+  },
+  {
+    "module": "comply",
+    "call_type": "support",
+    "mean": -0.2181,
+    "n": 11
+  },
+  {
+    "module": "detect",
+    "call_type": "external",
+    "mean": 0.0583,
+    "n": 21
+  },
+  {
+    "module": "detect",
+    "call_type": "internal",
+    "mean": -0.0025,
+    "n": 26
+  },
+  {
+    "module": "detect",
+    "call_type": "support",
+    "mean": -0.7526,
+    "n": 17
+  },
+  {
+    "module": "identity",
+    "call_type": "external",
+    "mean": 0.2389,
+    "n": 11
+  },
+  {
+    "module": "identity",
+    "call_type": "internal",
+    "mean": 0.1735,
+    "n": 7
+  },
+  {
+    "module": "identity",
+    "call_type": "support",
+    "mean": -0.4952,
+    "n": 7
+  },
+  {
+    "module": "platform",
+    "call_type": "external",
+    "mean": -0.0938,
+    "n": 3
+  },
+  {
+    "module": "platform",
+    "call_type": "internal",
+    "mean": -0.6895,
+    "n": 3
+  },
+  {
+    "module": "platform",
+    "call_type": "support",
+    "mean": -0.4765,
+    "n": 10
+  },
+  {
+    "module": "protect",
+    "call_type": "external",
+    "mean": 0.3902,
+    "n": 17
+  },
+  {
+    "module": "protect",
+    "call_type": "internal",
+    "mean": -0.0743,
+    "n": 7
+  },
+  {
+    "module": "protect",
+    "call_type": "support",
+    "mean": -0.4944,
+    "n": 13
+  }
+]

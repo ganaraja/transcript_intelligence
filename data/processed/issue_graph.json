@@ -1,0 +1,2304 @@
+{
+  "nodes": [
+    {
+      "id": "m:01KQDD5172176D02DB51360A",
+      "label": "Support Case #3286 - Vanta Health Systems API Integration Er",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 1.0
+    },
+    {
+      "id": "t:incident_communication",
+      "label": "Incident communication gaps",
+      "kind": "theme",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "mod:identity",
+      "label": "Identity",
+      "kind": "module",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "mod:protect",
+      "label": "Protect",
+      "kind": "module",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "m:01KQ9BB82FD97C9607D57E90",
+      "label": "Aegis / Coastal Living Co - Onboarding Kickoff",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.25
+    },
+    {
+      "id": "t:onboarding_adoption",
+      "label": "Onboarding & adoption",
+      "kind": "theme",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "mod:comply",
+      "label": "Comply",
+      "kind": "module",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "m:01KQ4EE836687F95080D92AB",
+      "label": "Detect Team - Sprint Planning",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.0
+    },
+    {
+      "id": "t:product_roadmap",
+      "label": "Product roadmap & planning",
+      "kind": "theme",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "mod:detect",
+      "label": "Detect",
+      "kind": "module",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "mod:billing",
+      "label": "Billing",
+      "kind": "module",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "m:01KQ0C1280EDA4E70AAD7C35",
+      "label": "Support Case #9279 - Summit Trust Billing Inquiry",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.0
+    },
+    {
+      "id": "t:renewal_commercial",
+      "label": "Renewal & commercial",
+      "kind": "theme",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "m:01KQFFC0F889AE8CFEE7A00D",
+      "label": "Aegis / Blackridge Investments - Renewal Discussion",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ4D504CE09A8F6ECA1F5A",
+      "label": "Product Sync - Identity Roadmap",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.25
+    },
+    {
+      "id": "m:01KQ9A6BE09D73A9BB5798C7",
+      "label": "Support Case #3615 - Nimbus Platform Custom Report Request",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.2
+    },
+    {
+      "id": "t:comply_launch_audit",
+      "label": "Comply v2 / audit readiness",
+      "kind": "theme",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "mod:platform",
+      "label": "Platform",
+      "kind": "module",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "m:01KQ77F2867FC54E13A8C495",
+      "label": "Aegis / Brightpath Commerce - Detect Module Deployment",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.95
+    },
+    {
+      "id": "m:01KQB3B16F255B65F39597D0",
+      "label": "Comply v2 - Design Review",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ85D10E82A26A8F754FB8",
+      "label": "Aegis / Bridgeport Health - Compliance Review",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.1
+    },
+    {
+      "id": "m:01KQADC32D89E2B76B698E84",
+      "label": "Support Case #6635 - Nova Retail Group SSO Login Failures",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 1.0
+    },
+    {
+      "id": "t:sso_identity_failure",
+      "label": "SSO / Identity failures",
+      "kind": "theme",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "m:01KQ0CAE7F064EC93F0540CA",
+      "label": "Weekly Engineering Standup",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQAEA50436D047BC39CFC7",
+      "label": "Aegis / Crestline Wealth - Account Review",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQBB7C4D4789DB2F3DA9C2",
+      "label": "Support Case #1750 - Vanta Health Systems SIEM Connector Iss",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 1.0
+    },
+    {
+      "id": "t:protect_backup",
+      "label": "Protect / backup & restore",
+      "kind": "theme",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "m:01KQ7F58A2E07B857C24624D",
+      "label": "Competitive Landscape Review",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.25
+    },
+    {
+      "id": "t:competitive_evaluation",
+      "label": "Competitive evaluation",
+      "kind": "theme",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "m:01KQC3A2EBC501837E973B16",
+      "label": "Aegis / Frostbyte AI - Identity Module Setup",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.25
+    },
+    {
+      "id": "m:01KQ1A6B7E81B06F4A13B60D",
+      "label": "Support Case #6977 - Brightpath Commerce Slow Backup Perform",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQ51DC4345D9DAE005678C",
+      "label": "Aegis / Redwood Clinical - Product Feedback Session",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQAC572C34475A8791F2C3",
+      "label": "Protect Team - Quarterly Planning",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.25
+    },
+    {
+      "id": "m:01KQ9772B2348F500FB09D1E",
+      "label": "Support Case #3677 - Coastal Living Co MFA Token Failures",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 1.0
+    },
+    {
+      "id": "m:01KQ1DC6CA536DE1B31ED8F5",
+      "label": "Aegis / Atlas Precision - Contract Discussion",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ1267C6AA7D9B3125FEC8",
+      "label": "SOC 2 Audit Preparation - Internal",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.1
+    },
+    {
+      "id": "m:01KQ773D68723289E4A98889",
+      "label": "Support Case #7572 - Brightpath Commerce Invoice Discrepancy",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQAFB8DBF6E1E2FDEF0B75",
+      "label": "Aegis / Maplewood Goods - SOC 2 Prep Review",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.35
+    },
+    {
+      "id": "m:01KQADF3D76E82BF8BA19AF2",
+      "label": "All Hands - February Wrap",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.7
+    },
+    {
+      "id": "t:engineering_ops",
+      "label": "Internal engineering ops",
+      "kind": "theme",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "m:01KQA1AFDC1306A000B0C7D9",
+      "label": "Aegis / Vanta Health Systems - Backup Strategy Workshop",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.95
+    },
+    {
+      "id": "m:01KQ5BB8521F99E55470206E",
+      "label": "Detect Team - Sprint Planning",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQA502E222E2A60330237B",
+      "label": "Aegis / Pineridge Systems - Q1 Business Review",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.25
+    },
+    {
+      "id": "m:01KQ3C837D7EF689408DCF95",
+      "label": "Support Case #2638 - Pineridge Systems CloudPrime S3 Backup ",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.25
+    },
+    {
+      "id": "m:01KQ41FB5CCFD9EA583FB020",
+      "label": "Aegis / Harborview Banking - Threat Detection Tuning",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.25
+    },
+    {
+      "id": "m:01KQ2B4878EC7B3EE5547007",
+      "label": "Aegis / Stratos Cloud - Audit Preparation",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.25
+    },
+    {
+      "id": "m:01KQCA6EA8B603EBB6C9FE34",
+      "label": "Aegis / Ridgeline Logistics - Identity Roadmap Discussion",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQ5F364545B542671FF9CE",
+      "label": "Support Case #3546 - Meridian Capital SCIM Provisioning Requ",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.95
+    },
+    {
+      "id": "m:01KQD4D9DEBA2D55AC2AA9F5",
+      "label": "Aegis / Keystone Health - Renewal Planning",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ38C4101D6774F2F02331",
+      "label": "INCIDENT: Detect Pipeline Failure - War Room",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.7
+    },
+    {
+      "id": "t:detect_outage",
+      "label": "Detect reliability / outage",
+      "kind": "theme",
+      "call_type": null,
+      "risk_score": null
+    },
+    {
+      "id": "m:01KQEDB92E33CF9945A7F71B",
+      "label": "URGENT: Cobalt Software - Aegis Detect Dashboard Down",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 1.0
+    },
+    {
+      "id": "m:01KQ46A9DE0AECB006D897A0",
+      "label": "Detect Outage - Escalation Bridge",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.95
+    },
+    {
+      "id": "m:01KQ7BF0D56037FF89DC89B6",
+      "label": "Support Case #3266 - Trailhead Marketplace Detect Alerts Not",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 1.0
+    },
+    {
+      "id": "m:01KQ351E141926AB7CAB668D",
+      "label": "Aegis / Northstar Pharma - Urgent: Detect Outage Impact",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 1.0
+    },
+    {
+      "id": "m:01KQ2331EFD78BF3B1CAB747",
+      "label": "Detect Outage - Customer Impact Assessment",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.95
+    },
+    {
+      "id": "m:01KQ2D93184912F0147315E7",
+      "label": "URGENT: Blackridge Investments - Complete Loss of Threat Vis",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 1.0
+    },
+    {
+      "id": "m:01KQ94C2B8B9B4668F3D3491",
+      "label": "Support Case #6573 - Ridgeline Logistics Detect Data Gaps",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQ2217B066855A3B7814CB",
+      "label": "Aegis / Meridian Capital - Service Reliability Discussion",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 1.0
+    },
+    {
+      "id": "m:01KQE110900B8A65D80AE694",
+      "label": "Detect Outage - Root Cause Analysis",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ325BDEDEE927D2970775",
+      "label": "Support Case #5889 - Ridgeline Logistics Detect Latency Issu",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQ88B8EAEAA819C26CCBE7",
+      "label": "ESCALATION: Northstar Pharma - Detect Outage Impact on Compl",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 1.0
+    },
+    {
+      "id": "m:01KQ03B0303900521BB089CA",
+      "label": "Detect Outage - Remediation Plan Review",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.7
+    },
+    {
+      "id": "m:01KQEDE682B4A8D67C657CF1",
+      "label": "Support Case #3103 - Silverline Brands Detect False Positive",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQ8C5A044F54EE1774D53C",
+      "label": "Aegis / Helix Data - Post-Incident Review",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQ5D47170D4828E89EDE37",
+      "label": "Support Case #7537 - Forge Industries Detect Recovery Confir",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.2
+    },
+    {
+      "id": "m:01KQ3CE40428CCC5FF433FFC",
+      "label": "Detect Outage - Post-Incident Review",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.7
+    },
+    {
+      "id": "m:01KQ1DCC80852AE384C898C9",
+      "label": "Aegis / Quantum Edge - Renewal Concerns",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 1.0
+    },
+    {
+      "id": "m:01KQ298F2846EFE59B0D70E2",
+      "label": "Competitive Threat Assessment - Post Outage",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.95
+    },
+    {
+      "id": "m:01KQ7FA71CF70FAFEE4B6251",
+      "label": "Aegis / Nova Retail Group - Renewal Discussion",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 1.0
+    },
+    {
+      "id": "m:01KQ6A5CEAAFFBE3B0099E75",
+      "label": "Support Case #6539 - Steelpoint Manufacturing LDAP Sync Fail",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQ1DE954A807A5D2653175",
+      "label": "Comply v2 - Launch Readiness Review",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ45C76AF3AEA6B3EA6697",
+      "label": "Aegis / Steelpoint Manufacturing - Contract Review",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.7
+    },
+    {
+      "id": "m:01KQ25D8AED944B5D2A9FF60",
+      "label": "Support Case #1514 - Meridian Capital Granular Restore Reque",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.95
+    },
+    {
+      "id": "m:01KQ5A966832A146DA4B7D41",
+      "label": "Aegis / Summit Trust - Platform Concerns Discussion",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQC1267BEB344076DD7656",
+      "label": "Aegis / Ironclad Financial - Account Recovery Check-in",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.95
+    },
+    {
+      "id": "m:01KQ3F90FF9EBC3DB3632514",
+      "label": "Identity Team - Sprint Retro",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ5EC1665DCFD7A6B62A59",
+      "label": "Support Case #8749 - Coastal Living Co SAML Certificate Rota",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 1.0
+    },
+    {
+      "id": "m:01KQ54917E3931712516916D",
+      "label": "Aegis / Nimbus Platform - Comply v2 Preview",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ68FB3E9E60C4477CDAB4",
+      "label": "Comply v2 - GA Deployment Plan",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ45C0AD36B351A3571940",
+      "label": "Aegis / Silverline Brands - Comply v2 Early Access Demo",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ56786DD1E8A1BF174FDD",
+      "label": "Support Case #1993 - Forge Industries Comply v2 Early Access",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.95
+    },
+    {
+      "id": "m:01KQCF9872BF130D33B1B5EC",
+      "label": "Comply v2 - Launch Day Checklist",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ3D8C1EF16C042F31FAFD",
+      "label": "Aegis / Trailhead Marketplace - Renewal Confirmation",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ764171AC27A3A94DC695",
+      "label": "Detect Reliability - 30-Day Review",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.7
+    },
+    {
+      "id": "m:01KQ4D01DCB15C69672AB5AF",
+      "label": "Aegis / Clearwater Medical - Comply v2 Deployment Kickoff",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.25
+    },
+    {
+      "id": "m:01KQ38FE02AEE5AA5157F042",
+      "label": "Support Case #3296 - Pinnacle Insurance Comply v2 Report For",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.2
+    },
+    {
+      "id": "m:01KQB95605C6F873C6036285",
+      "label": "Aegis / Forge Industries - PCI DSS Compliance Review",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.8
+    },
+    {
+      "id": "m:01KQA0F0BE68E74D66EB4171",
+      "label": "Competitive Response Strategy",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.95
+    },
+    {
+      "id": "m:01KQ56AA6B60801ABC01AB1C",
+      "label": "Support Case #8179 - Clearwater Medical Overage Charges Disp",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQ0F8AFF3DA34FD4580008",
+      "label": "Aegis / Cobalt Software - Q2 Planning",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.95
+    },
+    {
+      "id": "m:01KQA7DFCE1285F52192B34B",
+      "label": "Support Case #9856 - Silverline Brands Backup Window Exceede",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQ31ED026F745FE2A55CCD",
+      "label": "Identity Team - Q2 Roadmap",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.95
+    },
+    {
+      "id": "m:01KQ6CAA850EAFDC48B52846",
+      "label": "Aegis / Ironworks Corp - Vendor Comparison Discussion",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQBBF753B44DE677670E6D",
+      "label": "Support Case #6147 - Summit Trust Detect Alert Delays",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQD1270E98A7DFC55ADCF8",
+      "label": "Protect Performance - Scalability Concerns",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.7
+    },
+    {
+      "id": "m:01KQ8D9A06510DD623EFB1A6",
+      "label": "Aegis / Pinnacle Insurance - Detect Roadmap Review",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.7
+    },
+    {
+      "id": "m:01KQ410FB7E434BA3F99EE7D",
+      "label": "Aegis / Axiom Labs - Multi-Year Renewal",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.95
+    },
+    {
+      "id": "m:01KQ445B1B5B890316C9E300",
+      "label": "Weekly Engineering Standup",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQB632F1ADC378C42F2C03",
+      "label": "Support Case #7570 - Silverline Brands Comply v2 License Upg",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ560FF1570C5E7F71D752",
+      "label": "Aegis / Coastal Living Co - Protect Module Expansion",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.25
+    },
+    {
+      "id": "m:01KQFEEFFF8E80B0DFD10880",
+      "label": "SOC 2 Type II - Final Review",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.1
+    },
+    {
+      "id": "m:01KQ3BD8DEEBC7FECD107F0F",
+      "label": "Aegis / Blackridge Investments - HIPAA Compliance Review",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.1
+    },
+    {
+      "id": "m:01KQ56D878454E5783DC6D94",
+      "label": "Support Case #3536 - Stratos Cloud LogVault Integration Time",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQ9BCA1794C9472726FFAD",
+      "label": "Comply v2 - Adoption Metrics Review",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ45F6F7349D0A620571F1",
+      "label": "Aegis / Brightpath Commerce - Competitive Evaluation",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 1.0
+    },
+    {
+      "id": "m:01KQ4D71CDFB1045A2458216",
+      "label": "Aegis / Bridgeport Health - Renewal Finalization",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ4529010F423FD9DB40BD",
+      "label": "Win/Loss Analysis - Q1",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.95
+    },
+    {
+      "id": "m:01KQ5AFAE8264DDC0ED2AE7F",
+      "label": "Aegis / Crestline Wealth - Identity Module Deployment",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ65D43540846FA994B6C4",
+      "label": "Aegis / Frostbyte AI - Product Feedback",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ92EA85FE4C537400227D",
+      "label": "Support Case #8811 - Blackridge Investments Custom Complianc",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.1
+    },
+    {
+      "id": "m:01KQ7B802912366FC0A24D4F",
+      "label": "All Hands - April Update",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQ0DFE299AC7A74E8022CA",
+      "label": "Aegis / Redwood Clinical - ISO 27001 Preparation",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.1
+    },
+    {
+      "id": "m:01KQC166F678CBA584AAFF8B",
+      "label": "Support Case #7615 - Crestline Wealth Group Policy Sync Dela",
+      "kind": "meeting",
+      "call_type": "support",
+      "risk_score": 0.9
+    },
+    {
+      "id": "m:01KQF9600A904ADE8605B3F0",
+      "label": "Detect Team - Reliability Sprint Retro",
+      "kind": "meeting",
+      "call_type": "internal",
+      "risk_score": 0.0
+    },
+    {
+      "id": "m:01KQD199788883B6F18C81E8",
+      "label": "Aegis / Atlas Precision - Annual Review & Renewal",
+      "kind": "meeting",
+      "call_type": "external",
+      "risk_score": 0.25
+    }
+  ],
+  "edges": [
+    {
+      "source": "m:01KQDD5172176D02DB51360A",
+      "target": "t:incident_communication",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQDD5172176D02DB51360A",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQDD5172176D02DB51360A",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ9BB82FD97C9607D57E90",
+      "target": "t:onboarding_adoption",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ9BB82FD97C9607D57E90",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ9BB82FD97C9607D57E90",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ4EE836687F95080D92AB",
+      "target": "t:product_roadmap",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ4EE836687F95080D92AB",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ4EE836687F95080D92AB",
+      "target": "mod:billing",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ0C1280EDA4E70AAD7C35",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ0C1280EDA4E70AAD7C35",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ0C1280EDA4E70AAD7C35",
+      "target": "mod:billing",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQFFC0F889AE8CFEE7A00D",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQFFC0F889AE8CFEE7A00D",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQFFC0F889AE8CFEE7A00D",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ4D504CE09A8F6ECA1F5A",
+      "target": "t:product_roadmap",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ4D504CE09A8F6ECA1F5A",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ4D504CE09A8F6ECA1F5A",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ9A6BE09D73A9BB5798C7",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ9A6BE09D73A9BB5798C7",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ9A6BE09D73A9BB5798C7",
+      "target": "mod:platform",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ77F2867FC54E13A8C495",
+      "target": "t:onboarding_adoption",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ77F2867FC54E13A8C495",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ77F2867FC54E13A8C495",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQB3B16F255B65F39597D0",
+      "target": "t:product_roadmap",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQB3B16F255B65F39597D0",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ85D10E82A26A8F754FB8",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ85D10E82A26A8F754FB8",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ85D10E82A26A8F754FB8",
+      "target": "mod:billing",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQADC32D89E2B76B698E84",
+      "target": "t:sso_identity_failure",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQADC32D89E2B76B698E84",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQADC32D89E2B76B698E84",
+      "target": "mod:billing",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ0CAE7F064EC93F0540CA",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ0CAE7F064EC93F0540CA",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ0CAE7F064EC93F0540CA",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQAEA50436D047BC39CFC7",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQAEA50436D047BC39CFC7",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQAEA50436D047BC39CFC7",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQBB7C4D4789DB2F3DA9C2",
+      "target": "t:protect_backup",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQBB7C4D4789DB2F3DA9C2",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQBB7C4D4789DB2F3DA9C2",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ7F58A2E07B857C24624D",
+      "target": "t:competitive_evaluation",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ7F58A2E07B857C24624D",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ7F58A2E07B857C24624D",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQC3A2EBC501837E973B16",
+      "target": "t:sso_identity_failure",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQC3A2EBC501837E973B16",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ1A6B7E81B06F4A13B60D",
+      "target": "t:protect_backup",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ1A6B7E81B06F4A13B60D",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ51DC4345D9DAE005678C",
+      "target": "t:product_roadmap",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ51DC4345D9DAE005678C",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ51DC4345D9DAE005678C",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQAC572C34475A8791F2C3",
+      "target": "t:product_roadmap",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQAC572C34475A8791F2C3",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ9772B2348F500FB09D1E",
+      "target": "t:sso_identity_failure",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ9772B2348F500FB09D1E",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ1DC6CA536DE1B31ED8F5",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ1DC6CA536DE1B31ED8F5",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ1DC6CA536DE1B31ED8F5",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ1267C6AA7D9B3125FEC8",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ1267C6AA7D9B3125FEC8",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ1267C6AA7D9B3125FEC8",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ773D68723289E4A98889",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ773D68723289E4A98889",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ773D68723289E4A98889",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQAFB8DBF6E1E2FDEF0B75",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQAFB8DBF6E1E2FDEF0B75",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQAFB8DBF6E1E2FDEF0B75",
+      "target": "mod:billing",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQADF3D76E82BF8BA19AF2",
+      "target": "t:engineering_ops",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQADF3D76E82BF8BA19AF2",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQADF3D76E82BF8BA19AF2",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQA1AFDC1306A000B0C7D9",
+      "target": "t:protect_backup",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQA1AFDC1306A000B0C7D9",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQA1AFDC1306A000B0C7D9",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ5BB8521F99E55470206E",
+      "target": "t:product_roadmap",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ5BB8521F99E55470206E",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQA502E222E2A60330237B",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQA502E222E2A60330237B",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQA502E222E2A60330237B",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ3C837D7EF689408DCF95",
+      "target": "t:protect_backup",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ3C837D7EF689408DCF95",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ41FB5CCFD9EA583FB020",
+      "target": "t:onboarding_adoption",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ41FB5CCFD9EA583FB020",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ41FB5CCFD9EA583FB020",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ2B4878EC7B3EE5547007",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ2B4878EC7B3EE5547007",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ2B4878EC7B3EE5547007",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQCA6EA8B603EBB6C9FE34",
+      "target": "t:sso_identity_failure",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQCA6EA8B603EBB6C9FE34",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQCA6EA8B603EBB6C9FE34",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ5F364545B542671FF9CE",
+      "target": "t:sso_identity_failure",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ5F364545B542671FF9CE",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ5F364545B542671FF9CE",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQD4D9DEBA2D55AC2AA9F5",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQD4D9DEBA2D55AC2AA9F5",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQD4D9DEBA2D55AC2AA9F5",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ38C4101D6774F2F02331",
+      "target": "t:detect_outage",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ38C4101D6774F2F02331",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ38C4101D6774F2F02331",
+      "target": "mod:platform",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQEDB92E33CF9945A7F71B",
+      "target": "t:detect_outage",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQEDB92E33CF9945A7F71B",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQEDB92E33CF9945A7F71B",
+      "target": "mod:platform",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ46A9DE0AECB006D897A0",
+      "target": "t:detect_outage",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ46A9DE0AECB006D897A0",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ7BF0D56037FF89DC89B6",
+      "target": "t:detect_outage",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ7BF0D56037FF89DC89B6",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ7BF0D56037FF89DC89B6",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ351E141926AB7CAB668D",
+      "target": "t:detect_outage",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ351E141926AB7CAB668D",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ351E141926AB7CAB668D",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ2331EFD78BF3B1CAB747",
+      "target": "t:incident_communication",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ2331EFD78BF3B1CAB747",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ2331EFD78BF3B1CAB747",
+      "target": "mod:platform",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ2D93184912F0147315E7",
+      "target": "t:incident_communication",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ2D93184912F0147315E7",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ94C2B8B9B4668F3D3491",
+      "target": "t:detect_outage",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ94C2B8B9B4668F3D3491",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ2217B066855A3B7814CB",
+      "target": "t:incident_communication",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ2217B066855A3B7814CB",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ2217B066855A3B7814CB",
+      "target": "mod:platform",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQE110900B8A65D80AE694",
+      "target": "t:detect_outage",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQE110900B8A65D80AE694",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQE110900B8A65D80AE694",
+      "target": "mod:billing",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ325BDEDEE927D2970775",
+      "target": "t:detect_outage",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ325BDEDEE927D2970775",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ325BDEDEE927D2970775",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ88B8EAEAA819C26CCBE7",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ88B8EAEAA819C26CCBE7",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ88B8EAEAA819C26CCBE7",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ03B0303900521BB089CA",
+      "target": "t:detect_outage",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ03B0303900521BB089CA",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQEDE682B4A8D67C657CF1",
+      "target": "t:detect_outage",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQEDE682B4A8D67C657CF1",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQEDE682B4A8D67C657CF1",
+      "target": "mod:billing",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ8C5A044F54EE1774D53C",
+      "target": "t:incident_communication",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ8C5A044F54EE1774D53C",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ5D47170D4828E89EDE37",
+      "target": "t:incident_communication",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ5D47170D4828E89EDE37",
+      "target": "mod:platform",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ3CE40428CCC5FF433FFC",
+      "target": "t:incident_communication",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ3CE40428CCC5FF433FFC",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ3CE40428CCC5FF433FFC",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ1DCC80852AE384C898C9",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ1DCC80852AE384C898C9",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ1DCC80852AE384C898C9",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ298F2846EFE59B0D70E2",
+      "target": "t:competitive_evaluation",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ298F2846EFE59B0D70E2",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ298F2846EFE59B0D70E2",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ7FA71CF70FAFEE4B6251",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ7FA71CF70FAFEE4B6251",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ7FA71CF70FAFEE4B6251",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ6A5CEAAFFBE3B0099E75",
+      "target": "t:sso_identity_failure",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ6A5CEAAFFBE3B0099E75",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ6A5CEAAFFBE3B0099E75",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ1DE954A807A5D2653175",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ1DE954A807A5D2653175",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ1DE954A807A5D2653175",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ45C76AF3AEA6B3EA6697",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ45C76AF3AEA6B3EA6697",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ45C76AF3AEA6B3EA6697",
+      "target": "mod:billing",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ25D8AED944B5D2A9FF60",
+      "target": "t:protect_backup",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ25D8AED944B5D2A9FF60",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ5A966832A146DA4B7D41",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ5A966832A146DA4B7D41",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ5A966832A146DA4B7D41",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQC1267BEB344076DD7656",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQC1267BEB344076DD7656",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQC1267BEB344076DD7656",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ3F90FF9EBC3DB3632514",
+      "target": "t:sso_identity_failure",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ3F90FF9EBC3DB3632514",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ3F90FF9EBC3DB3632514",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ5EC1665DCFD7A6B62A59",
+      "target": "t:sso_identity_failure",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ5EC1665DCFD7A6B62A59",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ5EC1665DCFD7A6B62A59",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ54917E3931712516916D",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ54917E3931712516916D",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ54917E3931712516916D",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ68FB3E9E60C4477CDAB4",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ68FB3E9E60C4477CDAB4",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ68FB3E9E60C4477CDAB4",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ45C0AD36B351A3571940",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ45C0AD36B351A3571940",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ45C0AD36B351A3571940",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ56786DD1E8A1BF174FDD",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ56786DD1E8A1BF174FDD",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQCF9872BF130D33B1B5EC",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQCF9872BF130D33B1B5EC",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQCF9872BF130D33B1B5EC",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ3D8C1EF16C042F31FAFD",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ3D8C1EF16C042F31FAFD",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ3D8C1EF16C042F31FAFD",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ764171AC27A3A94DC695",
+      "target": "t:incident_communication",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ764171AC27A3A94DC695",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ764171AC27A3A94DC695",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ4D01DCB15C69672AB5AF",
+      "target": "t:onboarding_adoption",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ4D01DCB15C69672AB5AF",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ38FE02AEE5AA5157F042",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ38FE02AEE5AA5157F042",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ38FE02AEE5AA5157F042",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQB95605C6F873C6036285",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQB95605C6F873C6036285",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQB95605C6F873C6036285",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQA0F0BE68E74D66EB4171",
+      "target": "t:competitive_evaluation",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQA0F0BE68E74D66EB4171",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQA0F0BE68E74D66EB4171",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ56AA6B60801ABC01AB1C",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ56AA6B60801ABC01AB1C",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ56AA6B60801ABC01AB1C",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ0F8AFF3DA34FD4580008",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ0F8AFF3DA34FD4580008",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ0F8AFF3DA34FD4580008",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQA7DFCE1285F52192B34B",
+      "target": "t:protect_backup",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQA7DFCE1285F52192B34B",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQA7DFCE1285F52192B34B",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ31ED026F745FE2A55CCD",
+      "target": "t:sso_identity_failure",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ31ED026F745FE2A55CCD",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ31ED026F745FE2A55CCD",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ6CAA850EAFDC48B52846",
+      "target": "t:competitive_evaluation",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ6CAA850EAFDC48B52846",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ6CAA850EAFDC48B52846",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQBBF753B44DE677670E6D",
+      "target": "t:incident_communication",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQBBF753B44DE677670E6D",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQBBF753B44DE677670E6D",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQD1270E98A7DFC55ADCF8",
+      "target": "t:engineering_ops",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQD1270E98A7DFC55ADCF8",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQD1270E98A7DFC55ADCF8",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ8D9A06510DD623EFB1A6",
+      "target": "t:product_roadmap",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ8D9A06510DD623EFB1A6",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ8D9A06510DD623EFB1A6",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ410FB7E434BA3F99EE7D",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ410FB7E434BA3F99EE7D",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ410FB7E434BA3F99EE7D",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ445B1B5B890316C9E300",
+      "target": "t:engineering_ops",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ445B1B5B890316C9E300",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ445B1B5B890316C9E300",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQB632F1ADC378C42F2C03",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQB632F1ADC378C42F2C03",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQB632F1ADC378C42F2C03",
+      "target": "mod:billing",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ560FF1570C5E7F71D752",
+      "target": "t:onboarding_adoption",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ560FF1570C5E7F71D752",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ560FF1570C5E7F71D752",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQFEEFFF8E80B0DFD10880",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQFEEFFF8E80B0DFD10880",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQFEEFFF8E80B0DFD10880",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ3BD8DEEBC7FECD107F0F",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ3BD8DEEBC7FECD107F0F",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ3BD8DEEBC7FECD107F0F",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ56D878454E5783DC6D94",
+      "target": "t:protect_backup",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ56D878454E5783DC6D94",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ56D878454E5783DC6D94",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ9BCA1794C9472726FFAD",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ9BCA1794C9472726FFAD",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ9BCA1794C9472726FFAD",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ45F6F7349D0A620571F1",
+      "target": "t:competitive_evaluation",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ45F6F7349D0A620571F1",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ45F6F7349D0A620571F1",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ4D71CDFB1045A2458216",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ4D71CDFB1045A2458216",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ4D71CDFB1045A2458216",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ4529010F423FD9DB40BD",
+      "target": "t:competitive_evaluation",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ4529010F423FD9DB40BD",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ4529010F423FD9DB40BD",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ5AFAE8264DDC0ED2AE7F",
+      "target": "t:onboarding_adoption",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ5AFAE8264DDC0ED2AE7F",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ5AFAE8264DDC0ED2AE7F",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ65D43540846FA994B6C4",
+      "target": "t:product_roadmap",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ65D43540846FA994B6C4",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ65D43540846FA994B6C4",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ92EA85FE4C537400227D",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ92EA85FE4C537400227D",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ92EA85FE4C537400227D",
+      "target": "mod:platform",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ7B802912366FC0A24D4F",
+      "target": "t:engineering_ops",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ7B802912366FC0A24D4F",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ7B802912366FC0A24D4F",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ0DFE299AC7A74E8022CA",
+      "target": "t:comply_launch_audit",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQ0DFE299AC7A74E8022CA",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQ0DFE299AC7A74E8022CA",
+      "target": "mod:comply",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQC166F678CBA584AAFF8B",
+      "target": "t:sso_identity_failure",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQC166F678CBA584AAFF8B",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQC166F678CBA584AAFF8B",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQF9600A904ADE8605B3F0",
+      "target": "t:engineering_ops",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQF9600A904ADE8605B3F0",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQF9600A904ADE8605B3F0",
+      "target": "mod:protect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQD199788883B6F18C81E8",
+      "target": "t:renewal_commercial",
+      "kind": "has_theme"
+    },
+    {
+      "source": "m:01KQD199788883B6F18C81E8",
+      "target": "mod:identity",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQD199788883B6F18C81E8",
+      "target": "mod:detect",
+      "kind": "has_module"
+    },
+    {
+      "source": "m:01KQDD5172176D02DB51360A",
+      "target": "m:01KQ2331EFD78BF3B1CAB747",
+      "kind": "cross_surface_lag_37d"
+    },
+    {
+      "source": "m:01KQ2331EFD78BF3B1CAB747",
+      "target": "m:01KQ2217B066855A3B7814CB",
+      "kind": "cross_surface_lag_1d"
+    },
+    {
+      "source": "m:01KQ4EE836687F95080D92AB",
+      "target": "m:01KQ51DC4345D9DAE005678C",
+      "kind": "cross_surface_lag_16d"
+    },
+    {
+      "source": "m:01KQ0C1280EDA4E70AAD7C35",
+      "target": "m:01KQFFC0F889AE8CFEE7A00D",
+      "kind": "cross_surface_lag_1d"
+    },
+    {
+      "source": "m:01KQ9A6BE09D73A9BB5798C7",
+      "target": "m:01KQ85D10E82A26A8F754FB8",
+      "kind": "cross_surface_lag_2d"
+    },
+    {
+      "source": "m:01KQ85D10E82A26A8F754FB8",
+      "target": "m:01KQ0CAE7F064EC93F0540CA",
+      "kind": "cross_surface_lag_2d"
+    },
+    {
+      "source": "m:01KQADC32D89E2B76B698E84",
+      "target": "m:01KQC3A2EBC501837E973B16",
+      "kind": "cross_surface_lag_4d"
+    },
+    {
+      "source": "m:01KQC3A2EBC501837E973B16",
+      "target": "m:01KQ3F90FF9EBC3DB3632514",
+      "kind": "cross_surface_lag_37d"
+    },
+    {
+      "source": "m:01KQBB7C4D4789DB2F3DA9C2",
+      "target": "m:01KQA1AFDC1306A000B0C7D9",
+      "kind": "cross_surface_lag_10d"
+    },
+    {
+      "source": "m:01KQ7F58A2E07B857C24624D",
+      "target": "m:01KQ6CAA850EAFDC48B52846",
+      "kind": "cross_surface_lag_54d"
+    },
+    {
+      "source": "m:01KQ38C4101D6774F2F02331",
+      "target": "m:01KQEDB92E33CF9945A7F71B",
+      "kind": "cross_surface_lag_0d"
+    }
+  ],
+  "cross_surface_themes": [
+    "incident_communication",
+    "product_roadmap",
+    "renewal_commercial",
+    "comply_launch_audit",
+    "sso_identity_failure",
+    "protect_backup",
+    "competitive_evaluation",
+    "detect_outage"
+  ],
+  "insight": "Edges labeled cross_surface connect the same theme across support, external, and internal calls. That is the Detect outage (and Identity regressions) jumping org boundaries \u2014 engineering war rooms and customer tickets are one incident, not three separate programs."
+}

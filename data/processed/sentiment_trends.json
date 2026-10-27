@@ -1,0 +1,275 @@
+[
+  {
+    "week": "2026-02-02",
+    "call_type": "external",
+    "mean_customer": 0.5854,
+    "mean_all": 0.6823,
+    "n": 2
+  },
+  {
+    "week": "2026-02-02",
+    "call_type": "internal",
+    "mean_customer": null,
+    "mean_all": -0.0372,
+    "n": 1
+  },
+  {
+    "week": "2026-02-02",
+    "call_type": "support",
+    "mean_customer": -0.2903,
+    "mean_all": -0.1577,
+    "n": 2
+  },
+  {
+    "week": "2026-02-09",
+    "call_type": "external",
+    "mean_customer": 0.379,
+    "mean_all": 0.3519,
+    "n": 2
+  },
+  {
+    "week": "2026-02-09",
+    "call_type": "internal",
+    "mean_customer": null,
+    "mean_all": 0.2782,
+    "n": 2
+  },
+  {
+    "week": "2026-02-09",
+    "call_type": "support",
+    "mean_customer": -0.3855,
+    "mean_all": -0.2026,
+    "n": 2
+  },
+  {
+    "week": "2026-02-16",
+    "call_type": "external",
+    "mean_customer": 0.0027,
+    "mean_all": 0.1893,
+    "n": 3
+  },
+  {
+    "week": "2026-02-16",
+    "call_type": "internal",
+    "mean_customer": null,
+    "mean_all": 0.0112,
+    "n": 2
+  },
+  {
+    "week": "2026-02-16",
+    "call_type": "support",
+    "mean_customer": -0.7433,
+    "mean_all": -0.3034,
+    "n": 2
+  },
+  {
+    "week": "2026-02-23",
+    "call_type": "external",
+    "mean_customer": 0.2347,
+    "mean_all": 0.448,
+    "n": 3
+  },
+  {
+    "week": "2026-02-23",
+    "call_type": "internal",
+    "mean_customer": null,
+    "mean_all": 0.2139,
+    "n": 3
+  },
+  {
+    "week": "2026-02-23",
+    "call_type": "support",
+    "mean_customer": -0.3403,
+    "mean_all": -0.158,
+    "n": 2
+  },
+  {
+    "week": "2026-03-02",
+    "call_type": "external",
+    "mean_customer": 0.2857,
+    "mean_all": 0.3562,
+    "n": 4
+  },
+  {
+    "week": "2026-03-02",
+    "call_type": "internal",
+    "mean_customer": null,
+    "mean_all": 0.0,
+    "n": 1
+  },
+  {
+    "week": "2026-03-02",
+    "call_type": "support",
+    "mean_customer": 0.1169,
+    "mean_all": 0.0479,
+    "n": 2
+  },
+  {
+    "week": "2026-03-09",
+    "call_type": "external",
+    "mean_customer": -0.0159,
+    "mean_all": 0.2452,
+    "n": 2
+  },
+  {
+    "week": "2026-03-09",
+    "call_type": "internal",
+    "mean_customer": null,
+    "mean_all": -0.6837,
+    "n": 4
+  },
+  {
+    "week": "2026-03-09",
+    "call_type": "support",
+    "mean_customer": -0.9192,
+    "mean_all": -0.4944,
+    "n": 7
+  },
+  {
+    "week": "2026-03-16",
+    "call_type": "external",
+    "mean_customer": -0.5956,
+    "mean_all": -0.2416,
+    "n": 3
+  },
+  {
+    "week": "2026-03-16",
+    "call_type": "internal",
+    "mean_customer": null,
+    "mean_all": -0.2408,
+    "n": 3
+  },
+  {
+    "week": "2026-03-16",
+    "call_type": "support",
+    "mean_customer": -0.4184,
+    "mean_all": -0.1603,
+    "n": 3
+  },
+  {
+    "week": "2026-03-23",
+    "call_type": "external",
+    "mean_customer": -0.2743,
+    "mean_all": -0.0972,
+    "n": 3
+  },
+  {
+    "week": "2026-03-23",
+    "call_type": "internal",
+    "mean_customer": null,
+    "mean_all": -0.0339,
+    "n": 2
+  },
+  {
+    "week": "2026-03-23",
+    "call_type": "support",
+    "mean_customer": -0.4591,
+    "mean_all": -0.178,
+    "n": 2
+  },
+  {
+    "week": "2026-03-30",
+    "call_type": "external",
+    "mean_customer": 0.7365,
+    "mean_all": 0.7355,
+    "n": 3
+  },
+  {
+    "week": "2026-03-30",
+    "call_type": "internal",
+    "mean_customer": null,
+    "mean_all": 0.678,
+    "n": 2
+  },
+  {
+    "week": "2026-03-30",
+    "call_type": "support",
+    "mean_customer": 0.616,
+    "mean_all": 0.7344,
+    "n": 1
+  },
+  {
+    "week": "2026-04-06",
+    "call_type": "external",
+    "mean_customer": 0.3834,
+    "mean_all": 0.4879,
+    "n": 3
+  },
+  {
+    "week": "2026-04-06",
+    "call_type": "internal",
+    "mean_customer": null,
+    "mean_all": 0.0842,
+    "n": 2
+  },
+  {
+    "week": "2026-04-06",
+    "call_type": "support",
+    "mean_customer": -0.5368,
+    "mean_all": -0.327,
+    "n": 3
+  },
+  {
+    "week": "2026-04-13",
+    "call_type": "external",
+    "mean_customer": 0.1029,
+    "mean_all": 0.2723,
+    "n": 4
+  },
+  {
+    "week": "2026-04-13",
+    "call_type": "internal",
+    "mean_customer": null,
+    "mean_all": -0.0266,
+    "n": 3
+  },
+  {
+    "week": "2026-04-13",
+    "call_type": "support",
+    "mean_customer": -0.2122,
+    "mean_all": -0.0854,
+    "n": 2
+  },
+  {
+    "week": "2026-04-20",
+    "call_type": "external",
+    "mean_customer": 0.3732,
+    "mean_all": 0.4629,
+    "n": 6
+  },
+  {
+    "week": "2026-04-20",
+    "call_type": "internal",
+    "mean_customer": null,
+    "mean_all": 0.2131,
+    "n": 4
+  },
+  {
+    "week": "2026-04-20",
+    "call_type": "support",
+    "mean_customer": 0.0118,
+    "mean_all": 0.185,
+    "n": 2
+  },
+  {
+    "week": "2026-04-27",
+    "call_type": "external",
+    "mean_customer": 0.6742,
+    "mean_all": 0.6629,
+    "n": 1
+  },
+  {
+    "week": "2026-04-27",
+    "call_type": "internal",
+    "mean_customer": null,
+    "mean_all": 0.6613,
+    "n": 1
+  },
+  {
+    "week": "2026-04-27",
+    "call_type": "support",
+    "mean_customer": -0.7692,
+    "mean_all": -0.1607,
+    "n": 1
+  }
+]

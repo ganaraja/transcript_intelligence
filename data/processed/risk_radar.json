@@ -1,0 +1,981 @@
+[
+  {
+    "account": "Coastal Living Co",
+    "meetings": 4,
+    "risk_score": 1.0,
+    "risk_flags": [
+      "churn",
+      "competitive",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.1382,
+    "call_types": [
+      "external",
+      "support"
+    ],
+    "themes": [
+      "Onboarding & adoption",
+      "SSO / Identity failures"
+    ],
+    "competitors": [
+      "Cloudprime",
+      "Okta",
+      "Wiz"
+    ],
+    "meeting_ids": [
+      "01KQ9BB82FD97C9607D57E90",
+      "01KQ9772B2348F500FB09D1E",
+      "01KQ5EC1665DCFD7A6B62A59",
+      "01KQ560FF1570C5E7F71D752"
+    ],
+    "why_it_matters": "Coastal Living Co: churn language or key-moment churn_signal, competitor mention, executive/urgent escalation, negative customer-side polarity. Latest call \u201cAegis / Coastal Living Co - Protect Module Expansion\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Vanta Health Systems",
+    "meetings": 3,
+    "risk_score": 1.0,
+    "risk_flags": [
+      "churn",
+      "competitive",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.3507,
+    "call_types": [
+      "external",
+      "support"
+    ],
+    "themes": [
+      "Incident communication gaps",
+      "Protect / backup & restore"
+    ],
+    "competitors": [
+      "Cloudprime",
+      "Vanta"
+    ],
+    "meeting_ids": [
+      "01KQDD5172176D02DB51360A",
+      "01KQBB7C4D4789DB2F3DA9C2",
+      "01KQA1AFDC1306A000B0C7D9"
+    ],
+    "why_it_matters": "Vanta Health Systems: churn language or key-moment churn_signal, competitor mention, executive/urgent escalation, negative customer-side polarity. Latest call \u201cAegis / Vanta Health Systems - Backup Strategy Workshop\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Blackridge Investments",
+    "meetings": 3,
+    "risk_score": 1.0,
+    "risk_flags": [
+      "churn",
+      "competitive",
+      "compliance_pressure",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": 0.0368,
+    "call_types": [
+      "external",
+      "support"
+    ],
+    "themes": [
+      "Comply v2 / audit readiness",
+      "Incident communication gaps",
+      "Renewal & commercial"
+    ],
+    "competitors": [
+      "Cloudprime",
+      "Sentinel"
+    ],
+    "meeting_ids": [
+      "01KQFFC0F889AE8CFEE7A00D",
+      "01KQ2D93184912F0147315E7",
+      "01KQ3BD8DEEBC7FECD107F0F"
+    ],
+    "why_it_matters": "Blackridge Investments: churn language or key-moment churn_signal, competitor mention, executive/urgent escalation, negative customer-side polarity. Latest call \u201cAegis / Blackridge Investments - HIPAA Compliance Review\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Brightpath Commerce",
+    "meetings": 3,
+    "risk_score": 1.0,
+    "risk_flags": [
+      "churn",
+      "competitive",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.0061,
+    "call_types": [
+      "external",
+      "support"
+    ],
+    "themes": [
+      "Competitive evaluation",
+      "Onboarding & adoption",
+      "Renewal & commercial"
+    ],
+    "competitors": [
+      "Cloudprime",
+      "Sentinel"
+    ],
+    "meeting_ids": [
+      "01KQ77F2867FC54E13A8C495",
+      "01KQ773D68723289E4A98889",
+      "01KQ45F6F7349D0A620571F1"
+    ],
+    "why_it_matters": "Brightpath Commerce: churn language or key-moment churn_signal, competitor mention, executive/urgent escalation, negative customer-side polarity. Latest call \u201cAegis / Brightpath Commerce - Competitive Evaluation\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Nova Retail Group",
+    "meetings": 2,
+    "risk_score": 1.0,
+    "risk_flags": [
+      "churn",
+      "competitive",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.702,
+    "call_types": [
+      "external",
+      "support"
+    ],
+    "themes": [
+      "Renewal & commercial",
+      "SSO / Identity failures"
+    ],
+    "competitors": [
+      "Okta",
+      "Sentinel"
+    ],
+    "meeting_ids": [
+      "01KQADC32D89E2B76B698E84",
+      "01KQ7FA71CF70FAFEE4B6251"
+    ],
+    "why_it_matters": "Nova Retail Group: churn language or key-moment churn_signal, competitor mention, executive/urgent escalation, negative customer-side polarity. Latest call \u201cAegis / Nova Retail Group - Renewal Discussion\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Meridian Capital",
+    "meetings": 2,
+    "risk_score": 1.0,
+    "risk_flags": [
+      "churn",
+      "competitive",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.371,
+    "call_types": [
+      "external",
+      "support"
+    ],
+    "themes": [
+      "Incident communication gaps",
+      "SSO / Identity failures"
+    ],
+    "competitors": [
+      "Okta",
+      "Sentinel"
+    ],
+    "meeting_ids": [
+      "01KQ5F364545B542671FF9CE",
+      "01KQ2217B066855A3B7814CB"
+    ],
+    "why_it_matters": "Meridian Capital: churn language or key-moment churn_signal, competitor mention, executive/urgent escalation, negative customer-side polarity. Latest call \u201cAegis / Meridian Capital - Service Reliability Discussion\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Cobalt Software",
+    "meetings": 2,
+    "risk_score": 1.0,
+    "risk_flags": [
+      "churn",
+      "competitive",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.5992,
+    "call_types": [
+      "external",
+      "support"
+    ],
+    "themes": [
+      "Detect reliability / outage",
+      "Renewal & commercial"
+    ],
+    "competitors": [
+      "Cloudprime",
+      "Sentinel"
+    ],
+    "meeting_ids": [
+      "01KQEDB92E33CF9945A7F71B",
+      "01KQ0F8AFF3DA34FD4580008"
+    ],
+    "why_it_matters": "Cobalt Software: churn language or key-moment churn_signal, competitor mention, executive/urgent escalation, negative customer-side polarity. Latest call \u201cAegis / Cobalt Software - Q2 Planning\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Trailhead Marketplace",
+    "meetings": 2,
+    "risk_score": 1.0,
+    "risk_flags": [
+      "churn",
+      "competitive",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.16,
+    "call_types": [
+      "external",
+      "support"
+    ],
+    "themes": [
+      "Detect reliability / outage",
+      "Renewal & commercial"
+    ],
+    "competitors": [
+      "Sentinel"
+    ],
+    "meeting_ids": [
+      "01KQ7BF0D56037FF89DC89B6",
+      "01KQ3D8C1EF16C042F31FAFD"
+    ],
+    "why_it_matters": "Trailhead Marketplace: churn language or key-moment churn_signal, competitor mention, executive/urgent escalation, negative customer-side polarity. Latest call \u201cAegis / Trailhead Marketplace - Renewal Confirmation\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Northstar Pharma",
+    "meetings": 2,
+    "risk_score": 1.0,
+    "risk_flags": [
+      "churn",
+      "competitive",
+      "compliance_pressure",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.9042,
+    "call_types": [
+      "support"
+    ],
+    "themes": [
+      "Comply v2 / audit readiness",
+      "Detect reliability / outage"
+    ],
+    "competitors": [
+      "Sentinel"
+    ],
+    "meeting_ids": [
+      "01KQ351E141926AB7CAB668D",
+      "01KQ88B8EAEAA819C26CCBE7"
+    ],
+    "why_it_matters": "Northstar Pharma: churn language or key-moment churn_signal, competitor mention, executive/urgent escalation, negative customer-side polarity. Latest call \u201cESCALATION: Northstar Pharma - Detect Outage Impact on Compliance\u201d (support). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Quantum Edge",
+    "meetings": 1,
+    "risk_score": 1.0,
+    "risk_flags": [
+      "churn",
+      "competitive",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.6484,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Renewal & commercial"
+    ],
+    "competitors": [
+      "Sentinel"
+    ],
+    "meeting_ids": [
+      "01KQ1DCC80852AE384C898C9"
+    ],
+    "why_it_matters": "Quantum Edge: churn language or key-moment churn_signal, competitor mention, executive/urgent escalation, negative customer-side polarity. Latest call \u201cAegis / Quantum Edge - Renewal Concerns\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Forge Industries",
+    "meetings": 3,
+    "risk_score": 0.95,
+    "risk_flags": [
+      "churn",
+      "competitive",
+      "compliance_pressure",
+      "escalation"
+    ],
+    "mean_customer_sentiment": 0.3584,
+    "call_types": [
+      "external",
+      "support"
+    ],
+    "themes": [
+      "Comply v2 / audit readiness",
+      "Incident communication gaps"
+    ],
+    "competitors": [
+      "Vanta"
+    ],
+    "meeting_ids": [
+      "01KQ5D47170D4828E89EDE37",
+      "01KQ56786DD1E8A1BF174FDD",
+      "01KQB95605C6F873C6036285"
+    ],
+    "why_it_matters": "Forge Industries: churn language or key-moment churn_signal, competitor mention, executive/urgent escalation. Latest call \u201cAegis / Forge Industries - PCI DSS Compliance Review\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Meridian Capital Granular Restore Request",
+    "meetings": 1,
+    "risk_score": 0.95,
+    "risk_flags": [
+      "churn",
+      "competitive",
+      "escalation"
+    ],
+    "mean_customer_sentiment": -0.085,
+    "call_types": [
+      "support"
+    ],
+    "themes": [
+      "Protect / backup & restore"
+    ],
+    "competitors": [
+      "Cloudprime"
+    ],
+    "meeting_ids": [
+      "01KQ25D8AED944B5D2A9FF60"
+    ],
+    "why_it_matters": "Meridian Capital Granular Restore Request: churn language or key-moment churn_signal, competitor mention, executive/urgent escalation. Latest call \u201cSupport Case #1514 - Meridian Capital Granular Restore Request\u201d (support). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Ironclad Financial",
+    "meetings": 1,
+    "risk_score": 0.95,
+    "risk_flags": [
+      "churn",
+      "competitive",
+      "escalation"
+    ],
+    "mean_customer_sentiment": -0.0249,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Renewal & commercial"
+    ],
+    "competitors": [
+      "Sentinel"
+    ],
+    "meeting_ids": [
+      "01KQC1267BEB344076DD7656"
+    ],
+    "why_it_matters": "Ironclad Financial: churn language or key-moment churn_signal, competitor mention, executive/urgent escalation. Latest call \u201cAegis / Ironclad Financial - Account Recovery Check-in\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Axiom Labs",
+    "meetings": 1,
+    "risk_score": 0.95,
+    "risk_flags": [
+      "churn",
+      "competitive",
+      "escalation"
+    ],
+    "mean_customer_sentiment": 0.6993,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Renewal & commercial"
+    ],
+    "competitors": [
+      "Sentinel"
+    ],
+    "meeting_ids": [
+      "01KQ410FB7E434BA3F99EE7D"
+    ],
+    "why_it_matters": "Axiom Labs: churn language or key-moment churn_signal, competitor mention, executive/urgent escalation. Latest call \u201cAegis / Axiom Labs - Multi-Year Renewal\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Silverline Brands",
+    "meetings": 4,
+    "risk_score": 0.9,
+    "risk_flags": [
+      "churn",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.12,
+    "call_types": [
+      "external",
+      "support"
+    ],
+    "themes": [
+      "Comply v2 / audit readiness",
+      "Detect reliability / outage",
+      "Protect / backup & restore"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQEDE682B4A8D67C657CF1",
+      "01KQ45C0AD36B351A3571940",
+      "01KQA7DFCE1285F52192B34B",
+      "01KQB632F1ADC378C42F2C03"
+    ],
+    "why_it_matters": "Silverline Brands: churn language or key-moment churn_signal, executive/urgent escalation, negative customer-side polarity. Latest call \u201cSupport Case #7570 - Silverline Brands Comply v2 License Upgrade\u201d (support). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Summit Trust",
+    "meetings": 3,
+    "risk_score": 0.9,
+    "risk_flags": [
+      "churn",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.3454,
+    "call_types": [
+      "external",
+      "support"
+    ],
+    "themes": [
+      "Incident communication gaps",
+      "Renewal & commercial"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQ0C1280EDA4E70AAD7C35",
+      "01KQ5A966832A146DA4B7D41",
+      "01KQBBF753B44DE677670E6D"
+    ],
+    "why_it_matters": "Summit Trust: churn language or key-moment churn_signal, executive/urgent escalation, negative customer-side polarity. Latest call \u201cSupport Case #6147 - Summit Trust Detect Alert Delays\u201d (support). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Ridgeline Logistics",
+    "meetings": 3,
+    "risk_score": 0.9,
+    "risk_flags": [
+      "churn",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.6417,
+    "call_types": [
+      "external",
+      "support"
+    ],
+    "themes": [
+      "Detect reliability / outage",
+      "SSO / Identity failures"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQCA6EA8B603EBB6C9FE34",
+      "01KQ94C2B8B9B4668F3D3491",
+      "01KQ325BDEDEE927D2970775"
+    ],
+    "why_it_matters": "Ridgeline Logistics: churn language or key-moment churn_signal, executive/urgent escalation, negative customer-side polarity. Latest call \u201cSupport Case #5889 - Ridgeline Logistics Detect Latency Issues\u201d (support). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Redwood Clinical",
+    "meetings": 2,
+    "risk_score": 0.9,
+    "risk_flags": [
+      "churn",
+      "compliance_pressure",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": 0.2107,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Comply v2 / audit readiness",
+      "Product roadmap & planning"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQ51DC4345D9DAE005678C",
+      "01KQ0DFE299AC7A74E8022CA"
+    ],
+    "why_it_matters": "Redwood Clinical: churn language or key-moment churn_signal, executive/urgent escalation, negative customer-side polarity. Latest call \u201cAegis / Redwood Clinical - ISO 27001 Preparation\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Steelpoint Manufacturing",
+    "meetings": 2,
+    "risk_score": 0.9,
+    "risk_flags": [
+      "churn",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.407,
+    "call_types": [
+      "external",
+      "support"
+    ],
+    "themes": [
+      "Renewal & commercial",
+      "SSO / Identity failures"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQ6A5CEAAFFBE3B0099E75",
+      "01KQ45C76AF3AEA6B3EA6697"
+    ],
+    "why_it_matters": "Steelpoint Manufacturing: churn language or key-moment churn_signal, executive/urgent escalation, negative customer-side polarity. Latest call \u201cAegis / Steelpoint Manufacturing - Contract Review\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Brightpath Commerce Slow",
+    "meetings": 1,
+    "risk_score": 0.9,
+    "risk_flags": [
+      "churn",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.8293,
+    "call_types": [
+      "support"
+    ],
+    "themes": [
+      "Protect / backup & restore"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQ1A6B7E81B06F4A13B60D"
+    ],
+    "why_it_matters": "Brightpath Commerce Slow: churn language or key-moment churn_signal, executive/urgent escalation, negative customer-side polarity. Latest call \u201cSupport Case #6977 - Brightpath Commerce Slow Backup Performance\u201d (support). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Helix Data",
+    "meetings": 1,
+    "risk_score": 0.9,
+    "risk_flags": [
+      "churn",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.5165,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Incident communication gaps"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQ8C5A044F54EE1774D53C"
+    ],
+    "why_it_matters": "Helix Data: churn language or key-moment churn_signal, executive/urgent escalation, negative customer-side polarity. Latest call \u201cAegis / Helix Data - Post-Incident Review\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Clearwater Medical Overage Charges Dispute",
+    "meetings": 1,
+    "risk_score": 0.9,
+    "risk_flags": [
+      "churn",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.9305,
+    "call_types": [
+      "support"
+    ],
+    "themes": [
+      "Renewal & commercial"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQ56AA6B60801ABC01AB1C"
+    ],
+    "why_it_matters": "Clearwater Medical Overage Charges Dispute: churn language or key-moment churn_signal, executive/urgent escalation, negative customer-side polarity. Latest call \u201cSupport Case #8179 - Clearwater Medical Overage Charges Dispute\u201d (support). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Ironworks Corp",
+    "meetings": 1,
+    "risk_score": 0.9,
+    "risk_flags": [
+      "churn",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.654,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Competitive evaluation"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQ6CAA850EAFDC48B52846"
+    ],
+    "why_it_matters": "Ironworks Corp: churn language or key-moment churn_signal, executive/urgent escalation, negative customer-side polarity. Latest call \u201cAegis / Ironworks Corp - Vendor Comparison Discussion\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Stratos Cloud LogVault Integration Timeout",
+    "meetings": 1,
+    "risk_score": 0.9,
+    "risk_flags": [
+      "churn",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.7645,
+    "call_types": [
+      "support"
+    ],
+    "themes": [
+      "Protect / backup & restore"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQ56D878454E5783DC6D94"
+    ],
+    "why_it_matters": "Stratos Cloud LogVault Integration Timeout: churn language or key-moment churn_signal, executive/urgent escalation, negative customer-side polarity. Latest call \u201cSupport Case #3536 - Stratos Cloud LogVault Integration Timeout\u201d (support). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Crestline Wealth Group Policy Sync Delay",
+    "meetings": 1,
+    "risk_score": 0.9,
+    "risk_flags": [
+      "churn",
+      "escalation",
+      "negative_customer"
+    ],
+    "mean_customer_sentiment": -0.7692,
+    "call_types": [
+      "support"
+    ],
+    "themes": [
+      "SSO / Identity failures"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQC166F678CBA584AAFF8B"
+    ],
+    "why_it_matters": "Crestline Wealth Group Policy Sync Delay: churn language or key-moment churn_signal, executive/urgent escalation, negative customer-side polarity. Latest call \u201cSupport Case #7615 - Crestline Wealth Group Policy Sync Delay\u201d (support). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Pinnacle Insurance",
+    "meetings": 2,
+    "risk_score": 0.7,
+    "risk_flags": [
+      "churn",
+      "escalation"
+    ],
+    "mean_customer_sentiment": -0.0584,
+    "call_types": [
+      "external",
+      "support"
+    ],
+    "themes": [
+      "Comply v2 / audit readiness",
+      "Product roadmap & planning"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQ38FE02AEE5AA5157F042",
+      "01KQ8D9A06510DD623EFB1A6"
+    ],
+    "why_it_matters": "Pinnacle Insurance: churn language or key-moment churn_signal, executive/urgent escalation. Latest call \u201cAegis / Pinnacle Insurance - Detect Roadmap Review\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Maplewood Goods",
+    "meetings": 1,
+    "risk_score": 0.35,
+    "risk_flags": [
+      "competitive",
+      "compliance_pressure"
+    ],
+    "mean_customer_sentiment": 0.4494,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Comply v2 / audit readiness"
+    ],
+    "competitors": [
+      "Cloudprime",
+      "Vanta"
+    ],
+    "meeting_ids": [
+      "01KQAFB8DBF6E1E2FDEF0B75"
+    ],
+    "why_it_matters": "Maplewood Goods: competitor mention. Latest call \u201cAegis / Maplewood Goods - SOC 2 Prep Review\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Frostbyte AI",
+    "meetings": 2,
+    "risk_score": 0.25,
+    "risk_flags": [
+      "competitive"
+    ],
+    "mean_customer_sentiment": 0.2235,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Product roadmap & planning",
+      "SSO / Identity failures"
+    ],
+    "competitors": [
+      "Okta"
+    ],
+    "meeting_ids": [
+      "01KQC3A2EBC501837E973B16",
+      "01KQ65D43540846FA994B6C4"
+    ],
+    "why_it_matters": "Frostbyte AI: competitor mention. Latest call \u201cAegis / Frostbyte AI - Product Feedback\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Atlas Precision",
+    "meetings": 2,
+    "risk_score": 0.25,
+    "risk_flags": [
+      "competitive"
+    ],
+    "mean_customer_sentiment": 0.3371,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Renewal & commercial"
+    ],
+    "competitors": [
+      "Sentinel"
+    ],
+    "meeting_ids": [
+      "01KQ1DC6CA536DE1B31ED8F5",
+      "01KQD199788883B6F18C81E8"
+    ],
+    "why_it_matters": "Atlas Precision: competitor mention. Latest call \u201cAegis / Atlas Precision - Annual Review & Renewal\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Pineridge Systems",
+    "meetings": 1,
+    "risk_score": 0.25,
+    "risk_flags": [
+      "competitive"
+    ],
+    "mean_customer_sentiment": 0.9617,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Renewal & commercial"
+    ],
+    "competitors": [
+      "Sentinel"
+    ],
+    "meeting_ids": [
+      "01KQA502E222E2A60330237B"
+    ],
+    "why_it_matters": "Pineridge Systems: competitor mention. Latest call \u201cAegis / Pineridge Systems - Q1 Business Review\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Pineridge Systems CloudPrime S3",
+    "meetings": 1,
+    "risk_score": 0.25,
+    "risk_flags": [
+      "competitive"
+    ],
+    "mean_customer_sentiment": 0.1829,
+    "call_types": [
+      "support"
+    ],
+    "themes": [
+      "Protect / backup & restore"
+    ],
+    "competitors": [
+      "Cloudprime"
+    ],
+    "meeting_ids": [
+      "01KQ3C837D7EF689408DCF95"
+    ],
+    "why_it_matters": "Pineridge Systems CloudPrime S3: competitor mention. Latest call \u201cSupport Case #2638 - Pineridge Systems CloudPrime S3 Backup Connector\u201d (support). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Harborview Banking",
+    "meetings": 1,
+    "risk_score": 0.25,
+    "risk_flags": [
+      "competitive"
+    ],
+    "mean_customer_sentiment": -0.0815,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Onboarding & adoption"
+    ],
+    "competitors": [
+      "Cloudprime"
+    ],
+    "meeting_ids": [
+      "01KQ41FB5CCFD9EA583FB020"
+    ],
+    "why_it_matters": "Harborview Banking: competitor mention. Latest call \u201cAegis / Harborview Banking - Threat Detection Tuning\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Stratos Cloud",
+    "meetings": 1,
+    "risk_score": 0.25,
+    "risk_flags": [
+      "competitive"
+    ],
+    "mean_customer_sentiment": 0.5376,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Comply v2 / audit readiness"
+    ],
+    "competitors": [
+      "Cloudprime"
+    ],
+    "meeting_ids": [
+      "01KQ2B4878EC7B3EE5547007"
+    ],
+    "why_it_matters": "Stratos Cloud: competitor mention. Latest call \u201cAegis / Stratos Cloud - Audit Preparation\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Clearwater Medical",
+    "meetings": 1,
+    "risk_score": 0.25,
+    "risk_flags": [
+      "competitive"
+    ],
+    "mean_customer_sentiment": 0.8315,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Onboarding & adoption"
+    ],
+    "competitors": [
+      "Cloudprime"
+    ],
+    "meeting_ids": [
+      "01KQ4D01DCB15C69672AB5AF"
+    ],
+    "why_it_matters": "Clearwater Medical: competitor mention. Latest call \u201cAegis / Clearwater Medical - Comply v2 Deployment Kickoff\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Nimbus Platform Custom Report Request",
+    "meetings": 1,
+    "risk_score": 0.2,
+    "risk_flags": [
+      "escalation"
+    ],
+    "mean_customer_sentiment": 0.0109,
+    "call_types": [
+      "support"
+    ],
+    "themes": [
+      "Comply v2 / audit readiness"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQ9A6BE09D73A9BB5798C7"
+    ],
+    "why_it_matters": "Nimbus Platform Custom Report Request: executive/urgent escalation. Latest call \u201cSupport Case #3615 - Nimbus Platform Custom Report Request\u201d (support). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Bridgeport Health",
+    "meetings": 2,
+    "risk_score": 0.1,
+    "risk_flags": [
+      "compliance_pressure"
+    ],
+    "mean_customer_sentiment": 0.6193,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Comply v2 / audit readiness",
+      "Renewal & commercial"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQ85D10E82A26A8F754FB8",
+      "01KQ4D71CDFB1045A2458216"
+    ],
+    "why_it_matters": "Bridgeport Health: elevated composite score. Latest call \u201cAegis / Bridgeport Health - Renewal Finalization\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Blackridge Investments Custom Compliance Template",
+    "meetings": 1,
+    "risk_score": 0.1,
+    "risk_flags": [
+      "compliance_pressure"
+    ],
+    "mean_customer_sentiment": 0.7881,
+    "call_types": [
+      "support"
+    ],
+    "themes": [
+      "Comply v2 / audit readiness"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQ92EA85FE4C537400227D"
+    ],
+    "why_it_matters": "Blackridge Investments Custom Compliance Template: elevated composite score. Latest call \u201cSupport Case #8811 - Blackridge Investments Custom Compliance Template\u201d (support). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Crestline Wealth",
+    "meetings": 2,
+    "risk_score": 0.0,
+    "risk_flags": [],
+    "mean_customer_sentiment": 0.2852,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Onboarding & adoption",
+      "Renewal & commercial"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQAEA50436D047BC39CFC7",
+      "01KQ5AFAE8264DDC0ED2AE7F"
+    ],
+    "why_it_matters": "Crestline Wealth: elevated composite score. Latest call \u201cAegis / Crestline Wealth - Identity Module Deployment\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Keystone Health",
+    "meetings": 1,
+    "risk_score": 0.0,
+    "risk_flags": [],
+    "mean_customer_sentiment": 0.761,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Renewal & commercial"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQD4D9DEBA2D55AC2AA9F5"
+    ],
+    "why_it_matters": "Keystone Health: elevated composite score. Latest call \u201cAegis / Keystone Health - Renewal Planning\u201d (external). Sales + support should share a single account plan."
+  },
+  {
+    "account": "Nimbus Platform",
+    "meetings": 1,
+    "risk_score": 0.0,
+    "risk_flags": [],
+    "mean_customer_sentiment": 0.7818,
+    "call_types": [
+      "external"
+    ],
+    "themes": [
+      "Comply v2 / audit readiness"
+    ],
+    "competitors": [],
+    "meeting_ids": [
+      "01KQ54917E3931712516916D"
+    ],
+    "why_it_matters": "Nimbus Platform: elevated composite score. Latest call \u201cAegis / Nimbus Platform - Comply v2 Preview\u201d (external). Sales + support should share a single account plan."
+  }
+]

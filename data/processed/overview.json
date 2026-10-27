@@ -1,0 +1,31 @@
+{
+  "meeting_count": 100,
+  "call_type_mix": {
+    "support": 31,
+    "external": 39,
+    "internal": 30
+  },
+  "module_mix": {
+    "identity": 25,
+    "protect": 37,
+    "comply": 64,
+    "platform": 16,
+    "detect": 64,
+    "billing": 47
+  },
+  "mean_utterance_sentiment": 0.0764,
+  "high_risk_accounts": 26,
+  "approach": {
+    "call_type": "Rules on title + attendee email domains.",
+    "themes": "Keyword taxonomy over title, summary, provided topics, and early transcript. Optional OpenAI JSON refine if OPENAI_API_KEY is set.",
+    "sentiment": "Duration-weighted polarity of utterance sentimentType. Customer-side only on support/external so Aegis politeness does not wash out the signal."
+  },
+  "takeaways": [
+    "Support calls: customer-side sentiment averages -0.45 across 31 meetings (duration-weighted utterance polarity).",
+    "External calls: customer-side sentiment averages 0.20 across 39 meetings (duration-weighted utterance polarity).",
+    "Detect-tagged calls sit 0.47 below the rest of the corpus. That gap is the outage/reliability plotline showing up in customer language, not just in engineering war rooms.",
+    "Support is more negative than account-management calls. AM conversations can lag the ticket queue \u2014 sales may still hear a calm QBR while support is already absorbing an outage.",
+    "70 calls recover in the last third of the transcript; 1 deteriorate. Recovery is a coaching cue (workaround landed). Deterioration is a process cue (no path to resolution).",
+    "Weakest customer-sentiment week: 2026-03-09 (support, n=7). Use that week as the incident overlay when walking the panel through Detect/Identity spikes."
+  ]
+}
