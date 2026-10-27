@@ -10,3 +10,4 @@ src/frontend/dist/
 .DS_Store
 *.egg-info/
 .uv/
+.run-all.pid

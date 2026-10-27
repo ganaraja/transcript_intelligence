@@ -1,34 +1,78 @@
 #!/usr/bin/env bash
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-PID_FILE="${TMPDIR:-/tmp}/transcript-intelligence-$(printf '%s' "$ROOT" | cksum | awk '{print $1}').pid"
+PID_FILE="$ROOT/.run-all.pid"
+LEGACY_PID_FILE="${TMPDIR:-/tmp}/transcript-intelligence-$(printf '%s' "$ROOT" | cksum | awk '{print $1}').pid"
 
-if [[ ! -f "$PID_FILE" ]]; then
+run_all_pids=()
+for marker in "$PID_FILE" "$LEGACY_PID_FILE"; do
+  if [[ -f "$marker" ]]; then
+    read -r marker_pid < "$marker" || true
+    marker_command="$(ps -p "${marker_pid:-}" -o command= 2>/dev/null || true)"
+    if [[ -n "${marker_pid:-}" && "$marker_command" == *"run-all.sh"* ]]; then
+      run_all_pids+=("$marker_pid")
+    else
+      rm -f "$marker"
+    fi
+  fi
+done
+
+while IFS= read -r process; do
+  read -r candidate_pid command_line <<< "$process"
+  if [[ "$command_line" == *"$ROOT/scripts/run-all.sh" ]]; then
+    already_found=false
+    for pid in "${run_all_pids[@]}"; do
+      [[ "$pid" == "$candidate_pid" ]] && already_found=true
+    done
+    [[ "$already_found" == true ]] || run_all_pids+=("$candidate_pid")
+  fi
+done < <(ps -axo pid=,command=)
+
+if [[ "${#run_all_pids[@]}" -eq 0 ]]; then
   echo "Transcript Intelligence is not running."
   exit 0
 fi
 
-read -r run_all_pid < "$PID_FILE" || true
-if [[ -z "${run_all_pid:-}" ]] || ! kill -0 "$run_all_pid" 2>/dev/null; then
-  rm -f "$PID_FILE"
-  echo "Removed stale run marker; no launcher is running."
-  exit 0
-fi
+DESCENDANTS=()
 
-command_line="$(ps -p "$run_all_pid" -o command= 2>/dev/null || true)"
-if [[ "$command_line" != *"run-all.sh"* ]]; then
-  echo "Refusing to stop PID $run_all_pid: it is not the run-all.sh launcher."
-  exit 1
-fi
+collect_descendants() {
+  local parent_pid="$1"
+  local child_pid
+  for child_pid in $(pgrep -P "$parent_pid" 2>/dev/null || true); do
+    DESCENDANTS+=("$child_pid")
+    collect_descendants "$child_pid"
+  done
+}
 
-kill -TERM "$run_all_pid"
-for _ in {1..50}; do
-  if ! kill -0 "$run_all_pid" 2>/dev/null; then
-    echo "Stopped Transcript Intelligence."
-    exit 0
-  fi
+for run_all_pid in "${run_all_pids[@]}"; do
+  collect_descendants "$run_all_pid"
+done
+
+process_pids=("${DESCENDANTS[@]}" "${run_all_pids[@]}")
+for pid in "${process_pids[@]}"; do
+  kill -TERM "$pid" 2>/dev/null || true
+done
+
+for _ in {1..10}; do
+  alive=0
+  for pid in "${process_pids[@]}"; do
+    process_state="$(ps -p "$pid" -o stat= 2>/dev/null || true)"
+    if [[ -n "$process_state" && "$process_state" != Z* ]]; then
+      alive=1
+      break
+    fi
+  done
+  [[ "$alive" -eq 0 ]] && break
   sleep 0.2
 done
 
-echo "The launcher (PID $run_all_pid) did not stop in time." >&2
-exit 1
+for pid in "${process_pids[@]}"; do
+  process_state="$(ps -p "$pid" -o stat= 2>/dev/null || true)"
+  if [[ -n "$process_state" && "$process_state" != Z* ]]; then
+    kill -KILL "$pid" 2>/dev/null || true
+  fi
+done
+
+rm -f "$PID_FILE" "$LEGACY_PID_FILE"
+
+echo "Stopped Transcript Intelligence and its child processes."

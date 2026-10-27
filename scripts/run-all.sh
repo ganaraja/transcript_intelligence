@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-PID_FILE="${TMPDIR:-/tmp}/transcript-intelligence-$(printf '%s' "$ROOT" | cksum | awk '{print $1}').pid"
+PID_FILE="$ROOT/.run-all.pid"
 
 if [[ -f "$PID_FILE" ]]; then
   read -r existing_pid < "$PID_FILE" || true
@@ -36,7 +36,9 @@ cleanup() {
   done
   sleep 1
   for child_pid in "${DESCENDANTS[@]}"; do
-    kill -KILL "$child_pid" 2>/dev/null || true
+    if kill -0 "$child_pid" 2>/dev/null; then
+      kill -KILL "$child_pid" 2>/dev/null || true
+    fi
   done
   if [[ -f "$PID_FILE" ]] && [[ "$(cat "$PID_FILE")" == "$$" ]]; then
     rm -f "$PID_FILE"
