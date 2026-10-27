@@ -128,39 +128,127 @@ The risk radar and VOC backlog are heuristic triage aids, not calibrated predict
 
 ## 5. Architecture
 
-```
-dataset/{meetingId}/*.json
-        │
-        ▼
- src/backend/pipeline/ingest.py     load + normalize
-        │
-        ▼
- src/backend/pipeline/classify.py   call type, themes, modules, risk flags
- src/backend/pipeline/sentiment.py  role-aware scores + trends
- src/backend/pipeline/insights.py   risk radar, issue graph, VOC backlog
-        │
-        ▼
- data/processed/
-   meetings.json             one record per call (join of all features)
-   themes.json               codebook + example meeting ids
-   sentiment_trends.json
-   sentiment_heatmap.json
-   risk_radar.json
-   issue_graph.json          nodes/edges for the network chart
-   voc_backlog.json
-   overview.json             KPIs + templated takeaways
-        │
-        ▼
- src/backend/app/main.py (FastAPI) GET /api/overview, /meetings, /graph, …
-        │
-        ▼
- src/frontend/ (Vite + React)       dashboard
+The diagram follows the actual data path from source files through persisted
+analysis outputs to the API and dashboard. Solid edges are the default
+deterministic flow; the dashed node/edge is optional OpenAI theme refinement.
+
+```mermaid
+flowchart LR
+    subgraph Inputs["Inputs"]
+        DS["dataset/{meetingId}/<br/>meeting-info.json<br/>transcript.json<br/>summary.json<br/>speaker-meta.json"]
+    end
+
+    subgraph Pipeline["Offline pipeline · src/backend/pipeline"]
+        ING["ingest.py<br/>load_dataset / load_meeting"]
+        RAW["RawMeeting<br/>normalized metadata + utterances"]
+        SENT["sentiment.py<br/>speaker-side scores + trajectory"]
+        CLASS["classify.py<br/>call type + modules + theme<br/>risk flags + quote"]
+        LLM{"OPENAI_API_KEY<br/>and LLM enabled?"}
+        CACHE[("data/cache/llm/<br/>meeting_id.json")]
+        REFINE["llm.py<br/>optional theme refinement"]
+        REC["MeetingRecord<br/>deterministic per-call record"]
+        FINAL["Finalized MeetingRecord"]
+        AGG["Aggregate records"]
+        THEME["Theme catalog"]
+        TRENDS["Weekly sentiment<br/>+ takeaways"]
+        HEAT["Module heatmap"]
+        INS["insights.py<br/>risk radar · issue graph · VOC"]
+        OVER["run.py overview()<br/>KPIs + takeaways"]
+        WRITE["run.py writes JSON artifacts"]
+    end
+
+    subgraph Store["File-backed artifact store · data/processed"]
+        MEET["meetings.json"]
+        THEMES["themes.json"]
+        TREND["sentiment_trends.json"]
+        HM["sentiment_heatmap.json"]
+        RISK["risk_radar.json"]
+        GRAPH["issue_graph.json"]
+        VOC["voc_backlog.json"]
+        OV["overview.json"]
+    end
+
+    subgraph API["Read API · src/backend/app/main.py"]
+        ROUTES["FastAPI /api/* routes"]
+        REPROC["POST /api/reprocess"]
+    end
+
+    subgraph UI["Dashboard · src/frontend"]
+        CLIENT["api.ts + TanStack Query"]
+        PAGES["Overview · Themes · Sentiment<br/>Risk radar · Issue graph"]
+        DETAIL["Meeting detail"]
+    end
+
+    DS --> ING --> RAW
+    RAW --> SENT
+    RAW --> CLASS
+    SENT --> CLASS
+    CLASS --> REC
+    REC --> LLM
+    LLM -. "yes" .-> REFINE
+    CACHE <--> REFINE
+    REFINE -. "refined theme fields" .-> FINAL
+    LLM -->|"no / disabled"| FINAL
+    FINAL --> AGG
+
+    AGG --> THEME
+    AGG --> TRENDS
+    AGG --> HEAT
+    AGG --> INS
+    AGG --> OVER
+    THEME --> WRITE
+    TRENDS --> WRITE
+    HEAT --> WRITE
+    INS --> WRITE
+    OVER --> WRITE
+    WRITE --> MEET
+    WRITE --> THEMES
+    WRITE --> TREND
+    WRITE --> HM
+    WRITE --> RISK
+    WRITE --> GRAPH
+    WRITE --> VOC
+    WRITE --> OV
+
+    MEET --> ROUTES
+    THEMES --> ROUTES
+    TREND --> ROUTES
+    HM --> ROUTES
+    RISK --> ROUTES
+    GRAPH --> ROUTES
+    VOC --> ROUTES
+    OV --> ROUTES
+    ROUTES --> CLIENT
+    CLIENT --> PAGES
+    CLIENT --> DETAIL
+    REPROC -->|"reruns pipeline"| ING
 ```
 
-The pipeline writes eight JSON artifacts: meetings, themes, sentiment trends,
-sentiment heatmap, risk radar, issue graph, VOC backlog, and overview. API
-endpoints read these files on request; there is no database or startup-time
-in-memory aggregation.
+### Flow and extension points
+
+1. **Ingest** (`pipeline/ingest.py`) reads each usable dataset folder and
+   normalizes metadata and transcript utterances into `RawMeeting` models.
+   Missing optional input files are tolerated; `speakers.json` and `events.json`
+   are not currently consumed.
+2. **Per-meeting enrichment** computes speaker-side sentiment, applies
+   deterministic call-type/module/theme/risk rules, and creates a
+   `MeetingRecord`. If enabled and configured, `pipeline/llm.py` may refine
+   theme fields and cache the response under `data/cache/llm/`.
+3. **Aggregation** produces theme counts/examples, weekly sentiment and
+   takeaways, a module heatmap, account risk rows, a cross-surface graph, VOC
+   groups, and overview KPIs. `pipeline/run.py` serializes these into eight
+   JSON files in `data/processed/`.
+4. **Serving** (`app/main.py`) reads the relevant artifact when an API route is
+   requested. The UI's `src/api.ts` maps these endpoints into TanStack Query
+   calls; pages display the overview, categories, sentiment, risks, graph, and
+   meeting details.
+5. **Reprocessing** is an explicit `POST /api/reprocess` operation, or can be
+   run from the command line using `scripts/process-data.sh`. The dashboard
+   does not run analysis in the browser.
+
+There is no database: processed JSON is the boundary between batch analysis and
+the API. This keeps local review simple, but the API expects the artifacts to
+exist; run the pipeline first if they are missing.
 
 **No auth, no deploy.** The local demo uses `uvicorn` and Vite's development server.
 
