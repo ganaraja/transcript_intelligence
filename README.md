@@ -60,6 +60,11 @@ Or both (API in background, UI in the foreground):
 ```
 
 Open **http://127.0.0.1:5173**. The Vite dev server proxies `/api` to the backend.
+Stop both services from another terminal with:
+
+```bash
+./scripts/stop-all.sh
+```
 
 OpenAPI docs: http://127.0.0.1:8000/docs
 

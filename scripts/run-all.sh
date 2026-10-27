@@ -1,18 +1,55 @@
 #!/usr/bin/env bash
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+PID_FILE="${TMPDIR:-/tmp}/transcript-intelligence-$(printf '%s' "$ROOT" | cksum | awk '{print $1}').pid"
+
+if [[ -f "$PID_FILE" ]]; then
+  read -r existing_pid < "$PID_FILE" || true
+  if [[ -n "${existing_pid:-}" ]] && kill -0 "$existing_pid" 2>/dev/null; then
+    existing_command="$(ps -p "$existing_pid" -o command= 2>/dev/null || true)"
+    if [[ "$existing_command" == *"run-all.sh"* ]]; then
+      echo "Transcript Intelligence is already running (PID $existing_pid)."
+      exit 1
+    fi
+  fi
+  rm -f "$PID_FILE"
+fi
+
+printf '%s\n' "$$" > "$PID_FILE"
+
+DESCENDANTS=()
+
+collect_descendants() {
+  local parent_pid="$1"
+  local child_pid
+  for child_pid in $(pgrep -P "$parent_pid" 2>/dev/null || true); do
+    DESCENDANTS+=("$child_pid")
+    collect_descendants "$child_pid"
+  done
+}
+
+cleanup() {
+  trap - EXIT INT TERM
+  collect_descendants "$$"
+  for child_pid in "${DESCENDANTS[@]}"; do
+    kill -TERM "$child_pid" 2>/dev/null || true
+  done
+  sleep 1
+  for child_pid in "${DESCENDANTS[@]}"; do
+    kill -KILL "$child_pid" 2>/dev/null || true
+  done
+  if [[ -f "$PID_FILE" ]] && [[ "$(cat "$PID_FILE")" == "$$" ]]; then
+    rm -f "$PID_FILE"
+  fi
+}
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+
 if [[ ! -f "$ROOT/data/processed/meetings.json" ]]; then
   "$ROOT/scripts/process-data.sh"
 fi
 
-cleanup() {
-  if [[ -n "${BACKEND_PID:-}" ]] && kill -0 "$BACKEND_PID" 2>/dev/null; then
-    kill "$BACKEND_PID" || true
-  fi
-}
-trap cleanup EXIT
-
 "$ROOT/scripts/run-backend.sh" &
-BACKEND_PID=$!
 sleep 2
 "$ROOT/scripts/run-frontend.sh"
