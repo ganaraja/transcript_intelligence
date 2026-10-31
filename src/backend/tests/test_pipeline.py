@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 
 import pytest
@@ -15,7 +16,7 @@ from pipeline.classify import (
 )
 from pipeline.insights import issue_graph, risk_radar
 from pipeline.ingest import load_meeting
-from pipeline.run import taxonomy_validation
+from pipeline.run import run_pipeline, taxonomy_validation
 from pipeline.models import ConfidenceSignal, MeetingConfidence, MeetingRecord, RawMeeting, Utterance
 from pipeline.sentiment import module_heatmap, score_meeting, trend_table, trajectory, weighted_mean
 
@@ -156,6 +157,60 @@ def test_taxonomy_validation_reports_review_status() -> None:
     assert validation["reviewed_meetings"] == 2
     assert validation["needs_human_review"] == 0
     assert validation["pass_rate"] == 1.0
+
+
+def test_pipeline_writes_provenance_manifest_with_hashes_and_configuration(tmp_path, monkeypatch) -> None:
+    dataset = tmp_path / "dataset"
+    output = tmp_path / "processed"
+    meeting_dir = dataset / "m1"
+    meeting_dir.mkdir(parents=True)
+    (meeting_dir / "meeting-info.json").write_text(
+        json.dumps({"meetingId": "m1", "title": "Support Case - SSO failure", "allEmails": ["a@northwind.com"]}),
+        encoding="utf-8",
+    )
+    (meeting_dir / "summary.json").write_text(
+        json.dumps({"summary": "SSO login failure", "topics": ["SSO"]}),
+        encoding="utf-8",
+    )
+    (meeting_dir / "transcript.json").write_text(
+        json.dumps(
+            {
+                "data": [
+                    {
+                        "sentence": "Customer cannot sign in using SSO.",
+                        "speakerName": "Customer",
+                        "sentimentType": "negative",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    run_pipeline(dataset, output, use_llm=False)
+    manifest = json.loads((output / "run_manifest.json").read_text(encoding="utf-8"))
+
+    assert manifest["dataset"]["origin"].startswith("input_dataset")
+    assert manifest["dataset"]["synthetic_data_generated_by_pipeline"] is False
+    assert manifest["dataset"]["augmentation"] == "none_by_pipeline"
+    assert manifest["dataset"]["meeting_count"] == 1
+    assert manifest["dataset"]["source_file_count"] == 3
+    assert {item["path"] for item in manifest["dataset"]["source_files"]} == {
+        "m1/meeting-info.json",
+        "m1/summary.json",
+        "m1/transcript.json",
+    }
+    assert all(len(item["sha256"]) == 64 for item in manifest["dataset"]["source_files"])
+    assert len(manifest["dataset"]["sha256"]) == 64
+    assert manifest["dataset"]["source_files"][0]["sha256"] == hashlib.sha256(
+        (meeting_dir / "meeting-info.json").read_bytes()
+    ).hexdigest()
+    assert manifest["configuration"]["llm_refinement_enabled"] is False
+    assert manifest["configuration"]["llm_model"] is None
+    assert "meetings.json" in manifest["artifacts"]
+    assert "run_manifest.json" in manifest["artifacts"]
+    assert len(manifest["code"]["sha256"]) == 64
+    assert "generated_at" in manifest
 
 
 def test_taxonomy_validation_queues_low_confidence_theme_even_with_keyword_hit() -> None:

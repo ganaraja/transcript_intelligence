@@ -28,6 +28,7 @@ Implementation note for quality control:
 - A validation pass should flag low-confidence matches for human review and report pass-rate metrics instead of treating taxonomy labels as unquestioned truth.
 - Call-type, theme, sentiment, and risk outputs should carry a low/medium/high confidence signal with the evidence or data coverage behind it; low-confidence assignments should be surfaced for review.
 - Confidence labels are operational evidence indicators, not calibrated probabilities.
+- Record data and analysis provenance, including source-file hashes, pipeline/code version, run timestamp, configured model and prompt version, and whether data augmentation was performed.
 - This is especially important for demo or stakeholder review, where misclassified themes can mislead decision-makers.
 
 How to Present Your Work

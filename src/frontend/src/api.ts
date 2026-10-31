@@ -4,6 +4,7 @@ import type {
   Meeting,
   Overview,
   RiskRow,
+  RunManifest,
   SentimentPoint,
   TaxonomyValidation,
   ThemeBucket,
@@ -20,6 +21,7 @@ async function getJson<T>(path: string): Promise<T> {
 
 export const api = {
   overview: () => getJson<Overview>('/api/overview'),
+  provenance: () => getJson<RunManifest>('/api/provenance'),
   meetings: () => getJson<Meeting[]>('/api/meetings'),
   meeting: (id: string) => getJson<Meeting>(`/api/meetings/${id}`),
   themes: () => getJson<ThemeBucket[]>('/api/themes'),

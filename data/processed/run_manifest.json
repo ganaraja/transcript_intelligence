@@ -1,0 +1,1691 @@
+{
+  "generated_at": "2026-10-31T23:24:56.913735+00:00",
+  "pipeline_version": "0.1.0",
+  "git_revision": "d4edfed66a527437731b004a14cbb1df9cb6d3fc",
+  "code": {
+    "sha256": "2bf48539691b5447d7936a386152311f5bdb0fd505cb5eb9df5c17b4dd04aac3",
+    "files": [
+      {
+        "path": "app/__init__.py",
+        "sha256": "45390889d8a4a81a685fa8f8fb38422e5f6ff8840d7df1405f088ab5347ae8e2"
+      },
+      {
+        "path": "app/main.py",
+        "sha256": "f76d56e5fbbf93677611190545bd5150ce5e7de4abfb9a6fe08c4abaa9ef7edd"
+      },
+      {
+        "path": "pipeline/__init__.py",
+        "sha256": "ee33760eb80b6b2372fa262fc867cd1bb7acaa6207272069f886c0dce8f042fb"
+      },
+      {
+        "path": "pipeline/classify.py",
+        "sha256": "095690a601a0adb6788f6a1028890c4fb7f400bb0e7304b939ab0c681bef5661"
+      },
+      {
+        "path": "pipeline/ingest.py",
+        "sha256": "e096b78f152c6d673ea575f4514498212230f7d8f7cc2e59619bdae87a839dd5"
+      },
+      {
+        "path": "pipeline/insights.py",
+        "sha256": "9208a36a4a4e5a1e1467cc2fd509516447de960ae4e556eef14ec309ebcefc20"
+      },
+      {
+        "path": "pipeline/llm.py",
+        "sha256": "2ff44d3f2627c1a295660d0d2a225025e0fb22d3cd65010adec0f177672a504b"
+      },
+      {
+        "path": "pipeline/models.py",
+        "sha256": "3e9bf6cf4d14ff90eae04be4d86ff63f061b7b78212d14bd3bbdb47a1f9ba3ea"
+      },
+      {
+        "path": "pipeline/paths.py",
+        "sha256": "2fdc4eda15a4eccdd8e1777b94c23013e112d0892964138796e95c4bbc09e8a1"
+      },
+      {
+        "path": "pipeline/run.py",
+        "sha256": "0ee37b198854e6010d1762972c70fc480ec9ccb61a3938c02975386e60050979"
+      },
+      {
+        "path": "pipeline/sentiment.py",
+        "sha256": "a52a0e5a17ed795535cd3e83cd692964455cd85ede02c493fae312c694f3ec30"
+      },
+      {
+        "path": "pipeline/taxonomy.py",
+        "sha256": "a3db4a71052206ba7c7eb25c43a669b744e98c6815e2f19df51652f328c2c824"
+      }
+    ],
+    "working_tree_clean": false
+  },
+  "dataset": {
+    "origin": "input_dataset; contents not independently verified",
+    "synthetic_data_generated_by_pipeline": false,
+    "augmentation": "none_by_pipeline",
+    "meeting_count": 100,
+    "source_file_count": 400,
+    "source_files": [
+      {
+        "path": "01KQ03B0303900521BB089CA/meeting-info.json",
+        "sha256": "d9c8703db2901cec7f742de0539a32bac3bc67dfd6dc4a7d12bcf6bfe305bd82"
+      },
+      {
+        "path": "01KQ03B0303900521BB089CA/transcript.json",
+        "sha256": "09f61cdf5bd3f82a7cdf824a752c5546a50e821a805353aa2f9fdb9ffbc134a0"
+      },
+      {
+        "path": "01KQ03B0303900521BB089CA/summary.json",
+        "sha256": "42d90ea4e13ee7844c9f458debbd1bb59e5d283112b393fb239539ff2dc6785e"
+      },
+      {
+        "path": "01KQ03B0303900521BB089CA/speaker-meta.json",
+        "sha256": "5b8ab564798a8b14ed17c979534cbe03ef025799b8b5039d9ea41175b101cfe7"
+      },
+      {
+        "path": "01KQ0C1280EDA4E70AAD7C35/meeting-info.json",
+        "sha256": "fab21281956463afd91da8047ba275866849a425ad5b2a43ee87eb9d01710736"
+      },
+      {
+        "path": "01KQ0C1280EDA4E70AAD7C35/transcript.json",
+        "sha256": "4200137f1582bc789521483fca9c307659494ad0506375dd1fd25660ef6e87bc"
+      },
+      {
+        "path": "01KQ0C1280EDA4E70AAD7C35/summary.json",
+        "sha256": "3fb959417cd685eaca0a6ef602d19fb662ed624f16b3fd000751f9f78c33fd64"
+      },
+      {
+        "path": "01KQ0C1280EDA4E70AAD7C35/speaker-meta.json",
+        "sha256": "705113cab11d10098419febbc2a68b88fecce5357d1b69bb942d5ea197880846"
+      },
+      {
+        "path": "01KQ0CAE7F064EC93F0540CA/meeting-info.json",
+        "sha256": "c03ef702a3210932698ef485924e3cf09a2dc32c4bdb4cad2601fbcd36337cb5"
+      },
+      {
+        "path": "01KQ0CAE7F064EC93F0540CA/transcript.json",
+        "sha256": "1c8b25c88b236dd73f1f91324da6da67f4fc6b16653b5d66d7ab3004c57c379a"
+      },
+      {
+        "path": "01KQ0CAE7F064EC93F0540CA/summary.json",
+        "sha256": "8fd2b8053c5b678bcfa042231574e7bbd160a1b1e129cef8104e2b60359b56cb"
+      },
+      {
+        "path": "01KQ0CAE7F064EC93F0540CA/speaker-meta.json",
+        "sha256": "bc17347b6b2b535b2e13631326c5e18e19e9667de6625465d6ef9cc6335dc782"
+      },
+      {
+        "path": "01KQ0DFE299AC7A74E8022CA/meeting-info.json",
+        "sha256": "f5e30a288fb547f8c8b6e486b0cd8e2aadc3970a87b7a94c083c438f8f42b168"
+      },
+      {
+        "path": "01KQ0DFE299AC7A74E8022CA/transcript.json",
+        "sha256": "f00f6bd5729f142fce64f00d101c9edf9a1c2e64912838af6090a9dab3c5a3bd"
+      },
+      {
+        "path": "01KQ0DFE299AC7A74E8022CA/summary.json",
+        "sha256": "3fa0cfb2f4c2f2cab767ae0cce016f974c02eb1d2b4b6db546cacbeb83a24287"
+      },
+      {
+        "path": "01KQ0DFE299AC7A74E8022CA/speaker-meta.json",
+        "sha256": "7517cb8c4f20ce06274c3fc68a782418018b850af9f3867b859eec735d0b803d"
+      },
+      {
+        "path": "01KQ0F8AFF3DA34FD4580008/meeting-info.json",
+        "sha256": "e21dda925951b2d16371c18c7feceb1f2115641e35592462b1528d61d29ea744"
+      },
+      {
+        "path": "01KQ0F8AFF3DA34FD4580008/transcript.json",
+        "sha256": "5975feaf0181f597d616b094fbdf5408bb3390391cbc9b58603d46e55522ff27"
+      },
+      {
+        "path": "01KQ0F8AFF3DA34FD4580008/summary.json",
+        "sha256": "c468bff08aa63599d2b634a1db2346bfd2dcf4f7f56843d6dad2b2321acd9d45"
+      },
+      {
+        "path": "01KQ0F8AFF3DA34FD4580008/speaker-meta.json",
+        "sha256": "7ac1fbbd18cb5224052eebd25d7627c86736ec536c9cb444378657952f407023"
+      },
+      {
+        "path": "01KQ1267C6AA7D9B3125FEC8/meeting-info.json",
+        "sha256": "b91f29b673e6916f8d33ef5ab3b58386fa62e8530da169d4b2fc8e9381cfe43e"
+      },
+      {
+        "path": "01KQ1267C6AA7D9B3125FEC8/transcript.json",
+        "sha256": "0c1b232097bcc21c7d8b5223f72be2c895575a2c2540a17958515906658d14bb"
+      },
+      {
+        "path": "01KQ1267C6AA7D9B3125FEC8/summary.json",
+        "sha256": "604865ec3eb60fdd97e6e47402cd387b1e44b321623798f7dda2d67963a6d445"
+      },
+      {
+        "path": "01KQ1267C6AA7D9B3125FEC8/speaker-meta.json",
+        "sha256": "c0b051c6080bf65afba2f562b550904d07994c96b0ea86d1ba5b88753d25827c"
+      },
+      {
+        "path": "01KQ1A6B7E81B06F4A13B60D/meeting-info.json",
+        "sha256": "d4c369dd0cdec85c76d7bdbd4fe8a1c78ea56d3d1e4fecde74935b83004402b4"
+      },
+      {
+        "path": "01KQ1A6B7E81B06F4A13B60D/transcript.json",
+        "sha256": "85f5bb2b4f6a2430efc28658f09b665df32551dece2c08abf03ebe1361662b64"
+      },
+      {
+        "path": "01KQ1A6B7E81B06F4A13B60D/summary.json",
+        "sha256": "2a6f67e8cce316e62644c582b5384f104cb7849b8bfe3690b848b4dc4301ad41"
+      },
+      {
+        "path": "01KQ1A6B7E81B06F4A13B60D/speaker-meta.json",
+        "sha256": "ec3c53d9c872fa7afac58ac1232ab0aadd7da668b81c1daf390343f8eeb27561"
+      },
+      {
+        "path": "01KQ1DC6CA536DE1B31ED8F5/meeting-info.json",
+        "sha256": "90352c94ec8cc64f88afaa89e3d5b67c42a6eae4e6ef84552b2ef500d2aad8dd"
+      },
+      {
+        "path": "01KQ1DC6CA536DE1B31ED8F5/transcript.json",
+        "sha256": "77bb7722bbebae2e5953229ab8b3f31603ae1d4f9fba88cdbb703a39c0018d1d"
+      },
+      {
+        "path": "01KQ1DC6CA536DE1B31ED8F5/summary.json",
+        "sha256": "b3827f8217d872d4d0a22636638026343e3a24679b6401f9417097483e98ace9"
+      },
+      {
+        "path": "01KQ1DC6CA536DE1B31ED8F5/speaker-meta.json",
+        "sha256": "153c435a0adf8af10ac20e53a8b95a8c2dadc5fbf4575db3e041669dc1c391a8"
+      },
+      {
+        "path": "01KQ1DCC80852AE384C898C9/meeting-info.json",
+        "sha256": "4270198128934f84bea772533ddbcf6010bab82bd5fd2fe4ee4ff68cd4b28a20"
+      },
+      {
+        "path": "01KQ1DCC80852AE384C898C9/transcript.json",
+        "sha256": "73e6b42ca30960d8bf859749b09362f1624a37a1aa0ead2857049dfeade94fe0"
+      },
+      {
+        "path": "01KQ1DCC80852AE384C898C9/summary.json",
+        "sha256": "5ee6dddd4491516f24cf5209c00569b04452ba51cfb857b630798eab96579721"
+      },
+      {
+        "path": "01KQ1DCC80852AE384C898C9/speaker-meta.json",
+        "sha256": "e98db1c562f68f187dca70331c392337d35cad6e7ec067ceeb925560499cc5fc"
+      },
+      {
+        "path": "01KQ1DE954A807A5D2653175/meeting-info.json",
+        "sha256": "32248e026649554103fa2e15e5183a0d8770ae446e4f8cbc4b997c992e8602ca"
+      },
+      {
+        "path": "01KQ1DE954A807A5D2653175/transcript.json",
+        "sha256": "1ad4546e8f872a7daffabd216e40c37aceaa81515650e09694e96c0bc74ea539"
+      },
+      {
+        "path": "01KQ1DE954A807A5D2653175/summary.json",
+        "sha256": "036b8280c2153c73b322407ef4d33cc650b6ca8b0e67b00888e4440575fab805"
+      },
+      {
+        "path": "01KQ1DE954A807A5D2653175/speaker-meta.json",
+        "sha256": "44fc75cefc69a2a598a1f34dc9c580728b6cb10efa439a908df079bfbfc98cb7"
+      },
+      {
+        "path": "01KQ2217B066855A3B7814CB/meeting-info.json",
+        "sha256": "7ac7df14b16b3a91610c5efe72bef9285dea16795daba00cba973b2460e708f0"
+      },
+      {
+        "path": "01KQ2217B066855A3B7814CB/transcript.json",
+        "sha256": "d3f0efad4142afc65ad35efa83acad25e640ee28572b1399384aa9e91f97e2ca"
+      },
+      {
+        "path": "01KQ2217B066855A3B7814CB/summary.json",
+        "sha256": "009dc8a4246ecf9c787ff46119b940abe47d76efb4e82f8b2256038f704d9ef4"
+      },
+      {
+        "path": "01KQ2217B066855A3B7814CB/speaker-meta.json",
+        "sha256": "855ee2550b76e8f2c397b38fd0272508c92d4b0a8b410b2253c27b0c340a546d"
+      },
+      {
+        "path": "01KQ2331EFD78BF3B1CAB747/meeting-info.json",
+        "sha256": "baa5b98aae0c3fc514ce3a51452390c615669d865c2563639762db63892749f5"
+      },
+      {
+        "path": "01KQ2331EFD78BF3B1CAB747/transcript.json",
+        "sha256": "9be4b09c574eee0e1362a9625c7f5a2ad9c1a7ed5e2fb15348a71991ef11600a"
+      },
+      {
+        "path": "01KQ2331EFD78BF3B1CAB747/summary.json",
+        "sha256": "907deccd9373cf4cb06e47f1d0773f938518ac20c8d820022b245de14927f7dd"
+      },
+      {
+        "path": "01KQ2331EFD78BF3B1CAB747/speaker-meta.json",
+        "sha256": "40eafbf3795824bd02b58fcfce6ffbc70240d30a1e62887276584cc6c04841bd"
+      },
+      {
+        "path": "01KQ25D8AED944B5D2A9FF60/meeting-info.json",
+        "sha256": "da7c5d6f760e338c6fb0c31fe08a599c0f09481a33be2b09bec63b678ead2297"
+      },
+      {
+        "path": "01KQ25D8AED944B5D2A9FF60/transcript.json",
+        "sha256": "d1d4913a0d06fc76dcae399e9fd589b73a7264398e9777a909f0f26d2c49c429"
+      },
+      {
+        "path": "01KQ25D8AED944B5D2A9FF60/summary.json",
+        "sha256": "7a96b6c4e29b1bd350fa03b9b597cf25a808e59c32a92b55a4932b1b8959e4fa"
+      },
+      {
+        "path": "01KQ25D8AED944B5D2A9FF60/speaker-meta.json",
+        "sha256": "c9a3e3a8de1b750f3efe20736375ae039e1b552cdead0f1bacde4f179ea37e87"
+      },
+      {
+        "path": "01KQ298F2846EFE59B0D70E2/meeting-info.json",
+        "sha256": "caf280146a3fbd13ed8ffaaeeb5f99d9a646ffe86855635bace940efef1d4e1a"
+      },
+      {
+        "path": "01KQ298F2846EFE59B0D70E2/transcript.json",
+        "sha256": "5484f02307c89507376c1ca63841130be5b46ed724d158616519a88809628f4d"
+      },
+      {
+        "path": "01KQ298F2846EFE59B0D70E2/summary.json",
+        "sha256": "8ef0b126734501841351caa619a6a5a20f8d40c088bd61997c8465eeaec1f4d8"
+      },
+      {
+        "path": "01KQ298F2846EFE59B0D70E2/speaker-meta.json",
+        "sha256": "2ea3ddf9ccbdfa455f833b68e83bbf59aff8fb39de86e369152e16a138cab537"
+      },
+      {
+        "path": "01KQ2B4878EC7B3EE5547007/meeting-info.json",
+        "sha256": "e204a379e9ee3546f2f6015561292be6a315ab471fa2655858591261cb68c8d7"
+      },
+      {
+        "path": "01KQ2B4878EC7B3EE5547007/transcript.json",
+        "sha256": "3195604198d1062e275ba0c44adcf11bfa7a923703763ea1062a08f3b7c86b52"
+      },
+      {
+        "path": "01KQ2B4878EC7B3EE5547007/summary.json",
+        "sha256": "e15d375b5e1ffc29b90fa303b981bc712838686b760f68f0fea1b8fe013b23de"
+      },
+      {
+        "path": "01KQ2B4878EC7B3EE5547007/speaker-meta.json",
+        "sha256": "ebcd4162ad533860f28ea54477190d988b386083fc68e618c1f67692ebf0577b"
+      },
+      {
+        "path": "01KQ2D93184912F0147315E7/meeting-info.json",
+        "sha256": "348583a0d8acd4d4dd52fd5bad6166cdbc0978d91c47aa523efe8c77d8ce5c3f"
+      },
+      {
+        "path": "01KQ2D93184912F0147315E7/transcript.json",
+        "sha256": "a5689ef6a98d4c340117f50ff004dfc9d112f4c4f609515001abc89ff032cce1"
+      },
+      {
+        "path": "01KQ2D93184912F0147315E7/summary.json",
+        "sha256": "6f8caf349697daae6853c37753ce1f499cf6a8752e625374cb65a5f2db9fa5ca"
+      },
+      {
+        "path": "01KQ2D93184912F0147315E7/speaker-meta.json",
+        "sha256": "7b42941c7221a63b1ef551de1de98d35d22feed0e28c2d6a7ded2e11a0938e47"
+      },
+      {
+        "path": "01KQ31ED026F745FE2A55CCD/meeting-info.json",
+        "sha256": "0b8f1fe02ab2b374a89bbc4bfea63ce5e8ab5b091883e60607bc81f9f377e271"
+      },
+      {
+        "path": "01KQ31ED026F745FE2A55CCD/transcript.json",
+        "sha256": "cc9ae14f943e38649ba95747b65207596ffb35240bfb6ed556979efb9abc4be2"
+      },
+      {
+        "path": "01KQ31ED026F745FE2A55CCD/summary.json",
+        "sha256": "1b059cacc574335a0a73c0ab983b204da9b418a9cc1facb2f229950febfc8443"
+      },
+      {
+        "path": "01KQ31ED026F745FE2A55CCD/speaker-meta.json",
+        "sha256": "fd0e2df3fcf3f6ccbd3a271295c77b70af1f037f91f34f849325d615b0b099a9"
+      },
+      {
+        "path": "01KQ325BDEDEE927D2970775/meeting-info.json",
+        "sha256": "ee3373a87b6ba65049d61c44420e45c5b8f55330ef3c9365759a629e6393b462"
+      },
+      {
+        "path": "01KQ325BDEDEE927D2970775/transcript.json",
+        "sha256": "c72142c846cc7a2d832798776c22182810ab760d55f54c858b1d22728e1790a2"
+      },
+      {
+        "path": "01KQ325BDEDEE927D2970775/summary.json",
+        "sha256": "5c7776bb1f20ce689920c930cbc76821bcc83ebec0bea0f3447c11d47addb751"
+      },
+      {
+        "path": "01KQ325BDEDEE927D2970775/speaker-meta.json",
+        "sha256": "d0568fe3bdc563f10e31569f656ec821722a8e031ee9de34bf802ef5bde2c6f5"
+      },
+      {
+        "path": "01KQ351E141926AB7CAB668D/meeting-info.json",
+        "sha256": "4a20201352f2358d9b2fb1b7ca2b8ac751b0e071b49b57239872d893d0b4a45c"
+      },
+      {
+        "path": "01KQ351E141926AB7CAB668D/transcript.json",
+        "sha256": "42fac1f4bc1c74c098b23e609d4aba6744c95fad50ed1295a86d28c37e02eb08"
+      },
+      {
+        "path": "01KQ351E141926AB7CAB668D/summary.json",
+        "sha256": "d5958c005dc8b686b97fdcad68f08859be7def5c8f0c44595e7c56de51e55c15"
+      },
+      {
+        "path": "01KQ351E141926AB7CAB668D/speaker-meta.json",
+        "sha256": "6367cc4bb9341b37a39f2a87d97460e73dc80f552e4da57b665a47ccb6dfc0d6"
+      },
+      {
+        "path": "01KQ38C4101D6774F2F02331/meeting-info.json",
+        "sha256": "d9df5c9d6a53ff8762d3cd77ffb9be3af360fef1990d41a82e7f1dbd3ff7bdaf"
+      },
+      {
+        "path": "01KQ38C4101D6774F2F02331/transcript.json",
+        "sha256": "30951e1fb19c49d4c2672b605f4bc6bd05678ef3a56378270a6b464cc5556452"
+      },
+      {
+        "path": "01KQ38C4101D6774F2F02331/summary.json",
+        "sha256": "993356fade7b541dfeef18d22dd51ad98d59cc3a8bf02b0d238d1debe10c774d"
+      },
+      {
+        "path": "01KQ38C4101D6774F2F02331/speaker-meta.json",
+        "sha256": "9aea14f946916df2444f5a1ee405931fa8507798285b15bf49088f9b8f42521d"
+      },
+      {
+        "path": "01KQ38FE02AEE5AA5157F042/meeting-info.json",
+        "sha256": "3b340213dac98a79ea8fa4933dedd1a5226dc3fdaee66a614dc9b6954592cb0b"
+      },
+      {
+        "path": "01KQ38FE02AEE5AA5157F042/transcript.json",
+        "sha256": "03b9805458838e5cc40d84ffc3b176fddc9a947496ce9ebc1aa2b821c12e5e50"
+      },
+      {
+        "path": "01KQ38FE02AEE5AA5157F042/summary.json",
+        "sha256": "48e339abf9df6f89e7ef2d2d50f1c09c4272d40118678001f03ec6df8aab1a45"
+      },
+      {
+        "path": "01KQ38FE02AEE5AA5157F042/speaker-meta.json",
+        "sha256": "b97da819776fb837105db89486ad43cd11d7e4021ca62ee5a63ad486c151482a"
+      },
+      {
+        "path": "01KQ3BD8DEEBC7FECD107F0F/meeting-info.json",
+        "sha256": "1a4f0df944819d573a62c3255176692df6d5167ffc60fb8f9eb243144efb7a5d"
+      },
+      {
+        "path": "01KQ3BD8DEEBC7FECD107F0F/transcript.json",
+        "sha256": "13d37929135a2db893d28be9f7bdc11c07618e0b294d8b086fbddeff4caaaa5a"
+      },
+      {
+        "path": "01KQ3BD8DEEBC7FECD107F0F/summary.json",
+        "sha256": "2c1b5c5f5d900cf3c8a4ce2b53ccf85d77cdc949207a7e9e3def6fc772d4a4c3"
+      },
+      {
+        "path": "01KQ3BD8DEEBC7FECD107F0F/speaker-meta.json",
+        "sha256": "89f915dd93480f23b16e9d2c4b556c1b5e804ca1d1d35a01d50c2fe0f466baed"
+      },
+      {
+        "path": "01KQ3C837D7EF689408DCF95/meeting-info.json",
+        "sha256": "46829eeb887f03cae07ebb69ae40004549049703d3dc762027d0d2558cad8a64"
+      },
+      {
+        "path": "01KQ3C837D7EF689408DCF95/transcript.json",
+        "sha256": "1e54d70da74a78c96849488ac2956bafe4c946e376ed7640068736c94f960db3"
+      },
+      {
+        "path": "01KQ3C837D7EF689408DCF95/summary.json",
+        "sha256": "6a655d0cc553b75feb3d07f7573b5a8a3d6aac05245c0420c58280c7081837a1"
+      },
+      {
+        "path": "01KQ3C837D7EF689408DCF95/speaker-meta.json",
+        "sha256": "ff12a7116604e291f41a5083408fa023252a2ab0e150afb35c27513fca9655cf"
+      },
+      {
+        "path": "01KQ3CE40428CCC5FF433FFC/meeting-info.json",
+        "sha256": "35ed594de32728fa550e094d8d44145c546bbcfb507279cb3e6ab9de4c78fb57"
+      },
+      {
+        "path": "01KQ3CE40428CCC5FF433FFC/transcript.json",
+        "sha256": "2fece8189dfffbb2ac30f2ec50d2b54a2ea79839f5ed8b64701b5ec42559219d"
+      },
+      {
+        "path": "01KQ3CE40428CCC5FF433FFC/summary.json",
+        "sha256": "06edef91fb0f0f06b72fe20a684ccbe0b0be1d618eae2c3ce706723cf289548a"
+      },
+      {
+        "path": "01KQ3CE40428CCC5FF433FFC/speaker-meta.json",
+        "sha256": "4b50bb3cb46b74a8001298c056270c6afa68c44a85b4fb2168d12978f295d1ba"
+      },
+      {
+        "path": "01KQ3D8C1EF16C042F31FAFD/meeting-info.json",
+        "sha256": "efda45cf63d5c5fcab3c30b7bd9e386d32fd183925e0757ec6407c187d80a194"
+      },
+      {
+        "path": "01KQ3D8C1EF16C042F31FAFD/transcript.json",
+        "sha256": "b92700c558961db156587bb2185ebe89d313c3cebffe263a2bf43b0590b5ff00"
+      },
+      {
+        "path": "01KQ3D8C1EF16C042F31FAFD/summary.json",
+        "sha256": "d12c01f452cfb0eaa96b5f9bb8fc51daefd5bc431175dca40c2063f61795dddb"
+      },
+      {
+        "path": "01KQ3D8C1EF16C042F31FAFD/speaker-meta.json",
+        "sha256": "bbe67b297cf3886217663a94b36cde7131b310f11475481c2d900de8946912c2"
+      },
+      {
+        "path": "01KQ3F90FF9EBC3DB3632514/meeting-info.json",
+        "sha256": "c2e60eeaae376fda2414ea235f150209839f57cbfedfd1df99aafcd65465875a"
+      },
+      {
+        "path": "01KQ3F90FF9EBC3DB3632514/transcript.json",
+        "sha256": "f233a247b0d7757c2ebaeb56a84ff959b4d0b129de241c2ad79d55c5f98171d4"
+      },
+      {
+        "path": "01KQ3F90FF9EBC3DB3632514/summary.json",
+        "sha256": "80a50ae7f79c9616a26414a2128698c1a62fa8dddfff5018bdbfa76fe166e261"
+      },
+      {
+        "path": "01KQ3F90FF9EBC3DB3632514/speaker-meta.json",
+        "sha256": "5fa367489d61af2aaf8895568b9c3f933bf2c35b3807db392dbc739c2a08cadd"
+      },
+      {
+        "path": "01KQ410FB7E434BA3F99EE7D/meeting-info.json",
+        "sha256": "58805b4091b0428629af7e0b03a0f7ac866a4eca7c60ca69789a26dbb7f04ba0"
+      },
+      {
+        "path": "01KQ410FB7E434BA3F99EE7D/transcript.json",
+        "sha256": "c82d1630e54712ae312c417c65acd0885985eb974fde83ea9147032dfe879be9"
+      },
+      {
+        "path": "01KQ410FB7E434BA3F99EE7D/summary.json",
+        "sha256": "599305fa7e904a150c99c4bd35df2218469d712e6af3aa2a5996af6dee8eb023"
+      },
+      {
+        "path": "01KQ410FB7E434BA3F99EE7D/speaker-meta.json",
+        "sha256": "14fcd40ee5dbbb7557a32acccfaf7cf728fbab998a4fcd1859b79ce6f565175f"
+      },
+      {
+        "path": "01KQ41FB5CCFD9EA583FB020/meeting-info.json",
+        "sha256": "66f70ba61b36593d8121adcb65ff84458901f8051767b263ed9bf6e56651b513"
+      },
+      {
+        "path": "01KQ41FB5CCFD9EA583FB020/transcript.json",
+        "sha256": "b435b406fe30c699593626ed90fe481e3241c80cfce3e581a71401694feb3381"
+      },
+      {
+        "path": "01KQ41FB5CCFD9EA583FB020/summary.json",
+        "sha256": "67a07e1ca4fbc8f0bf5caef3ee1abebfe82a727ec11877660d4bfaad20ced420"
+      },
+      {
+        "path": "01KQ41FB5CCFD9EA583FB020/speaker-meta.json",
+        "sha256": "98b62589ae0dc56bf7832b95143339516c83b4fb8c21ec53a36664b19df731d6"
+      },
+      {
+        "path": "01KQ445B1B5B890316C9E300/meeting-info.json",
+        "sha256": "a2a6a0797990b58c6dd0c3324b633ccd9356ce0883f442a3f0f87315b17c3395"
+      },
+      {
+        "path": "01KQ445B1B5B890316C9E300/transcript.json",
+        "sha256": "3c9e580b38eb6d599e7a811233d124884fdf9bfb362c53e0c9894de96c536ed0"
+      },
+      {
+        "path": "01KQ445B1B5B890316C9E300/summary.json",
+        "sha256": "01ab861f15cbab006f9cd098c21d5452b537ce8ea9626bf345a678b527cd5545"
+      },
+      {
+        "path": "01KQ445B1B5B890316C9E300/speaker-meta.json",
+        "sha256": "f4318136be0b8745070a89bef22d0b2af5393edeae05934e2c9efb6288443968"
+      },
+      {
+        "path": "01KQ4529010F423FD9DB40BD/meeting-info.json",
+        "sha256": "204be222acdedb7d29c9d204df6c78313e3b7ea9e641e389dbbe9ccce2257237"
+      },
+      {
+        "path": "01KQ4529010F423FD9DB40BD/transcript.json",
+        "sha256": "debacd1114e0a90ec48fef27f62564e4c3238f76b8fb47ca8c938b7ac321155c"
+      },
+      {
+        "path": "01KQ4529010F423FD9DB40BD/summary.json",
+        "sha256": "9c92837b5a15e94f87f603553d9ed83486821f1cdcc8c3a990df1de96895cde8"
+      },
+      {
+        "path": "01KQ4529010F423FD9DB40BD/speaker-meta.json",
+        "sha256": "2afb95db8a627e6b4e27a8e68c942468f8f83c4b05db9d2f2394412ec10b580b"
+      },
+      {
+        "path": "01KQ45C0AD36B351A3571940/meeting-info.json",
+        "sha256": "7aaabf63d3e4ffb1a01599e7bccd67eb6892e597b0d719dc9eef067d2af9faa0"
+      },
+      {
+        "path": "01KQ45C0AD36B351A3571940/transcript.json",
+        "sha256": "0677a58a083a62ddda56d959686d5cb1db7ec75b5829704b0237ea08b9d91e72"
+      },
+      {
+        "path": "01KQ45C0AD36B351A3571940/summary.json",
+        "sha256": "624c23a75923d87dd5998e87d15311218167dc480e485d1c17500d1aed7004b8"
+      },
+      {
+        "path": "01KQ45C0AD36B351A3571940/speaker-meta.json",
+        "sha256": "19bf35aea6ddced1534daacff67c45d76813795446d50abf2601868d13cc3a91"
+      },
+      {
+        "path": "01KQ45C76AF3AEA6B3EA6697/meeting-info.json",
+        "sha256": "cfa7c9ef0080af75912795b128d006728ca3416db4d5c01a37ad0cdfbeceefc6"
+      },
+      {
+        "path": "01KQ45C76AF3AEA6B3EA6697/transcript.json",
+        "sha256": "78ccbfa2e8ffdc91220cf243802159a6321a515e4d7e14715489e1fbd2f9d217"
+      },
+      {
+        "path": "01KQ45C76AF3AEA6B3EA6697/summary.json",
+        "sha256": "8b8c177e4bb615c18b668b5b8c12d6a5ff8192a062025f3fa7cbc0af605a44c7"
+      },
+      {
+        "path": "01KQ45C76AF3AEA6B3EA6697/speaker-meta.json",
+        "sha256": "4bc27879e4678af79e9c6962b2e957ec4343fbc83b8aa2a6e59d5d686cde70df"
+      },
+      {
+        "path": "01KQ45F6F7349D0A620571F1/meeting-info.json",
+        "sha256": "32ee6c0b41fd35932c2413d6d3879e5faa2397f29c471480117b1a9c88ca7dac"
+      },
+      {
+        "path": "01KQ45F6F7349D0A620571F1/transcript.json",
+        "sha256": "f160ebc61a90f580af776d2adbae4bb037955181333c48db56d43d44d354aa16"
+      },
+      {
+        "path": "01KQ45F6F7349D0A620571F1/summary.json",
+        "sha256": "f9fdd85c704cedd55c0d60b048640f31a41efde1911e744f1b43651dffaaa7b9"
+      },
+      {
+        "path": "01KQ45F6F7349D0A620571F1/speaker-meta.json",
+        "sha256": "0139a9dee83a5feec1ddf9afdac5d02cb64fa75b978597f876ec763455490762"
+      },
+      {
+        "path": "01KQ46A9DE0AECB006D897A0/meeting-info.json",
+        "sha256": "dc6b1633c5b9b35afd9348783ec2671f721c257b8a090d00481d48150a60c0e3"
+      },
+      {
+        "path": "01KQ46A9DE0AECB006D897A0/transcript.json",
+        "sha256": "c3056719d84017a34755c535e53467ac076c28cb1dd9ec7165d7de281bc022fb"
+      },
+      {
+        "path": "01KQ46A9DE0AECB006D897A0/summary.json",
+        "sha256": "8b131425a2edda8f08396c03914abe6bb8654662ae23a0b85bd2207bf21d17be"
+      },
+      {
+        "path": "01KQ46A9DE0AECB006D897A0/speaker-meta.json",
+        "sha256": "2a9d44e7be58d00c09d032e46dd650ae3d0f7347dd2704d15529cd75f22e5fc3"
+      },
+      {
+        "path": "01KQ4D01DCB15C69672AB5AF/meeting-info.json",
+        "sha256": "0195b1092ffd735187cbdd67ee61c1183fc4142b68ee29825de26226ebe9a586"
+      },
+      {
+        "path": "01KQ4D01DCB15C69672AB5AF/transcript.json",
+        "sha256": "5d7e033ab5b9d4ad239c36464a181be64a9588471e32dcfd0ac5412bd15a7426"
+      },
+      {
+        "path": "01KQ4D01DCB15C69672AB5AF/summary.json",
+        "sha256": "6113a01cfb9a6d7741919b7903d61c0dc022ff7da753a0edfb634f3d0e020360"
+      },
+      {
+        "path": "01KQ4D01DCB15C69672AB5AF/speaker-meta.json",
+        "sha256": "06d45a738c7afd8b8e19fb3ade6de7eace3324c376882533f5f191cec8853a08"
+      },
+      {
+        "path": "01KQ4D504CE09A8F6ECA1F5A/meeting-info.json",
+        "sha256": "2c7c023e62400fb5591c2c76824c54904e9be0fb17e15e3497d896249648733f"
+      },
+      {
+        "path": "01KQ4D504CE09A8F6ECA1F5A/transcript.json",
+        "sha256": "51137738aa422ec7b4d13c497e04c4ede0149b3d1806264d465f815b7c5ea1ab"
+      },
+      {
+        "path": "01KQ4D504CE09A8F6ECA1F5A/summary.json",
+        "sha256": "ea290ea7b0a69e48540bbf72bc01220d1808ee8554720032f88dc59673aa98d6"
+      },
+      {
+        "path": "01KQ4D504CE09A8F6ECA1F5A/speaker-meta.json",
+        "sha256": "d1a61b0fb626611ce6d6b31ea811416d861ad12f57a0ba4c6672612e531d6cb0"
+      },
+      {
+        "path": "01KQ4D71CDFB1045A2458216/meeting-info.json",
+        "sha256": "20d4e028ddc26ff5553e6eff817711ccad89fe18031438d0143d36f271cc8b83"
+      },
+      {
+        "path": "01KQ4D71CDFB1045A2458216/transcript.json",
+        "sha256": "27ef4ea9fd3192944e704ab62be1bbe42506f1e9627f8e1bb979b4e3e09b96b6"
+      },
+      {
+        "path": "01KQ4D71CDFB1045A2458216/summary.json",
+        "sha256": "19ea71bb8df6d2dc25390cecb45e005b5e33b34d02c73cc305f706532b0f9ddc"
+      },
+      {
+        "path": "01KQ4D71CDFB1045A2458216/speaker-meta.json",
+        "sha256": "e489542b7b3f2be6de03ea9e20f125156161796cb939c24acdcd9625db1aa07f"
+      },
+      {
+        "path": "01KQ4EE836687F95080D92AB/meeting-info.json",
+        "sha256": "c6ad783b1027f889ae5274d2f462c79afeb53e6479f7f5c324e9948d8f85b37a"
+      },
+      {
+        "path": "01KQ4EE836687F95080D92AB/transcript.json",
+        "sha256": "98db1e447604d87d19c5611509105d33b38a97d46667793f39e55aa973254cd8"
+      },
+      {
+        "path": "01KQ4EE836687F95080D92AB/summary.json",
+        "sha256": "a0ea807e143745c95269e69ab7332f7f8750e8e59b14c23b33e2b13b6eab45f1"
+      },
+      {
+        "path": "01KQ4EE836687F95080D92AB/speaker-meta.json",
+        "sha256": "153e6ff8b51b57f47499faf936b1998096f64582eb1989a15c37818437ae0680"
+      },
+      {
+        "path": "01KQ51DC4345D9DAE005678C/meeting-info.json",
+        "sha256": "5b2c2892c43684791b8cd9396b1d295306effeaf7815176bd90ab4dd1bb2b90d"
+      },
+      {
+        "path": "01KQ51DC4345D9DAE005678C/transcript.json",
+        "sha256": "c95c7430193213c993805bc50a9888887f70a9c3fd344f92894e47d6b32ba5d2"
+      },
+      {
+        "path": "01KQ51DC4345D9DAE005678C/summary.json",
+        "sha256": "83d0fef1b72fbc2fa138ea261974a6d378a3f0a12a002b5a248bf529b6c07761"
+      },
+      {
+        "path": "01KQ51DC4345D9DAE005678C/speaker-meta.json",
+        "sha256": "b0052489d39065ddc747515fd719603825bd82cadd8c1e2d68e5aa5bdf4c631d"
+      },
+      {
+        "path": "01KQ54917E3931712516916D/meeting-info.json",
+        "sha256": "7a53a64db3998867beede44e8b2315055e52a7c5e28a64603fb1cbfa6896642d"
+      },
+      {
+        "path": "01KQ54917E3931712516916D/transcript.json",
+        "sha256": "d91fd349e7bc3fffb89f4ec6e87db14e5c1e2bc1426b93cffac9747fb0f46a3a"
+      },
+      {
+        "path": "01KQ54917E3931712516916D/summary.json",
+        "sha256": "cc5420c493f4d241015158f95ba97ee8223da516fa0d78208046a658b511b1ac"
+      },
+      {
+        "path": "01KQ54917E3931712516916D/speaker-meta.json",
+        "sha256": "9b0ef21f02422e42bb537a522af54ccf25ad2db18179b7fe2d705b5979dface1"
+      },
+      {
+        "path": "01KQ560FF1570C5E7F71D752/meeting-info.json",
+        "sha256": "1b24c539fec4ce00b67127dcefae72f91e57c03e3c6278eaa126c305a42c685f"
+      },
+      {
+        "path": "01KQ560FF1570C5E7F71D752/transcript.json",
+        "sha256": "0036829e30fc37d4a774681a5f92b11090792de4c514e4b863c716e53b3a8887"
+      },
+      {
+        "path": "01KQ560FF1570C5E7F71D752/summary.json",
+        "sha256": "344d437a4484a45027f60d00ccbdc8f40ec8e46015ba0d4bb1e6cc07c352900c"
+      },
+      {
+        "path": "01KQ560FF1570C5E7F71D752/speaker-meta.json",
+        "sha256": "d6f5e27b238b099341aca911a8df3f045c722bca3c2a52b16cc70af7e7054045"
+      },
+      {
+        "path": "01KQ56786DD1E8A1BF174FDD/meeting-info.json",
+        "sha256": "e989542ff04f821d04074ec67cf8813c0fc53f3240ae59c84271acdf00911db0"
+      },
+      {
+        "path": "01KQ56786DD1E8A1BF174FDD/transcript.json",
+        "sha256": "23576f5b15e8965355af52d1917b19460d5efbb94a23c9b05a34adb6814e7e67"
+      },
+      {
+        "path": "01KQ56786DD1E8A1BF174FDD/summary.json",
+        "sha256": "0e488db34a776835f2516725dfd8507a8b5beb93487fa1e3864f036a4d00a1c4"
+      },
+      {
+        "path": "01KQ56786DD1E8A1BF174FDD/speaker-meta.json",
+        "sha256": "d149e941c8f3cda3b3d3910f4c9072561e8f50df62c020db151343aa33c96663"
+      },
+      {
+        "path": "01KQ56AA6B60801ABC01AB1C/meeting-info.json",
+        "sha256": "cf5025183d6db1c458e468b5fe1cdec78a45f487eec293a206bb190c4b79ea59"
+      },
+      {
+        "path": "01KQ56AA6B60801ABC01AB1C/transcript.json",
+        "sha256": "5bfbc79d8201ab383b51d15b35936e456e713a928cc53a18c8d618a723d028b1"
+      },
+      {
+        "path": "01KQ56AA6B60801ABC01AB1C/summary.json",
+        "sha256": "8eb721b4a31e872264c3e5fdea0fae8f32e2a57b2fa505eb3c1bc0b9c2be11b2"
+      },
+      {
+        "path": "01KQ56AA6B60801ABC01AB1C/speaker-meta.json",
+        "sha256": "3a584471be7c58e4c9fcd82bcd9dacc664915ebe835b173d017f651a52179706"
+      },
+      {
+        "path": "01KQ56D878454E5783DC6D94/meeting-info.json",
+        "sha256": "dd9e39a650f47ffbacefe7113b54eb2106e921d5600356481b194b1d6f459c82"
+      },
+      {
+        "path": "01KQ56D878454E5783DC6D94/transcript.json",
+        "sha256": "6e29a221bbd84a870113619ebe7846fe9f46ffedf16089b9f116ca87afa18d8c"
+      },
+      {
+        "path": "01KQ56D878454E5783DC6D94/summary.json",
+        "sha256": "33d3bdeb54899f9bd8151d304dcb8ed741a99fd53d12cc477c15b730b61172da"
+      },
+      {
+        "path": "01KQ56D878454E5783DC6D94/speaker-meta.json",
+        "sha256": "af4a935977e2275b248816b3d2a18f1073595abcef5e338c32acf2da3df47bb0"
+      },
+      {
+        "path": "01KQ5A966832A146DA4B7D41/meeting-info.json",
+        "sha256": "573c76f22d9aee325a7ea3b5f572f7937a369907c00ae282c8eabb6553445ace"
+      },
+      {
+        "path": "01KQ5A966832A146DA4B7D41/transcript.json",
+        "sha256": "1cce908e19d1fd8240dfbef189cbad059aa60daa51080f5546ad434a4d98d1ac"
+      },
+      {
+        "path": "01KQ5A966832A146DA4B7D41/summary.json",
+        "sha256": "d354c2ed970539edd84edd1d1218461524f242396fd1739e0824e713a3e8bf47"
+      },
+      {
+        "path": "01KQ5A966832A146DA4B7D41/speaker-meta.json",
+        "sha256": "6c7adfd3b2362e9118da4db2b24a8869cbefb87feaf67e2a50f19272d464e3f1"
+      },
+      {
+        "path": "01KQ5AFAE8264DDC0ED2AE7F/meeting-info.json",
+        "sha256": "eb4e8a17a89dd52d1b2758064b8a250d1a44a012508d4b2bf8eb2a041f9e2ed7"
+      },
+      {
+        "path": "01KQ5AFAE8264DDC0ED2AE7F/transcript.json",
+        "sha256": "3f19110dcabc7ff664e39ee2fad74cca5676a4f9d46d675168558f9b9bbfadbe"
+      },
+      {
+        "path": "01KQ5AFAE8264DDC0ED2AE7F/summary.json",
+        "sha256": "52734649a5dffbc8771dcd5b32ee7f99fe27c7c4f18c0a80ad41bee303a3beb9"
+      },
+      {
+        "path": "01KQ5AFAE8264DDC0ED2AE7F/speaker-meta.json",
+        "sha256": "b9ab02eeb80d6140af8305af688aeba54f0031852d92aafebffeae61468b606f"
+      },
+      {
+        "path": "01KQ5BB8521F99E55470206E/meeting-info.json",
+        "sha256": "63b617120765cc9b6af7934714942148faf3fe8548d04e365b51a9348ba7773e"
+      },
+      {
+        "path": "01KQ5BB8521F99E55470206E/transcript.json",
+        "sha256": "82fb90a7cfec17db8386c30d1b5ab50b68b4e08e2d2b9b1f19d7199d7767f32b"
+      },
+      {
+        "path": "01KQ5BB8521F99E55470206E/summary.json",
+        "sha256": "a9cdea4f7d72870600196f9ae0b8a8c25b2a204fb5f648803657416e06f8c9e5"
+      },
+      {
+        "path": "01KQ5BB8521F99E55470206E/speaker-meta.json",
+        "sha256": "7c4d54b0f052e66668c563ce5e129bbc32ab239dcdb58e2e366f1921712fda91"
+      },
+      {
+        "path": "01KQ5D47170D4828E89EDE37/meeting-info.json",
+        "sha256": "99d19b7c4825828ae35ee8cff178bf5a0631959207d46efd4ece216790de3f00"
+      },
+      {
+        "path": "01KQ5D47170D4828E89EDE37/transcript.json",
+        "sha256": "7b11ef997c28b93ca6ec7b56f8bab7b6fb0977685433fbfffc73910231556d13"
+      },
+      {
+        "path": "01KQ5D47170D4828E89EDE37/summary.json",
+        "sha256": "e8fa9e6c21c27be6f25299285e34053a362e88bf235233e2895f56cb1faec0c6"
+      },
+      {
+        "path": "01KQ5D47170D4828E89EDE37/speaker-meta.json",
+        "sha256": "61e3df9b6eebeb187eff0433feba58ebd9838bb5d368a40e164e24975ab5e4f4"
+      },
+      {
+        "path": "01KQ5EC1665DCFD7A6B62A59/meeting-info.json",
+        "sha256": "f3d3f4d9b15adda097be7623dac9886af1801c9f0e1abf40ac8a3b8048ff06c5"
+      },
+      {
+        "path": "01KQ5EC1665DCFD7A6B62A59/transcript.json",
+        "sha256": "9492234fbbf4b76190a77ce7cf9767643479dc5f6f687c3e9178a36921e11b35"
+      },
+      {
+        "path": "01KQ5EC1665DCFD7A6B62A59/summary.json",
+        "sha256": "31068e06e67bef51ab95190dc74013e6fa6faaa444e42ce120009351fe9ade70"
+      },
+      {
+        "path": "01KQ5EC1665DCFD7A6B62A59/speaker-meta.json",
+        "sha256": "7f79a0f5e9b8ebe0bd3e512e29a5ec898c8482b478d6d3fe8bedcda8738ee480"
+      },
+      {
+        "path": "01KQ5F364545B542671FF9CE/meeting-info.json",
+        "sha256": "d97190931c7120a121af460bd36bb161d54645360746eb655186ec826bf2b6f4"
+      },
+      {
+        "path": "01KQ5F364545B542671FF9CE/transcript.json",
+        "sha256": "901cff300ce1ab4360faea9baa54dcc92c22ec1314a583772d4b9b6042dea613"
+      },
+      {
+        "path": "01KQ5F364545B542671FF9CE/summary.json",
+        "sha256": "460a0de15812c087b70733c21b0bd0f01e80423a14a7e05e08514585fe95e8b0"
+      },
+      {
+        "path": "01KQ5F364545B542671FF9CE/speaker-meta.json",
+        "sha256": "024747668f5606718874e1e5280a5dda15b637a59c0da0b2c056b35109477d72"
+      },
+      {
+        "path": "01KQ65D43540846FA994B6C4/meeting-info.json",
+        "sha256": "9c7a35f06500e8be9ba68e6901481a4545769f0768044c1b63704f709da78227"
+      },
+      {
+        "path": "01KQ65D43540846FA994B6C4/transcript.json",
+        "sha256": "2e791947d81b7fe5a993402edbb615f978cfdb70116dbc27f2213ce0c118f695"
+      },
+      {
+        "path": "01KQ65D43540846FA994B6C4/summary.json",
+        "sha256": "233f4dd3827a58af739e39206cf8d46f2dac66552e533c690c7a17ff070c2b73"
+      },
+      {
+        "path": "01KQ65D43540846FA994B6C4/speaker-meta.json",
+        "sha256": "b7207a3479a329ed5089e13b1c919b72d0f29727ce37d16c34e6ffa592a1b4ee"
+      },
+      {
+        "path": "01KQ68FB3E9E60C4477CDAB4/meeting-info.json",
+        "sha256": "ccebb69e5ceab3cd367202dfc08e15492ebc5d600c9585693a9767099990ee37"
+      },
+      {
+        "path": "01KQ68FB3E9E60C4477CDAB4/transcript.json",
+        "sha256": "cacda97d39b3e12b4a0dbb29e04bd7625862d2f5dc76fa4a27c40517387625bb"
+      },
+      {
+        "path": "01KQ68FB3E9E60C4477CDAB4/summary.json",
+        "sha256": "0f8be7bf44f59d53c090fda59f71b40286400f64773ae0163878e3ea8be5d9c2"
+      },
+      {
+        "path": "01KQ68FB3E9E60C4477CDAB4/speaker-meta.json",
+        "sha256": "77070bd96808604713afd218eb6214f7e01174f53a0861b1bd43f3c21faf16a3"
+      },
+      {
+        "path": "01KQ6A5CEAAFFBE3B0099E75/meeting-info.json",
+        "sha256": "39e0c3d34587ce2b29d80996e71cc190c5445a8ef354305e36b9f5bc8d700fdb"
+      },
+      {
+        "path": "01KQ6A5CEAAFFBE3B0099E75/transcript.json",
+        "sha256": "f6a7ba0f83e07462754d01a81cb4a49db778db16443f2cc7a1ab9c1d228489ba"
+      },
+      {
+        "path": "01KQ6A5CEAAFFBE3B0099E75/summary.json",
+        "sha256": "de53456f2ab869ce82e18b28749cecf1651aa219ad5cb0b3f3940725b0e8fb55"
+      },
+      {
+        "path": "01KQ6A5CEAAFFBE3B0099E75/speaker-meta.json",
+        "sha256": "4a534731f64008c153056bf057c96a2cf631a67c6ced5f966d818caf3c96f5ea"
+      },
+      {
+        "path": "01KQ6CAA850EAFDC48B52846/meeting-info.json",
+        "sha256": "68b4d92fb4343065b68cc3fe379804e21176afa73735e2a8db1e25e035a54da9"
+      },
+      {
+        "path": "01KQ6CAA850EAFDC48B52846/transcript.json",
+        "sha256": "705dbe7d189133dae3bd8041e86f009149d93746eddb4c3f971cfb710de6a9da"
+      },
+      {
+        "path": "01KQ6CAA850EAFDC48B52846/summary.json",
+        "sha256": "cda1a014d6ac1b0a40068417a4d27566da442c7b8f548bd93ac33233a5fc1390"
+      },
+      {
+        "path": "01KQ6CAA850EAFDC48B52846/speaker-meta.json",
+        "sha256": "007d5d0e469f2a624128b036adb5d974f8b2aaa739b19d9ba3e7872ea5504b1b"
+      },
+      {
+        "path": "01KQ764171AC27A3A94DC695/meeting-info.json",
+        "sha256": "bf72bcc101613499b09826de62ffd5d0ab6e57d6b8f84f75c45242263aae1154"
+      },
+      {
+        "path": "01KQ764171AC27A3A94DC695/transcript.json",
+        "sha256": "a21734a31b63f532404717193b64cd2783b770c59b35ec44912a12b20b75d9a4"
+      },
+      {
+        "path": "01KQ764171AC27A3A94DC695/summary.json",
+        "sha256": "e9b380f5f11b8afc1830bed995a971fc3dc441a2b61b47389f4a559dbb5d8717"
+      },
+      {
+        "path": "01KQ764171AC27A3A94DC695/speaker-meta.json",
+        "sha256": "3cf8ef7671b2f1aee6b40fcf60a0829559a42063f48d8455ee2369b8053ceeed"
+      },
+      {
+        "path": "01KQ773D68723289E4A98889/meeting-info.json",
+        "sha256": "57205b52b2a884ca3851eb0a847a39a475f2afbcc5243ffd8b0e958ea0e72691"
+      },
+      {
+        "path": "01KQ773D68723289E4A98889/transcript.json",
+        "sha256": "be16832fd06d1505c5e91b53b33e34534fdfc50c3a332a3734aad2501226d71f"
+      },
+      {
+        "path": "01KQ773D68723289E4A98889/summary.json",
+        "sha256": "608643455417e862bfaef97727525639bb9fcf49242cbf8f432be6674500e261"
+      },
+      {
+        "path": "01KQ773D68723289E4A98889/speaker-meta.json",
+        "sha256": "39c7501f4ba2349bca0e1a655989f7fc4e86402158e8f902235c731a785c1a5b"
+      },
+      {
+        "path": "01KQ77F2867FC54E13A8C495/meeting-info.json",
+        "sha256": "c92816e69fc14af1c122a0ebf0f1f92819835b4ce16e514c0d180d45a3c93721"
+      },
+      {
+        "path": "01KQ77F2867FC54E13A8C495/transcript.json",
+        "sha256": "2b4afb63349df9f0d5959c2e1141e0f2eef9b2e38a3f7ae0585abcb2a98949ed"
+      },
+      {
+        "path": "01KQ77F2867FC54E13A8C495/summary.json",
+        "sha256": "b085eef1a5fc96d27bc46f7c5389ce87a1f96ed7fedd410cd71eea39f3332c01"
+      },
+      {
+        "path": "01KQ77F2867FC54E13A8C495/speaker-meta.json",
+        "sha256": "e420b7af3a73570a5b504a439d05cea6346ebabf7a933d3e28b47024203fdb62"
+      },
+      {
+        "path": "01KQ7B802912366FC0A24D4F/meeting-info.json",
+        "sha256": "cc0e272cbe6d5fdcfaabce674bd7ac5cbca1e1c1221a7dc187af5616249a67ed"
+      },
+      {
+        "path": "01KQ7B802912366FC0A24D4F/transcript.json",
+        "sha256": "fda89936c43c39dc7bc2097ae21f2e3662db5570c283448a6ee8146a4bf0a63b"
+      },
+      {
+        "path": "01KQ7B802912366FC0A24D4F/summary.json",
+        "sha256": "a86a37b6ad3ddb5b8bf40ad7be3ef5a746bb6897a4578694abea5cd1d691343f"
+      },
+      {
+        "path": "01KQ7B802912366FC0A24D4F/speaker-meta.json",
+        "sha256": "2ba0f571a90dc9789e527e8dff3a7b719d54e9c7096fdf6ac4d5c160cff255b6"
+      },
+      {
+        "path": "01KQ7BF0D56037FF89DC89B6/meeting-info.json",
+        "sha256": "842f3dbe533129713bd09deed65a84b86db194303a69fa0d6b1406d819c11048"
+      },
+      {
+        "path": "01KQ7BF0D56037FF89DC89B6/transcript.json",
+        "sha256": "48d7deb767c96c6f1f5e7d0efc2082cbc3713db4595752ecc006b823fac8b421"
+      },
+      {
+        "path": "01KQ7BF0D56037FF89DC89B6/summary.json",
+        "sha256": "9979258c35054b04c5a31d551c57e7a9d96a93de47097c29afc83af7146dba63"
+      },
+      {
+        "path": "01KQ7BF0D56037FF89DC89B6/speaker-meta.json",
+        "sha256": "44aff66966e33bce2e1c6abfc1bc3e83e66a751519c21649a35122d2174d9f49"
+      },
+      {
+        "path": "01KQ7F58A2E07B857C24624D/meeting-info.json",
+        "sha256": "57f1f352f807b73ba65eff287371ab0d69f0e67ee8a7524486e05ce2eb494485"
+      },
+      {
+        "path": "01KQ7F58A2E07B857C24624D/transcript.json",
+        "sha256": "7f80ee3a1485bc75ccba50d8e8ea09f4e674f74d0b28da6660fb64e5c7b47cb3"
+      },
+      {
+        "path": "01KQ7F58A2E07B857C24624D/summary.json",
+        "sha256": "d62b1d137fa0ec294644c25c27a45e4e57a11aa6ba87930a99f1130e0b69d408"
+      },
+      {
+        "path": "01KQ7F58A2E07B857C24624D/speaker-meta.json",
+        "sha256": "a6be1d52d50b0a800b3837288f42c520764a2bc9ac0d49c81702013c9753d858"
+      },
+      {
+        "path": "01KQ7FA71CF70FAFEE4B6251/meeting-info.json",
+        "sha256": "f892344adbe34b536576d674fc447f6877ca928051f3be066766cd399ca4a611"
+      },
+      {
+        "path": "01KQ7FA71CF70FAFEE4B6251/transcript.json",
+        "sha256": "039f3f543ae7b19840710ddef0c659860ce30aec5ddfdaf4938426b26cb09821"
+      },
+      {
+        "path": "01KQ7FA71CF70FAFEE4B6251/summary.json",
+        "sha256": "652406c533585f8959a0870dc1b82176f8c07705e221401ecb0b29bf8882a407"
+      },
+      {
+        "path": "01KQ7FA71CF70FAFEE4B6251/speaker-meta.json",
+        "sha256": "2cc971c1fbbcb8b3619f4adc47160c39b19b94d0fa0cf005719db8ae064b2c36"
+      },
+      {
+        "path": "01KQ85D10E82A26A8F754FB8/meeting-info.json",
+        "sha256": "497b925ce6dddd401b041fe1f1805c3c3c66bd15b6ad6529eaff8c14ec4f1617"
+      },
+      {
+        "path": "01KQ85D10E82A26A8F754FB8/transcript.json",
+        "sha256": "69995e8302625e7038554a56a4f4826d9cdd413d25f803204d39851acf3750c5"
+      },
+      {
+        "path": "01KQ85D10E82A26A8F754FB8/summary.json",
+        "sha256": "806d6f36001c5a26c0ab4c260b97119096f5d8fa1dceb11cfe5a203d3701bb65"
+      },
+      {
+        "path": "01KQ85D10E82A26A8F754FB8/speaker-meta.json",
+        "sha256": "5ad76c3efafc287455d2510f8bc06ed3f4db8cff55772c6769bb8e2c6ef65097"
+      },
+      {
+        "path": "01KQ88B8EAEAA819C26CCBE7/meeting-info.json",
+        "sha256": "995639a3ea84568747865f0aab4f47917fc01f0bf7208e58943decf12f7ee8f5"
+      },
+      {
+        "path": "01KQ88B8EAEAA819C26CCBE7/transcript.json",
+        "sha256": "f2955c8d305156738e834ce486df854f225180257b3495508ffaf53a914a0285"
+      },
+      {
+        "path": "01KQ88B8EAEAA819C26CCBE7/summary.json",
+        "sha256": "8199441ebd7a40b41112a32566dba07d424f486b685b1d463de3d63dda85a214"
+      },
+      {
+        "path": "01KQ88B8EAEAA819C26CCBE7/speaker-meta.json",
+        "sha256": "f55f078b4c08de18766fd5bb1a0d10385476c063140908975666638f51b609ad"
+      },
+      {
+        "path": "01KQ8C5A044F54EE1774D53C/meeting-info.json",
+        "sha256": "c884e6ba0b1a9bd6b2278c4f310778ef11675e2f7bdef83227c454bf5ababe51"
+      },
+      {
+        "path": "01KQ8C5A044F54EE1774D53C/transcript.json",
+        "sha256": "502f820986d0ed098ef6b8103119c0a7f27f376118c4488dddff8c62defd4879"
+      },
+      {
+        "path": "01KQ8C5A044F54EE1774D53C/summary.json",
+        "sha256": "ff5bdb6f19ed216ae04e75ac83cdfd2dbd07f6eb8f724abf0629aa11aaee417a"
+      },
+      {
+        "path": "01KQ8C5A044F54EE1774D53C/speaker-meta.json",
+        "sha256": "028594230a915d9a029750eef86d69e80fce03b1749fbf88eab24e1aa6243d46"
+      },
+      {
+        "path": "01KQ8D9A06510DD623EFB1A6/meeting-info.json",
+        "sha256": "9c177a790f4b6e24cfd8001c8e35b3132ee2340b8d121a904edbad6bb41131c1"
+      },
+      {
+        "path": "01KQ8D9A06510DD623EFB1A6/transcript.json",
+        "sha256": "65ed8f707256e8473b33d1dbc18a01a4a3a45071d93d43c041d776078cf343a8"
+      },
+      {
+        "path": "01KQ8D9A06510DD623EFB1A6/summary.json",
+        "sha256": "b2547d598a030467ad6ce2b8c0631671c8e3a0d93ef9302c9bf4494ffae10588"
+      },
+      {
+        "path": "01KQ8D9A06510DD623EFB1A6/speaker-meta.json",
+        "sha256": "849661f29346321125f3de3901847750d1b37ced9f531d6420bf71cd09266716"
+      },
+      {
+        "path": "01KQ92EA85FE4C537400227D/meeting-info.json",
+        "sha256": "3fb46db519e230b1cc32286c32054346b35d27ba1253c2cba2433b282e813dbb"
+      },
+      {
+        "path": "01KQ92EA85FE4C537400227D/transcript.json",
+        "sha256": "d36734193848229458542ba472dd78bb7b0ef2b59ff45333df0026a2db65a21b"
+      },
+      {
+        "path": "01KQ92EA85FE4C537400227D/summary.json",
+        "sha256": "72a6550d4ac0c3e9b701f607f9f34c390f7c590b1b5df7cfdc8891d4182114b5"
+      },
+      {
+        "path": "01KQ92EA85FE4C537400227D/speaker-meta.json",
+        "sha256": "3fa2534bf507e362590df97f51caa9697428683c7185f515613763f2013f2d1f"
+      },
+      {
+        "path": "01KQ94C2B8B9B4668F3D3491/meeting-info.json",
+        "sha256": "6ac7b986abfb271422d0055cc9673556c315189c28e59c81c577ca761c799bb4"
+      },
+      {
+        "path": "01KQ94C2B8B9B4668F3D3491/transcript.json",
+        "sha256": "a8e695c99aab18882ed782ebc8976878a7a649b96b9f9e50954844da854c466b"
+      },
+      {
+        "path": "01KQ94C2B8B9B4668F3D3491/summary.json",
+        "sha256": "fe3709b95f498025b7f0184df30fc601041b70e17c479c6e345662d5cae7bfec"
+      },
+      {
+        "path": "01KQ94C2B8B9B4668F3D3491/speaker-meta.json",
+        "sha256": "e159a77949b682f294e416456a4672068e82ce0b2d897a2cff336407a670a5c0"
+      },
+      {
+        "path": "01KQ9772B2348F500FB09D1E/meeting-info.json",
+        "sha256": "5199e3d6d0ad81fea8f10faec6ab8ff782a128c91fe26a6c02a6d1bb62f383e3"
+      },
+      {
+        "path": "01KQ9772B2348F500FB09D1E/transcript.json",
+        "sha256": "dd29bad246f6df0322c29f61a8ee64497ac872dde35ec7a73ad5e48e6bb4cb92"
+      },
+      {
+        "path": "01KQ9772B2348F500FB09D1E/summary.json",
+        "sha256": "d7e1eda29f4bd6fdaca7c5e6939ae6f72f030eaf5d0da842dba9416e74821b7e"
+      },
+      {
+        "path": "01KQ9772B2348F500FB09D1E/speaker-meta.json",
+        "sha256": "98ac56d315b35d600391e1562605bc813147fdea1dd0d047e576bfeee6b4f254"
+      },
+      {
+        "path": "01KQ9A6BE09D73A9BB5798C7/meeting-info.json",
+        "sha256": "562f69e4d5bfc0047d569ddc199b0382928ca838be92549679ffc3f301e8e21d"
+      },
+      {
+        "path": "01KQ9A6BE09D73A9BB5798C7/transcript.json",
+        "sha256": "38858c20d711f003727ed01ee1f282aa959e707cf3d3c31c6d9f8b5efebcd3aa"
+      },
+      {
+        "path": "01KQ9A6BE09D73A9BB5798C7/summary.json",
+        "sha256": "e080f8c380b0e1e4702760fa6ed470d2fac92694b9683ea39fb69f6c032e31f3"
+      },
+      {
+        "path": "01KQ9A6BE09D73A9BB5798C7/speaker-meta.json",
+        "sha256": "16bb7811c991858c4e4a73089613b3548e74cab521dda66aff5a139cacaa5d28"
+      },
+      {
+        "path": "01KQ9BB82FD97C9607D57E90/meeting-info.json",
+        "sha256": "ad8d7eca5bb8f7c860beb5f018312c374d20fcc0531f24a0d9dd3e99da9d8658"
+      },
+      {
+        "path": "01KQ9BB82FD97C9607D57E90/transcript.json",
+        "sha256": "e71e78a7353c6008b2ef63300d46eb09d51ab098b3a1d7414a069681bdb3efa4"
+      },
+      {
+        "path": "01KQ9BB82FD97C9607D57E90/summary.json",
+        "sha256": "3180ee9c81b0da22170c2be41a47407ce9cd0a0acef70e2b0c94e0fe40a1d7e7"
+      },
+      {
+        "path": "01KQ9BB82FD97C9607D57E90/speaker-meta.json",
+        "sha256": "8ca9054aa016ea7d9c68196286d34b161c5593100a98b134abcbb7bccc72b1e0"
+      },
+      {
+        "path": "01KQ9BCA1794C9472726FFAD/meeting-info.json",
+        "sha256": "74616ea8ddc63c7e4847fdbcaf37ecb6b98487c6de10b5717251b46b0441ea43"
+      },
+      {
+        "path": "01KQ9BCA1794C9472726FFAD/transcript.json",
+        "sha256": "7fb4c431e2bbf800e30e418198115a356a107d296648ddc48e65a95b95782550"
+      },
+      {
+        "path": "01KQ9BCA1794C9472726FFAD/summary.json",
+        "sha256": "8cba4c593824eb4b1d510909729e594072dc4e7bec1b61490cccc4b3363baa02"
+      },
+      {
+        "path": "01KQ9BCA1794C9472726FFAD/speaker-meta.json",
+        "sha256": "a0b57bad57e44afb37be3ffc39d5765e8fb6cbdc486c576a4db8ed34616b41d4"
+      },
+      {
+        "path": "01KQA0F0BE68E74D66EB4171/meeting-info.json",
+        "sha256": "e4c58ad785a70b26724177d7e980df0b8467025bf490b7e9f46ccd36f4194cd1"
+      },
+      {
+        "path": "01KQA0F0BE68E74D66EB4171/transcript.json",
+        "sha256": "cfd2eb588d7bb064aac99e06cb5fb2ce17ccb94a817c9958dd802a8f10ed052a"
+      },
+      {
+        "path": "01KQA0F0BE68E74D66EB4171/summary.json",
+        "sha256": "f66fc948cb743defa5b13c54d00fee0460acbdd4f0a253684c89a4040e842b63"
+      },
+      {
+        "path": "01KQA0F0BE68E74D66EB4171/speaker-meta.json",
+        "sha256": "857530f8c5fb82e1e2efd4a1b43d18261c9ba2e3d3b11fc8f477cbbdc95ea049"
+      },
+      {
+        "path": "01KQA1AFDC1306A000B0C7D9/meeting-info.json",
+        "sha256": "cc5bd69aa7d43271518de66f6f811bc38b6dec72d140580b71f85ef751993cda"
+      },
+      {
+        "path": "01KQA1AFDC1306A000B0C7D9/transcript.json",
+        "sha256": "adb5f76af8de6a8fe53b3930638acca0e3a81b6a9e529ae6adf7cdc6671e504c"
+      },
+      {
+        "path": "01KQA1AFDC1306A000B0C7D9/summary.json",
+        "sha256": "b6b7a14682aca7efbb120ae4b96a751bd3f1874e0348182e81de360e484c4da3"
+      },
+      {
+        "path": "01KQA1AFDC1306A000B0C7D9/speaker-meta.json",
+        "sha256": "cc96367022e3a20a7067d5b5c31577a5fc8dfb3f5c549b1893f4b8d2db3fbf61"
+      },
+      {
+        "path": "01KQA502E222E2A60330237B/meeting-info.json",
+        "sha256": "d5eddf33c02431dc5007de914f098fbc3ad020acba92e1995127df9ef33fc537"
+      },
+      {
+        "path": "01KQA502E222E2A60330237B/transcript.json",
+        "sha256": "feab7b02f31b32f87c6101ffdaa7363c009002db587562d180653ff5b5188bc4"
+      },
+      {
+        "path": "01KQA502E222E2A60330237B/summary.json",
+        "sha256": "51bc6eed77f5b0aeffdc8116e0081939aa61ab671e7f9ffcce0b622fdb38f220"
+      },
+      {
+        "path": "01KQA502E222E2A60330237B/speaker-meta.json",
+        "sha256": "42269257c217102343c25f0e38a5ceb75deaef77fdd455d13e4d6b40b32060a6"
+      },
+      {
+        "path": "01KQA7DFCE1285F52192B34B/meeting-info.json",
+        "sha256": "e8e4530e5037d2936bed82d6cb3e91264a4e49f82dc9e7c3906a9e035ee3d08c"
+      },
+      {
+        "path": "01KQA7DFCE1285F52192B34B/transcript.json",
+        "sha256": "6e14ce016ec66b10509a09a0d9660e220bc9810652259c0a3ed2745975d0baf5"
+      },
+      {
+        "path": "01KQA7DFCE1285F52192B34B/summary.json",
+        "sha256": "b4d231f6acaf7506e4cb5aa2451638b4ac3b9cf985fb9fe1aa4b4d6cf708511d"
+      },
+      {
+        "path": "01KQA7DFCE1285F52192B34B/speaker-meta.json",
+        "sha256": "7846dab5472233b97da88edc280bfcc21d05adfb5a7e49ac1591557fba0bd866"
+      },
+      {
+        "path": "01KQAC572C34475A8791F2C3/meeting-info.json",
+        "sha256": "e4e662f191f7c51e68363ebdfc2d081b43c2c5706f0db6bdd340f06ada0eee09"
+      },
+      {
+        "path": "01KQAC572C34475A8791F2C3/transcript.json",
+        "sha256": "0167e9aa282e61943b82b5a4a491e604625a7dc4b17459443c5b50a53ad680cd"
+      },
+      {
+        "path": "01KQAC572C34475A8791F2C3/summary.json",
+        "sha256": "37b9ee3aed71b7497a35873260700ed92562748d4a89ee34e87df881897df451"
+      },
+      {
+        "path": "01KQAC572C34475A8791F2C3/speaker-meta.json",
+        "sha256": "3ab74a2563e314096f3d82e9e0020aa50f84f54bd8bdc2cb74a34cbe4f42167d"
+      },
+      {
+        "path": "01KQADC32D89E2B76B698E84/meeting-info.json",
+        "sha256": "ec11331a58aa2aff1cbe5bdd7bde09021c137cca1c5cf108a350b25a58d59652"
+      },
+      {
+        "path": "01KQADC32D89E2B76B698E84/transcript.json",
+        "sha256": "1825d2f53e9a6bb7f6cc2d2585696c10be59f3f6dc29f151cb8b6d3257d377d1"
+      },
+      {
+        "path": "01KQADC32D89E2B76B698E84/summary.json",
+        "sha256": "13ce01343ed93b3ae0c9a3271d3955346f556a424edf29780dc06079cf985251"
+      },
+      {
+        "path": "01KQADC32D89E2B76B698E84/speaker-meta.json",
+        "sha256": "7d7a70a93adecf0e658e3218534e84395c5cf55fff8ea4984d390dea3ca8347a"
+      },
+      {
+        "path": "01KQADF3D76E82BF8BA19AF2/meeting-info.json",
+        "sha256": "54ba15f0d94fdc198e306b5673e9a5f085213a27a597f4063351efe790dcf8a9"
+      },
+      {
+        "path": "01KQADF3D76E82BF8BA19AF2/transcript.json",
+        "sha256": "16f0c44e943ac5b8b0322523cf975d828228ccf8b0d920982c409a54ac0851c3"
+      },
+      {
+        "path": "01KQADF3D76E82BF8BA19AF2/summary.json",
+        "sha256": "bb1376403d4852d6e1e352e80679d5d087680e3718e2650087b9f5e00d656093"
+      },
+      {
+        "path": "01KQADF3D76E82BF8BA19AF2/speaker-meta.json",
+        "sha256": "904ad0294496e7081d581a6f53b659079629065896f01cc9a9197f721d343922"
+      },
+      {
+        "path": "01KQAEA50436D047BC39CFC7/meeting-info.json",
+        "sha256": "1b95dbb6a84fbaeb4aa798bc56db00534b44778b8eb056fa30374cd0cf877f6e"
+      },
+      {
+        "path": "01KQAEA50436D047BC39CFC7/transcript.json",
+        "sha256": "f9cb8d472ed6392c9c70fb9447d8a9c026f33d78b5f52b5aa575a128b8209fb1"
+      },
+      {
+        "path": "01KQAEA50436D047BC39CFC7/summary.json",
+        "sha256": "366cfe5c0eefaa919c1bbf4f1268bbaec4b62fd195ed76240303c1be6aecef27"
+      },
+      {
+        "path": "01KQAEA50436D047BC39CFC7/speaker-meta.json",
+        "sha256": "55e100c7256c2b289bb14607c7534c1fa6ce79063ff9e82eb94dcce0402be8df"
+      },
+      {
+        "path": "01KQAFB8DBF6E1E2FDEF0B75/meeting-info.json",
+        "sha256": "008b017eb6b7bdf14efe3295932e1efea242649a1397b8aabebced2211701139"
+      },
+      {
+        "path": "01KQAFB8DBF6E1E2FDEF0B75/transcript.json",
+        "sha256": "cd2d630394531e4967fee137d7b3a423d5941bb625c95ce5f4fbfa77c142eed0"
+      },
+      {
+        "path": "01KQAFB8DBF6E1E2FDEF0B75/summary.json",
+        "sha256": "16d98b36f4d3d97532a2db06a35dd1a4b52569c9d7b5ecf11d9485493d5f35f7"
+      },
+      {
+        "path": "01KQAFB8DBF6E1E2FDEF0B75/speaker-meta.json",
+        "sha256": "fff8c1a49a6c84ecd79496cd03add0a123fea23da22f5c7173ff8f1edec05bc8"
+      },
+      {
+        "path": "01KQB3B16F255B65F39597D0/meeting-info.json",
+        "sha256": "fd93cf86b6830d32bfc6e8dd7c2d2d1bd32d087b6bf6763cdcffd1294b8f1019"
+      },
+      {
+        "path": "01KQB3B16F255B65F39597D0/transcript.json",
+        "sha256": "c306fa29211487d5e9c37adab56e5cfb0c2d8d60ad7f03bca16906ee1ee04d5b"
+      },
+      {
+        "path": "01KQB3B16F255B65F39597D0/summary.json",
+        "sha256": "584b99b2b0409192e9b3539fcae93b74847a1d15b9c3eb34cb2a8fafd12bf3db"
+      },
+      {
+        "path": "01KQB3B16F255B65F39597D0/speaker-meta.json",
+        "sha256": "4ca411b18f90116c00a7fb73adb5e968c8f0c59ed15a0d9b0223252ee873a116"
+      },
+      {
+        "path": "01KQB632F1ADC378C42F2C03/meeting-info.json",
+        "sha256": "26ae6e531100ef0665470a65b1653d05d161915db2fbb0b67d52ed6134f11088"
+      },
+      {
+        "path": "01KQB632F1ADC378C42F2C03/transcript.json",
+        "sha256": "53a4ba6b761832c4097af941a0073c54ed29b42cb8d0b43e17e38889b4b8205d"
+      },
+      {
+        "path": "01KQB632F1ADC378C42F2C03/summary.json",
+        "sha256": "3f9c599c63a3c7979efcf44b0434081363efe9d23aa6bb775a0c051fb7943e4c"
+      },
+      {
+        "path": "01KQB632F1ADC378C42F2C03/speaker-meta.json",
+        "sha256": "b9174b269c031ba8c3d42b7ae02a83306cee066efbb6b6b0db01bed24309a3b9"
+      },
+      {
+        "path": "01KQB95605C6F873C6036285/meeting-info.json",
+        "sha256": "d442a1172cc05b908c140427b74b8c163ff31e77fc17c17667a9d762a7d7d268"
+      },
+      {
+        "path": "01KQB95605C6F873C6036285/transcript.json",
+        "sha256": "c023ea3400cca30c9478b82af75411fd4f7f1bf5c74e2d7e93ed5a03ee37af1b"
+      },
+      {
+        "path": "01KQB95605C6F873C6036285/summary.json",
+        "sha256": "050b60b7ad797de6b7014ffdf6cbc24463850ba8c7903e01932a704a78922f36"
+      },
+      {
+        "path": "01KQB95605C6F873C6036285/speaker-meta.json",
+        "sha256": "4436b4fef967e2fd1ab8896860d48aca3a01c01221a3e5ee79514bfd5e62671a"
+      },
+      {
+        "path": "01KQBB7C4D4789DB2F3DA9C2/meeting-info.json",
+        "sha256": "44a981f78f015ed993ec1ca14b2399a230952bc8cf74df22ab454e6e5451fcec"
+      },
+      {
+        "path": "01KQBB7C4D4789DB2F3DA9C2/transcript.json",
+        "sha256": "e20c0524260d1895b038f549804e3f3f16e7013c314b0a54803be1c917691557"
+      },
+      {
+        "path": "01KQBB7C4D4789DB2F3DA9C2/summary.json",
+        "sha256": "225a9a31160cfca82edc15cfa1ed89cf094f59a473014713f0bf91fa5a66ab0d"
+      },
+      {
+        "path": "01KQBB7C4D4789DB2F3DA9C2/speaker-meta.json",
+        "sha256": "e9293b75c8e417b2109f1018d5644178706bf28899dcf6971438435dfba7c9d0"
+      },
+      {
+        "path": "01KQBBF753B44DE677670E6D/meeting-info.json",
+        "sha256": "d2c8e1623f964ebf6c163c24bd4f50a44f2b630a9d98b619ccdd1fc66f926b48"
+      },
+      {
+        "path": "01KQBBF753B44DE677670E6D/transcript.json",
+        "sha256": "2805dc0a8b39af197a923a7d2ee01c0360da03cc99857ef3e2fb167e8c17bd10"
+      },
+      {
+        "path": "01KQBBF753B44DE677670E6D/summary.json",
+        "sha256": "7a7f7f5ccfd5da421e54cc7b172fdd85c065feff443ece19cb41c5c6aa3e8edb"
+      },
+      {
+        "path": "01KQBBF753B44DE677670E6D/speaker-meta.json",
+        "sha256": "2e5434d011637ad00b2625c532a1f012899a0508fd2764a10bae1f71f98d8e7c"
+      },
+      {
+        "path": "01KQC1267BEB344076DD7656/meeting-info.json",
+        "sha256": "c84d438f148839075423b68646b0e314cd079d38d7e592e5f140d14de7ac0b57"
+      },
+      {
+        "path": "01KQC1267BEB344076DD7656/transcript.json",
+        "sha256": "931f8da3db9942bfef55dd7ab713c3823d1ab56d70661772c80330b2d715640c"
+      },
+      {
+        "path": "01KQC1267BEB344076DD7656/summary.json",
+        "sha256": "b269299edc40f1048ecb6e16ee65fffdd1eb9ac38b7448e0034b7190eab0c35f"
+      },
+      {
+        "path": "01KQC1267BEB344076DD7656/speaker-meta.json",
+        "sha256": "b45e435fab7a5947e1600b8bf0a0fa4b10e39b985f5f807ee80961da2f529db8"
+      },
+      {
+        "path": "01KQC166F678CBA584AAFF8B/meeting-info.json",
+        "sha256": "00d9e5c9350853595ea662189e4a5aea222a63109ab4d99bf5710cbe507f8ca6"
+      },
+      {
+        "path": "01KQC166F678CBA584AAFF8B/transcript.json",
+        "sha256": "4920e89191a1af99e643379a22f697d080af5dd9164f5d15c780adc534870da4"
+      },
+      {
+        "path": "01KQC166F678CBA584AAFF8B/summary.json",
+        "sha256": "6f9e52aefba640834c89762346fd07e3967b59b207367bfc92cdf1739fafabf8"
+      },
+      {
+        "path": "01KQC166F678CBA584AAFF8B/speaker-meta.json",
+        "sha256": "aef118999de476add04da47b097a957fb449d45843fe96918797012e9ccdb4f8"
+      },
+      {
+        "path": "01KQC3A2EBC501837E973B16/meeting-info.json",
+        "sha256": "fb90d1c4d8cfe47985690df6cd34b12609a84f55d1a740edd83733caf385edf0"
+      },
+      {
+        "path": "01KQC3A2EBC501837E973B16/transcript.json",
+        "sha256": "69a12009ef301da36cea24a7db0792455af8ccf418f4ccbbc855384a50773a92"
+      },
+      {
+        "path": "01KQC3A2EBC501837E973B16/summary.json",
+        "sha256": "7ae0a71a606f193ec0ac3c3a886642324fef1ef53af477a586bac406594140a7"
+      },
+      {
+        "path": "01KQC3A2EBC501837E973B16/speaker-meta.json",
+        "sha256": "1835cfc73d22e5f974e00e6f2a1683a797660200d69325af8b35a3aa7c5ae830"
+      },
+      {
+        "path": "01KQCA6EA8B603EBB6C9FE34/meeting-info.json",
+        "sha256": "b9b37ea35122ef193ae912ea7383bceb32364534be43afdfac93e52df5fdf1fc"
+      },
+      {
+        "path": "01KQCA6EA8B603EBB6C9FE34/transcript.json",
+        "sha256": "eaf6e29fb46a0d4f76dd2ee934b93ded1e4546d36a859dbef0c25ea15491641f"
+      },
+      {
+        "path": "01KQCA6EA8B603EBB6C9FE34/summary.json",
+        "sha256": "04424c75dce3827e64ddb59c046b4584fc3542e4414039dc0dbb59a5d9ec1bcf"
+      },
+      {
+        "path": "01KQCA6EA8B603EBB6C9FE34/speaker-meta.json",
+        "sha256": "ba6069379aec06546342586910214d79322952019383d799401a68a1e5a373ed"
+      },
+      {
+        "path": "01KQCF9872BF130D33B1B5EC/meeting-info.json",
+        "sha256": "4f17e506c1df38b89bbad4d74e362f0b1d66a71637be4ad923cebe707c8faad6"
+      },
+      {
+        "path": "01KQCF9872BF130D33B1B5EC/transcript.json",
+        "sha256": "4a0ea2e157fed833587d6a97d9f5859cbf954298fd2f631c866dfb18e8191bcd"
+      },
+      {
+        "path": "01KQCF9872BF130D33B1B5EC/summary.json",
+        "sha256": "700c34365c15ad99d32fad6e7f5cdc7b28d46e06e1af4bedbcb4ffcc15ab1cbe"
+      },
+      {
+        "path": "01KQCF9872BF130D33B1B5EC/speaker-meta.json",
+        "sha256": "f95c5eeaaaf4b27d36124b0d37721ec0803f4a8793bafb5c1fad1fe3d51e850c"
+      },
+      {
+        "path": "01KQD1270E98A7DFC55ADCF8/meeting-info.json",
+        "sha256": "f55fb0e401035ab74a176b13e73f7cf0fcc44f115e0da1272b01b4d8e61c8dbf"
+      },
+      {
+        "path": "01KQD1270E98A7DFC55ADCF8/transcript.json",
+        "sha256": "73b2aafa4f13014e1f05936ad2c2b74a6baa2b0b01127200481c7c7ec9716d29"
+      },
+      {
+        "path": "01KQD1270E98A7DFC55ADCF8/summary.json",
+        "sha256": "c4cd5ad48c07c6943530bb32dc25cc476fcc0a5b7503e13d03d958697da784f4"
+      },
+      {
+        "path": "01KQD1270E98A7DFC55ADCF8/speaker-meta.json",
+        "sha256": "9d6d5638ee2d2309900efab7b9649065e406c910b11af2494f2f430255bf1b59"
+      },
+      {
+        "path": "01KQD199788883B6F18C81E8/meeting-info.json",
+        "sha256": "b865c48783e9d4b3bd495ec662ed1000b356cac67176de94972533454f4a0a26"
+      },
+      {
+        "path": "01KQD199788883B6F18C81E8/transcript.json",
+        "sha256": "ffe6bae8795a1afa76896eb10d34599060364f0fe20d8760e298c7ed2525bb08"
+      },
+      {
+        "path": "01KQD199788883B6F18C81E8/summary.json",
+        "sha256": "cb02e09d1c3408a1db15d0f738814d42a6788ba8d407cafb6c4324be56417abd"
+      },
+      {
+        "path": "01KQD199788883B6F18C81E8/speaker-meta.json",
+        "sha256": "b0b60a4d15e7c78d6cd638553b854de2f7362e35e3870b481b456831bb62f09d"
+      },
+      {
+        "path": "01KQD4D9DEBA2D55AC2AA9F5/meeting-info.json",
+        "sha256": "de7d2000b92cabf9e4a2950f64bcd081249fb7f4db83bda726a2e173aa9cc4b7"
+      },
+      {
+        "path": "01KQD4D9DEBA2D55AC2AA9F5/transcript.json",
+        "sha256": "f5df50b3500aae22905e715f564e83fd3d1ef823e72d1c39cd34ffdba44c7f7b"
+      },
+      {
+        "path": "01KQD4D9DEBA2D55AC2AA9F5/summary.json",
+        "sha256": "2746aa70b958eb1f56541a904254114aae9ba27cad276b363af1284cc510e0b2"
+      },
+      {
+        "path": "01KQD4D9DEBA2D55AC2AA9F5/speaker-meta.json",
+        "sha256": "2db8be965d245d1b5a253d5ebe45427c403c7671dc96432f96842bbfc2b8d702"
+      },
+      {
+        "path": "01KQDD5172176D02DB51360A/meeting-info.json",
+        "sha256": "e68e7a75013fd0d984b92434ee6542aee4a32f6cd70b4ed3f5e8f494e2838a52"
+      },
+      {
+        "path": "01KQDD5172176D02DB51360A/transcript.json",
+        "sha256": "9a45d3611f09777612b523ce3faece795adf25674da4a86950107f1a2e0b39c1"
+      },
+      {
+        "path": "01KQDD5172176D02DB51360A/summary.json",
+        "sha256": "dc22b263afc3dc64d84ce8c811766dd2401aa49e338fec1fbc6b6e62e9b79f70"
+      },
+      {
+        "path": "01KQDD5172176D02DB51360A/speaker-meta.json",
+        "sha256": "c97721d66f4df0c50220c8ed7e4c07dd188f37bc560b7f6b45097a73967ba1a0"
+      },
+      {
+        "path": "01KQE110900B8A65D80AE694/meeting-info.json",
+        "sha256": "b1d72501cfe74740deb3570a506ca9359194e79e63540f8f77abd279eebdf84e"
+      },
+      {
+        "path": "01KQE110900B8A65D80AE694/transcript.json",
+        "sha256": "c472d0b6c2976d327923cff83542f458e1bd0e1c3266f26da2550e27ee50931f"
+      },
+      {
+        "path": "01KQE110900B8A65D80AE694/summary.json",
+        "sha256": "c5c220a3f7ce8cadad481d77ef57c03b666e0ae25084743bc86368b7d0653d19"
+      },
+      {
+        "path": "01KQE110900B8A65D80AE694/speaker-meta.json",
+        "sha256": "6be913a38a77369375ab9a7ccec345226b3c6c253790270a5c4dbce60c461cf4"
+      },
+      {
+        "path": "01KQEDB92E33CF9945A7F71B/meeting-info.json",
+        "sha256": "d6139d2c06e37480a5b008e98c96a31ee99bda48e73b993b9e4ee32e44eee61a"
+      },
+      {
+        "path": "01KQEDB92E33CF9945A7F71B/transcript.json",
+        "sha256": "655dc48ee985e37531251fe2c12d9a93cb4f511426d68041580e7c7e26fbf704"
+      },
+      {
+        "path": "01KQEDB92E33CF9945A7F71B/summary.json",
+        "sha256": "9b1899ab8cd139ddcc159dcb74c8ed1aa5e80c3a071d47e54c8dd0e2a0c752a9"
+      },
+      {
+        "path": "01KQEDB92E33CF9945A7F71B/speaker-meta.json",
+        "sha256": "5d8f01a441761abc88268cd0c88f16eb90c2ee1cef7da54c05097a5ca76f798d"
+      },
+      {
+        "path": "01KQEDE682B4A8D67C657CF1/meeting-info.json",
+        "sha256": "662b71df11e84ea7036afab7c3d90271dbe668b88098049572d163957dc38094"
+      },
+      {
+        "path": "01KQEDE682B4A8D67C657CF1/transcript.json",
+        "sha256": "9353d5b23b373eb2e91466ee37c2ca071d84bfe512c9b7eff8d4178d7eb5097f"
+      },
+      {
+        "path": "01KQEDE682B4A8D67C657CF1/summary.json",
+        "sha256": "2b096e31045c25fdbbb69a7fb5a74210c99f0073b67f4abbb7cac64b793ce975"
+      },
+      {
+        "path": "01KQEDE682B4A8D67C657CF1/speaker-meta.json",
+        "sha256": "2af225cca98a0888a1a6ce26b69ca61bd25a28787cdaaceee20fce41a5f1202a"
+      },
+      {
+        "path": "01KQF9600A904ADE8605B3F0/meeting-info.json",
+        "sha256": "afb2aaa16e64af41f75af667019fe8222dd6178a37cab19bf22a15408da61ebb"
+      },
+      {
+        "path": "01KQF9600A904ADE8605B3F0/transcript.json",
+        "sha256": "c445f9c0a62b064b65c673180fa0ddf0c53b122dd51f299e9490c171b1c5fa58"
+      },
+      {
+        "path": "01KQF9600A904ADE8605B3F0/summary.json",
+        "sha256": "3453ffb30b4da1e8f2fbad4484fb7f154e74cc0caecea87a483367d4e6726516"
+      },
+      {
+        "path": "01KQF9600A904ADE8605B3F0/speaker-meta.json",
+        "sha256": "359e1de938b1014054c2f52ff2038d69c55625430b2565f8c793af14dba66ea6"
+      },
+      {
+        "path": "01KQFEEFFF8E80B0DFD10880/meeting-info.json",
+        "sha256": "7225030e2a66e13ba25e8ff4063a08780dd097a691187e0fcf4d5ce88164042c"
+      },
+      {
+        "path": "01KQFEEFFF8E80B0DFD10880/transcript.json",
+        "sha256": "506031cd7e764c98a668b0654588e34a8db085be5daeeec67a5535643125af8a"
+      },
+      {
+        "path": "01KQFEEFFF8E80B0DFD10880/summary.json",
+        "sha256": "38dc2a5eb22e0fcfcabc2102846915f77f0091e544dafdfdb4965156e0ecad18"
+      },
+      {
+        "path": "01KQFEEFFF8E80B0DFD10880/speaker-meta.json",
+        "sha256": "93fb9c0d60e1df8c6aa69c8bdeaa800f74b761e70be860c5cf76d610cb1ce14f"
+      },
+      {
+        "path": "01KQFFC0F889AE8CFEE7A00D/meeting-info.json",
+        "sha256": "f0d8b9cde0d591a0c6bddf73f95aa5f923f1c326809652fdfb7b15ff8b755014"
+      },
+      {
+        "path": "01KQFFC0F889AE8CFEE7A00D/transcript.json",
+        "sha256": "94612ce99c0680dc8d790bc869f521a2069165d73a56904cd0844005c2a113f9"
+      },
+      {
+        "path": "01KQFFC0F889AE8CFEE7A00D/summary.json",
+        "sha256": "a090daa1f6a159b6627b42a26ad09a33200367b0f6517da7490905fb3fc946e4"
+      },
+      {
+        "path": "01KQFFC0F889AE8CFEE7A00D/speaker-meta.json",
+        "sha256": "3db159ad4f8b827045f198ff1691542f5c1150e7a926b0819a865277ba7c263f"
+      }
+    ],
+    "sha256": "3e7d980fab93a8dc4fe0ffefdd71bb4aca318826788e085b4f68f1a6646b82e8"
+  },
+  "configuration": {
+    "llm_refinement_enabled": false,
+    "llm_api_key_configured": false,
+    "llm_model": null,
+    "llm_prompt_version": null,
+    "sentiment_method": "duration_weighted_source_utterance_labels",
+    "taxonomy_method": "rules_keyword_taxonomy"
+  },
+  "theme_refinement": {},
+  "theme_refinement_counts": {},
+  "artifacts": [
+    "meetings.json",
+    "themes.json",
+    "taxonomy_validation.json",
+    "sentiment_trends.json",
+    "sentiment_heatmap.json",
+    "risk_radar.json",
+    "issue_graph.json",
+    "voc_backlog.json",
+    "overview.json",
+    "run_manifest.json"
+  ]
+}

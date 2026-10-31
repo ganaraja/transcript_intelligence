@@ -9,24 +9,43 @@ from __future__ import annotations
 
 import json
 import os
+from datetime import datetime, timezone
 from pathlib import Path
 
 from pipeline.models import RawMeeting
 
+PROMPT_VERSION = "theme-refinement-v1"
+
 
 def maybe_refine_theme(raw: RawMeeting, cache_dir: Path) -> dict | None:
+    refined, _ = maybe_refine_theme_with_provenance(raw, cache_dir)
+    return refined
+
+
+def maybe_refine_theme_with_provenance(
+    raw: RawMeeting, cache_dir: Path
+) -> tuple[dict | None, dict[str, str] | None]:
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
-        return None
+        return None, None
     cache_dir.mkdir(parents=True, exist_ok=True)
     cache_path = cache_dir / f"{raw.meeting_id}.json"
     if cache_path.exists():
-        return json.loads(cache_path.read_text(encoding="utf-8"))
+        cached = json.loads(cache_path.read_text(encoding="utf-8"))
+        if "result" in cached and "provenance" in cached:
+            return cached["result"], {**cached["provenance"], "source": "cache"}
+        return cached, {
+            "source": "legacy_cache",
+            "generated_at": "",
+            "model": "",
+            "prompt_version": "",
+        }
     try:
         from openai import OpenAI
     except ImportError:
-        return None
+        return None, None
 
+    model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     client = OpenAI(api_key=api_key)
     excerpt = " ".join(u.sentence for u in raw.utterances[:25])[:4000]
     prompt = {
@@ -36,7 +55,7 @@ def maybe_refine_theme(raw: RawMeeting, cache_dir: Path) -> dict | None:
         "excerpt": excerpt,
     }
     completion = client.chat.completions.create(
-        model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
+        model=model,
         temperature=0,
         response_format={"type": "json_object"},
         messages=[
@@ -55,5 +74,14 @@ def maybe_refine_theme(raw: RawMeeting, cache_dir: Path) -> dict | None:
     )
     content = completion.choices[0].message.content or "{}"
     data = json.loads(content)
-    cache_path.write_text(json.dumps(data, indent=2), encoding="utf-8")
-    return data
+    provenance = {
+        "source": "openai",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "model": model,
+        "prompt_version": PROMPT_VERSION,
+    }
+    cache_path.write_text(
+        json.dumps({"result": data, "provenance": provenance}, indent=2),
+        encoding="utf-8",
+    )
+    return data, provenance

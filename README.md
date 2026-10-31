@@ -16,9 +16,11 @@ This is a take-home style analysis app, not a production deployment.
    - Voice-of-customer backlog by module
 
 Processed artifacts live in `data/processed/` so the dashboard runs without an LLM key.
-Rebuild artifacts with `./scripts/process-data.sh` after updating the pipeline; the resulting `meetings.json` and `risk_radar.json` include confidence metadata.
+Rebuild artifacts with `./scripts/process-data.sh` after updating the pipeline; the resulting `meetings.json` and `risk_radar.json` include confidence metadata, and `run_manifest.json` records run/data/code lineage.
 
 Confidence levels summarize rule specificity and available evidence/sample coverage. They are not calibrated probabilities. Theme examples show review badges; open a meeting from the themes or risk views and inspect its **Confidence and supporting evidence** section. The account risk page also shows the confidence evidence for the highest-risk meeting.
+
+The run manifest includes the generation timestamp, package/Git/source fingerprints, hashes and relative paths for consumed input JSON files, LLM model/prompt configuration and per-meeting cache/API source. New LLM cache entries keep the original model, prompt version, and generation time; legacy entries are marked with unknown provenance. The manifest does not store transcript contents or credentials. Input data is marked unverified; the pipeline records whether it generated or augmented data (currently neither). Inspect the manifest on the **Overview** page or via `GET /api/provenance`.
 
 ## Layout
 
@@ -137,6 +139,7 @@ Call type is deterministic from metadata, so we do not spend an LLM on it. Theme
 | --- | --- | --- |
 | GET | `/api/health` | Processed-data status |
 | GET | `/api/overview` | KPIs and takeaways |
+| GET | `/api/provenance` | Run manifest: input/code hashes, timestamp, and enrichment provenance |
 | GET | `/api/meetings` | All enriched meetings |
 | GET | `/api/meetings/{id}` | One meeting |
 | GET | `/api/themes` | Theme codebook |

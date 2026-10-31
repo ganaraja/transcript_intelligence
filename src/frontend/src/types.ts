@@ -58,6 +58,45 @@ export type Overview = {
   takeaways: string[]
 }
 
+export type RunManifest = {
+  generated_at: string
+  pipeline_version: string
+  git_revision: string | null
+  code: {
+    sha256: string
+    files: Array<{ path: string; sha256: string }>
+    working_tree_clean: boolean
+  }
+  dataset: {
+    origin: string
+    synthetic_data_generated_by_pipeline: boolean
+    augmentation: string
+    meeting_count: number
+    source_file_count: number
+    source_files: Array<{ path: string; sha256: string }>
+    sha256: string
+  }
+  configuration: {
+    llm_refinement_enabled: boolean
+    llm_api_key_configured: boolean
+    llm_model: string | null
+    llm_prompt_version: string | null
+    sentiment_method: string
+    taxonomy_method: string
+  }
+  theme_refinement: Record<
+    string,
+    {
+      source: 'cache' | 'openai' | 'legacy_cache'
+      generated_at: string
+      model: string
+      prompt_version: string
+    }
+  >
+  theme_refinement_counts: Record<string, number>
+  artifacts: string[]
+}
+
 export type ThemeBucket = {
   theme_id: string
   label: string

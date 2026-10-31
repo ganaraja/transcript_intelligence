@@ -47,6 +47,11 @@ def overview() -> object:
     return _load("overview.json")
 
 
+@app.get("/api/provenance")
+def provenance() -> object:
+    return _load("run_manifest.json")
+
+
 @app.get("/api/meetings")
 def meetings() -> object:
     return _load("meetings.json")

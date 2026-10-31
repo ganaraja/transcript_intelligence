@@ -5,6 +5,7 @@ import { Badge, CALL_COLORS, Card, Err, Loading } from '../lib'
 
 export default function Overview() {
   const overview = useQuery({ queryKey: ['overview'], queryFn: api.overview })
+  const provenance = useQuery({ queryKey: ['provenance'], queryFn: api.provenance })
   const voc = useQuery({ queryKey: ['voc'], queryFn: api.voc })
   const risk = useQuery({ queryKey: ['risk'], queryFn: api.risk })
 
@@ -36,6 +37,65 @@ export default function Overview() {
           </Card>
         ))}
       </div>
+
+      {provenance.isError ? <Err error={provenance.error} /> : null}
+      {provenance.data ? (
+        <Card title="Data and run provenance">
+          <div className="grid gap-3 text-sm text-slate-300 md:grid-cols-2">
+            <div>
+              <div className="text-xs uppercase tracking-wide text-slate-500">Generated</div>
+              <div>{new Date(provenance.data.generated_at).toLocaleString()}</div>
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-wide text-slate-500">Pipeline</div>
+              <div>
+                v{provenance.data.pipeline_version} · commit {provenance.data.git_revision?.slice(0, 12) ?? 'unavailable'}
+                {provenance.data.code.working_tree_clean ? '' : ' · working tree changed'}
+              </div>
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-wide text-slate-500">Input corpus</div>
+              <div>
+                {provenance.data.dataset.meeting_count} meetings · {provenance.data.dataset.source_file_count} source files
+              </div>
+              <div className="break-all font-mono text-xs text-slate-500">
+                SHA-256 {provenance.data.dataset.sha256}
+              </div>
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-wide text-slate-500">Enrichment</div>
+              <div>
+                {provenance.data.configuration.llm_refinement_enabled
+                  ? `LLM enabled · ${provenance.data.configuration.llm_model ?? 'model not set'} · prompt ${provenance.data.configuration.llm_prompt_version}`
+                  : 'Rules-only theme refinement'}
+              </div>
+              <div className="text-xs text-slate-500">
+                Refinement applied:{' '}
+                {Object.values(provenance.data.theme_refinement_counts).reduce((sum, count) => sum + count, 0)} meetings
+                {Object.entries(provenance.data.theme_refinement_counts).length
+                  ? ` (${Object.entries(provenance.data.theme_refinement_counts)
+                      .map(([source, count]) => `${count} ${source}`)
+                      .join(', ')})`
+                  : ' (none)'}
+                {provenance.data.configuration.llm_refinement_enabled && !provenance.data.configuration.llm_api_key_configured
+                  ? ' · API key not configured'
+                  : ''}
+              </div>
+            </div>
+          </div>
+          <details className="mt-3 text-xs text-slate-400">
+            <summary className="cursor-pointer">Inspect source file hashes ({provenance.data.dataset.source_files.length})</summary>
+            <ul className="mt-2 max-h-48 space-y-1 overflow-auto font-mono">
+              {provenance.data.dataset.source_files.map((source) => (
+                <li key={source.path} className="break-all">{source.path} · {source.sha256}</li>
+              ))}
+            </ul>
+          </details>
+          <p className="mt-2 text-xs text-slate-500">
+            Inputs are not independently verified. The pipeline does not generate synthetic transcripts or augment the dataset.
+          </p>
+        </Card>
+      ) : null}
 
       <div className="grid gap-4 lg:grid-cols-2">
         <Card title="Call type mix (rule-based)">

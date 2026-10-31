@@ -1,8 +1,13 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import os
+import subprocess
 from collections import Counter
+from datetime import datetime, timezone
+from importlib.metadata import version
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -10,7 +15,7 @@ from dotenv import load_dotenv
 from pipeline.classify import build_theme_catalog, enrich_meeting, theme_confidence
 from pipeline.ingest import load_dataset
 from pipeline.insights import issue_graph, risk_radar, voc_backlog
-from pipeline.llm import maybe_refine_theme
+from pipeline.llm import PROMPT_VERSION, maybe_refine_theme_with_provenance
 from pipeline.models import MeetingRecord
 from pipeline.paths import cache_dir, dataset_dir, processed_dir
 from pipeline.sentiment import interpret_trends, module_heatmap, score_meeting, trend_table
@@ -97,6 +102,63 @@ def write_json(path: Path, payload: object) -> None:
     path.write_text(json.dumps(payload, indent=2, default=str), encoding="utf-8")
 
 
+def _source_manifest(dataset: Path) -> list[dict[str, str]]:
+    source_files: list[dict[str, str]] = []
+    for folder in sorted(path for path in dataset.iterdir() if path.is_dir()):
+        for filename in ("meeting-info.json", "transcript.json", "summary.json", "speaker-meta.json"):
+            path = folder / filename
+            if path.is_file():
+                digest = hashlib.sha256(path.read_bytes()).hexdigest()
+                source_files.append(
+                    {
+                        "path": path.relative_to(dataset).as_posix(),
+                        "sha256": digest,
+                    }
+                )
+    return source_files
+
+
+def _git_revision() -> str | None:
+    repository_root = Path(__file__).resolve().parents[3]
+    result = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        cwd=repository_root,
+        capture_output=True,
+        check=False,
+        text=True,
+    )
+    return result.stdout.strip() if result.returncode == 0 else None
+
+
+def _code_manifest() -> dict[str, object]:
+    backend_root = Path(__file__).resolve().parents[1]
+    source_files = sorted(
+        [*backend_root.joinpath("pipeline").glob("*.py"), *backend_root.joinpath("app").glob("*.py")]
+    )
+    file_hashes = [
+        {
+            "path": path.relative_to(backend_root).as_posix(),
+            "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        }
+        for path in source_files
+    ]
+    repository_root = backend_root.parents[1]
+    status = subprocess.run(
+        ["git", "status", "--porcelain"],
+        cwd=repository_root,
+        capture_output=True,
+        check=False,
+        text=True,
+    )
+    return {
+        "sha256": hashlib.sha256(
+            json.dumps(file_hashes, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        ).hexdigest(),
+        "files": file_hashes,
+        "working_tree_clean": status.returncode == 0 and not status.stdout.strip(),
+    }
+
+
 def overview(records: list[MeetingRecord], notes: list[str]) -> dict:
     types = Counter(m.call_type for m in records)
     modules = Counter(mod for m in records for mod in m.product_modules)
@@ -137,12 +199,17 @@ def run_pipeline(ds: Path | None = None, out: Path | None = None, use_llm: bool 
 
     raw_meetings = load_dataset(dataset)
     records: list[MeetingRecord] = []
+    theme_refinement: dict[str, dict[str, str]] = {}
     for raw in raw_meetings:
         sent = score_meeting(raw)
         rec = enrich_meeting(raw, sent)
         if use_llm:
-            refined = maybe_refine_theme(raw, cache_dir())
+            llm_cache_dir = cache_dir()
+            refined, refinement_provenance = maybe_refine_theme_with_provenance(raw, llm_cache_dir)
             if refined and refined.get("primary_theme"):
+                if refinement_provenance is None:
+                    raise ValueError(f"LLM refinement for {raw.meeting_id} returned no provenance")
+                theme_refinement[raw.meeting_id] = refinement_provenance
                 rec.primary_theme = refined["primary_theme"]
                 labels = _theme_labels()
                 rec.primary_theme_label = labels.get(rec.primary_theme, rec.primary_theme)
@@ -162,6 +229,49 @@ def run_pipeline(ds: Path | None = None, out: Path | None = None, use_llm: bool 
     catalog = build_theme_catalog(records)
     validation = taxonomy_validation(records)
 
+    source_files = _source_manifest(dataset)
+    manifest = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "pipeline_version": version("transcript-intelligence-backend"),
+        "git_revision": _git_revision(),
+        "code": _code_manifest(),
+        "dataset": {
+            "origin": "input_dataset; contents not independently verified",
+            "synthetic_data_generated_by_pipeline": False,
+            "augmentation": "none_by_pipeline",
+            "meeting_count": len(raw_meetings),
+            "source_file_count": len(source_files),
+            "source_files": source_files,
+            "sha256": hashlib.sha256(
+                json.dumps(source_files, sort_keys=True, separators=(",", ":")).encode("utf-8")
+            ).hexdigest(),
+        },
+        "configuration": {
+            "llm_refinement_enabled": use_llm,
+            "llm_api_key_configured": bool(os.getenv("OPENAI_API_KEY")),
+            "llm_model": os.getenv("OPENAI_MODEL", "gpt-4o-mini") if use_llm else None,
+            "llm_prompt_version": PROMPT_VERSION if use_llm else None,
+            "sentiment_method": "duration_weighted_source_utterance_labels",
+            "taxonomy_method": "rules_keyword_taxonomy",
+        },
+        "theme_refinement": theme_refinement,
+        "theme_refinement_counts": dict(
+            Counter(provenance["source"] for provenance in theme_refinement.values())
+        ),
+        "artifacts": [
+            "meetings.json",
+            "themes.json",
+            "taxonomy_validation.json",
+            "sentiment_trends.json",
+            "sentiment_heatmap.json",
+            "risk_radar.json",
+            "issue_graph.json",
+            "voc_backlog.json",
+            "overview.json",
+            "run_manifest.json",
+        ],
+    }
+
     payload_meetings = [m.model_dump() for m in records]
     write_json(dest / "meetings.json", payload_meetings)
     write_json(dest / "themes.json", [t.model_dump() for t in catalog])
@@ -172,11 +282,13 @@ def run_pipeline(ds: Path | None = None, out: Path | None = None, use_llm: bool 
     write_json(dest / "issue_graph.json", issue_graph(records))
     write_json(dest / "voc_backlog.json", voc_backlog(records))
     write_json(dest / "overview.json", overview(records, notes))
+    write_json(dest / "run_manifest.json", manifest)
 
     return {
         "meetings": len(records),
         "output": str(dest),
         "call_types": dict(Counter(m.call_type for m in records)),
+        "manifest": str(dest / "run_manifest.json"),
     }
 
 

@@ -191,6 +191,7 @@ flowchart LR
         MEET["meetings.json"]
         THEMES["themes.json"]
         VALIDATE["taxonomy_validation.json"]
+        MANIFEST["run_manifest.json"]
         TREND["sentiment_trends.json"]
         HM["sentiment_heatmap.json"]
         RISK["risk_radar.json"]
@@ -237,6 +238,7 @@ flowchart LR
     WRITE --> MEET
     WRITE --> THEMES
     WRITE --> VALIDATE
+    WRITE --> MANIFEST
     WRITE --> TREND
     WRITE --> HM
     WRITE --> RISK
@@ -247,6 +249,7 @@ flowchart LR
     MEET --> ROUTES
     THEMES --> ROUTES
     VALIDATE --> ROUTES
+    MANIFEST --> ROUTES
     TREND --> ROUTES
     HM --> ROUTES
     RISK --> ROUTES
@@ -271,8 +274,9 @@ flowchart LR
    theme fields and cache the response under `data/cache/llm/`.
 3. **Aggregation** produces theme counts/examples, a taxonomy validation report,
    weekly sentiment and takeaways, a module heatmap, account risk rows, a
-   cross-surface graph, VOC groups, and overview KPIs. `pipeline/run.py`
-   serializes these into nine JSON files in `data/processed/`.
+   cross-surface graph, VOC groups, overview KPIs, and a run manifest with
+   input/code fingerprints and enrichment configuration. `pipeline/run.py`
+   serializes these into ten JSON files in `data/processed/`.
 4. **Serving** (`app/main.py`) reads the relevant artifact when an API route is
    requested. The UI's `src/api.ts` maps these endpoints into TanStack Query
    calls; pages display the overview, categories, sentiment, risks, graph, and
@@ -284,6 +288,19 @@ flowchart LR
 There is no database: processed JSON is the boundary between batch analysis and
 the API. This keeps local review simple, but the API expects the artifacts to
 exist; run the pipeline first if they are missing.
+
+`run_manifest.json` records run time, pipeline package and Git revision, a
+fingerprint of backend source files and working-tree status, SHA-256 hashes for
+the consumed input JSON files and their combined dataset fingerprint, model
+and prompt configuration, per-meeting refinement source (`cache` or `openai`),
+and generated artifact names. It stores hashes and relative file paths, not
+transcript contents or credentials. Inputs are marked unverified; the pipeline
+does not generate synthetic transcripts or perform augmentation. The manifest
+is available through `GET /api/provenance` and the Overview page.
+New LLM cache entries retain their actual model, prompt version, and generation
+time with the result. Legacy flat cache entries remain readable but are marked
+`legacy_cache` with unknown generation/model/prompt metadata rather than
+attributing the current configuration to an older result.
 
 **No auth, no deploy.** The local demo uses `uvicorn` and Vite's development server.
 
@@ -326,6 +343,7 @@ MeetingRecord
 - Parse folders with meeting info or transcript present; missing-file warnings are collected on the raw record but are not currently exposed in processed records.
 - Flatten transcript `data[]` into text + per-speaker stats.
 - Preserve whether each utterance sentiment label was present in the source so confidence does not count missing labels as neutral evidence.
+- The run manifest hashes the input JSON files consumed by the pipeline and identifies their origin as unverified input data; no transcript content is copied into the manifest.
 - Infer `customer_name` from title (`Aegis / X -`, `Support Case #n - {Company}`) or from non-Aegis email domain.
 - Map speaker → side using attendee email local-part matching where possible. On mixed calls, remaining unknown speakers default to customer; this is a practical heuristic, not verified diarization.
 
@@ -335,6 +353,7 @@ MeetingRecord
 2. Score modules and themes using the keyword tables in `src/backend/pipeline/taxonomy.py`; title matches have the highest weight.
 3. Optionally refine theme output with one OpenAI JSON-mode request per meeting, temperature 0. Cache responses in `data/cache/llm/{meeting_id}.json`. Without a key, the deterministic output is used. Clustering is not implemented.
 4. Attach confidence levels and evidence for call type, final theme, sentiment sample coverage, and risk triggers. Low theme confidence enters `taxonomy_validation.json`'s review queue. Confidence thresholds are heuristics and are not calibrated.
+5. Record whether each refined theme came from a cache or an OpenAI response; cache entries preserve actual model, prompt version, and generation time. Legacy entries are explicitly marked as unknown. Credentials are never stored.
 
 ### 7.3 Sentiment
 
@@ -371,6 +390,7 @@ MeetingRecord
 - Overview and insight views show interpretation text where the artifact provides it.
 - Meeting detail shows confidence levels and evidence; low confidence is labeled as a review cue. Account risk rows show the confidence/evidence for the highest-risk meeting.
 - Confidence labels are not calibrated probabilities and should not be used as statistical certainty.
+- Overview shows the latest run's timestamp, code/dataset fingerprints, source file hashes, and LLM refinement configuration.
 - Global call-type, module, and date-range filters are not currently implemented.
 - Example transcripts are the evaluation requirement: theme detail must show **title + quote + why**.
 
