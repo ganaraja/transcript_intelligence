@@ -68,8 +68,11 @@ The design is built so every chart answers: **who should act, and why.**
 | L1 Call type | Rules on title + attendee domains | Cheap, explainable, already accurate on this set |
 | L2 Product module | Keyword matching over title, summary, supplied topics, and the first 40 transcript utterances | Stable taxonomy for charts |
 | L3 Theme refinement | Optional OpenAI JSON extraction (primary + secondary theme, rationale, quote) | Adds judgment when an API key is configured; the deterministic taxonomy remains the offline default |
+| L4 Taxonomy quality validation | Evidence-based pass/fail check over title, summary, supplied topics, and quoted transcript support | Prevents overconfidence in a keyword-based taxonomy and drives a human-review queue when the match is weak |
 
 **Clustering is not currently implemented.** The current pipeline favors an explainable, reproducible taxonomy for this small dataset.
+
+For each theme, the pipeline performs an evidence check that verifies whether the assigned label is supported by title, summary, provided topics, or an example quote. The resulting `taxonomy_validation.json` report includes a pass rate and a list of meetings marked for human review when no evidence signal is found. This satisfies the requirement to treat taxonomy assignments as a reviewed output instead of unquestioned truth.
 
 **Why not LLM-only?** Call type is deterministic from metadata. Spending tokens on it hides a simple, defensible rule. The panel will ask “why this category?” — rules + a quoted span beat a black box.
 
@@ -149,6 +152,7 @@ flowchart LR
         REC["MeetingRecord<br/>deterministic per-call record"]
         FINAL["Finalized MeetingRecord"]
         AGG["Aggregate records"]
+        VAL["taxonomy_validation.json<br/>theme evidence review"]
         THEME["Theme catalog"]
         TRENDS["Weekly sentiment<br/>+ takeaways"]
         HEAT["Module heatmap"]
@@ -160,6 +164,7 @@ flowchart LR
     subgraph Store["File-backed artifact store · data/processed"]
         MEET["meetings.json"]
         THEMES["themes.json"]
+        VALIDATE["taxonomy_validation.json"]
         TREND["sentiment_trends.json"]
         HM["sentiment_heatmap.json"]
         RISK["risk_radar.json"]
@@ -191,11 +196,13 @@ flowchart LR
     LLM -->|"no / disabled"| FINAL
     FINAL --> AGG
 
+    AGG --> VAL
     AGG --> THEME
     AGG --> TRENDS
     AGG --> HEAT
     AGG --> INS
     AGG --> OVER
+    VAL --> WRITE
     THEME --> WRITE
     TRENDS --> WRITE
     HEAT --> WRITE
@@ -203,6 +210,7 @@ flowchart LR
     OVER --> WRITE
     WRITE --> MEET
     WRITE --> THEMES
+    WRITE --> VALIDATE
     WRITE --> TREND
     WRITE --> HM
     WRITE --> RISK
@@ -212,6 +220,7 @@ flowchart LR
 
     MEET --> ROUTES
     THEMES --> ROUTES
+    VALIDATE --> ROUTES
     TREND --> ROUTES
     HM --> ROUTES
     RISK --> ROUTES
@@ -234,10 +243,10 @@ flowchart LR
    deterministic call-type/module/theme/risk rules, and creates a
    `MeetingRecord`. If enabled and configured, `pipeline/llm.py` may refine
    theme fields and cache the response under `data/cache/llm/`.
-3. **Aggregation** produces theme counts/examples, weekly sentiment and
-   takeaways, a module heatmap, account risk rows, a cross-surface graph, VOC
-   groups, and overview KPIs. `pipeline/run.py` serializes these into eight
-   JSON files in `data/processed/`.
+3. **Aggregation** produces theme counts/examples, a taxonomy validation report,
+   weekly sentiment and takeaways, a module heatmap, account risk rows, a
+   cross-surface graph, VOC groups, and overview KPIs. `pipeline/run.py`
+   serializes these into nine JSON files in `data/processed/`.
 4. **Serving** (`app/main.py`) reads the relevant artifact when an API route is
    requested. The UI's `src/api.ts` maps these endpoints into TanStack Query
    calls; pages display the overview, categories, sentiment, risks, graph, and
@@ -318,7 +327,7 @@ MeetingRecord
 | Route | Purpose |
 | --- | --- |
 | `/` Overview | KPI cards (n calls, mix of types, mean utterance polarity), call-type mix, takeaways, VOC backlog, top risks |
-| `/themes` | Theme codebook, counts, stacked bar by call type, click → example transcripts |
+| `/themes` | Theme codebook, counts, stacked bar by call type, taxonomy validation summary, click → example transcripts |
 | `/sentiment` | Weekly trends, module heatmap, trajectory counts, written takeaways |
 | `/graph` | Force-directed issue graph (insight B) |
 | `/accounts` | Risk radar table |

@@ -56,6 +56,23 @@ export type ThemeBucket = {
   rationale: string
 }
 
+export type TaxonomyValidation = {
+  status: 'passed' | 'needs_human_review'
+  reviewed_meetings: number
+  reviewed_themes: number
+  pass_rate: number
+  needs_human_review: number
+  criteria: string[]
+  reviews: Array<{
+    meeting_id: string
+    theme_id: string
+    theme_label: string
+    status: 'pass' | 'needs_review'
+    evidence: Record<string, boolean>
+    why: string
+  }>
+}
+
 export type SentimentPoint = {
   week: string
   call_type: string

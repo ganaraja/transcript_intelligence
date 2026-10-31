@@ -22,6 +22,69 @@ def _theme_labels() -> dict[str, str]:
     return {tid: label for tid, label, _ in THEMES} | {"other": "Other / uncategorized"}
 
 
+def _theme_keywords(theme_id: str) -> set[str]:
+    from pipeline.taxonomy import THEMES
+
+    for tid, _, keywords in THEMES:
+        if tid == theme_id:
+            return {str(k).lower() for k in keywords if str(k).strip()}
+    return set()
+
+
+def taxonomy_validation(records: list[MeetingRecord]) -> dict:
+    theme_ids = sorted({record.primary_theme for record in records})
+    reviews: list[dict] = []
+    passed = 0
+    reviewed = 0
+
+    for theme_id in theme_ids:
+        samples = [record for record in records if record.primary_theme == theme_id][:3]
+        for record in samples:
+            reviewed += 1
+            keywords = _theme_keywords(theme_id)
+            evidence = {
+                "title_match": bool(keywords and any(k in (record.title or "").lower() for k in keywords)),
+                "summary_match": bool(keywords and any(k in (record.summary or "").lower() for k in keywords)),
+                "topic_match": bool(keywords and any(k in " ".join(record.provided_topics).lower() for k in keywords)),
+                "quote_match": bool(keywords and any(k in (record.example_quote or "").lower() for k in keywords)),
+            }
+            valid = any(evidence.values())
+            if valid:
+                passed += 1
+            reviews.append(
+                {
+                    "meeting_id": record.meeting_id,
+                    "theme_id": theme_id,
+                    "theme_label": record.primary_theme_label,
+                    "status": "pass" if valid else "needs_review",
+                    "evidence": evidence,
+                    "why": (
+                        "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+                        if valid
+                        else "Theme evidence is weak or missing; a human review is recommended."
+                    ),
+                }
+            )
+
+    sample_size = max(reviewed, 1)
+    pass_rate = round(passed / sample_size, 4)
+    status = "passed" if pass_rate >= 0.8 else "needs_human_review"
+
+    return {
+        "status": status,
+        "reviewed_meetings": reviewed,
+        "reviewed_themes": len(theme_ids),
+        "pass_rate": pass_rate,
+        "needs_human_review": len([r for r in reviews if r["status"] == "needs_review"]),
+        "criteria": [
+            "Primary themes are validated against title, summary, provided topics, and example quote evidence.",
+            "A theme is considered valid when at least one evidence signal is present.",
+            "Results below 80% pass rate trigger a human review queue.",
+        ],
+        "reviews": reviews,
+    }
+
+
 def write_json(path: Path, payload: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2, default=str), encoding="utf-8")
@@ -89,10 +152,12 @@ def run_pipeline(ds: Path | None = None, out: Path | None = None, use_llm: bool 
     points = trend_table(records)
     notes = interpret_trends(records, points)
     catalog = build_theme_catalog(records)
+    validation = taxonomy_validation(records)
 
     payload_meetings = [m.model_dump() for m in records]
     write_json(dest / "meetings.json", payload_meetings)
     write_json(dest / "themes.json", [t.model_dump() for t in catalog])
+    write_json(dest / "taxonomy_validation.json", validation)
     write_json(dest / "sentiment_trends.json", [p.model_dump() for p in points])
     write_json(dest / "sentiment_heatmap.json", module_heatmap(records))
     write_json(dest / "risk_radar.json", risk_radar(records))

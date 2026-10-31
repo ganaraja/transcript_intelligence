@@ -4,6 +4,7 @@ import pytest
 
 from pipeline.classify import classify_call_type, risk_flags, score_themes, week_key
 from pipeline.insights import issue_graph, risk_radar
+from pipeline.run import taxonomy_validation
 from pipeline.models import MeetingRecord, RawMeeting, Utterance
 from pipeline.sentiment import module_heatmap, score_meeting, trend_table, trajectory, weighted_mean
 
@@ -64,6 +65,36 @@ def test_score_themes_weights_title_more_than_supplied_topics() -> None:
     assert label == "SSO / Identity failures"
     assert "renewal_commercial" in secondary
     assert "title weighted" in rationale
+
+
+def test_taxonomy_validation_reports_review_status() -> None:
+    records = [
+        meeting_record(
+            meeting_id="meeting-1",
+            title="Support Case #42 - SSO login failure",
+            summary="Customer cannot authenticate via SSO after the patch.",
+            provided_topics=["identity"],
+            primary_theme="sso_identity_failure",
+            primary_theme_label="SSO / Identity failures",
+            example_quote="SSO login failed after the identity update.",
+        ),
+        meeting_record(
+            meeting_id="meeting-2",
+            title="Aegis / Northwind - Renewal review",
+            summary="Discussed annual renewal and contract expansion.",
+            provided_topics=["renewal"],
+            primary_theme="renewal_commercial",
+            primary_theme_label="Renewal & commercial",
+            example_quote="We are discussing the annual renewal and billing terms.",
+        ),
+    ]
+
+    validation = taxonomy_validation(records)
+
+    assert validation["status"] == "passed"
+    assert validation["reviewed_meetings"] == 2
+    assert validation["needs_human_review"] == 0
+    assert validation["pass_rate"] == 1.0
 
 
 def test_weighted_mean_uses_duration_and_defaults_missing_duration_to_one() -> None:

@@ -1,0 +1,404 @@
+{
+  "status": "passed",
+  "reviewed_meetings": 30,
+  "reviewed_themes": 10,
+  "pass_rate": 1.0,
+  "needs_human_review": 0,
+  "criteria": [
+    "Primary themes are validated against title, summary, provided topics, and example quote evidence.",
+    "A theme is considered valid when at least one evidence signal is present.",
+    "Results below 80% pass rate trigger a human review queue."
+  ],
+  "reviews": [
+    {
+      "meeting_id": "01KQ7F58A2E07B857C24624D",
+      "theme_id": "competitive_evaluation",
+      "theme_label": "Competitive evaluation",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ298F2846EFE59B0D70E2",
+      "theme_id": "competitive_evaluation",
+      "theme_label": "Competitive evaluation",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQA0F0BE68E74D66EB4171",
+      "theme_id": "competitive_evaluation",
+      "theme_label": "Competitive evaluation",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ9A6BE09D73A9BB5798C7",
+      "theme_id": "comply_launch_audit",
+      "theme_label": "Comply v2 / audit readiness",
+      "status": "pass",
+      "evidence": {
+        "title_match": false,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ85D10E82A26A8F754FB8",
+      "theme_id": "comply_launch_audit",
+      "theme_label": "Comply v2 / audit readiness",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ0CAE7F064EC93F0540CA",
+      "theme_id": "comply_launch_audit",
+      "theme_label": "Comply v2 / audit readiness",
+      "status": "pass",
+      "evidence": {
+        "title_match": false,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ38C4101D6774F2F02331",
+      "theme_id": "detect_outage",
+      "theme_label": "Detect reliability / outage",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": false,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQEDB92E33CF9945A7F71B",
+      "theme_id": "detect_outage",
+      "theme_label": "Detect reliability / outage",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": false,
+        "quote_match": false
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ46A9DE0AECB006D897A0",
+      "theme_id": "detect_outage",
+      "theme_label": "Detect reliability / outage",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": false,
+        "topic_match": false,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQADF3D76E82BF8BA19AF2",
+      "theme_id": "engineering_ops",
+      "theme_label": "Internal engineering ops",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": false,
+        "topic_match": false,
+        "quote_match": false
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQD1270E98A7DFC55ADCF8",
+      "theme_id": "engineering_ops",
+      "theme_label": "Internal engineering ops",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": false,
+        "topic_match": true,
+        "quote_match": false
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ445B1B5B890316C9E300",
+      "theme_id": "engineering_ops",
+      "theme_label": "Internal engineering ops",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": false,
+        "quote_match": false
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQDD5172176D02DB51360A",
+      "theme_id": "incident_communication",
+      "theme_label": "Incident communication gaps",
+      "status": "pass",
+      "evidence": {
+        "title_match": false,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ2331EFD78BF3B1CAB747",
+      "theme_id": "incident_communication",
+      "theme_label": "Incident communication gaps",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ2D93184912F0147315E7",
+      "theme_id": "incident_communication",
+      "theme_label": "Incident communication gaps",
+      "status": "pass",
+      "evidence": {
+        "title_match": false,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": false
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ9BB82FD97C9607D57E90",
+      "theme_id": "onboarding_adoption",
+      "theme_label": "Onboarding & adoption",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ77F2867FC54E13A8C495",
+      "theme_id": "onboarding_adoption",
+      "theme_label": "Onboarding & adoption",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ41FB5CCFD9EA583FB020",
+      "theme_id": "onboarding_adoption",
+      "theme_label": "Onboarding & adoption",
+      "status": "pass",
+      "evidence": {
+        "title_match": false,
+        "summary_match": false,
+        "topic_match": false,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ4EE836687F95080D92AB",
+      "theme_id": "product_roadmap",
+      "theme_label": "Product roadmap & planning",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ4D504CE09A8F6ECA1F5A",
+      "theme_id": "product_roadmap",
+      "theme_label": "Product roadmap & planning",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQB3B16F255B65F39597D0",
+      "theme_id": "product_roadmap",
+      "theme_label": "Product roadmap & planning",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQBB7C4D4789DB2F3DA9C2",
+      "theme_id": "protect_backup",
+      "theme_label": "Protect / backup & restore",
+      "status": "pass",
+      "evidence": {
+        "title_match": false,
+        "summary_match": true,
+        "topic_match": false,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ1A6B7E81B06F4A13B60D",
+      "theme_id": "protect_backup",
+      "theme_label": "Protect / backup & restore",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQA1AFDC1306A000B0C7D9",
+      "theme_id": "protect_backup",
+      "theme_label": "Protect / backup & restore",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ0C1280EDA4E70AAD7C35",
+      "theme_id": "renewal_commercial",
+      "theme_label": "Renewal & commercial",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQFFC0F889AE8CFEE7A00D",
+      "theme_id": "renewal_commercial",
+      "theme_label": "Renewal & commercial",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQAEA50436D047BC39CFC7",
+      "theme_id": "renewal_commercial",
+      "theme_label": "Renewal & commercial",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQADC32D89E2B76B698E84",
+      "theme_id": "sso_identity_failure",
+      "theme_label": "SSO / Identity failures",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQC3A2EBC501837E973B16",
+      "theme_id": "sso_identity_failure",
+      "theme_label": "SSO / Identity failures",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    },
+    {
+      "meeting_id": "01KQ9772B2348F500FB09D1E",
+      "theme_id": "sso_identity_failure",
+      "theme_label": "SSO / Identity failures",
+      "status": "pass",
+      "evidence": {
+        "title_match": true,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+    }
+  ]
+}

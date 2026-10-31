@@ -7,6 +7,10 @@ import { Badge, Card, Err, Loading, MeetingLink } from '../lib'
 export default function Themes() {
   const themes = useQuery({ queryKey: ['themes'], queryFn: api.themes })
   const meetings = useQuery({ queryKey: ['meetings'], queryFn: api.meetings })
+  const validation = useQuery({
+    queryKey: ['taxonomy-validation'],
+    queryFn: api.taxonomyValidation,
+  })
   const [selected, setSelected] = useState<string | null>(null)
 
   const chart = useMemo(
@@ -22,8 +26,9 @@ export default function Themes() {
     [themes.data],
   )
 
-  if (themes.isPending || meetings.isPending) return <Loading />
+  if (themes.isPending || meetings.isPending || validation.isPending) return <Loading />
   if (themes.isError) return <Err error={themes.error} />
+  if (validation.isError) return <Err error={validation.error} />
 
   const active = (themes.data ?? []).find((t) => t.theme_id === (selected || themes.data?.[0]?.theme_id))
   const examples = (meetings.data ?? []).filter((m) => active && m.primary_theme === active.theme_id)
@@ -38,6 +43,35 @@ export default function Themes() {
           requirement, not just a count.
         </p>
       </div>
+
+      <Card title="Taxonomy validation pass">
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge>{validation.data?.status === 'passed' ? 'Passed' : 'Needs human review'}</Badge>
+          <span className="text-sm text-slate-300">
+            {validation.data?.pass_rate ? `${(validation.data.pass_rate * 100).toFixed(0)}%` : '0%'} theme-evidence pass rate
+          </span>
+        </div>
+        <div className="mt-3 grid gap-3 text-sm text-slate-300 md:grid-cols-3">
+          <div className="rounded border border-slate-800 bg-slate-900/60 p-3">
+            <div className="text-slate-400">Reviewed meetings</div>
+            <div className="mt-1 text-lg font-semibold">{validation.data?.reviewed_meetings ?? 0}</div>
+          </div>
+          <div className="rounded border border-slate-800 bg-slate-900/60 p-3">
+            <div className="text-slate-400">Reviewed themes</div>
+            <div className="mt-1 text-lg font-semibold">{validation.data?.reviewed_themes ?? 0}</div>
+          </div>
+          <div className="rounded border border-slate-800 bg-slate-900/60 p-3">
+            <div className="text-slate-400">Needs review</div>
+            <div className="mt-1 text-lg font-semibold">{validation.data?.needs_human_review ?? 0}</div>
+          </div>
+        </div>
+        <ul className="mt-3 list-disc space-y-1 pl-5 text-xs text-slate-400">
+          {(validation.data?.criteria ?? []).map((criterion) => (
+            <li key={criterion}>{criterion}</li>
+          ))}
+        </ul>
+      </Card>
+
       <Card title="Primary theme × call type">
         <div className="h-80">
           <ResponsiveContainer>

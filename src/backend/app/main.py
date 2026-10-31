@@ -66,6 +66,11 @@ def themes() -> object:
     return _load("themes.json")
 
 
+@app.get("/api/taxonomy-validation")
+def taxonomy_validation() -> object:
+    return _load("taxonomy_validation.json")
+
+
 @app.get("/api/sentiment")
 def sentiment() -> dict:
     return {

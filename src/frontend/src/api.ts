@@ -5,6 +5,7 @@ import type {
   Overview,
   RiskRow,
   SentimentPoint,
+  TaxonomyValidation,
   ThemeBucket,
   VocRow,
 } from './types'
@@ -22,6 +23,7 @@ export const api = {
   meetings: () => getJson<Meeting[]>('/api/meetings'),
   meeting: (id: string) => getJson<Meeting>(`/api/meetings/${id}`),
   themes: () => getJson<ThemeBucket[]>('/api/themes'),
+  taxonomyValidation: () => getJson<TaxonomyValidation>('/api/taxonomy-validation'),
   sentiment: () =>
     getJson<{ trends: SentimentPoint[]; heatmap: HeatCell[]; takeaways: string[] }>(
       '/api/sentiment',

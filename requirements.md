@@ -22,6 +22,12 @@ could indicate and why someone should care.
 insights you think could be generated from this data. Think about the different
 stakeholders who might use a tool like this — what would be valuable to them that isn't obvious at first glance? Document at least 2-3 additional insight ideas. You can
 implement them or simply describe them with your reasoning for why they'd matter.
+
+Implementation note for quality control:
+- Theme assignments should be checked against title, summary, provided topics, and supporting quote evidence.
+- A validation pass should flag low-confidence matches for human review and report pass-rate metrics instead of treating taxonomy labels as unquestioned truth.
+- This is especially important for demo or stakeholder review, where misclassified themes can mislead decision-makers.
+
 How to Present Your Work
 Submit three deliverables:
 

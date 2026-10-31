@@ -11,6 +11,7 @@ vi.mock('../src/api', () => ({
   api: {
     themes: vi.fn(),
     meetings: vi.fn(),
+    taxonomyValidation: vi.fn(),
   },
 }))
 
@@ -32,6 +33,27 @@ const themeBuckets: ThemeBucket[] = [
     rationale: 'Renewal was the strongest title match.',
   },
 ]
+
+const taxonomyValidation = {
+  status: 'passed',
+  reviewed_meetings: 2,
+  reviewed_themes: 2,
+  pass_rate: 1,
+  needs_human_review: 0,
+  criteria: [
+    'Primary themes are validated against title, summary, provided topics, and example quote evidence.',
+  ],
+  reviews: [
+    {
+      meeting_id: 'meeting-sso',
+      theme_id: 'sso_identity_failure',
+      theme_label: 'SSO / Identity failures',
+      status: 'pass',
+      evidence: { title_match: true, summary_match: true, topic_match: false, quote_match: true },
+      why: 'Theme evidence appears in title, summary, provided topics, or a supporting quote.',
+    },
+  ],
+}
 
 const meetings: Meeting[] = [
   {
@@ -125,10 +147,14 @@ describe('Themes page', () => {
   beforeEach(() => {
     vi.mocked(api.themes).mockResolvedValue(themeBuckets)
     vi.mocked(api.meetings).mockResolvedValue(meetings)
+    vi.mocked(api.taxonomyValidation).mockResolvedValue(taxonomyValidation)
   })
 
-  it('shows examples for the selected theme', async () => {
+  it('shows a taxonomy validation summary and examples for the selected theme', async () => {
     renderThemes()
+
+    expect(await screen.findByText(/Taxonomy validation pass/)).toBeInTheDocument()
+    expect(screen.getByText(/100% theme-evidence pass rate/)).toBeInTheDocument()
 
     const initialExamples = await screen.findByRole('heading', {
       name: 'SSO / Identity failures — examples',
@@ -152,5 +178,13 @@ describe('Themes page', () => {
     renderThemes()
 
     expect(await screen.findByText(/\/api\/themes failed \(500\)/)).toBeInTheDocument()
+  })
+
+  it('shows the taxonomy validation error when the validation report fails', async () => {
+    vi.mocked(api.taxonomyValidation).mockRejectedValue(new Error('/api/taxonomy-validation failed (500)'))
+
+    renderThemes()
+
+    expect(await screen.findByText(/\/api\/taxonomy-validation failed \(500\)/)).toBeInTheDocument()
   })
 })

@@ -7,8 +7,9 @@ This is a take-home style analysis app, not a production deployment.
 ## What you get
 
 1. **Themes** — support / external / internal from title + attendee domains; primary themes from a title-weighted keyword taxonomy (optional OpenAI refine).
-2. **Sentiment** — duration-weighted utterance polarity, **customer-side** on mixed calls, weekly trends and module heatmap.
-3. **Bonus insights**
+2. **Theme validation pass** — an evidence-based review that checks each theme assignment against title, summary, provided topics, and quote support, with a human-review queue when evidence is weak.
+3. **Sentiment** — duration-weighted utterance polarity, **customer-side** on mixed calls, weekly trends and module heatmap.
+4. **Bonus insights**
    - Risk radar (churn, competitive, escalation)
    - Cross-surface issue graph (same theme across support, AM, and eng)
    - Voice-of-customer backlog by module
@@ -135,6 +136,7 @@ Call type is deterministic from metadata, so we do not spend an LLM on it. Theme
 | GET | `/api/meetings` | All enriched meetings |
 | GET | `/api/meetings/{id}` | One meeting |
 | GET | `/api/themes` | Theme codebook |
+| GET | `/api/taxonomy-validation` | Evidence-based theme validation pass rate + items needing human review |
 | GET | `/api/sentiment` | Trends + heatmap |
 | GET | `/api/risk` | Account risk radar |
 | GET | `/api/graph` | Issue graph nodes/edges |
