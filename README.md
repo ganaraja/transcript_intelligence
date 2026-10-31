@@ -15,6 +15,8 @@ This is a take-home style analysis app, not a production deployment.
    - Cross-surface issue graph (same theme across support, AM, and eng)
    - Voice-of-customer backlog by module
 
+The dashboard has shared stakeholder presets (Support, Sales, Product, Engineering) and composable call-type, product-module, account, and date filters. Selections are encoded in the URL and retained when navigating to meeting details. Overview metrics, theme counts/examples, sentiment aggregates, risk rows, and graph nodes reflect matching meetings. Corpus-wide narratives and other non-filtered summaries are labeled when a filter is active. The account risk view supports meeting drill-down; a separate account-detail route is not implemented.
+
 Processed artifacts live in `data/processed/` so the dashboard runs without an LLM key.
 Rebuild artifacts with `./scripts/process-data.sh` after updating the pipeline; the resulting `meetings.json` and `risk_radar.json` include confidence metadata, and `run_manifest.json` records run/data/code lineage.
 

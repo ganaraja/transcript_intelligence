@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 import ForceGraph2D from 'react-force-graph-2d'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { api } from '../api'
 import { CALL_COLORS, Card, Err, Loading } from '../lib'
+import { useDashboardFilters } from '../useDashboardFilters'
 
 type GNode = {
   id: string
@@ -15,33 +16,55 @@ type GNode = {
 
 export default function GraphPage() {
   const q = useQuery({ queryKey: ['graph'], queryFn: api.graph })
+  const meetings = useQuery({ queryKey: ['meetings'], queryFn: api.meetings })
   const navigate = useNavigate()
+  const location = useLocation()
+  const { apply: applyFilters, isFiltered } = useDashboardFilters()
 
   const data = useMemo(() => {
-    if (!q.data) return { nodes: [], links: [] }
+    if (!q.data || !meetings.data) return { nodes: [], links: [], meetingCount: 0 }
+    const filteredMeetings = applyFilters(meetings.data)
+    const allowedMeetingNodes = new Set(filteredMeetings.map((meeting) => `m:${meeting.meeting_id}`))
     const cross = new Set(q.data.cross_surface_themes.map((t) => `t:${t}`))
-    const keepThemes = cross.size ? cross : new Set(q.data.nodes.filter((n) => n.kind === 'theme').map((n) => n.id))
+    const allThemes = new Set(q.data.nodes.filter((node) => node.kind === 'theme').map((node) => node.id))
+    const keepThemes = isFiltered ? allThemes : cross.size ? cross : allThemes
     const meetingIds = new Set(
-      q.data.edges.filter((e) => e.kind === 'has_theme' && keepThemes.has(e.target)).map((e) => e.source),
+      q.data.edges
+        .filter((e) => e.kind === 'has_theme' && keepThemes.has(e.target) && allowedMeetingNodes.has(e.source))
+        .map((e) => e.source),
     )
-    const nodes = q.data.nodes.filter(
-      (n) => n.kind === 'theme' || n.kind === 'module' || meetingIds.has(n.id),
-    )
+    const connectedNodeIds = new Set(meetingIds)
+    for (const edge of q.data.edges) {
+      if (meetingIds.has(edge.source) && !edge.kind.startsWith('cross_surface')) {
+        connectedNodeIds.add(edge.target)
+      }
+    }
+    const nodes = q.data.nodes.filter((node) => connectedNodeIds.has(node.id))
     const ids = new Set(nodes.map((n) => n.id))
     const links = q.data.edges
       .filter((e) => ids.has(e.source) && ids.has(e.target))
       .map((e) => ({ source: e.source, target: e.target, kind: e.kind }))
-    return { nodes: nodes.map((n) => ({ ...n })), links }
-  }, [q.data])
+    return { nodes: nodes.map((n) => ({ ...n })), links, meetingCount: filteredMeetings.length }
+  }, [q.data, meetings.data, applyFilters, isFiltered])
 
-  if (q.isPending) return <Loading />
+  if (q.isPending || meetings.isPending) return <Loading />
   if (q.isError) return <Err error={q.error} />
+  if (meetings.isError) return <Err error={meetings.error} />
 
   return (
     <div className="space-y-4">
       <div>
         <h1 className="text-2xl font-semibold">Cross-surface issue graph</h1>
         <p className="mt-1 text-sm text-slate-400">{q.data.insight}</p>
+        <p aria-live="polite" className="mt-2 text-xs text-slate-500">
+          Showing graph nodes for {data.meetingCount} meetings
+          {isFiltered ? ' matching dashboard filters' : ''}.
+        </p>
+        {isFiltered ? (
+          <p className="mt-1 text-xs text-slate-500">
+            The insight text summarizes the unfiltered corpus; the graph is a filtered association view, not evidence of causality.
+          </p>
+        ) : null}
       </div>
       <Card>
         <div className="mb-2 flex flex-wrap gap-3 text-xs text-slate-400">
@@ -88,10 +111,13 @@ export default function GraphPage() {
             }}
             onNodeClick={(node) => {
               const n = node as GNode
-              if (n.id.startsWith('m:')) navigate(`/meetings/${n.id.slice(2)}`)
+              if (n.id.startsWith('m:')) navigate(`/meetings/${n.id.slice(2)}${location.search}`)
             }}
           />
         </div>
+        {!data.nodes.length ? (
+          <p className="mt-3 text-sm text-slate-400">No graph nodes match the current filters.</p>
+        ) : null}
       </Card>
     </div>
   )

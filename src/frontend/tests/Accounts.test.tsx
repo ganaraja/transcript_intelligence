@@ -74,11 +74,11 @@ const meetings: Meeting[] = [
   },
 ]
 
-function renderAccounts() {
+function renderAccounts(initialEntry = '/') {
   const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } })
   return render(
     <QueryClientProvider client={queryClient}>
-      <MemoryRouter>
+      <MemoryRouter initialEntries={[initialEntry]}>
         <Accounts />
       </MemoryRouter>
     </QueryClientProvider>,
@@ -97,5 +97,12 @@ describe('Accounts risk confidence', () => {
     expect(await screen.findByText('Risk-rule confidence:')).toBeInTheDocument()
     expect(screen.getByText('medium confidence')).toBeInTheDocument()
     expect(screen.getByText('Churn key moment: churn_signal.')).toBeInTheDocument()
+  })
+
+  it('removes risk rows when no associated meeting matches the selected filter', async () => {
+    renderAccounts('/?callType=external')
+
+    expect(await screen.findByText('Showing 0 accounts from 0 matching meetings matching dashboard filters.')).toBeInTheDocument()
+    expect(screen.getByText('No risk accounts match the current filters.')).toBeInTheDocument()
   })
 })

@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { api } from '../src/api'
 import Overview from '../src/pages/Overview'
-import type { Overview as OverviewData, RunManifest } from '../src/types'
+import type { Meeting, Overview as OverviewData, RunManifest } from '../src/types'
 
 vi.mock('../src/api', () => ({
   api: {
@@ -12,6 +12,7 @@ vi.mock('../src/api', () => ({
     provenance: vi.fn(),
     voc: vi.fn(),
     risk: vi.fn(),
+    meetings: vi.fn(),
   },
 }))
 
@@ -24,6 +25,62 @@ const overview: OverviewData = {
   approach: { call_type: 'Rules', themes: 'Taxonomy', sentiment: 'Source labels' },
   takeaways: ['Sample takeaway.'],
 }
+
+const supportMeeting: Meeting = {
+    meeting_id: 'm1',
+    title: 'Support call',
+    start_time: '2026-03-10T12:00:00Z',
+    duration_min: 5,
+    call_type: 'support',
+    call_type_method: 'rule',
+    call_type_reason: 'title',
+    customer_name: 'Northwind',
+    customer_domains: [],
+    product_modules: ['identity'],
+    primary_theme: 'identity',
+    primary_theme_label: 'Identity',
+    secondary_themes: [],
+    theme_rationale: '',
+    example_quote: '',
+    provided_topics: [],
+    provided_overall_sentiment: null,
+    provided_sentiment_score: null,
+    utterance_sentiment_mean: -0.5,
+    customer_sentiment_mean: -0.5,
+    aegis_sentiment_mean: null,
+    sentiment_trajectory: 'flat',
+    risk_flags: [],
+    risk_score: 0,
+    confidence: {
+      call_type: { level: 'high', evidence: [] },
+      theme: { level: 'high', evidence: [] },
+      sentiment: { level: 'high', evidence: [] },
+      risk: { level: 'high', evidence: [] },
+    },
+    competitor_mentions: [],
+    action_item_count: 0,
+    action_items: [],
+    key_moment_types: [],
+    key_moments: [],
+    summary: '',
+    transcript_preview: '',
+    utterance_count: 1,
+    customer_utterance_count: 1,
+    week: '2026-03-09',
+  }
+
+const meetings: Meeting[] = [
+  supportMeeting,
+  {
+    ...supportMeeting,
+    meeting_id: 'm2',
+    title: 'Internal engineering sync',
+    call_type: 'internal',
+    customer_name: null,
+    product_modules: ['billing'],
+    utterance_sentiment_mean: 0.5,
+  },
+]
 
 const manifest: RunManifest = {
   generated_at: '2026-10-31T12:00:00+00:00',
@@ -63,11 +120,11 @@ const manifest: RunManifest = {
   artifacts: ['meetings.json'],
 }
 
-function renderOverview() {
+function renderOverview(initialEntry = '/') {
   const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } })
   return render(
     <QueryClientProvider client={queryClient}>
-      <MemoryRouter>
+      <MemoryRouter initialEntries={[initialEntry]}>
         <Overview />
       </MemoryRouter>
     </QueryClientProvider>,
@@ -80,6 +137,7 @@ describe('Overview provenance', () => {
     vi.mocked(api.provenance).mockResolvedValue(manifest)
     vi.mocked(api.voc).mockResolvedValue([])
     vi.mocked(api.risk).mockResolvedValue([])
+    vi.mocked(api.meetings).mockResolvedValue(meetings)
   })
 
   it('shows run, dataset, and LLM lineage with source hashes', async () => {
@@ -102,5 +160,14 @@ describe('Overview provenance', () => {
     renderOverview()
 
     expect(await screen.findByText(/\/api\/provenance failed \(404\)/)).toBeInTheDocument()
+  })
+
+  it('recomputes the Overview metrics for URL filters', async () => {
+    renderOverview('/?callType=support')
+
+    expect(await screen.findByText('Showing 1 of 2 meetings matching dashboard filters.')).toBeInTheDocument()
+    expect(screen.getByText('1')).toBeInTheDocument()
+    expect(screen.getByText('1 / 0 / 0')).toBeInTheDocument()
+    expect(screen.getByText('-0.50')).toBeInTheDocument()
   })
 })

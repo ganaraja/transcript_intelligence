@@ -31,6 +31,11 @@ Implementation note for quality control:
 - Record data and analysis provenance, including source-file hashes, pipeline/code version, run timestamp, configured model and prompt version, and whether data augmentation was performed.
 - This is especially important for demo or stakeholder review, where misclassified themes can mislead decision-makers.
 
+Dashboard interaction requirements (implemented extension):
+- Provide stakeholder presets and composable call-type, product-module, account, and date-range filters across the dashboard's aggregate insight views.
+- Keep filter state in the URL so filtered views can be shared and meeting drill-down links retain their context.
+- Recompute displayed aggregates from the matching meetings. Clearly label corpus-wide narratives or validation summaries that are not recomputed for the active filters.
+
 How to Present Your Work
 Submit three deliverables:
 

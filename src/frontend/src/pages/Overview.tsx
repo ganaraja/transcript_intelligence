@@ -2,17 +2,54 @@ import { useQuery } from '@tanstack/react-query'
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
 import { api } from '../api'
 import { Badge, CALL_COLORS, Card, Err, Loading } from '../lib'
+import { useDashboardFilters } from '../useDashboardFilters'
 
 export default function Overview() {
   const overview = useQuery({ queryKey: ['overview'], queryFn: api.overview })
   const provenance = useQuery({ queryKey: ['provenance'], queryFn: api.provenance })
   const voc = useQuery({ queryKey: ['voc'], queryFn: api.voc })
   const risk = useQuery({ queryKey: ['risk'], queryFn: api.risk })
+  const meetings = useQuery({ queryKey: ['meetings'], queryFn: api.meetings })
+  const { apply: applyFilters, isFiltered } = useDashboardFilters()
 
-  if (overview.isPending) return <Loading />
+  if (overview.isPending || meetings.isPending) return <Loading />
   if (overview.isError) return <Err error={overview.error} />
+  if (meetings.isError) return <Err error={meetings.error} />
   const data = overview.data
-  const pie = Object.entries(data.call_type_mix).map(([name, value]) => ({ name, value }))
+  const filteredMeetings = applyFilters(meetings.data)
+  const callTypeMix = filteredMeetings.reduce<Record<string, number>>((counts, meeting) => {
+    counts[meeting.call_type] = (counts[meeting.call_type] ?? 0) + 1
+    return counts
+  }, {})
+  const meanPolarity = filteredMeetings.length
+    ? filteredMeetings.reduce((sum, meeting) => sum + meeting.utterance_sentiment_mean, 0) / filteredMeetings.length
+    : 0
+  const riskAccounts = new Set(
+    filteredMeetings
+      .filter((meeting) => meeting.risk_score >= 0.5 && meeting.call_type !== 'internal')
+      .map((meeting) => meeting.customer_name ?? meeting.meeting_id),
+  )
+  const filteredRiskRows = (risk.data ?? [])
+    .map((row) => {
+      const associated = row.meeting_ids
+        .map((id) => filteredMeetings.find((meeting) => meeting.meeting_id === id))
+        .filter((meeting) => meeting !== undefined)
+      if (!associated.length) return null
+      return {
+        ...row,
+        risk_score: Math.max(...associated.map((meeting) => meeting.risk_score)),
+        risk_flags: [...new Set(associated.flatMap((meeting) => meeting.risk_flags))],
+        mean_customer_sentiment: (() => {
+          const scores = associated
+            .map((meeting) => meeting.customer_sentiment_mean)
+            .filter((score): score is number => score !== null)
+          return scores.length ? scores.reduce((sum, score) => sum + score, 0) / scores.length : null
+        })(),
+      }
+    })
+    .filter((row) => row !== null)
+    .sort((a, b) => b.risk_score - a.risk_score)
+  const pie = Object.entries(callTypeMix).map(([name, value]) => ({ name, value }))
 
   return (
     <div className="space-y-6">
@@ -22,14 +59,18 @@ export default function Overview() {
           Hybrid pipeline: rules for call type, keyword taxonomy for themes, duration-weighted
           customer sentiment. Three extras: risk radar, cross-surface issue graph, VOC backlog.
         </p>
+        <p aria-live="polite" className="mt-2 text-xs text-slate-500">
+          Showing {filteredMeetings.length} of {meetings.data.length} meetings
+          {isFiltered ? ' matching dashboard filters' : ''}.
+        </p>
       </div>
 
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {[
-          ['Meetings', String(data.meeting_count)],
-          ['Support / AM / Internal', `${data.call_type_mix.support} / ${data.call_type_mix.external} / ${data.call_type_mix.internal}`],
-          ['Mean polarity', data.mean_utterance_sentiment.toFixed(2)],
-          ['High-risk accounts', String(data.high_risk_accounts)],
+          ['Meetings', String(filteredMeetings.length)],
+          ['Support / AM / Internal', `${callTypeMix.support ?? 0} / ${callTypeMix.external ?? 0} / ${callTypeMix.internal ?? 0}`],
+          ['Mean polarity', meanPolarity.toFixed(2)],
+          ['High-risk accounts', String(riskAccounts.size)],
         ].map(([k, v]) => (
           <Card key={k}>
             <div className="text-xs uppercase tracking-wide text-slate-500">{k}</div>
@@ -114,6 +155,7 @@ export default function Overview() {
           <p className="text-xs text-slate-500">{data.approach.call_type}</p>
         </Card>
         <Card title="What the numbers mean">
+          {isFiltered ? <p className="mb-2 text-xs text-slate-500">Narrative takeaways summarize the unfiltered corpus.</p> : null}
           <ul className="space-y-2 text-sm text-slate-300">
             {data.takeaways.map((t) => (
               <li key={t} className="border-l-2 border-sky-700 pl-3">
@@ -125,6 +167,7 @@ export default function Overview() {
       </div>
 
       <Card title="Voice-of-customer backlog (product)">
+        {isFiltered ? <p className="mb-2 text-xs text-slate-500">VOC group counts summarize the unfiltered corpus.</p> : null}
         <div className="grid gap-3 md:grid-cols-2">
           {(voc.data ?? []).slice(0, 6).map((row) => (
             <div key={`${row.voc_type}-${row.module}`} className="rounded-lg border border-slate-800 p-3">
@@ -151,7 +194,7 @@ export default function Overview() {
               </tr>
             </thead>
             <tbody>
-              {(risk.data ?? []).slice(0, 8).map((r) => (
+              {filteredRiskRows.slice(0, 8).map((r) => (
                 <tr key={r.account} className="border-t border-slate-800">
                   <td className="py-2">{r.account}</td>
                   <td>{r.risk_score.toFixed(2)}</td>

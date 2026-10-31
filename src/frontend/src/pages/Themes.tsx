@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react'
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { api } from '../api'
 import { Badge, Card, ConfidenceBadge, Err, Loading, MeetingLink } from '../lib'
+import { useDashboardFilters } from '../useDashboardFilters'
 
 export default function Themes() {
   const themes = useQuery({ queryKey: ['themes'], queryFn: api.themes })
@@ -11,11 +12,33 @@ export default function Themes() {
     queryKey: ['taxonomy-validation'],
     queryFn: api.taxonomyValidation,
   })
+  const { apply: applyFilters, isFiltered } = useDashboardFilters()
   const [selected, setSelected] = useState<string | null>(null)
+
+  const filteredMeetings = useMemo(
+    () => applyFilters(meetings.data ?? []),
+    [applyFilters, meetings.data],
+  )
+  const filteredThemes = useMemo(
+    () =>
+      (themes.data ?? [])
+        .map((theme) => {
+          const themeMeetings = filteredMeetings.filter((meeting) => meeting.primary_theme === theme.theme_id)
+          const byCallType = Object.fromEntries(
+            ['support', 'external', 'internal'].map((type) => [
+              type,
+              themeMeetings.filter((meeting) => meeting.call_type === type).length,
+            ]),
+          )
+          return { ...theme, count: themeMeetings.length, by_call_type: byCallType }
+        })
+        .filter((theme) => theme.count > 0),
+    [filteredMeetings, themes.data],
+  )
 
   const chart = useMemo(
     () =>
-      (themes.data ?? []).map((t) => ({
+      filteredThemes.map((t) => ({
         name: t.label.replace(' / ', '\n'),
         label: t.label,
         theme_id: t.theme_id,
@@ -23,15 +46,17 @@ export default function Themes() {
         external: t.by_call_type.external || 0,
         internal: t.by_call_type.internal || 0,
       })),
-    [themes.data],
+    [filteredThemes],
   )
 
   if (themes.isPending || meetings.isPending || validation.isPending) return <Loading />
   if (themes.isError) return <Err error={themes.error} />
   if (validation.isError) return <Err error={validation.error} />
 
-  const active = (themes.data ?? []).find((t) => t.theme_id === (selected || themes.data?.[0]?.theme_id))
-  const examples = (meetings.data ?? []).filter((m) => active && m.primary_theme === active.theme_id)
+  const active =
+    filteredThemes.find((t) => t.theme_id === selected) ??
+    filteredThemes[0]
+  const examples = filteredMeetings.filter((m) => active && m.primary_theme === active.theme_id)
 
   return (
     <div className="space-y-6">
@@ -42,9 +67,16 @@ export default function Themes() {
           topics and the transcript. Click a bar or row for examples — that is the evaluation
           requirement, not just a count.
         </p>
+        <p aria-live="polite" className="mt-2 text-xs text-slate-500">
+          Showing {filteredMeetings.length} of {meetings.data?.length ?? 0} meetings
+          {isFiltered ? ' matching dashboard filters' : ''}.
+        </p>
       </div>
 
       <Card title="Taxonomy validation pass">
+        {isFiltered ? (
+          <p className="mb-2 text-xs text-slate-500">Validation metrics summarize the unfiltered corpus.</p>
+        ) : null}
         <div className="flex flex-wrap items-center gap-2">
           <Badge>{validation.data?.status === 'passed' ? 'Passed' : 'Needs human review'}</Badge>
           <span className="text-sm text-slate-300">
@@ -99,7 +131,7 @@ export default function Themes() {
       <div className="grid gap-4 lg:grid-cols-3">
         <Card title="Codebook" className="lg:col-span-1">
           <ul className="space-y-1 text-sm">
-            {(themes.data ?? []).map((t) => (
+            {filteredThemes.map((t) => (
               <li key={t.theme_id}>
                 <button
                   type="button"
@@ -114,6 +146,9 @@ export default function Themes() {
               </li>
             ))}
           </ul>
+          {!filteredThemes.length ? (
+            <p className="text-sm text-slate-400">No themes match the current filters.</p>
+          ) : null}
         </Card>
         <Card title={active ? `${active.label} — examples` : 'Examples'} className="lg:col-span-2">
           {active ? <p className="mb-3 text-xs text-slate-500">{active.rationale}</p> : null}
@@ -128,6 +163,9 @@ export default function Themes() {
                 <p className="text-xs italic text-slate-400">“{m.example_quote || m.summary.slice(0, 220)}”</p>
               </div>
             ))}
+            {!examples.length ? (
+              <p className="text-sm text-slate-400">No meeting examples match the current filters.</p>
+            ) : null}
           </div>
         </Card>
       </div>

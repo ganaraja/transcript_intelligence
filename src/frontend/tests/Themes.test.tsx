@@ -142,13 +142,13 @@ const meetings: Meeting[] = [
   },
 ]
 
-function renderThemes() {
+function renderThemes(initialEntry = '/') {
   const queryClient = new QueryClient({
     defaultOptions: { queries: { retry: false } },
   })
   return render(
     <QueryClientProvider client={queryClient}>
-      <MemoryRouter>
+      <MemoryRouter initialEntries={[initialEntry]}>
         <Themes />
       </MemoryRouter>
     </QueryClientProvider>,
@@ -191,6 +191,15 @@ describe('Themes page', () => {
     renderThemes()
 
     expect(await screen.findByText(/\/api\/themes failed \(500\)/)).toBeInTheDocument()
+  })
+
+  it('updates theme counts and examples for URL filters', async () => {
+    renderThemes('/?callType=support')
+
+    expect(await screen.findByText('Showing 1 of 2 meetings matching dashboard filters.')).toBeInTheDocument()
+    expect(screen.getByText('Support Case #42 - Login failure')).toBeInTheDocument()
+    expect(screen.queryByText('Aegis / Northwind - Renewal review')).not.toBeInTheDocument()
+    expect(screen.getByText('Validation metrics summarize the unfiltered corpus.')).toBeInTheDocument()
   })
 
   it('shows the taxonomy validation error when the validation report fails', async () => {

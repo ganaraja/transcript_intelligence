@@ -1,5 +1,6 @@
 import { AudioLines } from 'lucide-react'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import DashboardFilterBar from './components/DashboardFilterBar'
 
 const links = [
   { to: '/', label: 'Overview' },
@@ -10,6 +11,7 @@ const links = [
 ]
 
 export default function Layout() {
+  const location = useLocation()
   return (
     <div className="min-h-screen">
       <header className="sticky top-0 z-20 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
@@ -22,7 +24,7 @@ export default function Layout() {
             {links.map((l) => (
               <NavLink
                 key={l.to}
-                to={l.to}
+                to={`${l.to}${location.search}`}
                 end={l.to === '/'}
                 className={({ isActive }) =>
                   `rounded-md px-3 py-1.5 ${isActive ? 'bg-slate-800 text-white' : 'text-slate-400 hover:text-white'}`
@@ -34,6 +36,7 @@ export default function Layout() {
           </nav>
         </div>
       </header>
+      <DashboardFilterBar />
       <main className="mx-auto max-w-7xl px-6 py-6">
         <Outlet />
       </main>

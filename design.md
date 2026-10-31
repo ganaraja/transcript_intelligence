@@ -377,11 +377,11 @@ MeetingRecord
 
 | Route | Purpose |
 | --- | --- |
-| `/` Overview | KPI cards (n calls, mix of types, mean utterance polarity), call-type mix, takeaways, VOC backlog, top risks |
-| `/themes` | Theme codebook, counts, stacked bar by call type, taxonomy validation summary, confidence/review badges on examples |
-| `/sentiment` | Weekly trends, module heatmap, trajectory counts, written takeaways |
-| `/graph` | Force-directed issue graph (insight B) |
-| `/accounts` | Risk radar table |
+| `/` Overview | Filtered KPI cards (meeting count, call-type mix, mean utterance polarity, high-risk accounts), call-type mix, takeaways, VOC backlog, top risks |
+| `/themes` | Filtered theme codebook, counts, stacked bar by call type, corpus-wide taxonomy validation summary, confidence/review badges on filtered examples |
+| `/sentiment` | Filtered weekly trends, module heatmap, and trajectory counts; corpus-wide written takeaways |
+| `/graph` | Force-directed issue graph filtered to matching meetings (insight B) |
+| `/accounts` | Risk radar filtered to matching meetings; account explanations remain corpus-wide rule summaries |
 | `/meetings/:id` | Meeting record, summary, themes, quotes, provided vs computed sentiment, and confidence/evidence for call type, theme, sentiment, and risk |
 
 ### 8.2 UX constraints (take-home)
@@ -391,7 +391,9 @@ MeetingRecord
 - Meeting detail shows confidence levels and evidence; low confidence is labeled as a review cue. Account risk rows show the confidence/evidence for the highest-risk meeting.
 - Confidence labels are not calibrated probabilities and should not be used as statistical certainty.
 - Overview shows the latest run's timestamp, code/dataset fingerprints, source file hashes, and LLM refinement configuration.
-- Global call-type, module, and date-range filters are not currently implemented.
+- The shared filter bar supports stakeholder presets plus call type, product module, account, and date range. Presets intersect with call type (Support = support, Sales = external, Product = all, Engineering = internal + support).
+- Filter selections are URL query parameters, survive navigation, and are applied to meeting-level aggregates and drill-down examples. Clear filters removes only dashboard filter parameters.
+- Corpus-wide narratives, taxonomy validation metrics, VOC group counts, and account explanation text are explicitly identified when a filtered view is active; filtered graph edges indicate association, not causality.
 - Example transcripts are the evaluation requirement: theme detail must show **title + quote + why**.
 
 ---
@@ -581,8 +583,8 @@ not be mistaken for current behavior:
 1. Human review of taxonomy labels and representative quotes.
 2. Embedding/clustering-based taxonomy audit or scatterplot.
 3. Independent transformer sentiment comparison and reported agreement.
-4. Dashboard-wide filters and an account drill-in beyond the account risk
-   table. The sentiment page currently shows trajectory counts, not a detailed
+4. A dedicated account detail route beyond the filtered account risk table.
+   The sentiment page currently shows trajectory counts, not a detailed
    trajectory distribution.
 5. Strict 14-day gating for cross-surface graph edges.
 6. Human validation of sentiment labels and VOC classifications, plus risk

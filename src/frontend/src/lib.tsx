@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import type { ConfidenceSignal } from './types'
 
 export const CALL_COLORS: Record<string, string> = {
@@ -62,8 +62,9 @@ export function Card({
 }
 
 export function MeetingLink({ id, title }: { id: string; title: string }) {
+  const location = useLocation()
   return (
-    <Link to={`/meetings/${id}`} className="text-sky-300 hover:underline">
+    <Link to={`/meetings/${id}${location.search}`} className="text-sky-300 hover:underline">
       {title}
     </Link>
   )
