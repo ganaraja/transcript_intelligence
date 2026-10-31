@@ -1,5 +1,10 @@
 export type CallType = 'support' | 'external' | 'internal'
 
+export type ConfidenceSignal = {
+  level: 'low' | 'medium' | 'high'
+  evidence: string[]
+}
+
 export type Meeting = {
   meeting_id: string
   title: string
@@ -25,6 +30,12 @@ export type Meeting = {
   sentiment_trajectory: string
   risk_flags: string[]
   risk_score: number
+  confidence: {
+    call_type: ConfidenceSignal
+    theme: ConfidenceSignal
+    sentiment: ConfidenceSignal
+    risk: ConfidenceSignal
+  }
   competitor_mentions: string[]
   action_item_count: number
   action_items: string[]
@@ -92,6 +103,7 @@ export type RiskRow = {
   account: string
   meetings: number
   risk_score: number
+  confidence: ConfidenceSignal
   risk_flags: string[]
   mean_customer_sentiment: number | null
   call_types: string[]

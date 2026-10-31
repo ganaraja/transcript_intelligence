@@ -17,13 +17,15 @@ def risk_radar(records: list[MeetingRecord]) -> list[dict]:
     rows: list[dict] = []
     for account, group in by_account.items():
         flags = sorted({f for m in group for f in m.risk_flags})
-        score = max(m.risk_score for m in group)
+        highest_risk = max(group, key=lambda meeting: meeting.risk_score)
+        score = highest_risk.risk_score
         cust_vals = [m.customer_sentiment_mean for m in group if m.customer_sentiment_mean is not None]
         rows.append(
             {
                 "account": account,
                 "meetings": len(group),
                 "risk_score": score,
+                "confidence": highest_risk.confidence.risk.model_dump(),
                 "risk_flags": flags,
                 "mean_customer_sentiment": round(sum(cust_vals) / len(cust_vals), 4) if cust_vals else None,
                 "call_types": sorted({m.call_type for m in group}),

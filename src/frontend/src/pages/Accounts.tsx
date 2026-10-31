@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { api } from '../api'
-import { Badge, Card, Err, Loading, MeetingLink, fmtSent } from '../lib'
+import { Badge, Card, ConfidenceBadge, Err, Loading, MeetingLink, fmtSent } from '../lib'
 
 export default function Accounts() {
   const risk = useQuery({ queryKey: ['risk'], queryFn: api.risk })
@@ -21,6 +21,11 @@ export default function Accounts() {
       {risk.data.map((row) => (
         <Card key={row.account} title={`${row.account} · score ${row.risk_score.toFixed(2)}`}>
           <p className="mb-2 text-sm text-slate-300">{row.why_it_matters}</p>
+          <div className="mb-2 flex items-center gap-2 text-xs text-slate-400">
+            Risk-rule confidence:
+            <ConfidenceBadge signal={row.confidence} />
+          </div>
+          <p className="mb-2 text-xs text-slate-500">{row.confidence.evidence.join(' ')}</p>
           <div className="mb-2 flex flex-wrap gap-1">
             {row.risk_flags.map((f) => (
               <Badge key={f} tone="rose">

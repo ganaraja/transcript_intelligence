@@ -72,7 +72,33 @@ The design is built so every chart answers: **who should act, and why.**
 
 **Clustering is not currently implemented.** The current pipeline favors an explainable, reproducible taxonomy for this small dataset.
 
-For each theme, the pipeline performs an evidence check that verifies whether the assigned label is supported by title, summary, provided topics, or an example quote. The resulting `taxonomy_validation.json` report includes a pass rate and a list of meetings marked for human review when no evidence signal is found. This satisfies the requirement to treat taxonomy assignments as a reviewed output instead of unquestioned truth.
+For each theme, the pipeline performs an evidence check that verifies whether the assigned label is supported by title, summary, provided topics, or an example quote. The resulting `taxonomy_validation.json` report includes a pass rate, up to three routine examples per theme, and every low-confidence meeting marked for human review. This satisfies the requirement to treat taxonomy assignments as a reviewed output instead of unquestioned truth.
+
+Each meeting also carries low/medium/high confidence indicators for call type,
+theme, sentiment, and risk, with supporting evidence attached. Call-type
+confidence reflects attendee-domain and title-rule specificity; theme confidence
+reflects taxonomy score and the margin over the next theme; sentiment confidence
+reflects the size of the relevant speaker sample and whether source sentiment
+labels were present; risk confidence reflects the number and provenance of
+triggered indicators. A low-confidence theme is added to the taxonomy human
+review queue. These operational levels are explainability/review cues, **not
+calibrated probabilities**. Optional LLM theme refinement is rechecked against
+the deterministic taxonomy evidence so unsupported refinements are marked low.
+
+Current confidence thresholds are intentionally simple and inspectable:
+
+| Output | High | Medium | Low |
+| --- | --- | --- | --- |
+| Call type | Specific support/incident or `Aegis /` title rule plus customer domain; or all available attendees are Aegis | Customer domain present, but no specific support title rule | No valid attendee email domains |
+| Theme | Assigned taxonomy score ≥6 and margin over runner-up ≥4 | Score ≥2 and margin ≥1 | Otherwise, including no deterministic match |
+| Sentiment | ≥8 relevant utterances and ≥90% have source labels | ≥3 relevant utterances and ≥60% have source labels | Otherwise |
+| Risk | At least two distinct risk flags | One or more risk flags, or vendor `very-negative` label | No risk rule or vendor `very-negative` trigger |
+
+For sentiment, support/external calls use identified customer utterances and
+internal calls use all utterances. Missing source sentiment labels do not count
+toward coverage, even though the polarity calculation retains its neutral
+fallback. These cutoffs prioritize review workflow usability over statistical
+calibration.
 
 **Why not LLM-only?** Call type is deterministic from metadata. Spending tokens on it hides a simple, defensible rule. The panel will ask “why this category?” — rules + a quoted span beat a black box.
 
@@ -282,6 +308,10 @@ MeetingRecord
   sentiment_trajectory: recovering | deteriorating | flat
   risk_flags: [churn, escalation, competitive, negative_customer, compliance_pressure]
   risk_score: 0–1
+  confidence:
+    call_type, theme, sentiment, risk:
+      level: low | medium | high
+      evidence: [human-readable evidence strings]
   competitor_mentions: [str]
   action_item_count, action_items
   transcript_preview, utterance_count, customer_utterance_count, week
@@ -295,6 +325,7 @@ MeetingRecord
 
 - Parse folders with meeting info or transcript present; missing-file warnings are collected on the raw record but are not currently exposed in processed records.
 - Flatten transcript `data[]` into text + per-speaker stats.
+- Preserve whether each utterance sentiment label was present in the source so confidence does not count missing labels as neutral evidence.
 - Infer `customer_name` from title (`Aegis / X -`, `Support Case #n - {Company}`) or from non-Aegis email domain.
 - Map speaker → side using attendee email local-part matching where possible. On mixed calls, remaining unknown speakers default to customer; this is a practical heuristic, not verified diarization.
 
@@ -303,6 +334,7 @@ MeetingRecord
 1. Apply call-type rules and retain a human-readable method and reason on each record.
 2. Score modules and themes using the keyword tables in `src/backend/pipeline/taxonomy.py`; title matches have the highest weight.
 3. Optionally refine theme output with one OpenAI JSON-mode request per meeting, temperature 0. Cache responses in `data/cache/llm/{meeting_id}.json`. Without a key, the deterministic output is used. Clustering is not implemented.
+4. Attach confidence levels and evidence for call type, final theme, sentiment sample coverage, and risk triggers. Low theme confidence enters `taxonomy_validation.json`'s review queue. Confidence thresholds are heuristics and are not calibrated.
 
 ### 7.3 Sentiment
 
@@ -312,7 +344,7 @@ MeetingRecord
 
 ### 7.4 Insights
 
-**Risk radar:** rule-based score from churn key moments/phrases, escalation title or language, competitor mentions, customer sentiment below a threshold, compliance language, and provided very-negative sentiment. Aggregate meetings by inferred account and rank by the highest per-meeting risk score. Duration is not currently a score input.
+**Risk radar:** rule-based score from churn key moments/phrases, escalation title or language, competitor mentions, customer sentiment below a threshold, compliance language, and provided very-negative sentiment. Aggregate meetings by inferred account and rank by the highest per-meeting risk score; expose the confidence evidence for the meeting that supplied that maximum. Duration is not currently a score input.
 
 **Issue graph:** nodes = meetings + themes + modules; edges connect meetings to their primary theme and up to two modules, plus representative meetings of the same theme across call types. Edge labels include absolute date lag where timestamps exist; the proposed 14-day limit is not currently enforced.
 
@@ -327,16 +359,18 @@ MeetingRecord
 | Route | Purpose |
 | --- | --- |
 | `/` Overview | KPI cards (n calls, mix of types, mean utterance polarity), call-type mix, takeaways, VOC backlog, top risks |
-| `/themes` | Theme codebook, counts, stacked bar by call type, taxonomy validation summary, click → example transcripts |
+| `/themes` | Theme codebook, counts, stacked bar by call type, taxonomy validation summary, confidence/review badges on examples |
 | `/sentiment` | Weekly trends, module heatmap, trajectory counts, written takeaways |
 | `/graph` | Force-directed issue graph (insight B) |
 | `/accounts` | Risk radar table |
-| `/meetings/:id` | Meeting record, summary, themes, quotes, and provided vs computed sentiment |
+| `/meetings/:id` | Meeting record, summary, themes, quotes, provided vs computed sentiment, and confidence/evidence for call type, theme, sentiment, and risk |
 
 ### 8.2 UX constraints (take-home)
 
 - Dark, dense, executive — not a marketing site.
 - Overview and insight views show interpretation text where the artifact provides it.
+- Meeting detail shows confidence levels and evidence; low confidence is labeled as a review cue. Account risk rows show the confidence/evidence for the highest-risk meeting.
+- Confidence labels are not calibrated probabilities and should not be used as statistical certainty.
 - Global call-type, module, and date-range filters are not currently implemented.
 - Example transcripts are the evaluation requirement: theme detail must show **title + quote + why**.
 

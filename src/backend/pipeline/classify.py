@@ -3,7 +3,14 @@ from __future__ import annotations
 import re
 from collections import Counter
 
-from pipeline.models import MeetingRecord, RawMeeting, ThemeBucket, Utterance
+from pipeline.models import (
+    ConfidenceSignal,
+    MeetingConfidence,
+    MeetingRecord,
+    RawMeeting,
+    ThemeBucket,
+    Utterance,
+)
 from pipeline.taxonomy import (
     AEGIS_DOMAIN,
     CALL_TYPE_SUPPORT_PREFIXES,
@@ -48,6 +55,105 @@ def classify_call_type(meeting: RawMeeting) -> tuple[str, str, str]:
         return "external", "rule", "Title uses Aegis / Customer account-management pattern"
 
     return "external", "rule", "Mixed Aegis + customer attendees without support title"
+
+
+def call_type_confidence(meeting: RawMeeting, call_type: str) -> ConfidenceSignal:
+    emails = [email.lower() for email in meeting.emails if "@" in email]
+    outsiders = [email for email in emails if not email.endswith(f"@{AEGIS_DOMAIN}")]
+    customer_domains = sorted({email.rsplit("@", 1)[1] for email in outsiders})
+    title = meeting.title.strip().lower()
+
+    if not emails:
+        return ConfidenceSignal(
+            level="low",
+            evidence=["No attendee email domains are available; call type falls back to title/empty-attendee rules."],
+        )
+    if call_type == "internal":
+        return ConfidenceSignal(
+            level="high",
+            evidence=["All available attendee email domains are @aegiscloud.com."],
+        )
+    if call_type == "support" and (
+        title.startswith(CALL_TYPE_SUPPORT_PREFIXES)
+        or title.startswith("support case")
+        or any(token in title for token in SUPPORT_URGENCY_TOKENS)
+        or title.startswith("incident")
+    ):
+        return ConfidenceSignal(
+            level="high",
+            evidence=[
+                f"Customer attendee domain(s): {', '.join(customer_domains)}.",
+                "Title matches a support/escalation/incident rule.",
+            ],
+        )
+    if outsiders and re.match(r"aegis\s*/", title):
+        return ConfidenceSignal(
+            level="high",
+            evidence=[
+                f"Customer attendee domain(s): {', '.join(customer_domains)}.",
+                "Title matches the Aegis / account-call pattern.",
+            ],
+        )
+    if outsiders:
+        return ConfidenceSignal(
+            level="medium",
+            evidence=[
+                f"Customer attendee domain(s): {', '.join(customer_domains)}.",
+                "No specific support title rule matched.",
+            ],
+        )
+    return ConfidenceSignal(
+        level="low",
+        evidence=["No customer attendee domain was found; this assignment depends on incomplete attendee metadata."],
+    )
+
+
+def theme_confidence(meeting: RawMeeting, theme_id: str) -> ConfidenceSignal:
+    title = _norm(meeting.title)
+    topics = _norm(" ".join(meeting.provided_topics))
+    summary = _norm(meeting.summary)
+    quotes = " ".join(u.sentence for u in meeting.utterances[:40])
+    transcript = _norm(quotes)
+    combined_text = _norm(f"{meeting.title} {meeting.summary} {' '.join(meeting.provided_topics)} {quotes}")
+    ranked: list[tuple[int, str]] = []
+    selected_keywords: tuple[str, ...] = ()
+
+    for candidate_id, _, keywords in THEMES:
+        candidate_title = sum(6 for keyword in keywords if keyword in title)
+        candidate_topics = sum(4 for keyword in keywords if keyword in topics)
+        candidate_text = sum(1 for keyword in keywords if keyword in combined_text)
+        ranked.append(
+            (candidate_title + candidate_topics + candidate_text, candidate_id)
+        )
+        if candidate_id == theme_id:
+            selected_keywords = keywords
+
+    ranked.sort(reverse=True)
+    assigned_score = next((score for score, candidate in ranked if candidate == theme_id), 0)
+    runner_up = max((score for score, candidate in ranked if candidate != theme_id), default=0)
+    evidence: list[str] = []
+    for source, value in (
+        ("title", title),
+        ("provided topics", topics),
+        ("summary", summary),
+        ("transcript excerpt", transcript),
+    ):
+        matches = [keyword for keyword in selected_keywords if keyword in value]
+        if matches:
+            evidence.append(f"{source} matched: {', '.join(matches[:3])}.")
+
+    margin = assigned_score - runner_up
+    if assigned_score >= 6 and margin >= 4:
+        level = "high"
+    elif assigned_score >= 2 and margin >= 1:
+        level = "medium"
+    else:
+        level = "low"
+    if not evidence:
+        evidence.append("No deterministic taxonomy keyword supports the assigned theme.")
+    else:
+        evidence.append(f"Assigned score {assigned_score}; lead over next theme {margin}.")
+    return ConfidenceSignal(level=level, evidence=evidence)
 
 
 def score_modules(text: str) -> list[str]:
@@ -154,6 +260,78 @@ def enrich_meeting(raw: RawMeeting, sentiment: dict) -> MeetingRecord:
     theme_id, theme_label, secondary, rationale = score_themes(text, raw.title, raw.provided_topics)
     quote = pick_quote(raw.utterances, theme_id)
     flags, risk = risk_flags(raw, text, sentiment.get("customer_mean"))
+    sentiment_speakers = (
+        [u for u in raw.utterances if u.side == "customer"]
+        if call_type != "internal"
+        else raw.utterances
+    )
+    recognized_sentiments = sum(
+        1
+        for utt in sentiment_speakers
+        if utt.sentiment_type.lower() in {"positive", "neutral", "negative"}
+        and utt.sentiment_label_provided is not False
+    )
+    sentiment_coverage = recognized_sentiments / len(sentiment_speakers) if sentiment_speakers else 0
+    if len(sentiment_speakers) >= 8 and sentiment_coverage >= 0.9:
+        sentiment_level = "high"
+    elif len(sentiment_speakers) >= 3 and sentiment_coverage >= 0.6:
+        sentiment_level = "medium"
+    else:
+        sentiment_level = "low"
+    sentiment_evidence = [
+        f"Computed from {recognized_sentiments}/{len(sentiment_speakers)} "
+        f"{'customer' if call_type != 'internal' else 'total'} utterances with recognized sentiment labels."
+    ]
+    if not sentiment_speakers:
+        sentiment_evidence.append("No utterances from the population used for this call type were identified.")
+
+    risk_evidence: list[str] = []
+    moment_types = {str(moment.get("type") or "") for moment in raw.key_moments}
+    if "churn" in flags:
+        matched_churn = next((phrase for phrase in CHURN_PHRASES if phrase in text), None)
+        if "churn_signal" in moment_types:
+            risk_evidence.append("Churn key moment: churn_signal.")
+        elif matched_churn:
+            risk_evidence.append(f"Churn phrase matched: {matched_churn}.")
+    if "escalation" in flags:
+        if raw.title.lower().startswith(("urgent", "escalation", "incident")):
+            risk_evidence.append("Escalation rule matched the call title.")
+        elif "churn_signal" in moment_types:
+            risk_evidence.append("Escalation rule matched a churn_signal key moment.")
+        else:
+            escalation_phrase = next(
+                (phrase for phrase in ("war room", "complete loss", "escalate this") if phrase in text),
+                None,
+            )
+            if escalation_phrase:
+                risk_evidence.append(f"Escalation phrase matched: {escalation_phrase}.")
+    if "competitive" in flags:
+        risk_evidence.append(f"Competitor mention(s): {', '.join(detect_competitors(text))}.")
+    if "negative_customer" in flags and sentiment.get("customer_mean") is not None:
+        risk_evidence.append(
+            f"Customer-side sentiment {sentiment['customer_mean']:.2f} is below the -0.25 threshold."
+        )
+    if "compliance_pressure" in flags:
+        matched_compliance = next(
+            (
+                keyword
+                for keyword in ("soc 2", "iso 27001", "hipaa", "pci", "compliance")
+                if keyword in raw.title.lower()
+            ),
+            None,
+        )
+        risk_evidence.append(f"Compliance term matched in title: {matched_compliance}.")
+    if raw.provided_overall_sentiment == "very-negative":
+        risk_evidence.append("Vendor-provided overall sentiment is very-negative.")
+    risk_level = (
+        "high"
+        if len(flags) >= 2
+        else "medium"
+        if flags or raw.provided_overall_sentiment == "very-negative"
+        else "low"
+    )
+    if not risk_evidence:
+        risk_evidence.append("No configured risk rule triggered.")
     emails = raw.emails
     domains = sorted(
         {
@@ -188,6 +366,12 @@ def enrich_meeting(raw: RawMeeting, sentiment: dict) -> MeetingRecord:
         sentiment_trajectory=sentiment["trajectory"],
         risk_flags=flags,
         risk_score=risk,
+        confidence=MeetingConfidence(
+            call_type=call_type_confidence(raw, call_type),
+            theme=theme_confidence(raw, theme_id),
+            sentiment=ConfidenceSignal(level=sentiment_level, evidence=sentiment_evidence),
+            risk=ConfidenceSignal(level=risk_level, evidence=risk_evidence),
+        ),
         competitor_mentions=detect_competitors(text),
         action_item_count=len(raw.action_items),
         action_items=raw.action_items,

@@ -109,6 +109,8 @@ def load_meeting(folder: Path) -> RawMeeting:
                     sentence=str(item.get("sentence") or ""),
                     speaker_name=str(name),
                     sentiment_type=str(item.get("sentimentType") or "neutral"),
+                    sentiment_label_provided=str(item.get("sentimentType") or "").lower()
+                    in SENTIMENT_MAP,
                     speaker_id=item.get("speaker_id"),
                     time=item.get("time"),
                     end_time=item.get("endTime"),

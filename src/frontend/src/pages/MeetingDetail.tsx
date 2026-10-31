@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
 import { api } from '../api'
-import { Badge, Card, Err, Loading, fmtSent } from '../lib'
+import { Badge, Card, ConfidenceBadge, Err, Loading, fmtSent } from '../lib'
 
 export default function MeetingDetail() {
   const { id = '' } = useParams()
@@ -45,6 +45,32 @@ export default function MeetingDetail() {
           <p className="mt-1 text-xs text-slate-400">{m.theme_rationale}</p>
         </Card>
       </div>
+      <Card title="Confidence and supporting evidence">
+        <p className="mb-3 text-xs text-slate-400">
+          These operational confidence levels reflect rule evidence and data coverage; they are not calibrated probabilities.
+          Low-confidence assignments are review cues.
+        </p>
+        <div className="grid gap-3 md:grid-cols-2">
+          {(
+            [
+              ['Call type', m.confidence.call_type],
+              ['Theme', m.confidence.theme],
+              ['Sentiment', m.confidence.sentiment],
+              ['Risk', m.confidence.risk],
+            ] as const
+          ).map(([label, signal]) => (
+            <section key={label} className="rounded-lg border border-slate-800 p-3">
+              <div className="mb-2 flex items-center justify-between gap-2">
+                <h3 className="text-sm font-medium">{label}</h3>
+                <ConfidenceBadge signal={signal} />
+              </div>
+              <ul className="list-disc space-y-1 pl-5 text-xs text-slate-400">
+                {signal.evidence.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </section>
+          ))}
+        </div>
+      </Card>
       <Card title="Why this call">
         <p className="text-sm text-slate-300">{m.summary}</p>
         {m.example_quote ? <blockquote className="mt-3 border-l-2 border-sky-700 pl-3 text-sm italic">{m.example_quote}</blockquote> : null}

@@ -6,12 +6,26 @@ from pydantic import BaseModel, Field
 
 CallType = Literal["support", "external", "internal"]
 Trajectory = Literal["recovering", "deteriorating", "flat"]
+ConfidenceLevel = Literal["low", "medium", "high"]
+
+
+class ConfidenceSignal(BaseModel):
+    level: ConfidenceLevel
+    evidence: list[str] = Field(default_factory=list)
+
+
+class MeetingConfidence(BaseModel):
+    call_type: ConfidenceSignal
+    theme: ConfidenceSignal
+    sentiment: ConfidenceSignal
+    risk: ConfidenceSignal
 
 
 class Utterance(BaseModel):
     sentence: str
     speaker_name: str
     sentiment_type: str = "neutral"
+    sentiment_label_provided: bool | None = None
     speaker_id: int | None = None
     time: float | None = None
     end_time: float | None = None
@@ -63,6 +77,7 @@ class MeetingRecord(BaseModel):
     sentiment_trajectory: Trajectory = "flat"
     risk_flags: list[str] = Field(default_factory=list)
     risk_score: float = 0.0
+    confidence: MeetingConfidence
     competitor_mentions: list[str] = Field(default_factory=list)
     action_item_count: int = 0
     action_items: list[str] = Field(default_factory=list)

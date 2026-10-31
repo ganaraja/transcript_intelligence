@@ -47,6 +47,39 @@
       "negative_customer"
     ],
     "risk_score": 1.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): vantahealth.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "low",
+        "evidence": [
+          "provided topics matched: communication.",
+          "summary matched: communication, proactive.",
+          "transcript excerpt matched: communication, proactive.",
+          "Assigned score 6; lead over next theme 0."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 19/19 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Vanta.",
+          "Customer-side sentiment -0.65 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Vanta"
     ],
@@ -138,6 +171,37 @@
       "competitive"
     ],
     "risk_score": 0.25,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): coastalliving.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: onboarding, kickoff.",
+          "provided topics matched: onboarding.",
+          "summary matched: onboarding, kickoff, setup.",
+          "transcript excerpt matched: onboarding, setup.",
+          "Assigned score 19; lead over next theme 13."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 20/20 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Competitor mention(s): Cloudprime."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Cloudprime"
     ],
@@ -224,6 +288,36 @@
     "sentiment_trajectory": "recovering",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: sprint.",
+          "provided topics matched: sprint.",
+          "summary matched: sprint.",
+          "transcript excerpt matched: sprint.",
+          "Assigned score 11; lead over next theme 5."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 41/41 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -311,6 +405,37 @@
     "sentiment_trajectory": "flat",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): summittrust.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: billing.",
+          "provided topics matched: billing, overage.",
+          "summary matched: contract, invoice, billing.",
+          "transcript excerpt matched: renewal, contract, invoice.",
+          "Assigned score 19; lead over next theme 12."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 19/19 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -400,6 +525,37 @@
     "sentiment_trajectory": "recovering",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): blackridgeinvest.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: renewal.",
+          "provided topics matched: renewal.",
+          "summary matched: renewal.",
+          "transcript excerpt matched: renewal, contract, overage.",
+          "Assigned score 13; lead over next theme 2."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 25/25 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -485,6 +641,36 @@
       "competitive"
     ],
     "risk_score": 0.25,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: roadmap, product sync.",
+          "provided topics matched: roadmap, sprint.",
+          "summary matched: roadmap.",
+          "transcript excerpt matched: roadmap, sprint.",
+          "Assigned score 23; lead over next theme 17."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 43/43 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Competitor mention(s): Okta, Sentinel."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Okta",
       "Sentinel"
@@ -575,6 +761,36 @@
       "escalation"
     ],
     "risk_score": 0.2,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): nimbusplatform.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "provided topics matched: audit, early access.",
+          "summary matched: soc 2, iso 27001, pci dss.",
+          "transcript excerpt matched: soc 2, iso 27001, pci dss.",
+          "Assigned score 13; lead over next theme 8."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 18/18 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Escalation phrase matched: escalate this."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -666,6 +882,39 @@
       "escalation"
     ],
     "risk_score": 0.95,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): brightpathcommerce.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: deployment.",
+          "provided topics matched: onboarding, deployment.",
+          "summary matched: onboarding, deployment.",
+          "transcript excerpt matched: onboarding, deployment, kickoff.",
+          "Assigned score 17; lead over next theme 16."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 22/22 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Cloudprime."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Cloudprime"
     ],
@@ -750,6 +999,36 @@
     "sentiment_trajectory": "deteriorating",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: design review.",
+          "provided topics matched: roadmap, design review.",
+          "summary matched: design review.",
+          "transcript excerpt matched: roadmap, design review.",
+          "Assigned score 16; lead over next theme 4."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 40/40 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -838,6 +1117,37 @@
       "compliance_pressure"
     ],
     "risk_score": 0.1,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): bridgeporthealth.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: compliance review.",
+          "provided topics matched: hipaa, audit.",
+          "summary matched: comply v2, soc 2, hipaa.",
+          "transcript excerpt matched: comply v2, soc 2, hipaa.",
+          "Assigned score 19; lead over next theme 14."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 26/26 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Compliance term matched in title: compliance."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 3,
     "action_items": [
@@ -930,6 +1240,40 @@
       "negative_customer"
     ],
     "risk_score": 1.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): novaretail.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: sso, login failure.",
+          "provided topics matched: sso, saml, identity module.",
+          "summary matched: sso, saml, identity module.",
+          "transcript excerpt matched: sso, saml, authentication failed.",
+          "Assigned score 29; lead over next theme 22."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 22/22 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Okta.",
+          "Customer-side sentiment -0.78 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Okta"
     ],
@@ -1017,6 +1361,35 @@
     "sentiment_trajectory": "flat",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "provided topics matched: comply v2.",
+          "summary matched: comply v2.",
+          "transcript excerpt matched: comply v2, soc 2, iso 27001.",
+          "Assigned score 8; lead over next theme 1."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 40/40 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -1104,6 +1477,37 @@
     "sentiment_trajectory": "flat",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): crestlinewealth.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: account review.",
+          "provided topics matched: renewal.",
+          "summary matched: renewal.",
+          "transcript excerpt matched: renewal, contract.",
+          "Assigned score 13; lead over next theme 8."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 26/26 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -1198,6 +1602,38 @@
       "negative_customer"
     ],
     "risk_score": 1.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): vantahealth.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "low",
+        "evidence": [
+          "summary matched: logvault.",
+          "transcript excerpt matched: logvault.",
+          "Assigned score 1; lead over next theme 0."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 21/21 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Vanta.",
+          "Customer-side sentiment -0.66 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Vanta"
     ],
@@ -1287,6 +1723,36 @@
       "competitive"
     ],
     "risk_score": 0.25,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: competitive.",
+          "provided topics matched: competitive.",
+          "summary matched: competitive, competitor.",
+          "transcript excerpt matched: competitive, competitor.",
+          "Assigned score 12; lead over next theme 7."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 36/36 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Competitor mention(s): Sentinel."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -1376,6 +1842,37 @@
       "competitive"
     ],
     "risk_score": 0.25,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): frostbyte.ai.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: identity module.",
+          "provided topics matched: sso.",
+          "summary matched: sso.",
+          "transcript excerpt matched: sso, saml, identity module.",
+          "Assigned score 14; lead over next theme 1."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 23/23 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Competitor mention(s): Okta."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Okta"
     ],
@@ -1466,6 +1963,39 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): brightpathcommerce.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: backup.",
+          "provided topics matched: backup.",
+          "summary matched: backup.",
+          "transcript excerpt matched: backup, backup window.",
+          "Assigned score 12; lead over next theme 11."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 17/17 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.83 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -1557,6 +2087,39 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): redwoodclinical.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: product feedback.",
+          "provided topics matched: roadmap, product feedback.",
+          "summary matched: roadmap.",
+          "transcript excerpt matched: roadmap.",
+          "Assigned score 16; lead over next theme 5."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 18/18 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.29 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -1642,6 +2205,36 @@
       "competitive"
     ],
     "risk_score": 0.25,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: quarterly planning.",
+          "provided topics matched: quarterly planning.",
+          "summary matched: quarterly planning.",
+          "transcript excerpt matched: roadmap, quarterly planning.",
+          "Assigned score 12; lead over next theme 1."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 37/37 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Competitor mention(s): Wiz."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Wiz"
     ],
@@ -1734,6 +2327,40 @@
       "negative_customer"
     ],
     "risk_score": 1.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): coastalliving.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: mfa token.",
+          "provided topics matched: sso.",
+          "summary matched: sso, mfa token.",
+          "transcript excerpt matched: sso, mfa token.",
+          "Assigned score 12; lead over next theme 11."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 21/21 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Okta.",
+          "Customer-side sentiment -0.73 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Okta"
     ],
@@ -1823,6 +2450,37 @@
     "sentiment_trajectory": "flat",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): atlasprecision.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: contract.",
+          "provided topics matched: renewal, contract, billing.",
+          "summary matched: renewal, contract, billing.",
+          "transcript excerpt matched: renewal, contract, invoice.",
+          "Assigned score 28; lead over next theme 24."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 19/19 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 3,
     "action_items": [
@@ -1910,6 +2568,36 @@
       "compliance_pressure"
     ],
     "risk_score": 0.1,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: soc 2, audit.",
+          "provided topics matched: soc 2, audit.",
+          "summary matched: soc 2, audit.",
+          "transcript excerpt matched: soc 2, audit.",
+          "Assigned score 22; lead over next theme 21."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 57/57 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Compliance term matched in title: soc 2."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -1996,6 +2684,37 @@
     "sentiment_trajectory": "flat",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): brightpathcommerce.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: invoice.",
+          "provided topics matched: invoice, billing, overage.",
+          "summary matched: contract, invoice, billing.",
+          "transcript excerpt matched: renewal, contract, invoice.",
+          "Assigned score 23; lead over next theme 17."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 17/17 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -2085,6 +2804,38 @@
       "compliance_pressure"
     ],
     "risk_score": 0.35,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): maplewoodgoods.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: soc 2.",
+          "provided topics matched: soc 2, pci dss, audit.",
+          "summary matched: comply v2, soc 2, iso 27001.",
+          "transcript excerpt matched: comply v2, soc 2, iso 27001.",
+          "Assigned score 24; lead over next theme 17."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 16/16 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Competitor mention(s): Cloudprime, Vanta.",
+          "Compliance term matched in title: soc 2."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Cloudprime",
       "Vanta"
@@ -2176,6 +2927,34 @@
       "escalation"
     ],
     "risk_score": 0.7,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: all hands.",
+          "Assigned score 7; lead over next theme 1."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 40/40 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -2268,6 +3047,39 @@
       "escalation"
     ],
     "risk_score": 0.95,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): vantahealth.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: backup.",
+          "provided topics matched: backup.",
+          "summary matched: backup.",
+          "transcript excerpt matched: backup, restore, backup window.",
+          "Assigned score 13; lead over next theme 7."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 25/25 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Cloudprime, Vanta."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Cloudprime",
       "Vanta"
@@ -2351,6 +3163,36 @@
     "sentiment_trajectory": "flat",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: sprint.",
+          "provided topics matched: sprint.",
+          "summary matched: sprint.",
+          "transcript excerpt matched: sprint.",
+          "Assigned score 11; lead over next theme 11."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 41/41 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -2442,6 +3284,37 @@
       "competitive"
     ],
     "risk_score": 0.25,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): pineridge.io.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: business review.",
+          "provided topics matched: renewal, business review.",
+          "summary matched: renewal, business review.",
+          "transcript excerpt matched: renewal, multi-year, qbr.",
+          "Assigned score 18; lead over next theme 12."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 25/25 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Competitor mention(s): Sentinel."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -2529,6 +3402,37 @@
       "competitive"
     ],
     "risk_score": 0.25,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): pineridge.io.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: backup.",
+          "provided topics matched: backup.",
+          "summary matched: backup.",
+          "transcript excerpt matched: backup.",
+          "Assigned score 11; lead over next theme 10."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 17/17 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Competitor mention(s): Cloudprime."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Cloudprime"
     ],
@@ -2621,6 +3525,34 @@
       "competitive"
     ],
     "risk_score": 0.25,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): harborviewbank.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "transcript excerpt matched: onboarding, deployment, demo.",
+          "Assigned score 3; lead over next theme 1."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 64/64 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Competitor mention(s): Cloudprime."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Cloudprime"
     ],
@@ -2709,6 +3641,37 @@
       "competitive"
     ],
     "risk_score": 0.25,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): stratoscloud.io.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: audit.",
+          "provided topics matched: soc 2, iso 27001, audit.",
+          "summary matched: soc 2, iso 27001, audit.",
+          "transcript excerpt matched: soc 2, iso 27001, hipaa.",
+          "Assigned score 23; lead over next theme 17."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 19/19 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Competitor mention(s): Cloudprime."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Cloudprime"
     ],
@@ -2802,6 +3765,38 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): ridgelinelogistics.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "low",
+        "evidence": [
+          "provided topics matched: sso.",
+          "summary matched: sso.",
+          "transcript excerpt matched: sso, saml, provisioning.",
+          "Assigned score 7; lead over next theme 0."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 22/22 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.28 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -2892,6 +3887,39 @@
       "escalation"
     ],
     "risk_score": 0.95,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): meridiancapital.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: scim, provisioning.",
+          "provided topics matched: scim, provisioning.",
+          "summary matched: scim, provisioning.",
+          "transcript excerpt matched: sso, saml, scim.",
+          "Assigned score 24; lead over next theme 23."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 22/22 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Okta."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Okta"
     ],
@@ -2983,6 +4011,37 @@
     "sentiment_trajectory": "flat",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): keystonehealth.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: renewal.",
+          "provided topics matched: renewal.",
+          "summary matched: renewal.",
+          "transcript excerpt matched: renewal, contract.",
+          "Assigned score 12; lead over next theme 6."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 21/21 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -3070,6 +4129,36 @@
       "escalation"
     ],
     "risk_score": 0.7,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: pipeline failure, war room.",
+          "provided topics matched: pipeline failure.",
+          "transcript excerpt matched: pipeline failure, root cause.",
+          "Assigned score 19; lead over next theme 16."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 39/39 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched the call title."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -3161,6 +4250,39 @@
       "negative_customer"
     ],
     "risk_score": 1.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): cobaltsoftware.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: dashboard down.",
+          "summary matched: threat visibility, root cause.",
+          "transcript excerpt matched: pipeline failure, root cause.",
+          "Assigned score 10; lead over next theme 8."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 18/18 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched the call title.",
+          "Competitor mention(s): Sentinel.",
+          "Customer-side sentiment -0.98 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -3251,6 +4373,36 @@
       "escalation"
     ],
     "risk_score": 0.95,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: detect outage.",
+          "transcript excerpt matched: root cause.",
+          "Assigned score 8; lead over next theme 2."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 41/41 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Sentinel."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -3346,6 +4498,40 @@
       "negative_customer"
     ],
     "risk_score": 1.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): trailheadmkt.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: alerts not firing.",
+          "provided topics matched: pipeline failure.",
+          "transcript excerpt matched: root cause.",
+          "Assigned score 13; lead over next theme 6."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 17/17 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Sentinel.",
+          "Customer-side sentiment -1.00 is below the -0.25 threshold.",
+          "Vendor-provided overall sentiment is very-negative."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -3441,6 +4627,39 @@
       "negative_customer"
     ],
     "risk_score": 1.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): northstarpharma.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: detect outage.",
+          "summary matched: root cause.",
+          "transcript excerpt matched: root cause.",
+          "Assigned score 8; lead over next theme 3."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 24/24 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Sentinel.",
+          "Customer-side sentiment -0.88 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -3531,6 +4750,38 @@
       "escalation"
     ],
     "risk_score": 0.95,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: customer impact.",
+          "provided topics matched: communication.",
+          "summary matched: communication.",
+          "transcript excerpt matched: status page, communication, proactive.",
+          "Assigned score 14; lead over next theme 6."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 55/55 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Sentinel."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -3623,6 +4874,40 @@
       "negative_customer"
     ],
     "risk_score": 1.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): blackridgeinvest.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "provided topics matched: communication, proactive.",
+          "summary matched: communication, proactive.",
+          "transcript excerpt matched: communication, proactive.",
+          "Assigned score 10; lead over next theme 1."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 20/20 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched the call title.",
+          "Competitor mention(s): Cloudprime, Sentinel.",
+          "Customer-side sentiment -1.00 is below the -0.25 threshold.",
+          "Vendor-provided overall sentiment is very-negative."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Cloudprime",
       "Sentinel"
@@ -3715,6 +5000,37 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): ridgelinelogistics.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: data gaps.",
+          "transcript excerpt matched: root cause.",
+          "Assigned score 8; lead over next theme 7."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 18/18 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.95 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -3807,6 +5123,38 @@
       "negative_customer"
     ],
     "risk_score": 1.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): meridiancapital.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "provided topics matched: communication.",
+          "transcript excerpt matched: status page, communication.",
+          "Assigned score 6; lead over next theme 4."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 22/22 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Sentinel.",
+          "Customer-side sentiment -0.79 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -3895,6 +5243,34 @@
     "sentiment_trajectory": "recovering",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: detect outage, root cause.",
+          "provided topics matched: pipeline failure.",
+          "Assigned score 19; lead over next theme 16."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 38/38 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -3987,6 +5363,37 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): ridgelinelogistics.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: detect latency.",
+          "transcript excerpt matched: root cause.",
+          "Assigned score 8; lead over next theme 2."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 16/16 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.70 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -4080,6 +5487,40 @@
       "negative_customer"
     ],
     "risk_score": 1.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): northstarpharma.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "provided topics matched: soc 2, hipaa, audit.",
+          "summary matched: soc 2, hipaa, audit.",
+          "transcript excerpt matched: soc 2, hipaa, audit.",
+          "Assigned score 15; lead over next theme 7."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 23/23 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched the call title.",
+          "Competitor mention(s): Sentinel.",
+          "Customer-side sentiment -0.93 is below the -0.25 threshold.",
+          "Compliance term matched in title: compliance."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -4168,6 +5609,35 @@
       "escalation"
     ],
     "risk_score": 0.7,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: detect outage.",
+          "transcript excerpt matched: detect outage, root cause.",
+          "Assigned score 8; lead over next theme 2."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 43/43 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -4259,6 +5729,36 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): silverlinebrands.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: false positives after patch.",
+          "Assigned score 7; lead over next theme 1."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 21/21 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.59 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -4349,6 +5849,36 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): helixdata.io.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: post-incident.",
+          "Assigned score 7; lead over next theme 1."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 25/25 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.52 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -4435,6 +5965,36 @@
       "escalation"
     ],
     "risk_score": 0.2,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): forgeindustries.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "low",
+        "evidence": [
+          "provided topics matched: post-incident.",
+          "summary matched: post-incident.",
+          "transcript excerpt matched: post-incident.",
+          "Assigned score 5; lead over next theme 0."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 21/21 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Escalation phrase matched: complete loss."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -4524,6 +6084,37 @@
       "escalation"
     ],
     "risk_score": 0.7,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: post-incident.",
+          "provided topics matched: communication.",
+          "summary matched: communication, post-incident.",
+          "transcript excerpt matched: communication, post-incident, proactive.",
+          "Assigned score 13; lead over next theme 5."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 41/41 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -4618,6 +6209,40 @@
       "negative_customer"
     ],
     "risk_score": 1.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): quantumedge.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: renewal.",
+          "provided topics matched: renewal.",
+          "summary matched: renewal.",
+          "transcript excerpt matched: renewal, contract, overage.",
+          "Assigned score 13; lead over next theme 6."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 25/25 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Sentinel.",
+          "Customer-side sentiment -0.65 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -4709,6 +6334,38 @@
       "escalation"
     ],
     "risk_score": 0.95,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: competitive.",
+          "provided topics matched: competitive.",
+          "summary matched: competitor.",
+          "transcript excerpt matched: competitive, competitor.",
+          "Assigned score 12; lead over next theme 9."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 47/47 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Sentinel."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -4804,6 +6461,40 @@
       "negative_customer"
     ],
     "risk_score": 1.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): novaretail.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: renewal.",
+          "provided topics matched: renewal.",
+          "summary matched: renewal.",
+          "transcript excerpt matched: renewal, contract, overage.",
+          "Assigned score 13; lead over next theme 6."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 20/20 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Sentinel.",
+          "Customer-side sentiment -0.62 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -4895,6 +6586,39 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): steelpointmfg.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: ldap.",
+          "provided topics matched: ldap.",
+          "summary matched: ldap.",
+          "transcript excerpt matched: ldap, certificate rotation, provisioning.",
+          "Assigned score 13; lead over next theme 8."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 22/22 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.59 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -4988,6 +6712,36 @@
     "sentiment_trajectory": "flat",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: comply v2.",
+          "provided topics matched: hipaa.",
+          "summary matched: comply v2, iso 27001, hipaa.",
+          "transcript excerpt matched: comply v2, soc 2, iso 27001.",
+          "Assigned score 15; lead over next theme 3."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 46/46 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -5078,6 +6832,38 @@
       "escalation"
     ],
     "risk_score": 0.7,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): steelpointmfg.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: contract.",
+          "provided topics matched: renewal.",
+          "summary matched: renewal, contract.",
+          "transcript excerpt matched: renewal, contract.",
+          "Assigned score 12; lead over next theme 6."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 17/17 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -5166,6 +6952,39 @@
       "escalation"
     ],
     "risk_score": 0.95,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): meridiancapital.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: restore.",
+          "provided topics matched: backup, restore.",
+          "summary matched: restore.",
+          "transcript excerpt matched: backup, restore.",
+          "Assigned score 16; lead over next theme 14."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 19/19 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Cloudprime."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Cloudprime"
     ],
@@ -5261,6 +7080,38 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): summittrust.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "low",
+        "evidence": [
+          "provided topics matched: renewal.",
+          "summary matched: renewal.",
+          "transcript excerpt matched: renewal.",
+          "Assigned score 5; lead over next theme 0."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 23/23 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.57 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -5352,6 +7203,38 @@
       "escalation"
     ],
     "risk_score": 0.95,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): ironcladfinancial.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "low",
+        "evidence": [
+          "provided topics matched: renewal.",
+          "summary matched: renewal, contract.",
+          "transcript excerpt matched: renewal, contract.",
+          "Assigned score 6; lead over next theme 0."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 29/29 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Sentinel."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -5439,6 +7322,35 @@
     "sentiment_trajectory": "flat",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "low",
+        "evidence": [
+          "provided topics matched: scim, provisioning.",
+          "summary matched: sso, scim, provisioning.",
+          "transcript excerpt matched: sso, scim, certificate rotation.",
+          "Assigned score 12; lead over next theme 0."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 41/41 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -5529,6 +7441,40 @@
       "negative_customer"
     ],
     "risk_score": 1.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): coastalliving.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: saml, certificate rotation.",
+          "provided topics matched: saml, certificate rotation.",
+          "summary matched: saml, certificate rotation.",
+          "transcript excerpt matched: sso, saml, certificate rotation.",
+          "Assigned score 23; lead over next theme 21."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 17/17 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Wiz.",
+          "Customer-side sentiment -0.83 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Wiz"
     ],
@@ -5618,6 +7564,37 @@
     "sentiment_trajectory": "flat",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): nimbusplatform.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: comply v2.",
+          "provided topics matched: pci dss.",
+          "summary matched: comply v2, soc 2, iso 27001.",
+          "transcript excerpt matched: comply v2, soc 2, iso 27001.",
+          "Assigned score 16; lead over next theme 5."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 49/49 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -5704,6 +7681,35 @@
     "sentiment_trajectory": "recovering",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: comply v2, ga deployment.",
+          "summary matched: comply v2, ga deployment.",
+          "transcript excerpt matched: comply v2, soc 2, iso 27001.",
+          "Assigned score 18; lead over next theme 7."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 39/39 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -5792,6 +7798,37 @@
     "sentiment_trajectory": "recovering",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): silverlinebrands.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: comply v2, early access.",
+          "provided topics matched: pci dss, audit.",
+          "summary matched: comply v2, soc 2, iso 27001.",
+          "transcript excerpt matched: comply v2, soc 2, iso 27001.",
+          "Assigned score 27; lead over next theme 16."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 47/47 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -5881,6 +7918,39 @@
       "escalation"
     ],
     "risk_score": 0.95,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): forgeindustries.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: comply v2, early access.",
+          "provided topics matched: hipaa.",
+          "summary matched: comply v2, soc 2, iso 27001.",
+          "transcript excerpt matched: comply v2, soc 2, iso 27001.",
+          "Assigned score 23; lead over next theme 22."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 21/21 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Vanta."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Vanta"
     ],
@@ -5968,6 +8038,36 @@
     "sentiment_trajectory": "recovering",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: comply v2, launch day.",
+          "provided topics matched: hipaa.",
+          "summary matched: comply v2, hipaa, pci dss.",
+          "transcript excerpt matched: comply v2, soc 2, iso 27001.",
+          "Assigned score 22; lead over next theme 16."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 43/43 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -6056,6 +8156,37 @@
     "sentiment_trajectory": "recovering",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): trailheadmkt.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: renewal.",
+          "provided topics matched: renewal.",
+          "summary matched: renewal, contract.",
+          "transcript excerpt matched: renewal.",
+          "Assigned score 12; lead over next theme 2."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 23/23 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -6145,6 +8276,36 @@
       "escalation"
     ],
     "risk_score": 0.7,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "provided topics matched: communication, post-incident.",
+          "summary matched: communication, post-incident.",
+          "transcript excerpt matched: post-incident, customer impact.",
+          "Assigned score 11; lead over next theme 2."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 53/53 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -6231,6 +8392,37 @@
       "competitive"
     ],
     "risk_score": 0.25,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): clearwatermed.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: deployment, kickoff.",
+          "provided topics matched: onboarding, deployment.",
+          "summary matched: onboarding, deployment, kickoff.",
+          "transcript excerpt matched: onboarding, deployment, kickoff.",
+          "Assigned score 24; lead over next theme 4."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 27/27 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Competitor mention(s): Cloudprime."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Cloudprime"
     ],
@@ -6320,6 +8512,37 @@
       "escalation"
     ],
     "risk_score": 0.2,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): pinnacleins.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: comply v2.",
+          "provided topics matched: audit.",
+          "summary matched: comply v2, audit.",
+          "transcript excerpt matched: comply v2, soc 2, pci dss.",
+          "Assigned score 14; lead over next theme 13."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 21/21 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Escalation phrase matched: escalate this."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -6412,6 +8635,39 @@
       "escalation"
     ],
     "risk_score": 0.8,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): forgeindustries.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: pci dss, compliance review.",
+          "provided topics matched: soc 2, pci dss, audit.",
+          "summary matched: comply v2, soc 2, pci dss.",
+          "transcript excerpt matched: comply v2, soc 2, iso 27001.",
+          "Assigned score 31; lead over next theme 24."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 20/20 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Compliance term matched in title: pci."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -6501,6 +8757,38 @@
       "escalation"
     ],
     "risk_score": 0.95,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: competitive.",
+          "provided topics matched: competitive.",
+          "summary matched: competitive.",
+          "transcript excerpt matched: competitive, competitor.",
+          "Assigned score 12; lead over next theme 6."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 44/44 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Sentinel."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -6594,6 +8882,39 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): clearwatermed.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: overage.",
+          "provided topics matched: billing, overage.",
+          "summary matched: invoice, overage.",
+          "transcript excerpt matched: invoice, billing, overage.",
+          "Assigned score 17; lead over next theme 13."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 17/17 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.93 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -6686,6 +9007,38 @@
       "escalation"
     ],
     "risk_score": 0.95,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): cobaltsoftware.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "provided topics matched: renewal.",
+          "summary matched: renewal.",
+          "transcript excerpt matched: renewal, contract, overage.",
+          "Assigned score 7; lead over next theme 1."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 21/21 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Cloudprime, Sentinel."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Cloudprime",
       "Sentinel"
@@ -6780,6 +9133,39 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): silverlinebrands.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: backup, backup window.",
+          "provided topics matched: backup.",
+          "summary matched: backup.",
+          "transcript excerpt matched: backup, backup window.",
+          "Assigned score 18; lead over next theme 17."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 20/20 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.75 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -6871,6 +9257,37 @@
       "escalation"
     ],
     "risk_score": 0.95,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "low",
+        "evidence": [
+          "provided topics matched: scim, provisioning.",
+          "summary matched: scim, provisioning.",
+          "transcript excerpt matched: sso, scim, provisioning.",
+          "Assigned score 11; lead over next theme 0."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 46/46 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Sentinel."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -6965,6 +9382,38 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): ironworkscorp.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: vendor comparison.",
+          "provided topics matched: competitive.",
+          "summary matched: evaluating, competitor.",
+          "Assigned score 14; lead over next theme 8."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 23/23 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.65 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -7057,6 +9506,37 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): summittrust.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "provided topics matched: communication.",
+          "transcript excerpt matched: status page, communication, proactive.",
+          "Assigned score 7; lead over next theme 6."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 22/22 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.53 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -7146,6 +9626,35 @@
       "escalation"
     ],
     "risk_score": 0.7,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: scalability.",
+          "provided topics matched: scalability.",
+          "Assigned score 11; lead over next theme 5."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 47/47 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -7238,6 +9747,38 @@
       "escalation"
     ],
     "risk_score": 0.7,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): pinnacleins.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: roadmap.",
+          "provided topics matched: roadmap.",
+          "summary matched: roadmap.",
+          "transcript excerpt matched: roadmap.",
+          "Assigned score 11; lead over next theme 8."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 37/37 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -7332,6 +9873,39 @@
       "escalation"
     ],
     "risk_score": 0.95,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): axiomlabs.dev.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: renewal, multi-year.",
+          "provided topics matched: renewal, contract.",
+          "summary matched: renewal, contract.",
+          "transcript excerpt matched: renewal, contract, multi-year.",
+          "Assigned score 23; lead over next theme 17."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 26/26 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Sentinel."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -7419,6 +9993,34 @@
     "sentiment_trajectory": "flat",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: standup.",
+          "summary matched: standup.",
+          "Assigned score 7; lead over next theme 3."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 48/48 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -7504,6 +10106,36 @@
     "sentiment_trajectory": "recovering",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): silverlinebrands.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: comply v2.",
+          "summary matched: comply v2, launch day.",
+          "transcript excerpt matched: comply v2, soc 2, iso 27001.",
+          "Assigned score 13; lead over next theme 6."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 22/22 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -7592,6 +10224,37 @@
       "competitive"
     ],
     "risk_score": 0.25,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): coastalliving.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: module expansion.",
+          "provided topics matched: onboarding.",
+          "summary matched: onboarding, kickoff, setup.",
+          "transcript excerpt matched: onboarding, deployment, setup.",
+          "Assigned score 15; lead over next theme 3."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 46/46 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Competitor mention(s): Cloudprime."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Cloudprime"
     ],
@@ -7683,6 +10346,36 @@
       "compliance_pressure"
     ],
     "risk_score": 0.1,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: soc 2.",
+          "provided topics matched: soc 2, audit.",
+          "summary matched: comply v2, soc 2, audit.",
+          "transcript excerpt matched: comply v2, soc 2, audit.",
+          "Assigned score 17; lead over next theme 12."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 44/44 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Compliance term matched in title: soc 2."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -7772,6 +10465,37 @@
       "compliance_pressure"
     ],
     "risk_score": 0.1,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): blackridgeinvest.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: hipaa, compliance review.",
+          "provided topics matched: hipaa, audit.",
+          "summary matched: comply v2, soc 2, iso 27001.",
+          "transcript excerpt matched: comply v2, soc 2, iso 27001.",
+          "Assigned score 27; lead over next theme 21."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 24/24 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Compliance term matched in title: hipaa."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -7864,6 +10588,39 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): stratoscloud.io.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: logvault.",
+          "provided topics matched: logvault.",
+          "summary matched: logvault.",
+          "transcript excerpt matched: logvault.",
+          "Assigned score 11; lead over next theme 10."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 18/18 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.76 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 3,
     "action_items": [
@@ -7947,6 +10704,35 @@
     "sentiment_trajectory": "recovering",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: comply v2.",
+          "summary matched: comply v2, soc 2, iso 27001.",
+          "transcript excerpt matched: comply v2, soc 2, iso 27001.",
+          "Assigned score 13; lead over next theme 8."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 41/41 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -8040,6 +10826,39 @@
       "negative_customer"
     ],
     "risk_score": 1.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): brightpathcommerce.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: competitive.",
+          "provided topics matched: competitor.",
+          "summary matched: evaluating.",
+          "Assigned score 13; lead over next theme 3."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 18/18 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Sentinel.",
+          "Customer-side sentiment -0.29 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -8132,6 +10951,37 @@
     "sentiment_trajectory": "recovering",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): bridgeporthealth.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: renewal.",
+          "provided topics matched: renewal.",
+          "summary matched: renewal.",
+          "transcript excerpt matched: renewal, contract.",
+          "Assigned score 12; lead over next theme 6."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 31/31 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -8222,6 +11072,38 @@
       "escalation"
     ],
     "risk_score": 0.95,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: win/loss.",
+          "provided topics matched: competitive.",
+          "summary matched: competitive, competitor.",
+          "transcript excerpt matched: competitive, competitor.",
+          "Assigned score 13; lead over next theme 10."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 40/40 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Competitor mention(s): Sentinel."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],
@@ -8313,6 +11195,37 @@
     "sentiment_trajectory": "recovering",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): crestlinewealth.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: deployment.",
+          "provided topics matched: deployment.",
+          "summary matched: deployment.",
+          "transcript excerpt matched: deployment, kickoff.",
+          "Assigned score 12; lead over next theme 1."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 18/18 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -8399,6 +11312,36 @@
     "sentiment_trajectory": "recovering",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): frostbyte.ai.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: product feedback.",
+          "provided topics matched: roadmap.",
+          "transcript excerpt matched: roadmap, product feedback.",
+          "Assigned score 12; lead over next theme 5."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 18/18 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -8485,6 +11428,36 @@
       "compliance_pressure"
     ],
     "risk_score": 0.1,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): blackridgeinvest.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "provided topics matched: early access.",
+          "summary matched: comply v2, soc 2, pci dss.",
+          "transcript excerpt matched: comply v2, soc 2, pci dss.",
+          "Assigned score 9; lead over next theme 8."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 18/18 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Compliance term matched in title: compliance."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -8571,6 +11544,35 @@
     "sentiment_trajectory": "recovering",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "medium",
+        "evidence": [
+          "title matched: all hands.",
+          "summary matched: retro.",
+          "transcript excerpt matched: retro.",
+          "Assigned score 8; lead over next theme 3."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 51/51 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -8661,6 +11663,37 @@
       "compliance_pressure"
     ],
     "risk_score": 0.1,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): redwoodclinical.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: iso 27001.",
+          "provided topics matched: iso 27001, audit.",
+          "summary matched: comply v2, soc 2, iso 27001.",
+          "transcript excerpt matched: comply v2, soc 2, iso 27001.",
+          "Assigned score 20; lead over next theme 14."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 31/31 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Compliance term matched in title: iso 27001."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -8752,6 +11785,38 @@
       "negative_customer"
     ],
     "risk_score": 0.9,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): crestlinewealth.com.",
+          "Title matches a support/escalation/incident rule."
+        ]
+      },
+      "theme": {
+        "level": "low",
+        "evidence": [
+          "provided topics matched: provisioning.",
+          "summary matched: provisioning.",
+          "transcript excerpt matched: provisioning.",
+          "Assigned score 5; lead over next theme 0."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 19/19 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "high",
+        "evidence": [
+          "Churn key moment: churn_signal.",
+          "Escalation rule matched a churn_signal key moment.",
+          "Customer-side sentiment -0.77 is below the -0.25 threshold."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -8843,6 +11908,36 @@
     "sentiment_trajectory": "recovering",
     "risk_flags": [],
     "risk_score": 0.0,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "All available attendee email domains are @aegiscloud.com."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: retro, reliability sprint.",
+          "provided topics matched: retro.",
+          "summary matched: retro, reliability sprint.",
+          "transcript excerpt matched: retro, reliability sprint.",
+          "Assigned score 18; lead over next theme 7."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 39/39 total utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "low",
+        "evidence": [
+          "No configured risk rule triggered."
+        ]
+      }
+    },
     "competitor_mentions": [],
     "action_item_count": 4,
     "action_items": [
@@ -8934,6 +12029,37 @@
       "competitive"
     ],
     "risk_score": 0.25,
+    "confidence": {
+      "call_type": {
+        "level": "high",
+        "evidence": [
+          "Customer attendee domain(s): atlasprecision.com.",
+          "Title matches the Aegis / account-call pattern."
+        ]
+      },
+      "theme": {
+        "level": "high",
+        "evidence": [
+          "title matched: renewal.",
+          "provided topics matched: renewal.",
+          "summary matched: renewal.",
+          "transcript excerpt matched: renewal, contract.",
+          "Assigned score 12; lead over next theme 7."
+        ]
+      },
+      "sentiment": {
+        "level": "high",
+        "evidence": [
+          "Computed from 18/18 customer utterances with recognized sentiment labels."
+        ]
+      },
+      "risk": {
+        "level": "medium",
+        "evidence": [
+          "Competitor mention(s): Sentinel."
+        ]
+      }
+    },
     "competitor_mentions": [
       "Sentinel"
     ],

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import type { ConfidenceSignal } from './types'
 
 export const CALL_COLORS: Record<string, string> = {
   support: '#f59e0b',
@@ -31,6 +32,15 @@ export function Badge({ children, tone = 'slate' }: { children: ReactNode; tone?
     <span className={`inline-flex rounded-full px-2 py-0.5 text-xs font-medium ${cls}`}>
       {children}
     </span>
+  )
+}
+
+export function ConfidenceBadge({ signal }: { signal: ConfidenceSignal }) {
+  const tone = signal.level === 'high' ? 'emerald' : signal.level === 'medium' ? 'amber' : 'rose'
+  return (
+    <Badge tone={tone}>
+      {signal.level} confidence{signal.level === 'low' ? ' · review' : ''}
+    </Badge>
   )
 }
 

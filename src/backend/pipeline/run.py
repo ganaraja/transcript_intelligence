@@ -7,7 +7,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from pipeline.classify import build_theme_catalog, enrich_meeting
+from pipeline.classify import build_theme_catalog, enrich_meeting, theme_confidence
 from pipeline.ingest import load_dataset
 from pipeline.insights import issue_graph, risk_radar, voc_backlog
 from pipeline.llm import maybe_refine_theme
@@ -38,7 +38,14 @@ def taxonomy_validation(records: list[MeetingRecord]) -> dict:
     reviewed = 0
 
     for theme_id in theme_ids:
-        samples = [record for record in records if record.primary_theme == theme_id][:3]
+        theme_records = [record for record in records if record.primary_theme == theme_id]
+        samples = theme_records[:3]
+        sampled_ids = {record.meeting_id for record in samples}
+        samples.extend(
+            record
+            for record in theme_records
+            if record.meeting_id not in sampled_ids and record.confidence.theme.level == "low"
+        )
         for record in samples:
             reviewed += 1
             keywords = _theme_keywords(theme_id)
@@ -48,7 +55,7 @@ def taxonomy_validation(records: list[MeetingRecord]) -> dict:
                 "topic_match": bool(keywords and any(k in " ".join(record.provided_topics).lower() for k in keywords)),
                 "quote_match": bool(keywords and any(k in (record.example_quote or "").lower() for k in keywords)),
             }
-            valid = any(evidence.values())
+            valid = any(evidence.values()) and record.confidence.theme.level != "low"
             if valid:
                 passed += 1
             reviews.append(
@@ -59,9 +66,9 @@ def taxonomy_validation(records: list[MeetingRecord]) -> dict:
                     "status": "pass" if valid else "needs_review",
                     "evidence": evidence,
                     "why": (
-                        "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+                        "Theme has supporting evidence and is not classified as low confidence."
                         if valid
-                        else "Theme evidence is weak or missing; a human review is recommended."
+                        else "Theme evidence is weak, missing, or ambiguous; a human review is recommended."
                     ),
                 }
             )
@@ -146,6 +153,7 @@ def run_pipeline(ds: Path | None = None, out: Path | None = None, use_llm: bool 
                     rec.example_quote = str(refined["example_quote"])[:500]
                 if refined.get("product_modules"):
                     rec.product_modules = list(refined["product_modules"])
+        rec.confidence.theme = theme_confidence(raw, rec.primary_theme)
         records.append(rec)
 
     records.sort(key=lambda m: m.start_time or "")

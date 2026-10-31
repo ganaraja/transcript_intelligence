@@ -3,6 +3,15 @@
     "account": "Coastal Living Co",
     "meetings": 4,
     "risk_score": 1.0,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Competitor mention(s): Okta.",
+        "Customer-side sentiment -0.73 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "competitive",
@@ -35,6 +44,15 @@
     "account": "Vanta Health Systems",
     "meetings": 3,
     "risk_score": 1.0,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Competitor mention(s): Vanta.",
+        "Customer-side sentiment -0.65 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "competitive",
@@ -65,6 +83,16 @@
     "account": "Blackridge Investments",
     "meetings": 3,
     "risk_score": 1.0,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched the call title.",
+        "Competitor mention(s): Cloudprime, Sentinel.",
+        "Customer-side sentiment -1.00 is below the -0.25 threshold.",
+        "Vendor-provided overall sentiment is very-negative."
+      ]
+    },
     "risk_flags": [
       "churn",
       "competitive",
@@ -97,6 +125,15 @@
     "account": "Brightpath Commerce",
     "meetings": 3,
     "risk_score": 1.0,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Competitor mention(s): Sentinel.",
+        "Customer-side sentiment -0.29 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "competitive",
@@ -128,6 +165,15 @@
     "account": "Nova Retail Group",
     "meetings": 2,
     "risk_score": 1.0,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Competitor mention(s): Okta.",
+        "Customer-side sentiment -0.78 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "competitive",
@@ -157,6 +203,15 @@
     "account": "Meridian Capital",
     "meetings": 2,
     "risk_score": 1.0,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Competitor mention(s): Sentinel.",
+        "Customer-side sentiment -0.79 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "competitive",
@@ -186,6 +241,15 @@
     "account": "Cobalt Software",
     "meetings": 2,
     "risk_score": 1.0,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched the call title.",
+        "Competitor mention(s): Sentinel.",
+        "Customer-side sentiment -0.98 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "competitive",
@@ -215,6 +279,16 @@
     "account": "Trailhead Marketplace",
     "meetings": 2,
     "risk_score": 1.0,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Competitor mention(s): Sentinel.",
+        "Customer-side sentiment -1.00 is below the -0.25 threshold.",
+        "Vendor-provided overall sentiment is very-negative."
+      ]
+    },
     "risk_flags": [
       "churn",
       "competitive",
@@ -243,6 +317,15 @@
     "account": "Northstar Pharma",
     "meetings": 2,
     "risk_score": 1.0,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Competitor mention(s): Sentinel.",
+        "Customer-side sentiment -0.88 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "competitive",
@@ -271,6 +354,15 @@
     "account": "Quantum Edge",
     "meetings": 1,
     "risk_score": 1.0,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Competitor mention(s): Sentinel.",
+        "Customer-side sentiment -0.65 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "competitive",
@@ -296,6 +388,14 @@
     "account": "Forge Industries",
     "meetings": 3,
     "risk_score": 0.95,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Competitor mention(s): Vanta."
+      ]
+    },
     "risk_flags": [
       "churn",
       "competitive",
@@ -325,6 +425,14 @@
     "account": "Meridian Capital Granular Restore Request",
     "meetings": 1,
     "risk_score": 0.95,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Competitor mention(s): Cloudprime."
+      ]
+    },
     "risk_flags": [
       "churn",
       "competitive",
@@ -349,6 +457,14 @@
     "account": "Ironclad Financial",
     "meetings": 1,
     "risk_score": 0.95,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Competitor mention(s): Sentinel."
+      ]
+    },
     "risk_flags": [
       "churn",
       "competitive",
@@ -373,6 +489,14 @@
     "account": "Axiom Labs",
     "meetings": 1,
     "risk_score": 0.95,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Competitor mention(s): Sentinel."
+      ]
+    },
     "risk_flags": [
       "churn",
       "competitive",
@@ -397,6 +521,14 @@
     "account": "Silverline Brands",
     "meetings": 4,
     "risk_score": 0.9,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Customer-side sentiment -0.59 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "escalation",
@@ -425,6 +557,14 @@
     "account": "Summit Trust",
     "meetings": 3,
     "risk_score": 0.9,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Customer-side sentiment -0.57 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "escalation",
@@ -451,6 +591,14 @@
     "account": "Ridgeline Logistics",
     "meetings": 3,
     "risk_score": 0.9,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Customer-side sentiment -0.28 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "escalation",
@@ -477,6 +625,14 @@
     "account": "Redwood Clinical",
     "meetings": 2,
     "risk_score": 0.9,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Customer-side sentiment -0.29 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "compliance_pressure",
@@ -502,6 +658,14 @@
     "account": "Steelpoint Manufacturing",
     "meetings": 2,
     "risk_score": 0.9,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Customer-side sentiment -0.59 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "escalation",
@@ -527,6 +691,14 @@
     "account": "Brightpath Commerce Slow",
     "meetings": 1,
     "risk_score": 0.9,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Customer-side sentiment -0.83 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "escalation",
@@ -549,6 +721,14 @@
     "account": "Helix Data",
     "meetings": 1,
     "risk_score": 0.9,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Customer-side sentiment -0.52 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "escalation",
@@ -571,6 +751,14 @@
     "account": "Clearwater Medical Overage Charges Dispute",
     "meetings": 1,
     "risk_score": 0.9,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Customer-side sentiment -0.93 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "escalation",
@@ -593,6 +781,14 @@
     "account": "Ironworks Corp",
     "meetings": 1,
     "risk_score": 0.9,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Customer-side sentiment -0.65 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "escalation",
@@ -615,6 +811,14 @@
     "account": "Stratos Cloud LogVault Integration Timeout",
     "meetings": 1,
     "risk_score": 0.9,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Customer-side sentiment -0.76 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "escalation",
@@ -637,6 +841,14 @@
     "account": "Crestline Wealth Group Policy Sync Delay",
     "meetings": 1,
     "risk_score": 0.9,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment.",
+        "Customer-side sentiment -0.77 is below the -0.25 threshold."
+      ]
+    },
     "risk_flags": [
       "churn",
       "escalation",
@@ -659,6 +871,13 @@
     "account": "Pinnacle Insurance",
     "meetings": 2,
     "risk_score": 0.7,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Churn key moment: churn_signal.",
+        "Escalation rule matched a churn_signal key moment."
+      ]
+    },
     "risk_flags": [
       "churn",
       "escalation"
@@ -683,6 +902,13 @@
     "account": "Maplewood Goods",
     "meetings": 1,
     "risk_score": 0.35,
+    "confidence": {
+      "level": "high",
+      "evidence": [
+        "Competitor mention(s): Cloudprime, Vanta.",
+        "Compliance term matched in title: soc 2."
+      ]
+    },
     "risk_flags": [
       "competitive",
       "compliance_pressure"
@@ -707,6 +933,12 @@
     "account": "Frostbyte AI",
     "meetings": 2,
     "risk_score": 0.25,
+    "confidence": {
+      "level": "medium",
+      "evidence": [
+        "Competitor mention(s): Okta."
+      ]
+    },
     "risk_flags": [
       "competitive"
     ],
@@ -731,6 +963,12 @@
     "account": "Atlas Precision",
     "meetings": 2,
     "risk_score": 0.25,
+    "confidence": {
+      "level": "medium",
+      "evidence": [
+        "Competitor mention(s): Sentinel."
+      ]
+    },
     "risk_flags": [
       "competitive"
     ],
@@ -754,6 +992,12 @@
     "account": "Pineridge Systems",
     "meetings": 1,
     "risk_score": 0.25,
+    "confidence": {
+      "level": "medium",
+      "evidence": [
+        "Competitor mention(s): Sentinel."
+      ]
+    },
     "risk_flags": [
       "competitive"
     ],
@@ -776,6 +1020,12 @@
     "account": "Pineridge Systems CloudPrime S3",
     "meetings": 1,
     "risk_score": 0.25,
+    "confidence": {
+      "level": "medium",
+      "evidence": [
+        "Competitor mention(s): Cloudprime."
+      ]
+    },
     "risk_flags": [
       "competitive"
     ],
@@ -798,6 +1048,12 @@
     "account": "Harborview Banking",
     "meetings": 1,
     "risk_score": 0.25,
+    "confidence": {
+      "level": "medium",
+      "evidence": [
+        "Competitor mention(s): Cloudprime."
+      ]
+    },
     "risk_flags": [
       "competitive"
     ],
@@ -820,6 +1076,12 @@
     "account": "Stratos Cloud",
     "meetings": 1,
     "risk_score": 0.25,
+    "confidence": {
+      "level": "medium",
+      "evidence": [
+        "Competitor mention(s): Cloudprime."
+      ]
+    },
     "risk_flags": [
       "competitive"
     ],
@@ -842,6 +1104,12 @@
     "account": "Clearwater Medical",
     "meetings": 1,
     "risk_score": 0.25,
+    "confidence": {
+      "level": "medium",
+      "evidence": [
+        "Competitor mention(s): Cloudprime."
+      ]
+    },
     "risk_flags": [
       "competitive"
     ],
@@ -864,6 +1132,12 @@
     "account": "Nimbus Platform Custom Report Request",
     "meetings": 1,
     "risk_score": 0.2,
+    "confidence": {
+      "level": "medium",
+      "evidence": [
+        "Escalation phrase matched: escalate this."
+      ]
+    },
     "risk_flags": [
       "escalation"
     ],
@@ -884,6 +1158,12 @@
     "account": "Bridgeport Health",
     "meetings": 2,
     "risk_score": 0.1,
+    "confidence": {
+      "level": "medium",
+      "evidence": [
+        "Compliance term matched in title: compliance."
+      ]
+    },
     "risk_flags": [
       "compliance_pressure"
     ],
@@ -906,6 +1186,12 @@
     "account": "Blackridge Investments Custom Compliance Template",
     "meetings": 1,
     "risk_score": 0.1,
+    "confidence": {
+      "level": "medium",
+      "evidence": [
+        "Compliance term matched in title: compliance."
+      ]
+    },
     "risk_flags": [
       "compliance_pressure"
     ],
@@ -926,6 +1212,12 @@
     "account": "Crestline Wealth",
     "meetings": 2,
     "risk_score": 0.0,
+    "confidence": {
+      "level": "low",
+      "evidence": [
+        "No configured risk rule triggered."
+      ]
+    },
     "risk_flags": [],
     "mean_customer_sentiment": 0.2852,
     "call_types": [
@@ -946,6 +1238,12 @@
     "account": "Keystone Health",
     "meetings": 1,
     "risk_score": 0.0,
+    "confidence": {
+      "level": "low",
+      "evidence": [
+        "No configured risk rule triggered."
+      ]
+    },
     "risk_flags": [],
     "mean_customer_sentiment": 0.761,
     "call_types": [
@@ -964,6 +1262,12 @@
     "account": "Nimbus Platform",
     "meetings": 1,
     "risk_score": 0.0,
+    "confidence": {
+      "level": "low",
+      "evidence": [
+        "No configured risk rule triggered."
+      ]
+    },
     "risk_flags": [],
     "mean_customer_sentiment": 0.7818,
     "call_types": [

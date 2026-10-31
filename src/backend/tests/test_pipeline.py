@@ -1,11 +1,22 @@
 from __future__ import annotations
 
+import json
+
 import pytest
 
-from pipeline.classify import classify_call_type, risk_flags, score_themes, week_key
+from pipeline.classify import (
+    call_type_confidence,
+    classify_call_type,
+    enrich_meeting,
+    risk_flags,
+    score_themes,
+    theme_confidence,
+    week_key,
+)
 from pipeline.insights import issue_graph, risk_radar
+from pipeline.ingest import load_meeting
 from pipeline.run import taxonomy_validation
-from pipeline.models import MeetingRecord, RawMeeting, Utterance
+from pipeline.models import ConfidenceSignal, MeetingConfidence, MeetingRecord, RawMeeting, Utterance
 from pipeline.sentiment import module_heatmap, score_meeting, trend_table, trajectory, weighted_mean
 
 
@@ -26,6 +37,12 @@ def meeting_record(**overrides: object) -> MeetingRecord:
         "week": "2026-03-09",
         "customer_sentiment_mean": -0.5,
         "utterance_sentiment_mean": -0.25,
+        "confidence": MeetingConfidence(
+            call_type=ConfidenceSignal(level="high", evidence=["Fixture evidence"]),
+            theme=ConfidenceSignal(level="high", evidence=["Fixture evidence"]),
+            sentiment=ConfidenceSignal(level="medium", evidence=["Fixture evidence"]),
+            risk=ConfidenceSignal(level="low", evidence=["No configured risk rule triggered."]),
+        ),
     }
     values.update(overrides)
     return MeetingRecord(**values)
@@ -52,6 +69,50 @@ def test_classify_call_type_uses_title_and_attendee_domains(
     assert call_type == expected_type
     assert method == "rule"
     assert reason
+
+
+def test_call_type_confidence_is_low_when_attendee_domains_are_missing() -> None:
+    signal = call_type_confidence(RawMeeting(meeting_id="m1", title="Weekly sync"), "internal")
+
+    assert signal.level == "low"
+    assert "No attendee email domains" in signal.evidence[0]
+
+
+def test_call_type_confidence_is_high_for_explicit_account_call_pattern() -> None:
+    signal = call_type_confidence(
+        RawMeeting(
+            meeting_id="m1",
+            title="Aegis / Northwind - Renewal review",
+            emails=["admin@northwind.com"],
+        ),
+        "external",
+    )
+
+    assert signal.level == "high"
+    assert any("Aegis / account-call pattern" in item for item in signal.evidence)
+
+
+def test_ingest_tracks_whether_utterance_sentiment_was_provided(tmp_path) -> None:
+    (tmp_path / "meeting-info.json").write_text(
+        json.dumps({"meetingId": "m1", "title": "Support Case", "allEmails": ["a@northwind.com"]}),
+        encoding="utf-8",
+    )
+    (tmp_path / "transcript.json").write_text(
+        json.dumps(
+            {
+                "data": [
+                    {"sentence": "A labeled sentence", "speakerName": "Customer", "sentimentType": "negative"},
+                    {"sentence": "An unlabeled sentence", "speakerName": "Customer"},
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    raw = load_meeting(tmp_path)
+
+    assert raw.utterances[0].sentiment_label_provided is True
+    assert raw.utterances[1].sentiment_label_provided is False
 
 
 def test_score_themes_weights_title_more_than_supplied_topics() -> None:
@@ -95,6 +156,95 @@ def test_taxonomy_validation_reports_review_status() -> None:
     assert validation["reviewed_meetings"] == 2
     assert validation["needs_human_review"] == 0
     assert validation["pass_rate"] == 1.0
+
+
+def test_taxonomy_validation_queues_low_confidence_theme_even_with_keyword_hit() -> None:
+    low_confidence_record = meeting_record(
+        meeting_id="meeting-4",
+        confidence=MeetingConfidence(
+            call_type=ConfidenceSignal(level="high", evidence=["metadata"]),
+            theme=ConfidenceSignal(level="low", evidence=["Ambiguous theme match."]),
+            sentiment=ConfidenceSignal(level="medium", evidence=["sample"]),
+            risk=ConfidenceSignal(level="low", evidence=["No risk rule."]),
+        ),
+    )
+    records = [
+        meeting_record(meeting_id=f"meeting-{index}")
+        for index in range(1, 4)
+    ] + [low_confidence_record]
+
+    validation = taxonomy_validation(records)
+
+    assert validation["status"] == "needs_human_review"
+    assert validation["needs_human_review"] == 1
+    queued = next(review for review in validation["reviews"] if review["meeting_id"] == "meeting-4")
+    assert queued["status"] == "needs_review"
+
+
+def test_theme_confidence_uses_keyword_evidence_and_margin() -> None:
+    raw = RawMeeting(
+        meeting_id="m1",
+        title="Support Case - SSO login failure",
+        emails=["support@aegiscloud.com", "admin@northwind.com"],
+        provided_topics=["SSO"],
+    )
+
+    signal = theme_confidence(raw, "sso_identity_failure")
+
+    assert signal.level == "high"
+    assert any("title matched" in line for line in signal.evidence)
+
+
+def test_enrich_meeting_marks_small_customer_sentiment_sample_low_confidence() -> None:
+    raw = RawMeeting(
+        meeting_id="m1",
+        title="Support Case - login failure",
+        emails=["support@aegiscloud.com", "admin@northwind.com"],
+        utterances=[
+            Utterance(
+                sentence="I cannot log in through SSO after the identity update.",
+                speaker_name="Customer",
+                sentiment_type="negative",
+                side="customer",
+            )
+        ],
+    )
+
+    record = enrich_meeting(
+        raw,
+        {"all_mean": -1.0, "customer_mean": -1.0, "aegis_mean": None, "trajectory": "flat"},
+    )
+
+    assert record.confidence.call_type.level == "high"
+    assert record.confidence.theme.level == "high"
+    assert record.confidence.sentiment.level == "low"
+    assert record.confidence.risk.level == "medium"
+    assert "1/1 customer utterances" in record.confidence.sentiment.evidence[0]
+
+
+def test_sentiment_confidence_counts_only_labels_present_in_source_data() -> None:
+    raw = RawMeeting(
+        meeting_id="m1",
+        title="Support Case - SSO login",
+        emails=["admin@northwind.com"],
+        utterances=[
+            Utterance(
+                sentence="I cannot sign in",
+                speaker_name="Customer",
+                sentiment_type="neutral",
+                sentiment_label_provided=False,
+                side="customer",
+            )
+        ],
+    )
+
+    record = enrich_meeting(
+        raw,
+        {"all_mean": 0.0, "customer_mean": 0.0, "aegis_mean": None, "trajectory": "flat"},
+    )
+
+    assert record.confidence.sentiment.level == "low"
+    assert "0/1 customer utterances" in record.confidence.sentiment.evidence[0]
 
 
 def test_weighted_mean_uses_duration_and_defaults_missing_duration_to_one() -> None:
@@ -222,6 +372,7 @@ def test_risk_radar_aggregates_account_and_excludes_internal_meetings() -> None:
     assert rows[0]["account"] == "Northwind"
     assert rows[0]["meetings"] == 2
     assert rows[0]["risk_score"] == 0.8
+    assert rows[0]["confidence"]["level"] == "low"
     assert rows[0]["risk_flags"] == ["churn", "competitive"]
 
 

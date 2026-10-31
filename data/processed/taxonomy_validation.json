@@ -1,9 +1,9 @@
 {
-  "status": "passed",
-  "reviewed_meetings": 30,
+  "status": "needs_human_review",
+  "reviewed_meetings": 37,
   "reviewed_themes": 10,
-  "pass_rate": 1.0,
-  "needs_human_review": 0,
+  "pass_rate": 0.7568,
+  "needs_human_review": 9,
   "criteria": [
     "Primary themes are validated against title, summary, provided topics, and example quote evidence.",
     "A theme is considered valid when at least one evidence signal is present.",
@@ -21,7 +21,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQ298F2846EFE59B0D70E2",
@@ -34,7 +34,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQA0F0BE68E74D66EB4171",
@@ -47,7 +47,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQ9A6BE09D73A9BB5798C7",
@@ -60,7 +60,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQ85D10E82A26A8F754FB8",
@@ -73,7 +73,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQ0CAE7F064EC93F0540CA",
@@ -86,7 +86,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQ38C4101D6774F2F02331",
@@ -99,7 +99,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQEDB92E33CF9945A7F71B",
@@ -112,7 +112,7 @@
         "topic_match": false,
         "quote_match": false
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQ46A9DE0AECB006D897A0",
@@ -125,7 +125,7 @@
         "topic_match": false,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQADF3D76E82BF8BA19AF2",
@@ -138,7 +138,7 @@
         "topic_match": false,
         "quote_match": false
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQD1270E98A7DFC55ADCF8",
@@ -151,7 +151,7 @@
         "topic_match": true,
         "quote_match": false
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQ445B1B5B890316C9E300",
@@ -164,20 +164,20 @@
         "topic_match": false,
         "quote_match": false
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQDD5172176D02DB51360A",
       "theme_id": "incident_communication",
       "theme_label": "Incident communication gaps",
-      "status": "pass",
+      "status": "needs_review",
       "evidence": {
         "title_match": false,
         "summary_match": true,
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme evidence is weak, missing, or ambiguous; a human review is recommended."
     },
     {
       "meeting_id": "01KQ2331EFD78BF3B1CAB747",
@@ -190,7 +190,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQ2D93184912F0147315E7",
@@ -203,7 +203,20 @@
         "topic_match": true,
         "quote_match": false
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
+    },
+    {
+      "meeting_id": "01KQ5D47170D4828E89EDE37",
+      "theme_id": "incident_communication",
+      "theme_label": "Incident communication gaps",
+      "status": "needs_review",
+      "evidence": {
+        "title_match": false,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence is weak, missing, or ambiguous; a human review is recommended."
     },
     {
       "meeting_id": "01KQ9BB82FD97C9607D57E90",
@@ -216,7 +229,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQ77F2867FC54E13A8C495",
@@ -229,7 +242,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQ41FB5CCFD9EA583FB020",
@@ -242,7 +255,7 @@
         "topic_match": false,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQ4EE836687F95080D92AB",
@@ -255,7 +268,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQ4D504CE09A8F6ECA1F5A",
@@ -268,7 +281,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQB3B16F255B65F39597D0",
@@ -281,20 +294,20 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQBB7C4D4789DB2F3DA9C2",
       "theme_id": "protect_backup",
       "theme_label": "Protect / backup & restore",
-      "status": "pass",
+      "status": "needs_review",
       "evidence": {
         "title_match": false,
         "summary_match": true,
         "topic_match": false,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme evidence is weak, missing, or ambiguous; a human review is recommended."
     },
     {
       "meeting_id": "01KQ1A6B7E81B06F4A13B60D",
@@ -307,7 +320,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQA1AFDC1306A000B0C7D9",
@@ -320,7 +333,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQ0C1280EDA4E70AAD7C35",
@@ -333,7 +346,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQFFC0F889AE8CFEE7A00D",
@@ -346,7 +359,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQAEA50436D047BC39CFC7",
@@ -359,7 +372,33 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
+    },
+    {
+      "meeting_id": "01KQ5A966832A146DA4B7D41",
+      "theme_id": "renewal_commercial",
+      "theme_label": "Renewal & commercial",
+      "status": "needs_review",
+      "evidence": {
+        "title_match": false,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence is weak, missing, or ambiguous; a human review is recommended."
+    },
+    {
+      "meeting_id": "01KQC1267BEB344076DD7656",
+      "theme_id": "renewal_commercial",
+      "theme_label": "Renewal & commercial",
+      "status": "needs_review",
+      "evidence": {
+        "title_match": false,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence is weak, missing, or ambiguous; a human review is recommended."
     },
     {
       "meeting_id": "01KQADC32D89E2B76B698E84",
@@ -372,7 +411,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQC3A2EBC501837E973B16",
@@ -385,7 +424,7 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
     },
     {
       "meeting_id": "01KQ9772B2348F500FB09D1E",
@@ -398,7 +437,59 @@
         "topic_match": true,
         "quote_match": true
       },
-      "why": "Theme evidence appears in title, summary, provided topics, or a supporting quote."
+      "why": "Theme has supporting evidence and is not classified as low confidence."
+    },
+    {
+      "meeting_id": "01KQCA6EA8B603EBB6C9FE34",
+      "theme_id": "sso_identity_failure",
+      "theme_label": "SSO / Identity failures",
+      "status": "needs_review",
+      "evidence": {
+        "title_match": false,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence is weak, missing, or ambiguous; a human review is recommended."
+    },
+    {
+      "meeting_id": "01KQ3F90FF9EBC3DB3632514",
+      "theme_id": "sso_identity_failure",
+      "theme_label": "SSO / Identity failures",
+      "status": "needs_review",
+      "evidence": {
+        "title_match": false,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence is weak, missing, or ambiguous; a human review is recommended."
+    },
+    {
+      "meeting_id": "01KQ31ED026F745FE2A55CCD",
+      "theme_id": "sso_identity_failure",
+      "theme_label": "SSO / Identity failures",
+      "status": "needs_review",
+      "evidence": {
+        "title_match": false,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence is weak, missing, or ambiguous; a human review is recommended."
+    },
+    {
+      "meeting_id": "01KQC166F678CBA584AAFF8B",
+      "theme_id": "sso_identity_failure",
+      "theme_label": "SSO / Identity failures",
+      "status": "needs_review",
+      "evidence": {
+        "title_match": false,
+        "summary_match": true,
+        "topic_match": true,
+        "quote_match": true
+      },
+      "why": "Theme evidence is weak, missing, or ambiguous; a human review is recommended."
     }
   ]
 }

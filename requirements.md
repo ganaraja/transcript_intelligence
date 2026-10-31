@@ -26,6 +26,8 @@ implement them or simply describe them with your reasoning for why they'd matter
 Implementation note for quality control:
 - Theme assignments should be checked against title, summary, provided topics, and supporting quote evidence.
 - A validation pass should flag low-confidence matches for human review and report pass-rate metrics instead of treating taxonomy labels as unquestioned truth.
+- Call-type, theme, sentiment, and risk outputs should carry a low/medium/high confidence signal with the evidence or data coverage behind it; low-confidence assignments should be surfaced for review.
+- Confidence labels are operational evidence indicators, not calibrated probabilities.
 - This is especially important for demo or stakeholder review, where misclassified themes can mislead decision-makers.
 
 How to Present Your Work

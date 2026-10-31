@@ -81,6 +81,12 @@ const meetings: Meeting[] = [
     sentiment_trajectory: 'flat',
     risk_flags: [],
     risk_score: 0,
+    confidence: {
+      call_type: { level: 'high', evidence: ['Support case title'] },
+      theme: { level: 'low', evidence: ['Ambiguous theme match.'] },
+      sentiment: { level: 'low', evidence: ['Only one customer utterance.'] },
+      risk: { level: 'low', evidence: ['No configured risk rule triggered.'] },
+    },
     competitor_mentions: [],
     action_item_count: 0,
     action_items: [],
@@ -117,6 +123,12 @@ const meetings: Meeting[] = [
     sentiment_trajectory: 'flat',
     risk_flags: [],
     risk_score: 0,
+    confidence: {
+      call_type: { level: 'high', evidence: ['Account-call title'] },
+      theme: { level: 'high', evidence: ['Title matched renewal.'] },
+      sentiment: { level: 'low', evidence: ['Only one customer utterance.'] },
+      risk: { level: 'low', evidence: ['No configured risk rule triggered.'] },
+    },
     competitor_mentions: [],
     action_item_count: 0,
     action_items: [],
@@ -162,6 +174,7 @@ describe('Themes page', () => {
     expect(initialExamples).toBeInTheDocument()
     expect(screen.getByText('Support Case #42 - Login failure')).toBeInTheDocument()
     expect(screen.getByText(/cannot sign in through SSO/)).toBeInTheDocument()
+    expect(screen.getByText(/low confidence · review/)).toBeInTheDocument()
 
     fireEvent.click(screen.getByRole('button', { name: /Renewal & commercial/ }))
 

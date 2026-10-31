@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useMemo, useState } from 'react'
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { api } from '../api'
-import { Badge, Card, Err, Loading, MeetingLink } from '../lib'
+import { Badge, Card, ConfidenceBadge, Err, Loading, MeetingLink } from '../lib'
 
 export default function Themes() {
   const themes = useQuery({ queryKey: ['themes'], queryFn: api.themes })
@@ -122,6 +122,7 @@ export default function Themes() {
               <div key={m.meeting_id} className="rounded-lg border border-slate-800 p-3">
                 <div className="mb-1 flex flex-wrap items-center gap-2">
                   <Badge>{m.call_type}</Badge>
+                  <ConfidenceBadge signal={m.confidence.theme} />
                   <MeetingLink id={m.meeting_id} title={m.title} />
                 </div>
                 <p className="text-xs italic text-slate-400">“{m.example_quote || m.summary.slice(0, 220)}”</p>

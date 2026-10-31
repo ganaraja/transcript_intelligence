@@ -67,3 +67,22 @@ def test_unknown_meeting_returns_404(tmp_path: Path, monkeypatch) -> None:
 
     assert response.status_code == 404
     assert response.json()["detail"] == "meeting not found"
+
+
+def test_meeting_route_includes_confidence_and_evidence(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setattr(main, "processed_dir", lambda: tmp_path)
+    meeting = {
+        "meeting_id": "m1",
+        "confidence": {
+            "call_type": {"level": "high", "evidence": ["Support title matched."]},
+            "theme": {"level": "medium", "evidence": ["Title matched SSO."]},
+            "sentiment": {"level": "low", "evidence": ["Computed from 1/1 customer utterances."]},
+            "risk": {"level": "low", "evidence": ["No configured risk rule triggered."]},
+        },
+    }
+    (tmp_path / "meetings.json").write_text(json.dumps([meeting]), encoding="utf-8")
+
+    response = get_api("/api/meetings/m1")
+
+    assert response.status_code == 200
+    assert response.json()["confidence"] == meeting["confidence"]
