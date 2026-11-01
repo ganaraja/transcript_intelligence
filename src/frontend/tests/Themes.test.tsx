@@ -175,6 +175,8 @@ describe('Themes page', () => {
     expect(screen.getByText('Support Case #42 - Login failure')).toBeInTheDocument()
     expect(screen.getByText(/cannot sign in through SSO/)).toBeInTheDocument()
     expect(screen.getByText(/low confidence · review/)).toBeInTheDocument()
+    expect(screen.getByRole('note', { name: /sso \/ identity failures theme is based on 1 meeting; fewer than 5/i })).toBeInTheDocument()
+    expect(screen.getAllByText('Low n=1')).toHaveLength(2)
 
     fireEvent.click(screen.getByRole('button', { name: /Renewal & commercial/ }))
 

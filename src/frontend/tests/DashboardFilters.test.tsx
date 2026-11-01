@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom'
-import { describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import DashboardFilterBar from '../src/components/DashboardFilterBar'
 import Layout from '../src/Layout'
 import { MeetingLink } from '../src/lib'
@@ -13,6 +13,8 @@ import {
 } from '../src/dashboardFilters'
 import { api } from '../src/api'
 import type { Meeting } from '../src/types'
+import { SampleSizeNotice } from '../src/components/SampleSizeNotice'
+import { SampleSizeSettingsProvider } from '../src/components/SampleSizeSettings'
 
 vi.mock('../src/api', () => ({
   api: { meetings: vi.fn() },
@@ -83,14 +85,21 @@ function renderFilterBar(initialEntry = '/') {
   return render(
     <QueryClientProvider client={client}>
       <MemoryRouter initialEntries={[initialEntry]}>
-        <DashboardFilterBar />
-        <LocationDisplay />
+        <SampleSizeSettingsProvider>
+          <DashboardFilterBar />
+          <SampleSizeNotice sampleSize={4} context="Filtered summary" />
+          <LocationDisplay />
+        </SampleSizeSettingsProvider>
       </MemoryRouter>
     </QueryClientProvider>,
   )
 }
 
 describe('dashboard filters', () => {
+  beforeEach(() => {
+    window.localStorage.clear()
+  })
+
   const meetings = [
     makeMeeting(),
     makeMeeting({
@@ -142,6 +151,9 @@ describe('dashboard filters', () => {
     fireEvent.change(await screen.findByRole('combobox', { name: 'Stakeholder' }), {
       target: { value: 'sales' },
     })
+    fireEvent.change(screen.getByRole('combobox', { name: 'Low-sample warning threshold' }), {
+      target: { value: '3' },
+    })
     expect(screen.getByLabelText('Current search')).toHaveTextContent('campaign=demo')
     expect(screen.getByLabelText('Current search')).toHaveTextContent('stakeholder=sales')
 
@@ -153,6 +165,36 @@ describe('dashboard filters', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Clear filters' }))
     expect(screen.getByLabelText('Current search')).toHaveTextContent('campaign=demo')
     expect(screen.getByLabelText('Current search')).not.toHaveTextContent('stakeholder')
+    expect(screen.getByRole('combobox', { name: 'Low-sample warning threshold' })).toHaveValue('3')
+  })
+
+  it('lets users configure the warning threshold and remembers it in this browser', async () => {
+    vi.mocked(api.meetings).mockResolvedValue(meetings)
+    const { unmount } = renderFilterBar()
+
+    const thresholdSelect = await screen.findByRole('combobox', { name: 'Low-sample warning threshold' })
+    expect(thresholdSelect).toHaveValue('5')
+    expect(screen.getByRole('note', { name: /fewer than 5/i })).toBeInTheDocument()
+
+    fireEvent.change(thresholdSelect, { target: { value: '3' } })
+    expect(screen.queryByRole('note')).not.toBeInTheDocument()
+    expect(window.localStorage.getItem('transcript-intelligence:sample-size-threshold')).toBe('3')
+
+    fireEvent.change(thresholdSelect, { target: { value: '10' } })
+    expect(screen.getByRole('note', { name: /filtered summary is based on 4 meetings; fewer than 10/i })).toBeInTheDocument()
+    unmount()
+
+    renderFilterBar()
+    expect(await screen.findByRole('combobox', { name: 'Low-sample warning threshold' })).toHaveValue('10')
+    expect(screen.getByRole('note', { name: /filtered summary is based on 4 meetings; fewer than 10/i })).toBeInTheDocument()
+  })
+
+  it('uses the default threshold if the browser preference is invalid', async () => {
+    window.localStorage.setItem('transcript-intelligence:sample-size-threshold', '7')
+    renderFilterBar()
+
+    expect(await screen.findByRole('combobox', { name: 'Low-sample warning threshold' })).toHaveValue('5')
+    expect(screen.getByRole('note', { name: /fewer than 5/i })).toBeInTheDocument()
   })
 
   it('preserves filters while navigating between dashboard pages and to meeting details', async () => {

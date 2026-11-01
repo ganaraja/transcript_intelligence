@@ -97,6 +97,7 @@ describe('Accounts risk confidence', () => {
     expect(await screen.findByText('Risk-rule confidence:')).toBeInTheDocument()
     expect(screen.getByText('medium confidence')).toBeInTheDocument()
     expect(screen.getByText('Churn key moment: churn_signal.')).toBeInTheDocument()
+    expect(screen.getByRole('note', { name: /northwind risk summary is based on 1 meeting; fewer than 5/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'View account details' })).toHaveAttribute(
       'href',
       '/accounts/Northwind?callType=support',

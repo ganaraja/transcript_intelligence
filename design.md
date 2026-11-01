@@ -401,6 +401,7 @@ MeetingRecord
 - Filter selections are URL query parameters, survive navigation, and are applied to meeting-level aggregates and drill-down examples. Clear filters removes only dashboard filter parameters.
 - Risk radar and Overview account links open `/accounts/:account`; the detail page carries active filters, summarizes only matching calls, and links through to each meeting. It states when filters exclude all calls for the selected account.
 - Corpus-wide narratives, taxonomy validation metrics, VOC group counts, and account explanation text are explicitly identified when a filtered view is active; filtered graph edges indicate association, not causality.
+- Aggregate metrics and comparison groups below the configurable low-sample threshold show a visible warning; users can select fewer than 3, 5, or 10 meetings (default 5), with the choice saved in the browser. Subgroup labels retain the sample count and indicate that the result is descriptive, not conclusive.
 - Example transcripts are the evaluation requirement: theme detail must show **title + quote + why**.
 
 ---

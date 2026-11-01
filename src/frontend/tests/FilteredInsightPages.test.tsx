@@ -166,6 +166,8 @@ describe('filtered insight pages', () => {
     renderPage(<Sentiment />, '/sentiment?callType=support')
 
     expect(await screen.findByText('Showing 1 meetings matching dashboard filters.')).toBeInTheDocument()
+    expect(screen.getByRole('note', { name: /sentiment summaries is based on 1 meeting; fewer than 5/i })).toBeInTheDocument()
+    expect(screen.getByLabelText('Low-sample weekly sentiment groups')).toHaveTextContent('Low n=1')
     const table = screen.getByRole('table', { name: 'Trajectory distribution by call type' })
     const supportRow = within(table).getByRole('row', { name: /support/i })
     expect(within(supportRow).getAllByRole('cell').map((cell) => cell.textContent)).toEqual([

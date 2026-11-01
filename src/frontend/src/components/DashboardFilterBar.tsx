@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router-dom'
 import { api } from '../api'
+import { SAMPLE_SIZE_THRESHOLDS } from './sampleSizeConfig'
+import { useSampleSizeSettings } from './useSampleSizeSettings'
 import type { CallType, Meeting } from '../types'
 import type { Stakeholder } from '../dashboardFilters'
 
@@ -24,6 +26,7 @@ const controlClass =
 
 export default function DashboardFilterBar() {
   const [searchParams, setSearchParams] = useSearchParams()
+  const { threshold, setThreshold } = useSampleSizeSettings()
   const meetings = useQuery({ queryKey: ['meetings'], queryFn: api.meetings })
   const modules = [...new Set((meetings.data ?? []).flatMap((meeting) => meeting.product_modules))].sort()
   const accounts = [
@@ -50,7 +53,7 @@ export default function DashboardFilterBar() {
   }
 
   return (
-    <section aria-label="Dashboard filters" className="border-b border-slate-800 bg-slate-900/80">
+    <section aria-label="Dashboard controls" className="border-b border-slate-800 bg-slate-900/80">
       <div className="mx-auto flex max-w-7xl flex-wrap items-end gap-2 px-6 py-3">
         <label className="grid gap-1 text-[10px] uppercase tracking-wide text-slate-500">
           Stakeholder
@@ -130,6 +133,19 @@ export default function DashboardFilterBar() {
         >
           Clear filters
         </button>
+        <label className="ml-auto grid gap-1 text-[10px] uppercase tracking-wide text-slate-500">
+          Low-sample warning
+          <select
+            aria-label="Low-sample warning threshold"
+            className={controlClass}
+            value={threshold}
+            onChange={(event) => setThreshold(Number(event.target.value))}
+          >
+            {SAMPLE_SIZE_THRESHOLDS.map((option) => (
+              <option key={option} value={option}>Fewer than {option} meetings</option>
+            ))}
+          </select>
+        </label>
         {meetings.isError ? <span className="text-xs text-rose-300">{meetings.error.message}</span> : null}
       </div>
     </section>

@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
 import { api } from '../api'
 import { AccountLink, Badge, CALL_COLORS, Card, Err, Loading } from '../lib'
+import { SampleSizeNotice } from '../components/SampleSizeNotice'
 import { useDashboardFilters } from '../useDashboardFilters'
 
 export default function Overview() {
@@ -63,6 +64,11 @@ export default function Overview() {
           Showing {filteredMeetings.length} of {meetings.data.length} meetings
           {isFiltered ? ' matching dashboard filters' : ''}.
         </p>
+        {filteredMeetings.length > 0 && filteredMeetings.length < 5 ? (
+          <div className="mt-2">
+            <SampleSizeNotice sampleSize={filteredMeetings.length} context="Dashboard summaries" />
+          </div>
+        ) : null}
       </div>
 
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -153,6 +159,18 @@ export default function Overview() {
             </ResponsiveContainer>
           </div>
           <p className="text-xs text-slate-500">{data.approach.call_type}</p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {Object.entries(callTypeMix)
+              .filter(([, count]) => count > 0 && count < 5)
+              .map(([callType, count]) => (
+                <SampleSizeNotice
+                  key={callType}
+                  sampleSize={count}
+                  context={`${callType} call-type share`}
+                  compact
+                />
+              ))}
+          </div>
         </Card>
         <Card title="What the numbers mean">
           {isFiltered ? <p className="mb-2 text-xs text-slate-500">Narrative takeaways summarize the unfiltered corpus.</p> : null}

@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react'
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { api } from '../api'
 import { Badge, Card, ConfidenceBadge, Err, Loading, MeetingLink } from '../lib'
+import { SampleSizeNotice } from '../components/SampleSizeNotice'
 import { useDashboardFilters } from '../useDashboardFilters'
 
 export default function Themes() {
@@ -142,6 +143,11 @@ export default function Themes() {
                 >
                   <span className="font-medium">{t.label}</span>
                   <span className="float-right text-slate-500">{t.count}</span>
+                  {t.count < 5 ? (
+                    <span className="ml-2">
+                      <SampleSizeNotice sampleSize={t.count} context={`${t.label} theme count`} compact />
+                    </span>
+                  ) : null}
                 </button>
               </li>
             ))}
@@ -152,6 +158,11 @@ export default function Themes() {
         </Card>
         <Card title={active ? `${active.label} — examples` : 'Examples'} className="lg:col-span-2">
           {active ? <p className="mb-3 text-xs text-slate-500">{active.rationale}</p> : null}
+          {active && examples.length > 0 && examples.length < 5 ? (
+            <div className="mb-3">
+              <SampleSizeNotice sampleSize={examples.length} context={`${active.label} theme`} />
+            </div>
+          ) : null}
           <div className="space-y-3">
             {examples.slice(0, 6).map((m) => (
               <div key={m.meeting_id} className="rounded-lg border border-slate-800 p-3">

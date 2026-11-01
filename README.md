@@ -17,6 +17,8 @@ This is a take-home style analysis app, not a production deployment.
 
 The dashboard has shared stakeholder presets (Support, Sales, Product, Engineering) and composable call-type, product-module, account, and date filters. Selections are encoded in the URL and retained when navigating to meeting details. Overview metrics, theme counts/examples, sentiment aggregates, risk rows, and graph nodes reflect matching meetings. Corpus-wide narratives and other non-filtered summaries are labeled when a filter is active. Open an account from Overview or Risk radar for a filter-aware account summary, risk evidence, sentiment, themes/modules, and chronological call history with meeting links.
 
+Aggregate summaries and subgroups below the low-sample threshold display a warning; treat them as descriptive signals, not conclusive findings. Set the threshold in the dashboard controls to fewer than 3, 5 (default), or 10 meetings; this preference is saved in the current browser.
+
 Processed artifacts live in `data/processed/` so the dashboard runs without an LLM key.
 Rebuild artifacts with `./scripts/process-data.sh` after updating the pipeline; the resulting `meetings.json` and `risk_radar.json` include confidence metadata, and `run_manifest.json` records run/data/code lineage.
 

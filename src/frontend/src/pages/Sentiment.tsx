@@ -11,6 +11,7 @@ import {
 } from 'recharts'
 import { api } from '../api'
 import { CALL_COLORS, Card, Err, Loading, MeetingLink, fmtSent } from '../lib'
+import { SampleSizeNotice } from '../components/SampleSizeNotice'
 import type { CallType } from '../types'
 import { useDashboardFilters } from '../useDashboardFilters'
 
@@ -71,7 +72,7 @@ export default function Sentiment() {
         ? customer.reduce((sum, meeting) => sum + (meeting.customer_sentiment_mean ?? 0), 0) / customer.length
         : null,
       mean_all: group.reduce((sum, meeting) => sum + meeting.utterance_sentiment_mean, 0) / group.length,
-      n: group.length,
+      n: customer.length || group.length,
     }
   })
   const heatCells = new Map<string, number[]>()
@@ -143,6 +144,7 @@ export default function Sentiment() {
   })
   const alignedTotal = sentimentComparisons.filter((item) => item.agrees).length
   const conflictRows = sentimentComparisons.filter((item) => !item.agrees)
+  const lowSampleTrends = trends.filter((trend) => trend.n > 0 && trend.n < 5)
 
   return (
     <div className="space-y-6">
@@ -155,6 +157,11 @@ export default function Sentiment() {
         <p aria-live="polite" className="mt-2 text-xs text-slate-500">
           Showing {filteredMeetings.length} meetings{isFiltered ? ' matching dashboard filters' : ''}.
         </p>
+        {filteredMeetings.length > 0 && filteredMeetings.length < 5 ? (
+          <div className="mt-2">
+            <SampleSizeNotice sampleSize={filteredMeetings.length} context="Sentiment summaries" />
+          </div>
+        ) : null}
       </div>
 
       <Card title="Weekly customer polarity by call type">
@@ -172,6 +179,18 @@ export default function Sentiment() {
             </LineChart>
           </ResponsiveContainer>
         </div>
+        {lowSampleTrends.length ? (
+          <div className="mt-3 flex flex-wrap gap-2" aria-label="Low-sample weekly sentiment groups">
+            {lowSampleTrends.map((trend) => (
+              <SampleSizeNotice
+                key={`${trend.week}-${trend.call_type}`}
+                sampleSize={trend.n}
+                context={`${trend.call_type} sentiment in week of ${trend.week}`}
+                compact
+              />
+            ))}
+          </div>
+        ) : null}
       </Card>
 
       <div className="grid gap-4 lg:grid-cols-2">
@@ -202,6 +221,15 @@ export default function Sentiment() {
                       <td key={t} className={`py-2 text-right ${bg}`}>
                         {fmtSent(v)}
                         {values ? <span className="ml-1 text-[10px] text-slate-500">n={values.length}</span> : null}
+                        {values && values.length > 0 && values.length < 5 ? (
+                          <span className="ml-1">
+                            <SampleSizeNotice
+                              sampleSize={values.length}
+                              context={`${mod} ${t} sentiment`}
+                              compact
+                            />
+                          </span>
+                        ) : null}
                       </td>
                     )
                   })}
@@ -229,6 +257,11 @@ export default function Sentiment() {
             utterance score. Mixed labels map to their positive or negative direction; scores from -0.15
             to 0.15 count as neutral. This is not an independent model evaluation or an accuracy measure.
           </p>
+          {agreementRows.some((row) => row.compared > 0 && row.compared < 5) ? (
+            <p className="mb-3 text-xs text-amber-200/90">
+              Call-type alignment rates based on fewer than 5 meetings are descriptive, not conclusive.
+            </p>
+          ) : null}
           <div className="mb-4 flex flex-wrap gap-3 text-xs">
             <span className="rounded-full border border-emerald-900/70 bg-emerald-950/40 px-3 py-1.5 text-emerald-300">
               {alignedTotal} aligned
@@ -259,7 +292,14 @@ export default function Sentiment() {
               <tbody className="divide-y divide-slate-800/80">
                 {agreementRows.map((row) => (
                   <tr key={row.callType} className="text-slate-300">
-                    <th scope="row" className="px-4 py-3 text-left font-medium capitalize text-slate-200">{row.callType}</th>
+                    <th scope="row" className="px-4 py-3 text-left font-medium capitalize text-slate-200">
+                      {row.callType}
+                      {row.compared > 0 ? (
+                        <span className="ml-1 align-middle">
+                          <SampleSizeNotice sampleSize={row.compared} context={`${row.callType} sentiment agreement`} compact />
+                        </span>
+                      ) : null}
+                    </th>
                     <td className="px-3 py-3 text-right tabular-nums">{row.compared}</td>
                     <td className="px-3 py-3 text-right tabular-nums text-emerald-300">{row.aligned}</td>
                     <td className="px-3 py-3 text-right tabular-nums text-rose-300">{row.conflicts}</td>
@@ -355,7 +395,12 @@ export default function Sentiment() {
             <div key={row.callType} className="grid gap-2 sm:grid-cols-[8rem_minmax(0,1fr)] sm:items-center sm:gap-4">
               <div className="flex items-center justify-between gap-3 sm:block">
                 <p className="text-sm font-medium capitalize text-slate-200">{row.callType}</p>
-                <p className="text-xs text-slate-500">{row.total} {row.total === 1 ? 'call' : 'calls'}</p>
+                <p className="flex items-center gap-1 text-xs text-slate-500">
+                  {row.total} {row.total === 1 ? 'call' : 'calls'}
+                  {row.total > 0 ? (
+                    <SampleSizeNotice sampleSize={row.total} context={`${row.callType} trajectory distribution`} compact />
+                  ) : null}
+                </p>
               </div>
               {row.total ? (
                 <div

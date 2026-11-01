@@ -3,6 +3,7 @@ import { Link, useLocation, useParams } from 'react-router-dom'
 import { api } from '../api'
 import { useDashboardFilters } from '../useDashboardFilters'
 import { Badge, Card, ConfidenceBadge, Err, Loading, MeetingLink, fmtSent } from '../lib'
+import { SampleSizeNotice } from '../components/SampleSizeNotice'
 
 export default function AccountDetail() {
   const { account = '' } = useParams()
@@ -69,6 +70,11 @@ export default function AccountDetail() {
             Risk explanation summarizes this account’s unfiltered history; metrics and call list below reflect the active filters.
           </p>
         ) : null}
+        {matchingMeetings.length < 5 ? (
+          <div className="mt-2">
+            <SampleSizeNotice sampleSize={matchingMeetings.length} context={`${account} account metrics`} />
+          </div>
+        ) : null}
       </div>
 
       <div className="grid gap-3 md:grid-cols-3">
@@ -84,6 +90,11 @@ export default function AccountDetail() {
           <p className="mt-2 text-xs text-slate-400">
             Mean of calls with customer-side sentiment data ({customerSentiments.length} calls).
           </p>
+          {customerSentiments.length > 0 && customerSentiments.length < 5 ? (
+            <div className="mt-2">
+              <SampleSizeNotice sampleSize={customerSentiments.length} context="Customer sentiment mean" />
+            </div>
+          ) : null}
         </Card>
         <Card title="Risk indicators">
           <div className="flex flex-wrap gap-1">

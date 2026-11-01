@@ -111,6 +111,8 @@ describe('account detail', () => {
     expect(screen.getByText('1 matching calls under the active dashboard filters.')).toBeInTheDocument()
     expect(screen.getByText('0.60')).toBeInTheDocument()
     expect(screen.getByText('Churn key moment: churn_signal.')).toBeInTheDocument()
+    expect(screen.getByRole('note', { name: /northwind account metrics is based on 1 meeting; fewer than 5/i })).toBeInTheDocument()
+    expect(screen.getByRole('note', { name: /customer sentiment mean is based on 1 meeting; fewer than 5/i })).toBeInTheDocument()
     expect(screen.getByText('Customer reported an SSO login failure.')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: '← Back to Risk radar' })).toHaveAttribute(
       'href',

@@ -166,8 +166,19 @@ describe('Overview provenance', () => {
     renderOverview('/?callType=support')
 
     expect(await screen.findByText('Showing 1 of 2 meetings matching dashboard filters.')).toBeInTheDocument()
+    expect(screen.getByRole('note', { name: /dashboard summaries is based on 1 meeting; fewer than 5/i })).toBeInTheDocument()
     expect(screen.getByText('1')).toBeInTheDocument()
     expect(screen.getByText('1 / 0 / 0')).toBeInTheDocument()
     expect(screen.getByText('-0.50')).toBeInTheDocument()
+  })
+
+  it('does not warn when the filtered dashboard sample reaches five meetings', async () => {
+    vi.mocked(api.meetings).mockResolvedValue(
+      Array.from({ length: 5 }, (_, index) => ({ ...supportMeeting, meeting_id: `m${index + 1}` })),
+    )
+    renderOverview('/?callType=support')
+
+    expect(await screen.findByText('Showing 5 of 5 meetings matching dashboard filters.')).toBeInTheDocument()
+    expect(screen.queryByRole('note', { name: /dashboard summaries/i })).not.toBeInTheDocument()
   })
 })
