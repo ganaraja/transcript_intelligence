@@ -160,109 +160,184 @@ The risk radar and VOC backlog are heuristic triage aids, not calibrated predict
 
 ## 5. Architecture
 
-The diagram follows the actual data path from source files through persisted
-analysis outputs to the API and dashboard. Solid edges are the default
-deterministic flow; the dashed node/edge is optional OpenAI theme refinement.
+The architecture is shown at three levels: a presentation-friendly system map,
+the offline analysis pipeline, and the read/API experience. This keeps the
+main story legible while preserving implementation detail for technical
+discussion. Solid paths are the default deterministic flow; dashed paths are
+optional or browser-local behavior.
 
 ```mermaid
 flowchart LR
-    subgraph Inputs["Inputs"]
-        DS["dataset/{meetingId}/<br/>meeting-info.json<br/>transcript.json<br/>summary.json<br/>speaker-meta.json"]
+    subgraph SOURCE["01 · SOURCE"]
+        direction TB
+        DATASET[("Meeting folders<br/>metadata · transcript<br/>summary · speaker info")]
     end
 
-    subgraph Pipeline["Offline pipeline · src/backend/pipeline"]
-        ING["ingest.py<br/>load_dataset / load_meeting"]
-        RAW["RawMeeting<br/>normalized metadata + utterances"]
-        SENT["sentiment.py<br/>speaker-side scores + trajectory"]
-        CLASS["classify.py<br/>call type + modules + theme<br/>risk flags + quote"]
-        LLM{"OPENAI_API_KEY<br/>and LLM enabled?"}
-        CACHE[("data/cache/llm/<br/>meeting_id.json")]
-        REFINE["llm.py<br/>optional theme refinement"]
-        REC["MeetingRecord<br/>deterministic per-call record"]
-        FINAL["Finalized MeetingRecord"]
-        AGG["Aggregate records"]
-        VAL["taxonomy_validation.json<br/>theme evidence review"]
-        THEME["Theme catalog"]
-        TRENDS["Weekly sentiment<br/>+ takeaways"]
-        HEAT["Module heatmap"]
-        INS["insights.py<br/>risk radar · issue graph · VOC"]
-        OVER["run.py overview()<br/>KPIs + takeaways"]
-        WRITE["run.py writes JSON artifacts"]
+    subgraph ANALYSIS["02 · OFFLINE ANALYSIS"]
+        direction TB
+        PIPELINE["Ingest · classify · enrich<br/>Deterministic baseline"]
+        OPTIONAL["Optional theme refinement<br/>OpenAI + local cache"]
+        AGGREGATES["Aggregate insights<br/>themes · sentiment · risk<br/>graph · VOC · provenance"]
     end
 
-    subgraph Store["File-backed artifact store · data/processed"]
-        MEET["meetings.json"]
-        THEMES["themes.json"]
-        VALIDATE["taxonomy_validation.json"]
-        MANIFEST["run_manifest.json"]
-        TREND["sentiment_trends.json"]
-        HM["sentiment_heatmap.json"]
-        RISK["risk_radar.json"]
-        GRAPH["issue_graph.json"]
-        VOC["voc_backlog.json"]
-        OV["overview.json"]
+    subgraph ARTIFACTS["03 · FILE-BACKED OUTPUT"]
+        direction TB
+        JSON[("data/processed<br/>10 JSON artifacts")]
     end
 
-    subgraph API["Read API · src/backend/app/main.py"]
-        ROUTES["FastAPI /api/* routes"]
-        REPROC["POST /api/reprocess"]
+    subgraph EXPERIENCE["04 · DASHBOARD EXPERIENCE"]
+        direction TB
+        API["FastAPI<br/>read API"]
+        APP["React dashboard<br/>overview · themes · sentiment<br/>risk · graph · meeting detail"]
+        QUEUE["Analyst review queue"]
     end
 
-    subgraph UI["Dashboard · src/frontend"]
-        CLIENT["api.ts + TanStack Query"]
-        PAGES["Overview · Themes · Sentiment<br/>Risk radar · Issue graph"]
-        DETAIL["Meeting detail"]
+    subgraph PEOPLE["05 · REVIEW"]
+        direction TB
+        ANALYST["Product · Support<br/>Sales · Engineering"]
+        LOCAL[("Browser-local<br/>filters · preferences<br/>review status")]
     end
 
-    DS --> ING --> RAW
-    RAW --> SENT
-    RAW --> CLASS
-    SENT --> CLASS
-    CLASS --> REC
-    REC --> LLM
-    LLM -. "yes" .-> REFINE
-    CACHE <--> REFINE
-    REFINE -. "refined theme fields" .-> FINAL
-    LLM -->|"no / disabled"| FINAL
-    FINAL --> AGG
+    DATASET --> PIPELINE --> AGGREGATES --> JSON --> API --> APP --> ANALYST
+    PIPELINE -. "when enabled" .-> OPTIONAL
+    OPTIONAL -. "refined theme fields" .-> AGGREGATES
+    APP --> QUEUE
+    APP -. "URL filters + saved settings" .-> LOCAL
+    QUEUE -. "reviewed / reopen status" .-> LOCAL
 
-    AGG --> VAL
-    AGG --> THEME
-    AGG --> TRENDS
-    AGG --> HEAT
-    AGG --> INS
-    AGG --> OVER
-    VAL --> WRITE
+    classDef source fill:#172554,stroke:#60a5fa,color:#eff6ff,stroke-width:2px
+    classDef process fill:#123b3a,stroke:#2dd4bf,color:#ecfeff,stroke-width:2px
+    classDef optional fill:#312e81,stroke:#a78bfa,color:#f5f3ff,stroke-width:2px,stroke-dasharray:5 5
+    classDef store fill:#422006,stroke:#fbbf24,color:#fffbeb,stroke-width:2px
+    classDef experience fill:#3f1d2e,stroke:#fb7185,color:#fff1f2,stroke-width:2px
+    classDef people fill:#1e293b,stroke:#cbd5e1,color:#f8fafc,stroke-width:2px
+    class DATASET source
+    class PIPELINE,AGGREGATES process
+    class OPTIONAL optional
+    class JSON,LOCAL store
+    class API,APP,QUEUE experience
+    class ANALYST people
+```
+
+### 5.1 Offline analysis pipeline
+
+The pipeline is intentionally batch-oriented: source meetings become
+explainable per-meeting records, then aggregate artifacts. Theme refinement is
+an optional enrichment, never a prerequisite for running the demo.
+
+```mermaid
+flowchart TB
+    INPUT["dataset/{meetingId}/<br/>meeting-info · transcript<br/>summary · speaker metadata"]
+    INGEST["Ingest and normalize<br/>pipeline/ingest.py"]
+    RAW[("RawMeeting<br/>metadata + utterances")]
+    SENTIMENT["Speaker-side sentiment<br/>polarity · trajectory"]
+    RULES["Deterministic classification<br/>call type · modules · themes<br/>risk flags · evidence"]
+    RECORD["MeetingRecord<br/>confidence + rationale"]
+    DECISION{"LLM refinement<br/>enabled and configured?"}
+    REFINE["Optional theme refinement<br/>pipeline/llm.py"]
+    CACHE[("data/cache/llm<br/>per-meeting response")]
+    QUALITY["Taxonomy evidence validation<br/>routine examples + review cues"]
+    GROUP["Aggregate insights"]
+    THEME["Themes + examples"]
+    SENT["Sentiment trends<br/>heatmap + takeaways"]
+    RISK["Risk radar"]
+    GRAPH["Cross-surface graph"]
+    VOC["VOC backlog"]
+    SUMMARY["Overview KPIs"]
+    WRITE["Write versioned run outputs"]
+    STORE[("data/processed<br/>10 JSON artifacts")]
+    MANIFEST["run_manifest.json<br/>code · data · config hashes"]
+
+    INPUT --> INGEST --> RAW
+    RAW --> SENTIMENT
+    RAW --> RULES
+    SENTIMENT --> RULES
+    RULES --> RECORD --> DECISION
+    DECISION -->|"No · deterministic baseline"| QUALITY
+    DECISION -. "Yes" .-> REFINE
+    REFINE <--> CACHE
+    REFINE -. "refined theme fields" .-> QUALITY
+    QUALITY --> GROUP
+    GROUP --> THEME
+    GROUP --> SENT
+    GROUP --> RISK
+    GROUP --> GRAPH
+    GROUP --> VOC
+    GROUP --> SUMMARY
     THEME --> WRITE
-    TRENDS --> WRITE
-    HEAT --> WRITE
-    INS --> WRITE
-    OVER --> WRITE
-    WRITE --> MEET
-    WRITE --> THEMES
-    WRITE --> VALIDATE
+    SENT --> WRITE
+    RISK --> WRITE
+    GRAPH --> WRITE
+    VOC --> WRITE
+    SUMMARY --> WRITE
+    QUALITY --> WRITE
+    WRITE --> STORE
     WRITE --> MANIFEST
-    WRITE --> TREND
-    WRITE --> HM
-    WRITE --> RISK
-    WRITE --> GRAPH
-    WRITE --> VOC
-    WRITE --> OV
 
-    MEET --> ROUTES
-    THEMES --> ROUTES
-    VALIDATE --> ROUTES
-    MANIFEST --> ROUTES
-    TREND --> ROUTES
-    HM --> ROUTES
-    RISK --> ROUTES
-    GRAPH --> ROUTES
-    VOC --> ROUTES
-    OV --> ROUTES
-    ROUTES --> CLIENT
-    CLIENT --> PAGES
-    CLIENT --> DETAIL
-    REPROC -->|"reruns pipeline"| ING
+    classDef input fill:#172554,stroke:#60a5fa,color:#eff6ff,stroke-width:2px
+    classDef stage fill:#123b3a,stroke:#2dd4bf,color:#ecfeff,stroke-width:2px
+    classDef optional fill:#312e81,stroke:#a78bfa,color:#f5f3ff,stroke-width:2px,stroke-dasharray:5 5
+    classDef output fill:#422006,stroke:#fbbf24,color:#fffbeb,stroke-width:2px
+    class INPUT input
+    class INGEST,SENTIMENT,RULES,QUALITY,GROUP,WRITE stage
+    class REFINE,CACHE optional
+    class RAW,RECORD,THEME,SENT,RISK,GRAPH,VOC,SUMMARY,STORE,MANIFEST output
+```
+
+### 5.2 API and analyst experience
+
+The API serves persisted artifacts; the browser does not run the analysis.
+Dashboard filters are shareable URL state, while the low-sample threshold and
+review completion state are preferences local to that browser.
+
+```mermaid
+flowchart LR
+    subgraph BATCH["Persisted analysis"]
+        direction TB
+        FILES[("data/processed<br/>meeting + insight JSON")]
+    end
+
+    subgraph SERVICE["FastAPI · app/main.py"]
+        direction TB
+        ROUTES["GET /api/*<br/>overview · meetings · themes<br/>sentiment · risk · graph · VOC"]
+        DETAIL["GET /api/meetings/{id}"]
+        REPROCESS["POST /api/reprocess<br/>explicit pipeline rerun"]
+    end
+
+    subgraph WEB["React dashboard · src/frontend"]
+        direction TB
+        QUERY["src/api.ts<br/>TanStack Query"]
+        FILTERS["Shared controls<br/>stakeholder + URL filters"]
+        PAGES["Insight pages<br/>Overview · Themes · Sentiment<br/>Risk radar · Issue graph"]
+        QUEUE["Review queue<br/>risk + confidence + taxonomy cues"]
+        MEETING["Meeting detail<br/>computed outputs + evidence"]
+        BROWSER[("Browser storage<br/>threshold + review status")]
+    end
+
+    ANALYST["Analyst"]
+
+    FILES --> ROUTES --> QUERY
+    FILES --> DETAIL --> QUERY
+    REPROCESS -. "regenerates artifacts" .-> FILES
+    QUERY --> FILTERS
+    FILTERS --> PAGES
+    FILTERS --> QUEUE
+    QUERY --> MEETING
+    PAGES --> ANALYST
+    QUEUE --> ANALYST
+    MEETING --> ANALYST
+    FILTERS -. "shareable query string" .-> ANALYST
+    FILTERS -. "saved preference" .-> BROWSER
+    QUEUE -. "mark reviewed / reopen" .-> BROWSER
+
+    classDef store fill:#422006,stroke:#fbbf24,color:#fffbeb,stroke-width:2px
+    classDef service fill:#123b3a,stroke:#2dd4bf,color:#ecfeff,stroke-width:2px
+    classDef web fill:#3f1d2e,stroke:#fb7185,color:#fff1f2,stroke-width:2px
+    classDef local fill:#1e293b,stroke:#cbd5e1,color:#f8fafc,stroke-width:2px
+    class FILES,BROWSER store
+    class ROUTES,DETAIL,REPROCESS service
+    class QUERY,FILTERS,PAGES,QUEUE,MEETING web
+    class ANALYST local
 ```
 
 ### Flow and extension points
