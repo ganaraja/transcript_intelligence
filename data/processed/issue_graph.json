@@ -2300,5 +2300,5 @@
     "competitive_evaluation",
     "detect_outage"
   ],
-  "insight": "Edges labeled cross_surface connect the same theme across support, external, and internal calls. That is the Detect outage (and Identity regressions) jumping org boundaries \u2014 engineering war rooms and customer tickets are one incident, not three separate programs."
+  "insight": "Shared primary themes appear across support, external, and internal calls, including Detect and Identity. These links surface related conversations; a shared theme does not confirm the same incident, a shared root cause, or causality."
 }

@@ -443,3 +443,6 @@ def test_issue_graph_links_shared_themes_across_call_types() -> None:
 
     assert graph["cross_surface_themes"] == ["sso_identity_failure"]
     assert any(edge["kind"].startswith("cross_surface_lag_") for edge in graph["edges"])
+    assert "does not confirm" in graph["insight"]
+    assert "causality" in graph["insight"]
+    assert "one incident" not in graph["insight"]

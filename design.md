@@ -29,7 +29,7 @@ The UI is the live demo, [`notebooks/walkthrough.ipynb`](./notebooks/walkthrough
 | Titles encode a lot: `Support Case #…`, `Aegis / {Customer} - …`, internal names (`Weekly Engineering Standup`, `Detect Outage - …`) | Rule-based **call type** is explainable; optional LLM refinement is limited to themes |
 | Emails: `@aegiscloud.com` vs customer domains | Useful for call-type and speaker-side rules; speaker identity can remain unknown when names do not match attendee email local parts |
 | Fictional company: **Aegis Cloud Security**; modules **Identity, Detect, Protect, Comply**; dates in **Feb–Apr 2026** | Taxonomy should be product-aware; time series is short (~weeks/months), so weekly buckets, not yearly |
-| Recurring storyline: Detect outage, SSO/Identity regressions, Comply v2 launch, renewals | Bonus insights should connect **the same incident across support, AM, and engineering calls** |
+| Recurring storyline: Detect outage, SSO/Identity regressions, Comply v2 launch, renewals | Bonus insights should surface candidate shared-theme conversations across support, AM, and engineering without claiming that they are the same incident |
 
 Call-type heuristic from titles + attendee domains:
 
@@ -370,7 +370,7 @@ MeetingRecord
 
 **Risk radar:** rule-based score from churn key moments/phrases, escalation title or language, competitor mentions, customer sentiment below a threshold, compliance language, and provided very-negative sentiment. Aggregate meetings by inferred account and rank by the highest per-meeting risk score; expose the confidence evidence for the meeting that supplied that maximum. Duration is not currently a score input.
 
-**Issue graph:** nodes = meetings + themes + modules; edges connect meetings to their primary theme and up to two modules, plus representative meetings of the same theme across call types. Edge labels include absolute date lag where timestamps exist; the proposed 14-day limit is not currently enforced.
+**Issue graph:** nodes = meetings + themes + modules; edges connect meetings to their primary theme and up to two modules, plus representative meetings that share a primary theme across call types. Theme/module assignment edges and cross-call shared-theme edges have distinct legend colors and hover labels; meeting nodes identify the call type and link to their record. Shared taxonomy labels are associations only, not evidence that calls concern the same incident, share a root cause, or are causal. Cross-call edge labels include absolute date lag where timestamps exist; the proposed 14-day limit is not currently enforced.
 
 **VOC backlog:** phrase and primary-theme matching assigns `bug | feature_request | process | praise`; results are grouped by type and module with example quotes. It is not currently LLM-extracted or sentiment-ranked.
 
@@ -385,7 +385,7 @@ MeetingRecord
 | `/` Overview | Filtered KPI cards (meeting count, call-type mix, mean utterance polarity, high-risk accounts), call-type mix, takeaways, VOC backlog, top risks |
 | `/themes` | Filtered theme codebook, counts, stacked bar by call type, corpus-wide taxonomy validation summary, confidence/review badges on filtered examples |
 | `/sentiment` | Filtered weekly trends, module heatmap, trajectory distribution, provided-label vs utterance-polarity alignment by call type with linked conflicts, and corpus-wide written takeaways |
-| `/graph` | Force-directed issue graph filtered to matching meetings (insight B) |
+| `/graph` | Filtered force-directed graph with labeled meeting/theme/module nodes, distinct assignment/shared-theme edges, and persistent non-causality guidance (insight B) |
 | `/accounts` | Risk radar filtered to matching meetings; account explanations remain corpus-wide rule summaries |
 | `/accounts/:account` | Account drill-in with filter-aware risk metrics, evidence, sentiment, themes/modules, and chronological call history |
 | `/meetings/:id` | Meeting record, summary, themes, quotes, provided vs computed sentiment, and confidence/evidence for call type, theme, sentiment, and risk |
@@ -539,7 +539,7 @@ Before submitting/presenting:
    keyword matches as validated truth.
 3. Use week sample counts and identify sentiment as annotated-utterance
    polarity. Avoid describing risk scores as probabilities or shared graph
-   themes as causal incident links.
+   themes as proof of shared incidents, root causes, or causal links.
 4. Open and run `notebooks/walkthrough.ipynb` in the backend Python kernel,
    then prepare the slide deck for the 30-minute panel slot and a short narrated
    pipeline/dashboard walkthrough if using the recording option. Keep the

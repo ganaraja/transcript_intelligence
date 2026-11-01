@@ -12,7 +12,7 @@ This is a take-home style analysis app, not a production deployment.
 4. **Sentiment** — duration-weighted utterance polarity, **customer-side** on mixed calls, weekly trends, module heatmap, filtered trajectory distributions, and provided-label vs utterance-polarity alignment with linked conflicts by call type. The comparison is a consistency check, not independent model validation.
 5. **Bonus insights**
    - Risk radar (churn, competitive, escalation)
-   - Cross-surface issue graph (same theme across support, AM, and eng)
+   - Cross-surface issue graph (candidate shared-theme conversations across support, AM, and eng; not proof of a shared incident or causality)
    - Voice-of-customer backlog by module
 
 The dashboard has shared stakeholder presets (Support, Sales, Product, Engineering) and composable call-type, product-module, account, and date filters. Selections are encoded in the URL and retained when navigating to meeting details. Overview metrics, theme counts/examples, sentiment aggregates, risk rows, and graph nodes reflect matching meetings. Corpus-wide narratives and other non-filtered summaries are labeled when a filter is active. Open an account from Overview or Risk radar for a filter-aware account summary, risk evidence, sentiment, themes/modules, and chronological call history with meeting links.
@@ -133,7 +133,7 @@ React (installed by `npm install` in `src/frontend`): see `src/frontend/LIBRARIE
 
 ## Approach in one paragraph
 
-Call type is deterministic from metadata, so we do not spend an LLM on it. Themes use a codebook aligned to Aegis modules (Identity, Detect, Protect, Comply) plus commercial and incident-comms themes. Sentiment uses the utterance `sentimentType` already in the files, but averages **customer speakers only** on support/external calls so vendor courtesy does not cancel a lockout. The issue graph is the “same incident, three rooms” view: Detect/Identity pain in tickets, AM calls, and engineering war rooms.
+Call type is deterministic from metadata, so we do not spend an LLM on it. Themes use a codebook aligned to Aegis modules (Identity, Detect, Protect, Comply) plus commercial and incident-comms themes. Sentiment uses the utterance `sentimentType` already in the files, but averages **customer speakers only** on support/external calls so vendor courtesy does not cancel a lockout. The issue graph surfaces candidate shared-theme conversations across tickets, account-management calls, and engineering war rooms. Shared labels are associations, not proof that calls concern the same incident or share a cause.
 
 ## API
 

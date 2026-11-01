@@ -14,6 +14,19 @@ type GNode = {
   risk_score?: number | null
 }
 
+type GLink = { kind?: string }
+
+function describeLink(link: GLink): string {
+  const kind = link.kind || ''
+  if (kind.startsWith('cross_surface')) {
+    const lag = kind.match(/_lag_(\d+d)$/)?.[1]
+    return `Shared-theme association between calls${lag ? `, ${lag} apart` : ''}; not proof of the same incident or causality.`
+  }
+  if (kind === 'has_theme') return 'Meeting assigned to this primary theme.'
+  if (kind === 'has_module') return 'Meeting tagged with this product module.'
+  return 'Association between graph nodes.'
+}
+
 export default function GraphPage() {
   const q = useQuery({ queryKey: ['graph'], queryFn: api.graph })
   const meetings = useQuery({ queryKey: ['meetings'], queryFn: api.meetings })
@@ -68,14 +81,19 @@ export default function GraphPage() {
           Showing graph nodes for {data.meetingCount} meetings
           {isFiltered ? ' matching dashboard filters' : ''}.
         </p>
+        <p className="mt-2 max-w-4xl rounded-lg border border-amber-900/60 bg-amber-950/20 px-3 py-2 text-sm text-amber-200/90">
+          Shared-theme links show representative calls with the same primary taxonomy label across call
+          types. They can surface related conversations, but do not confirm the same incident, a shared
+          root cause, or causality.
+        </p>
         {isFiltered ? (
           <p className="mt-1 text-xs text-slate-500">
-            The insight text summarizes the unfiltered corpus; the graph is a filtered association view, not evidence of causality.
+            The insight text summarizes the unfiltered corpus; graph nodes and links match the active filters.
           </p>
         ) : null}
       </div>
       <Card>
-        <div className="mb-2 flex flex-wrap gap-3 text-xs text-slate-400">
+        <div aria-label="Graph node and edge legend" className="mb-2 flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-400">
           <span>
             <i className="mr-1 inline-block h-2 w-2 rounded-full bg-amber-400" /> support
           </span>
@@ -88,13 +106,26 @@ export default function GraphPage() {
           <span>
             <i className="mr-1 inline-block h-2 w-2 rounded-full bg-emerald-400" /> theme
           </span>
+          <span>
+            <i className="mr-1 inline-block h-0.5 w-4 align-middle bg-slate-600" /> theme/module assignment
+          </span>
+          <span>
+            <i className="mr-1 inline-block h-0.5 w-4 align-middle bg-rose-400" /> shared-theme call association
+          </span>
           <span>Click a meeting node to open the transcript record.</span>
         </div>
         <div className="h-[640px] overflow-hidden rounded-lg bg-slate-950">
           <ForceGraph2D
             graphData={data}
             backgroundColor="#020617"
-            nodeLabel={(n) => (n as GNode).label}
+            nodeLabel={(node) => {
+              const n = node as GNode
+              if (n.kind === 'meeting') return `${n.call_type || 'Call'} meeting: ${n.label}. Click to open its record.`
+              if (n.kind === 'theme') return `Primary theme: ${n.label}. A shared label is not a confirmed incident.`
+              if (n.kind === 'module') return `Product module: ${n.label}.`
+              return n.label
+            }}
+            linkLabel={(link) => describeLink(link as GLink)}
             linkColor={(l) =>
               String((l as { kind?: string }).kind || '').startsWith('cross_surface') ? '#fb7185' : '#334155'
             }

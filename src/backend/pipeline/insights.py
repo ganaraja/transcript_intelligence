@@ -121,10 +121,9 @@ def issue_graph(records: list[MeetingRecord]) -> dict:
         "edges": [e.model_dump() for e in edges],
         "cross_surface_themes": cross_theme_ids,
         "insight": (
-            "Edges labeled cross_surface connect the same theme across support, external, "
-            "and internal calls. That is the Detect outage (and Identity regressions) jumping "
-            "org boundaries — engineering war rooms and customer tickets are one incident, "
-            "not three separate programs."
+            "Shared primary themes appear across support, external, and internal calls, "
+            "including Detect and Identity. These links surface related conversations; "
+            "a shared theme does not confirm the same incident, a shared root cause, or causality."
         ),
     }
 

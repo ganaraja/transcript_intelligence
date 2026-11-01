@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-31T23:50:52.330402+00:00",
+  "generated_at": "2026-11-01T18:07:10.509257+00:00",
   "pipeline_version": "0.1.0",
-  "git_revision": "fdd42c14213a5244765471619c22164454666587",
+  "git_revision": "13555804e51a6904fd41366f6e784b2987adeab9",
   "code": {
-    "sha256": "2bf48539691b5447d7936a386152311f5bdb0fd505cb5eb9df5c17b4dd04aac3",
+    "sha256": "147f33dd05e93353d504bdb515835b8da83fe619ffa4730fe7cdec7ceb604c12",
     "files": [
       {
         "path": "app/__init__.py",
@@ -27,7 +27,7 @@
       },
       {
         "path": "pipeline/insights.py",
-        "sha256": "9208a36a4a4e5a1e1467cc2fd509516447de960ae4e556eef14ec309ebcefc20"
+        "sha256": "698106a8ae2a6bdb4bf384c4a1e55afa71fbb5458dae1ec96dff8f7f0fd73858"
       },
       {
         "path": "pipeline/llm.py",
@@ -54,7 +54,7 @@
         "sha256": "a3db4a71052206ba7c7eb25c43a669b744e98c6815e2f19df51652f328c2c824"
       }
     ],
-    "working_tree_clean": true
+    "working_tree_clean": false
   },
   "dataset": {
     "origin": "input_dataset; contents not independently verified",

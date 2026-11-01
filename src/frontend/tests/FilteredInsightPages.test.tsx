@@ -36,8 +36,23 @@ vi.mock('recharts', async () => {
 vi.mock('react-force-graph-2d', async () => {
   const React = await import('react')
   return {
-    default: ({ graphData }: { graphData: { nodes: Array<{ id: string }> } }) =>
-      React.createElement('output', { 'aria-label': 'Graph nodes' }, graphData.nodes.map((node) => node.id).join(',')),
+    default: ({
+      graphData,
+      linkLabel,
+    }: {
+      graphData: { nodes: Array<{ id: string }>; links: Array<{ kind?: string }> }
+      linkLabel: (link: { kind?: string }) => string
+    }) =>
+      React.createElement(
+        React.Fragment,
+        null,
+        React.createElement('output', { 'aria-label': 'Graph nodes' }, graphData.nodes.map((node) => node.id).join(',')),
+        React.createElement(
+          'output',
+          { 'aria-label': 'Graph link interpretations' },
+          graphData.links.map(linkLabel).join(' | '),
+        ),
+      ),
   }
 })
 
@@ -113,6 +128,7 @@ const graph: GraphPayload = {
   nodes: [
     { id: 'm:m1', label: 'Support identity call', kind: 'meeting', call_type: 'support', risk_score: 0 },
     { id: 'm:m2', label: 'Internal billing sync', kind: 'meeting', call_type: 'internal', risk_score: 0 },
+    { id: 'm:m3', label: 'External identity review', kind: 'meeting', call_type: 'external', risk_score: 0 },
     { id: 't:identity', label: 'Identity', kind: 'theme' },
     { id: 't:billing', label: 'Billing', kind: 'theme' },
     { id: 'x:identity', label: 'identity', kind: 'module' },
@@ -121,6 +137,8 @@ const graph: GraphPayload = {
   edges: [
     { source: 'm:m1', target: 't:identity', kind: 'has_theme' },
     { source: 'm:m1', target: 'x:identity', kind: 'has_module' },
+    { source: 'm:m3', target: 't:identity', kind: 'has_theme' },
+    { source: 'm:m1', target: 'm:m3', kind: 'cross_surface_lag_1d' },
     { source: 'm:m2', target: 't:billing', kind: 'has_theme' },
     { source: 'm:m2', target: 'x:billing', kind: 'has_module' },
   ],
@@ -311,7 +329,8 @@ describe('filtered insight pages', () => {
 
     expect(await screen.findByLabelText('Graph nodes')).toHaveTextContent('m:m1')
     expect(screen.getByLabelText('Graph nodes')).not.toHaveTextContent('m:m2')
-    expect(screen.getByText('The insight text summarizes the unfiltered corpus; the graph is a filtered association view, not evidence of causality.')).toBeInTheDocument()
+    expect(screen.getByText(/same incident, a shared root cause, or causality/i)).toBeInTheDocument()
+    expect(screen.getByText('The insight text summarizes the unfiltered corpus; graph nodes and links match the active filters.')).toBeInTheDocument()
   })
 
   it('shows all theme and module variants in the unfiltered graph by default', async () => {
@@ -324,5 +343,11 @@ describe('filtered insight pages', () => {
     expect(nodes).toHaveTextContent('x:billing')
     expect(nodes).toHaveTextContent('m:m1')
     expect(nodes).not.toHaveTextContent('m:m2')
+    expect(nodes).toHaveTextContent('m:m3')
+    expect(screen.getByText(/shared-theme call association/i)).toBeInTheDocument()
+    expect(screen.getByLabelText('Graph link interpretations')).toHaveTextContent(
+      'Shared-theme association between calls, 1d apart; not proof of the same incident or causality.',
+    )
+    expect(screen.getByText(/same incident, a shared root cause, or causality/i)).toBeInTheDocument()
   })
 })

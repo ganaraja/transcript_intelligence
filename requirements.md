@@ -38,6 +38,7 @@ Dashboard interaction requirements (implemented extension):
 - Provide an account-focused drill-in from risk views, including the matching call history, risk evidence, customer sentiment, and related themes/modules.
 - Show sentiment trajectory counts and within-call-type percentages, updating both with active dashboard filters; explain that trajectory labels are heuristics rather than confirmed resolutions.
 - Compare provided meeting-level sentiment labels with duration-weighted utterance polarity by direction, showing alignment rates and linked conflicts by call type. Treat this as a consistency check, not independent model validation or an accuracy metric.
+- Label issue-graph nodes and edges clearly and show a persistent interpretation note that shared-theme links are associations, not proof of a shared incident, root cause, or causality.
 
 How to Present Your Work
 Submit three deliverables:
