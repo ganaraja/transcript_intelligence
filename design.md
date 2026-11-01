@@ -170,39 +170,36 @@ optional or browser-local behavior.
 flowchart TB
     subgraph SOURCE["01 · SOURCE"]
         direction TB
-        DATASET[("Meeting folders<br/>Metadata · transcript<br/>Summary · speaker info")]
+        DATASET[("Meeting folders · metadata · transcript<br/>Summary · speaker information")]
     end
 
     subgraph ANALYSIS["02 · OFFLINE ANALYSIS"]
         direction TB
-        PIPELINE["Ingest · classify · enrich<br/>Explainable deterministic baseline"]
-        OPTIONAL["Optional theme refinement<br/>OpenAI · local response cache"]
-        AGGREGATES["Aggregate insights<br/>Themes · sentiment · risk<br/>Issue graph · VOC · provenance"]
+        PIPELINE["Deterministic pipeline · ingest → classify → enrich"]
+        AGGREGATES["Aggregate outputs · themes · sentiment · risk · graph · VOC · provenance"]
+        OPTIONAL["Optional OpenAI theme refinement · local response cache"]
     end
 
     subgraph ARTIFACTS["03 · FILE-BACKED OUTPUT"]
         direction TB
-        JSON[("data/processed/<br/>10 reusable JSON artifacts")]
+        JSON[("data/processed/ · 10 reusable JSON artifacts<br/>Per-meeting records · aggregate insight files")]
     end
 
     subgraph EXPERIENCE["04 · DASHBOARD EXPERIENCE"]
         direction TB
-        API["FastAPI<br/>read API"]
-        APP["React dashboard<br/>Overview · themes · sentiment<br/>Risk radar · graph · meeting detail"]
-        QUEUE["Review queue<br/>High risk · low confidence · weak theme evidence"]
+        APP["FastAPI read API + React dashboard<br/>Overview · themes · sentiment · risk · graph · meeting detail · review queue"]
     end
 
     subgraph PEOPLE["05 · REVIEW"]
         direction TB
-        ANALYST["Product · Support<br/>Sales · Engineering"]
-        LOCAL[("Browser-local<br/>URL filters · threshold preference<br/>Review status")]
+        ANALYST["Product · Support · Sales · Engineering"]
+        LOCAL[("Browser-local preferences<br/>Shareable URL filters · threshold · review status")]
     end
 
-    DATASET --> PIPELINE --> AGGREGATES --> JSON --> API --> APP --> QUEUE --> ANALYST
+    DATASET --> PIPELINE --> AGGREGATES --> JSON --> APP --> ANALYST
     PIPELINE -. "optional · when enabled" .-> OPTIONAL
     OPTIONAL -. "refined theme fields" .-> AGGREGATES
-    APP -. "shareable filters · saved preference" .-> LOCAL
-    QUEUE -. "mark reviewed · reopen" .-> LOCAL
+    APP -. "saved settings · analyst review actions" .-> LOCAL
 
     classDef source fill:#dbeafe,stroke:#60a5fa,color:#0f172a,stroke-width:2px
     classDef process fill:#ccfbf1,stroke:#2dd4bf,color:#0f172a,stroke-width:2px
@@ -214,7 +211,7 @@ flowchart TB
     class PIPELINE,AGGREGATES process
     class OPTIONAL optional
     class JSON,LOCAL store
-    class API,APP,QUEUE experience
+    class APP experience
     class ANALYST people
 ```
 
@@ -226,61 +223,37 @@ an optional enrichment, never a prerequisite for running the demo.
 
 ```mermaid
 flowchart TB
-    INPUT["dataset/{meetingId}/<br/>meeting-info · transcript<br/>summary · speaker metadata"]
-    INGEST["Ingest and normalize<br/>pipeline/ingest.py"]
-    RAW[("RawMeeting<br/>metadata + utterances")]
-    SENTIMENT["Speaker-side sentiment<br/>polarity · trajectory"]
-    RULES["Deterministic classification<br/>call type · modules · themes<br/>risk flags · evidence"]
-    RECORD["MeetingRecord<br/>confidence + rationale"]
-    DECISION{"LLM refinement<br/>enabled and configured?"}
-    REFINE["Optional theme refinement<br/>pipeline/llm.py"]
-    CACHE[("data/cache/llm<br/>per-meeting response")]
-    QUALITY["Taxonomy evidence validation<br/>routine examples + review cues"]
-    GROUP["Aggregate insights"]
-    THEME["Themes + examples"]
-    SENT["Sentiment trends<br/>heatmap + takeaways"]
-    RISK["Risk radar"]
-    GRAPH["Cross-surface graph"]
-    VOC["VOC backlog"]
-    SUMMARY["Overview KPIs"]
-    WRITE["Write versioned run outputs"]
-    STORE[("data/processed<br/>10 JSON artifacts")]
-    MANIFEST["run_manifest.json<br/>code · data · config hashes"]
+    INPUT["dataset/{meetingId}/ · meeting-info.json · transcript.json<br/>summary.json · speaker-meta.json"]
+    INGEST["Ingest and normalize each meeting · pipeline/ingest.py"]
+    RAW[("RawMeeting · normalized metadata and utterances")]
+    ENRICH["Speaker-side sentiment · deterministic call type, module and theme rules<br/>Risk flags · rationale · evidence · confidence · MeetingRecord"]
+    DECISION{"Optional LLM refinement<br/>enabled and configured?"}
+    REFINE["Theme refinement · pipeline/llm.py"]
+    CACHE[("data/cache/llm/ · cached per-meeting response")]
+    QUALITY["Taxonomy evidence validation · routine examples · human-review cues"]
+    GROUP["Aggregate insights · themes and examples · sentiment trends and heatmap<br/>Risk radar · issue graph · VOC backlog · overview KPIs"]
+    WRITE["Serialize versioned run outputs"]
+    STORE[("data/processed/ · 10 JSON artifacts")]
+    MANIFEST["run_manifest.json · code, dataset and configuration fingerprints"]
 
     INPUT --> INGEST --> RAW
-    RAW --> SENTIMENT
-    RAW --> RULES
-    SENTIMENT --> RULES
-    RULES --> RECORD --> DECISION
+    RAW --> ENRICH --> DECISION
     DECISION -->|"No · deterministic baseline"| QUALITY
     DECISION -. "Yes" .-> REFINE
     REFINE <--> CACHE
     REFINE -. "refined theme fields" .-> QUALITY
     QUALITY --> GROUP
-    GROUP --> THEME
-    GROUP --> SENT
-    GROUP --> RISK
-    GROUP --> GRAPH
-    GROUP --> VOC
-    GROUP --> SUMMARY
-    THEME --> WRITE
-    SENT --> WRITE
-    RISK --> WRITE
-    GRAPH --> WRITE
-    VOC --> WRITE
-    SUMMARY --> WRITE
-    QUALITY --> WRITE
-    WRITE --> STORE
+    GROUP --> WRITE --> STORE
     WRITE --> MANIFEST
 
-    classDef input fill:#172554,stroke:#60a5fa,color:#eff6ff,stroke-width:2px
-    classDef stage fill:#123b3a,stroke:#2dd4bf,color:#ecfeff,stroke-width:2px
-    classDef optional fill:#312e81,stroke:#a78bfa,color:#f5f3ff,stroke-width:2px,stroke-dasharray:5 5
-    classDef output fill:#422006,stroke:#fbbf24,color:#fffbeb,stroke-width:2px
+    classDef input fill:#dbeafe,stroke:#60a5fa,color:#0f172a,stroke-width:2px
+    classDef stage fill:#ccfbf1,stroke:#2dd4bf,color:#0f172a,stroke-width:2px
+    classDef optional fill:#ede9fe,stroke:#a78bfa,color:#1e1b4b,stroke-width:2px,stroke-dasharray:5 5
+    classDef output fill:#fef3c7,stroke:#fbbf24,color:#422006,stroke-width:2px
     class INPUT input
-    class INGEST,SENTIMENT,RULES,QUALITY,GROUP,WRITE stage
+    class INGEST,ENRICH,QUALITY,GROUP,WRITE stage
     class REFINE,CACHE optional
-    class RAW,RECORD,THEME,SENT,RISK,GRAPH,VOC,SUMMARY,STORE,MANIFEST output
+    class RAW,STORE,MANIFEST output
 ```
 
 ### 5.2 API and analyst experience
@@ -290,52 +263,41 @@ Dashboard filters are shareable URL state, while the low-sample threshold and
 review completion state are preferences local to that browser.
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph BATCH["Persisted analysis"]
         direction TB
-        FILES[("data/processed<br/>meeting + insight JSON")]
+        FILES[("data/processed/ · meeting and insight JSON")]
     end
 
     subgraph SERVICE["FastAPI · app/main.py"]
         direction TB
-        ROUTES["GET /api/*<br/>overview · meetings · themes<br/>sentiment · risk · graph · VOC"]
-        DETAIL["GET /api/meetings/{id}"]
-        REPROCESS["POST /api/reprocess<br/>explicit pipeline rerun"]
+        ROUTES["GET /api/* · overview · meetings · themes · sentiment<br/>risk · graph · VOC · provenance · meeting detail"]
+        REPROCESS["POST /api/reprocess · explicit pipeline rerun"]
     end
 
     subgraph WEB["React dashboard · src/frontend"]
         direction TB
-        QUERY["src/api.ts<br/>TanStack Query"]
-        FILTERS["Shared controls<br/>stakeholder + URL filters"]
-        PAGES["Insight pages<br/>Overview · Themes · Sentiment<br/>Risk radar · Issue graph"]
-        QUEUE["Review queue<br/>risk + confidence + taxonomy cues"]
-        MEETING["Meeting detail<br/>computed outputs + evidence"]
-        BROWSER[("Browser storage<br/>threshold + review status")]
+        QUERY["src/api.ts · TanStack Query · shared URL filters"]
+        PAGES["Overview · themes · sentiment · risk radar · issue graph<br/>Meeting detail · review queue"]
+        BROWSER[("Browser storage · low-sample threshold<br/>Review status · browser-local only")]
     end
 
     ANALYST["Analyst"]
 
     FILES --> ROUTES --> QUERY
-    FILES --> DETAIL --> QUERY
     REPROCESS -. "regenerates artifacts" .-> FILES
-    QUERY --> FILTERS
-    FILTERS --> PAGES
-    FILTERS --> QUEUE
-    QUERY --> MEETING
+    QUERY --> PAGES
     PAGES --> ANALYST
-    QUEUE --> ANALYST
-    MEETING --> ANALYST
-    FILTERS -. "shareable query string" .-> ANALYST
-    FILTERS -. "saved preference" .-> BROWSER
-    QUEUE -. "mark reviewed / reopen" .-> BROWSER
+    QUERY -. "shareable query string" .-> ANALYST
+    PAGES -. "saved preference · mark reviewed · reopen" .-> BROWSER
 
-    classDef store fill:#422006,stroke:#fbbf24,color:#fffbeb,stroke-width:2px
-    classDef service fill:#123b3a,stroke:#2dd4bf,color:#ecfeff,stroke-width:2px
-    classDef web fill:#3f1d2e,stroke:#fb7185,color:#fff1f2,stroke-width:2px
-    classDef local fill:#1e293b,stroke:#cbd5e1,color:#f8fafc,stroke-width:2px
+    classDef store fill:#fef3c7,stroke:#fbbf24,color:#422006,stroke-width:2px
+    classDef service fill:#ccfbf1,stroke:#2dd4bf,color:#0f172a,stroke-width:2px
+    classDef web fill:#ffe4e6,stroke:#fb7185,color:#4c0519,stroke-width:2px
+    classDef local fill:#e2e8f0,stroke:#94a3b8,color:#0f172a,stroke-width:2px
     class FILES,BROWSER store
-    class ROUTES,DETAIL,REPROCESS service
-    class QUERY,FILTERS,PAGES,QUEUE,MEETING web
+    class ROUTES,REPROCESS service
+    class QUERY,PAGES web
     class ANALYST local
 ```
 
