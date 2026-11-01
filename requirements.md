@@ -35,6 +35,7 @@ Dashboard interaction requirements (implemented extension):
 - Provide stakeholder presets and composable call-type, product-module, account, and date-range filters across the dashboard's aggregate insight views.
 - Keep filter state in the URL so filtered views can be shared and meeting drill-down links retain their context.
 - Recompute displayed aggregates from the matching meetings. Clearly label corpus-wide narratives or validation summaries that are not recomputed for the active filters.
+- Provide an account-focused drill-in from risk views, including the matching call history, risk evidence, customer sentiment, and related themes/modules.
 
 How to Present Your Work
 Submit three deliverables:

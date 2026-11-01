@@ -92,11 +92,15 @@ describe('Accounts risk confidence', () => {
   })
 
   it('shows risk confidence and the supporting rule evidence', async () => {
-    renderAccounts()
+    renderAccounts('/?callType=support')
 
     expect(await screen.findByText('Risk-rule confidence:')).toBeInTheDocument()
     expect(screen.getByText('medium confidence')).toBeInTheDocument()
     expect(screen.getByText('Churn key moment: churn_signal.')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'View account details' })).toHaveAttribute(
+      'href',
+      '/accounts/Northwind?callType=support',
+    )
   })
 
   it('removes risk rows when no associated meeting matches the selected filter', async () => {

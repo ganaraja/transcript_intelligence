@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
 import { api } from '../api'
-import { Badge, CALL_COLORS, Card, Err, Loading } from '../lib'
+import { AccountLink, Badge, CALL_COLORS, Card, Err, Loading } from '../lib'
 import { useDashboardFilters } from '../useDashboardFilters'
 
 export default function Overview() {
@@ -196,7 +196,7 @@ export default function Overview() {
             <tbody>
               {filteredRiskRows.slice(0, 8).map((r) => (
                 <tr key={r.account} className="border-t border-slate-800">
-                  <td className="py-2">{r.account}</td>
+                  <td className="py-2"><AccountLink account={r.account} /></td>
                   <td>{r.risk_score.toFixed(2)}</td>
                   <td className="space-x-1">
                     {r.risk_flags.map((f) => (

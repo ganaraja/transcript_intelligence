@@ -382,6 +382,7 @@ MeetingRecord
 | `/sentiment` | Filtered weekly trends, module heatmap, and trajectory counts; corpus-wide written takeaways |
 | `/graph` | Force-directed issue graph filtered to matching meetings (insight B) |
 | `/accounts` | Risk radar filtered to matching meetings; account explanations remain corpus-wide rule summaries |
+| `/accounts/:account` | Account drill-in with filter-aware risk metrics, evidence, sentiment, themes/modules, and chronological call history |
 | `/meetings/:id` | Meeting record, summary, themes, quotes, provided vs computed sentiment, and confidence/evidence for call type, theme, sentiment, and risk |
 
 ### 8.2 UX constraints (take-home)
@@ -393,6 +394,7 @@ MeetingRecord
 - Overview shows the latest run's timestamp, code/dataset fingerprints, source file hashes, and LLM refinement configuration.
 - The shared filter bar supports stakeholder presets plus call type, product module, account, and date range. Presets intersect with call type (Support = support, Sales = external, Product = all, Engineering = internal + support).
 - Filter selections are URL query parameters, survive navigation, and are applied to meeting-level aggregates and drill-down examples. Clear filters removes only dashboard filter parameters.
+- Risk radar and Overview account links open `/accounts/:account`; the detail page carries active filters, summarizes only matching calls, and links through to each meeting. It states when filters exclude all calls for the selected account.
 - Corpus-wide narratives, taxonomy validation metrics, VOC group counts, and account explanation text are explicitly identified when a filtered view is active; filtered graph edges indicate association, not causality.
 - Example transcripts are the evaluation requirement: theme detail must show **title + quote + why**.
 
@@ -583,8 +585,7 @@ not be mistaken for current behavior:
 1. Human review of taxonomy labels and representative quotes.
 2. Embedding/clustering-based taxonomy audit or scatterplot.
 3. Independent transformer sentiment comparison and reported agreement.
-4. A dedicated account detail route beyond the filtered account risk table.
-   The sentiment page currently shows trajectory counts, not a detailed
+4. The sentiment page currently shows trajectory counts, not a detailed
    trajectory distribution.
 5. Strict 14-day gating for cross-surface graph edges.
 6. Human validation of sentiment labels and VOC classifications, plus risk

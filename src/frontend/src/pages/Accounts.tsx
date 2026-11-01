@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { api } from '../api'
-import { Badge, Card, ConfidenceBadge, Err, Loading, MeetingLink, fmtSent } from '../lib'
+import { AccountLink, Badge, Card, ConfidenceBadge, Err, Loading, MeetingLink, fmtSent } from '../lib'
 import { useDashboardFilters } from '../useDashboardFilters'
 
 export default function Accounts() {
@@ -62,6 +62,9 @@ export default function Accounts() {
       </div>
       {filteredRiskRows.map((row) => (
         <Card key={row.account} title={`${row.account} · score ${row.risk_score.toFixed(2)}`}>
+          <p className="mb-2 text-sm">
+            <AccountLink account={row.account} label="View account details" />
+          </p>
           <p className="mb-2 text-sm text-slate-300">{row.why_it_matters}</p>
           <div className="mb-2 flex items-center gap-2 text-xs text-slate-400">
             Risk-rule confidence:

@@ -70,6 +70,18 @@ export function MeetingLink({ id, title }: { id: string; title: string }) {
   )
 }
 
+export function AccountLink({ account, label = account }: { account: string; label?: string }) {
+  const location = useLocation()
+  return (
+    <Link
+      to={`/accounts/${encodeURIComponent(account)}${location.search}`}
+      className="text-sky-300 hover:underline"
+    >
+      {label}
+    </Link>
+  )
+}
+
 export function Loading() {
   return <p className="p-8 text-slate-400">Loading…</p>
 }
