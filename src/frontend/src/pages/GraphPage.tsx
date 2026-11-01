@@ -39,12 +39,20 @@ export default function GraphPage() {
         connectedNodeIds.add(edge.target)
       }
     }
-    const nodes = q.data.nodes.filter((node) => connectedNodeIds.has(node.id))
+    const nodes = q.data.nodes.filter((node) =>
+      isFiltered
+        ? connectedNodeIds.has(node.id)
+        : node.kind === 'theme' || node.kind === 'module' || meetingIds.has(node.id),
+    )
     const ids = new Set(nodes.map((n) => n.id))
     const links = q.data.edges
       .filter((e) => ids.has(e.source) && ids.has(e.target))
       .map((e) => ({ source: e.source, target: e.target, kind: e.kind }))
-    return { nodes: nodes.map((n) => ({ ...n })), links, meetingCount: filteredMeetings.length }
+    return {
+      nodes: nodes.map((n) => ({ ...n })),
+      links,
+      meetingCount: nodes.filter((node) => node.kind === 'meeting').length,
+    }
   }, [q.data, meetings.data, applyFilters, isFiltered])
 
   if (q.isPending || meetings.isPending) return <Loading />

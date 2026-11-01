@@ -150,4 +150,16 @@ describe('filtered insight pages', () => {
     expect(screen.getByLabelText('Graph nodes')).not.toHaveTextContent('m:m2')
     expect(screen.getByText('The insight text summarizes the unfiltered corpus; the graph is a filtered association view, not evidence of causality.')).toBeInTheDocument()
   })
+
+  it('shows all theme and module variants in the unfiltered graph by default', async () => {
+    renderPage(<GraphPage />, '/graph')
+
+    const nodes = await screen.findByLabelText('Graph nodes')
+    expect(nodes).toHaveTextContent('t:identity')
+    expect(nodes).toHaveTextContent('t:billing')
+    expect(nodes).toHaveTextContent('x:identity')
+    expect(nodes).toHaveTextContent('x:billing')
+    expect(nodes).toHaveTextContent('m:m1')
+    expect(nodes).not.toHaveTextContent('m:m2')
+  })
 })
