@@ -161,32 +161,11 @@ The risk radar and VOC backlog are heuristic triage aids, not calibrated predict
 ## 5. Architecture
 
 The architecture is shown at three levels: a presentation-friendly system map,
-the offline analysis pipeline, and the read/API experience. This keeps the
-main story legible while preserving implementation detail for technical
-discussion. Solid paths are the default deterministic flow; dashed paths are
-optional or browser-local behavior.
+the offline analysis pipeline, and the read/API experience. The high-resolution
+JPEGs are embedded for consistent rendering in documents and presentations;
+editable SVG sources are kept beside them in `docs/diagrams/`.
 
-```mermaid
-flowchart TB
-    SOURCE[("01 · SOURCE<br/>Meeting folders · metadata · transcripts · summaries · speaker information")]
-    ANALYSIS["02 · OFFLINE ANALYSIS<br/>Deterministic ingest → classification → enrichment → aggregate insights<br/>Themes · sentiment · risk · issue graph · VOC · provenance<br/>Optional OpenAI theme refinement with local response cache"]
-    ARTIFACTS[("03 · FILE-BACKED OUTPUT<br/>data/processed/ · 10 reusable JSON artifacts")]
-    EXPERIENCE["04 · DASHBOARD EXPERIENCE<br/>FastAPI read API + React dashboard<br/>Overview · Themes · Sentiment · Risk Radar · Issue Graph<br/>Account/meeting details · Review Queue · browser-local preferences"]
-    ANALYST["05 · ANALYST WORKFLOW<br/>Product · Support · Sales · Engineering"]
-
-    SOURCE --> ANALYSIS --> ARTIFACTS --> EXPERIENCE --> ANALYST
-
-    classDef source fill:#dbeafe,stroke:#60a5fa,color:#0f172a,stroke-width:2px
-    classDef process fill:#ccfbf1,stroke:#2dd4bf,color:#0f172a,stroke-width:2px
-    classDef store fill:#fef3c7,stroke:#fbbf24,color:#422006,stroke-width:2px
-    classDef experience fill:#ffe4e6,stroke:#fb7185,color:#4c0519,stroke-width:2px
-    classDef people fill:#e2e8f0,stroke:#94a3b8,color:#0f172a,stroke-width:2px
-    class SOURCE source
-    class ANALYSIS process
-    class ARTIFACTS store
-    class EXPERIENCE experience
-    class ANALYST people
-```
+![High-level system overview: meetings flow through offline analysis, persisted artifacts, dashboard, and analyst workflow](./docs/diagrams/system-overview.jpg)
 
 ### 5.1 Offline analysis pipeline
 
@@ -194,29 +173,7 @@ The pipeline is intentionally batch-oriented: source meetings become
 explainable per-meeting records, then aggregate artifacts. Theme refinement is
 an optional enrichment, never a prerequisite for running the demo.
 
-```mermaid
-flowchart TB
-    INPUT[("Meeting files<br/>Metadata · transcript · summary · speaker information")]
-    ENRICH["Ingest and enrich · ingest.py · sentiment.py · classify.py<br/>Speaker-side sentiment · call type · modules · themes · risk<br/>Evidence, confidence and normalized MeetingRecord"]
-    REFINE["Optional OpenAI theme refinement · pipeline/llm.py"]
-    CACHE[("data/cache/llm/<br/>Cached per-meeting response")]
-    QUALITY["Taxonomy evidence validation and aggregation<br/>Pass rate · review cues · themes · sentiment · risk · graph · VOC"]
-    OUTPUT[("Write 10 processed JSON artifacts<br/>Including run_manifest.json · data/processed/")]
-
-    INPUT --> ENRICH --> QUALITY --> OUTPUT
-    ENRICH -. "when enabled" .-> REFINE
-    REFINE <--> CACHE
-    REFINE -. "refined theme fields" .-> QUALITY
-
-    classDef input fill:#dbeafe,stroke:#60a5fa,color:#0f172a,stroke-width:2px
-    classDef stage fill:#ccfbf1,stroke:#2dd4bf,color:#0f172a,stroke-width:2px
-    classDef optional fill:#ede9fe,stroke:#a78bfa,color:#1e1b4b,stroke-width:2px,stroke-dasharray:5 5
-    classDef output fill:#fef3c7,stroke:#fbbf24,color:#422006,stroke-width:2px
-    class INPUT input
-    class ENRICH,QUALITY stage
-    class REFINE,CACHE optional
-    class OUTPUT output
-```
+![Offline analysis pipeline: meeting inputs are enriched, taxonomy evidence is validated, insights are aggregated, and JSON artifacts are persisted](./docs/diagrams/offline-pipeline.jpg)
 
 ### 5.2 API and analyst experience
 
@@ -224,30 +181,7 @@ The API serves persisted artifacts; the browser does not run the analysis.
 Dashboard filters are shareable URL state, while the low-sample threshold and
 review completion state are preferences local to that browser.
 
-```mermaid
-flowchart TB
-    FILES[("Processed JSON artifacts<br/>Meetings · themes · sentiment · risk · graph · VOC")]
-    API["FastAPI · app/main.py<br/>GET /api/* · overview · meetings · themes · taxonomy validation<br/>Sentiment · risk · graph · VOC · provenance"]
-    CLIENT["React client · src/api.ts<br/>TanStack Query · shared URL filters"]
-    VIEWS["Dashboard views<br/>Overview · Themes · Sentiment · Risk Radar · Issue Graph<br/>Account detail · Meeting detail · Review Queue"]
-    ANALYST["Analysts<br/>Product · Support · Sales · Engineering"]
-    BROWSER[("Browser localStorage<br/>Low-sample threshold · review status")]
-    REPROCESS["POST /api/reprocess<br/>Explicit pipeline rerun"]
-
-    FILES --> API --> CLIENT --> VIEWS --> ANALYST
-    REPROCESS -. "regenerates processed artifacts" .-> FILES
-    CLIENT -. "shareable query parameters" .-> ANALYST
-    VIEWS -. "save threshold · mark reviewed · reopen" .-> BROWSER
-
-    classDef store fill:#fef3c7,stroke:#fbbf24,color:#422006,stroke-width:2px
-    classDef service fill:#ccfbf1,stroke:#2dd4bf,color:#0f172a,stroke-width:2px
-    classDef web fill:#ffe4e6,stroke:#fb7185,color:#4c0519,stroke-width:2px
-    classDef local fill:#e2e8f0,stroke:#94a3b8,color:#0f172a,stroke-width:2px
-    class FILES,BROWSER store
-    class API,REPROCESS service
-    class CLIENT,VIEWS web
-    class ANALYST local
-```
+![API and analyst workflow: persisted outputs are served through FastAPI to dashboard pages, with reprocessing and browser-local review preferences](./docs/diagrams/api-analyst-workflow.jpg)
 
 ### Flow and extension points
 
