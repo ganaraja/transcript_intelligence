@@ -11,7 +11,23 @@ import {
 } from 'recharts'
 import { api } from '../api'
 import { CALL_COLORS, Card, Err, Loading, fmtSent } from '../lib'
+import type { CallType } from '../types'
 import { useDashboardFilters } from '../useDashboardFilters'
+
+const callTypes: CallType[] = ['support', 'external', 'internal']
+const trajectoryTypes = ['recovering', 'flat', 'deteriorating'] as const
+type Trajectory = (typeof trajectoryTypes)[number]
+
+const trajectoryLabels: Record<Trajectory, string> = {
+  recovering: 'Recovering',
+  flat: 'Flat',
+  deteriorating: 'Deteriorating',
+}
+const trajectoryColors: Record<Trajectory, string> = {
+  recovering: '#34d399',
+  flat: '#facc15',
+  deteriorating: '#dc2626',
+}
 
 export default function Sentiment() {
   const q = useQuery({ queryKey: ['sentiment'], queryFn: api.sentiment })
@@ -59,13 +75,34 @@ export default function Sentiment() {
   })
 
   const modules = [...new Set([...heatCells.keys()].map((key) => key.split('|')[0]))]
-  const types = ['support', 'external', 'internal']
+  const types = callTypes
 
-  const traj = { recovering: 0, deteriorating: 0, flat: 0 }
-  for (const m of filteredMeetings) {
-    const key = m.sentiment_trajectory as keyof typeof traj
-    if (key in traj) traj[key] += 1
-  }
+  const trajectoryRows = callTypes.map((callType) => {
+    const calls = filteredMeetings.filter((meeting) => meeting.call_type === callType)
+    const counts = Object.fromEntries(
+      trajectoryTypes.map((trajectory) => [
+        trajectory,
+        calls.filter((meeting) => meeting.sentiment_trajectory === trajectory).length,
+      ]),
+    ) as Record<Trajectory, number>
+    return {
+      callType,
+      total: calls.length,
+      counts,
+      percentages: Object.fromEntries(
+        trajectoryTypes.map((trajectory) => [
+          trajectory,
+          calls.length ? (counts[trajectory] / calls.length) * 100 : 0,
+        ]),
+      ) as Record<Trajectory, number>,
+    }
+  })
+  const trajectoryTotals = Object.fromEntries(
+    trajectoryTypes.map((trajectory) => [
+      trajectory,
+      trajectoryRows.reduce((total, row) => total + row.counts[trajectory], 0),
+    ]),
+  ) as Record<Trajectory, number>
 
   return (
     <div className="space-y-6">
@@ -134,9 +171,6 @@ export default function Sentiment() {
           </table>
         </Card>
         <Card title="Call trajectory + interpretation">
-          <p className="mb-3 text-sm text-slate-300">
-            Recovering {traj.recovering} · Flat {traj.flat} · Deteriorating {traj.deteriorating}
-          </p>
           {isFiltered ? (
             <p className="mb-2 text-xs text-slate-500">Narrative takeaways below summarize the unfiltered corpus.</p>
           ) : null}
@@ -149,6 +183,147 @@ export default function Sentiment() {
           </ul>
         </Card>
       </div>
+
+      <Card title="Trajectory distribution by call type">
+        <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
+          <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
+            Share of calls whose sentiment recovered, stayed flat, or deteriorated from the first to
+            last third of the transcript. A recovering trajectory does not confirm issue resolution.
+          </p>
+          <span className="rounded-full border border-slate-700 bg-slate-950/70 px-3 py-1 text-xs font-medium text-slate-300">
+            {filteredMeetings.length} {filteredMeetings.length === 1 ? 'call' : 'calls'}
+          </span>
+        </div>
+
+        <div aria-label="Trajectory chart legend" className="mb-4 flex flex-wrap gap-x-5 gap-y-2">
+          {trajectoryTypes.map((trajectory) => (
+            <span key={trajectory} className="inline-flex items-center gap-2 text-xs text-slate-300">
+              <span
+                aria-hidden="true"
+                className="h-2.5 w-2.5 rounded-sm"
+                style={{ backgroundColor: trajectoryColors[trajectory] }}
+              />
+              {trajectoryLabels[trajectory]}
+            </span>
+          ))}
+        </div>
+
+        <div
+          aria-label="Sentiment trajectory composition by call type"
+          className="space-y-4 rounded-lg border border-slate-800 bg-slate-950/40 p-4"
+          role="group"
+        >
+          {trajectoryRows.map((row) => (
+            <div key={row.callType} className="grid gap-2 sm:grid-cols-[8rem_minmax(0,1fr)] sm:items-center sm:gap-4">
+              <div className="flex items-center justify-between gap-3 sm:block">
+                <p className="text-sm font-medium capitalize text-slate-200">{row.callType}</p>
+                <p className="text-xs text-slate-500">{row.total} {row.total === 1 ? 'call' : 'calls'}</p>
+              </div>
+              {row.total ? (
+                <div
+                  aria-label={`${row.callType}: ${trajectoryTypes.map((trajectory) =>
+                    `${row.counts[trajectory]} ${trajectoryLabels[trajectory].toLowerCase()} (${row.percentages[trajectory].toFixed(1)}%)`,
+                  ).join(', ')}`}
+                  className="flex h-10 overflow-hidden rounded-full border border-slate-700/70 bg-slate-950/80 p-1 shadow-inner shadow-black/50"
+                  role="img"
+                >
+                  {trajectoryTypes
+                    .filter((trajectory) => row.counts[trajectory] > 0)
+                    .map((trajectory, index, visibleTrajectories) => {
+                      const percentage = row.percentages[trajectory]
+                      const isRed = trajectory === 'deteriorating'
+                      return (
+                        <div
+                          key={trajectory}
+                          className={`relative flex min-w-0 items-center justify-center overflow-hidden text-[11px] font-semibold tracking-wide transition-[flex-grow] duration-300 ${
+                            isRed ? 'text-white' : 'text-slate-950'
+                          } ${index === 0 ? 'rounded-l-full' : 'border-l border-white/35'} ${
+                            index === visibleTrajectories.length - 1 ? 'rounded-r-full' : ''
+                          }`}
+                          style={{
+                            flexBasis: 0,
+                            flexGrow: row.counts[trajectory],
+                            backgroundColor: trajectoryColors[trajectory],
+                          }}
+                          title={`${trajectoryLabels[trajectory]}: ${row.counts[trajectory]} calls (${percentage.toFixed(1)}%)`}
+                        >
+                          <span className="relative z-10 flex flex-col items-center leading-tight drop-shadow-sm">
+                            {percentage >= 12 ? <span>{percentage.toFixed(0)}%</span> : null}
+                            {percentage >= 25 ? (
+                              <span className="text-[10px] font-medium opacity-80">
+                                {row.counts[trajectory]} {row.counts[trajectory] === 1 ? 'call' : 'calls'}
+                              </span>
+                            ) : null}
+                          </span>
+                          <span
+                            aria-hidden="true"
+                            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/10"
+                          />
+                        </div>
+                      )
+                    })}
+                </div>
+              ) : (
+                <p className="flex h-9 items-center rounded-md border border-dashed border-slate-700 px-3 text-xs text-slate-500">
+                  No calls in this selection
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-5 overflow-x-auto rounded-lg border border-slate-800">
+          <table aria-label="Trajectory distribution by call type" className="w-full min-w-[36rem] text-sm">
+            <thead className="bg-slate-950/70 text-[11px] uppercase tracking-wide text-slate-400">
+              <tr>
+                <th scope="col" className="px-4 py-3 text-left">Call type</th>
+                {trajectoryTypes.map((trajectory) => (
+                  <th scope="col" key={trajectory} className="px-3 py-3 text-right">
+                    <span className="inline-flex items-center justify-end gap-2">
+                      <span className="h-2 w-2 rounded-full" style={{ backgroundColor: trajectoryColors[trajectory] }} />
+                      {trajectoryLabels[trajectory]}
+                    </span>
+                  </th>
+                ))}
+                <th scope="col" className="px-4 py-3 text-right">Total</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-800/80">
+              {trajectoryRows.map((row) => (
+                <tr key={row.callType} className="text-slate-300 transition-colors hover:bg-white/[0.025]">
+                  <th scope="row" className="px-4 py-3 text-left font-medium capitalize text-slate-200">{row.callType}</th>
+                  {trajectoryTypes.map((trajectory) => (
+                    <td key={trajectory} className="px-3 py-3 text-right tabular-nums">
+                      <span className="font-medium">{row.counts[trajectory]}</span>
+                      {' '}
+                      <span className="text-xs text-slate-500">({row.percentages[trajectory].toFixed(1)}%)</span>
+                    </td>
+                  ))}
+                  <td className="px-4 py-3 text-right font-semibold tabular-nums text-slate-100">{row.total}</td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot className="border-t border-slate-700 bg-slate-950/50">
+              <tr>
+                <th scope="row" className="px-4 py-3 text-left font-semibold text-slate-100">All types</th>
+                {trajectoryTypes.map((trajectory) => {
+                  const percentage = filteredMeetings.length
+                    ? (trajectoryTotals[trajectory] / filteredMeetings.length) * 100
+                    : 0
+                  return (
+                    <td key={trajectory} className="px-3 py-3 text-right tabular-nums text-slate-200">
+                      <span className="font-semibold">{trajectoryTotals[trajectory]}</span>
+                      {' '}
+                      <span className="text-xs text-slate-500">({percentage.toFixed(1)}%)</span>
+                    </td>
+                  )
+                })}
+                <td className="px-4 py-3 text-right font-semibold tabular-nums text-slate-100">{filteredMeetings.length}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </Card>
     </div>
   )
 }

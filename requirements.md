@@ -36,6 +36,7 @@ Dashboard interaction requirements (implemented extension):
 - Keep filter state in the URL so filtered views can be shared and meeting drill-down links retain their context.
 - Recompute displayed aggregates from the matching meetings. Clearly label corpus-wide narratives or validation summaries that are not recomputed for the active filters.
 - Provide an account-focused drill-in from risk views, including the matching call history, risk evidence, customer sentiment, and related themes/modules.
+- Show sentiment trajectory counts and within-call-type percentages, updating both with active dashboard filters; explain that trajectory labels are heuristics rather than confirmed resolutions.
 
 How to Present Your Work
 Submit three deliverables:

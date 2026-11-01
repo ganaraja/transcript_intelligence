@@ -359,6 +359,8 @@ MeetingRecord
 
 - Weekly buckets from `startTime`.
 - Breakdowns: week × call type and module × call type. Account-level summaries are supplied by the risk radar.
+- Show recovering, flat, and deteriorating trajectory counts and percentages by call type, plus whole-filter-set totals. Percentages use the selected call type's matching meetings as the denominator (overall percentages use all matching meetings).
+- Trajectory distribution is computed from meeting-level labels; recovering/deteriorating describes a polarity change across transcript thirds, not issue resolution.
 - Narrative templates, e.g. “Support customer-side sentiment is X pts below external AM calls in the week of the Detect outage — AM calls may be lagging the ticket queue.”
 
 ### 7.4 Insights
@@ -379,7 +381,7 @@ MeetingRecord
 | --- | --- |
 | `/` Overview | Filtered KPI cards (meeting count, call-type mix, mean utterance polarity, high-risk accounts), call-type mix, takeaways, VOC backlog, top risks |
 | `/themes` | Filtered theme codebook, counts, stacked bar by call type, corpus-wide taxonomy validation summary, confidence/review badges on filtered examples |
-| `/sentiment` | Filtered weekly trends, module heatmap, and trajectory counts; corpus-wide written takeaways |
+| `/sentiment` | Filtered weekly trends, module heatmap, trajectory distribution by call type (counts and percentages), and corpus-wide written takeaways |
 | `/graph` | Force-directed issue graph filtered to matching meetings (insight B) |
 | `/accounts` | Risk radar filtered to matching meetings; account explanations remain corpus-wide rule summaries |
 | `/accounts/:account` | Account drill-in with filter-aware risk metrics, evidence, sentiment, themes/modules, and chronological call history |
@@ -487,7 +489,7 @@ record the model and cache provenance for that run.
 | --- | --- | --- |
 | Process transcripts and categorize by topic/theme | Pipeline emits call type, primary/secondary themes, modules, rationale, and a codebook. | **Implemented.** Deterministic labels are explainable but have not been independently human-adjudicated. |
 | Explain the approach and show examples per category | `design.md`, `README.md`, theme page, and meeting detail expose taxonomy rationale, meeting titles, and utterance quotes. | **Implemented with a quality caveat.** Examples are automatically selected; audit that each quoted transcript genuinely supports its assigned theme before presenting it as representative. |
-| Analyze sentiment across call types and explain trends | Sentiment page includes weekly trend, module × call-type table, trajectory counts, and generated takeaways. | **Implemented as descriptive analysis.** Uses pre-existing utterance sentiment annotations; not an independently validated sentiment model or causal analysis. |
+| Analyze sentiment across call types and explain trends | Sentiment page includes weekly trend, module × call-type table, trajectory count/percentage distribution, and generated takeaways. | **Implemented as descriptive analysis.** Uses pre-existing utterance sentiment annotations; not an independently validated sentiment model or causal analysis. |
 | Add 2–3 stakeholder-relevant insights and explain why they matter | Risk radar for sales/support, issue graph for engineering/product, and VOC backlog for product/support. | **Three implemented.** Scores and groupings are triage heuristics; the graph only establishes a shared theme across at least two call types. |
 | Provide a readable technical reference | `notebooks/walkthrough.ipynb`, this design, `README.md`, and source code explain setup, decisions, and outputs. | **Implemented.** The notebook invokes the same backend pipeline rather than duplicating its logic. |
 | Demo the pipeline, outputs, and visualizations to a panel | The notebook runs the rules-only pipeline and inspects outputs; the React app contains interactive views. | **App and walkthrough are ready to demo.** A slide deck and narrated recording are not included and remain presentation deliverables to prepare. |
@@ -585,12 +587,10 @@ not be mistaken for current behavior:
 1. Human review of taxonomy labels and representative quotes.
 2. Embedding/clustering-based taxonomy audit or scatterplot.
 3. Independent transformer sentiment comparison and reported agreement.
-4. The sentiment page currently shows trajectory counts, not a detailed
-   trajectory distribution.
-5. Strict 14-day gating for cross-surface graph edges.
-6. Human validation of sentiment labels and VOC classifications, plus risk
+4. Strict 14-day gating for cross-surface graph edges.
+5. Human validation of sentiment labels and VOC classifications, plus risk
    score calibration.
-7. Slide deck for the panel; narrated recording if using the recording option.
+6. Slide deck for the panel; narrated recording if using the recording option.
 
 The first six are optional product/analysis improvements, not requirements for
 the local demo. The slide deck is needed for the panel presentation; a narrated

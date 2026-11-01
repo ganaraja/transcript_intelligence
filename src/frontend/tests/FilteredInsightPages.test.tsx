@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { api } from '../src/api'
@@ -20,6 +20,8 @@ vi.mock('recharts', async () => {
   const passthrough = ({ children }: { children?: React.ReactNode }) =>
     React.createElement('div', null, children)
   return {
+    Bar: passthrough,
+    BarChart: passthrough,
     CartesianGrid: passthrough,
     Legend: passthrough,
     Line: passthrough,
@@ -98,6 +100,13 @@ const meetings = [
     utterance_sentiment_mean: 0.5,
     sentiment_trajectory: 'deteriorating',
   }),
+  makeMeeting({
+    meeting_id: 'm3',
+    title: 'External identity review',
+    call_type: 'external',
+    customer_name: 'Northwind',
+    sentiment_trajectory: 'recovering',
+  }),
 ]
 
 const graph: GraphPayload = {
@@ -139,8 +148,75 @@ describe('filtered insight pages', () => {
     renderPage(<Sentiment />, '/sentiment?callType=support')
 
     expect(await screen.findByText('Showing 1 meetings matching dashboard filters.')).toBeInTheDocument()
-    expect(screen.getByText('Recovering 0 · Flat 1 · Deteriorating 0')).toBeInTheDocument()
+    const table = screen.getByRole('table', { name: 'Trajectory distribution by call type' })
+    const supportRow = within(table).getByRole('row', { name: /support/i })
+    expect(within(supportRow).getAllByRole('cell').map((cell) => cell.textContent)).toEqual([
+      '0 (0.0%)',
+      '1 (100.0%)',
+      '0 (0.0%)',
+      '1',
+    ])
     expect(screen.getByText('Narrative takeaways below summarize the unfiltered corpus.')).toBeInTheDocument()
+  })
+
+  it('shows trajectory counts and within-call-type percentages for all types', async () => {
+    renderPage(<Sentiment />, '/sentiment')
+
+    expect(await screen.findByRole('group', { name: 'Sentiment trajectory composition by call type' })).toBeInTheDocument()
+    expect(screen.getByLabelText('Trajectory chart legend')).toBeInTheDocument()
+    const table = await screen.findByRole('table', { name: 'Trajectory distribution by call type' })
+    const supportRow = within(table).getByRole('row', { name: /support/i })
+    const externalRow = within(table).getByRole('row', { name: /external/i })
+    const internalRow = within(table).getByRole('row', { name: /internal/i })
+    expect(within(supportRow).getAllByRole('cell').map((cell) => cell.textContent)).toEqual([
+      '0 (0.0%)',
+      '1 (100.0%)',
+      '0 (0.0%)',
+      '1',
+    ])
+    expect(within(externalRow).getAllByRole('cell').map((cell) => cell.textContent)).toEqual([
+      '1 (100.0%)',
+      '0 (0.0%)',
+      '0 (0.0%)',
+      '1',
+    ])
+    expect(within(internalRow).getAllByRole('cell').map((cell) => cell.textContent)).toEqual([
+      '0 (0.0%)',
+      '0 (0.0%)',
+      '1 (100.0%)',
+      '1',
+    ])
+    expect(
+      within(within(table).getByRole('row', { name: /all types/i }))
+        .getAllByRole('cell')
+        .map((cell) => cell.textContent),
+    ).toEqual(['1 (33.3%)', '1 (33.3%)', '1 (33.3%)', '3'])
+  })
+
+  it('renders trajectory segments as one continuous, proportioned bar', async () => {
+    vi.mocked(api.meetings).mockResolvedValue([
+      makeMeeting({ meeting_id: 'recovering', call_type: 'external', sentiment_trajectory: 'recovering' }),
+      makeMeeting({ meeting_id: 'flat', call_type: 'external', sentiment_trajectory: 'flat' }),
+      makeMeeting({ meeting_id: 'deteriorating', call_type: 'external', sentiment_trajectory: 'deteriorating' }),
+    ])
+    renderPage(<Sentiment />, '/sentiment')
+
+    const bar = await screen.findByRole('img', {
+      name: /external: 1 recovering \(33\.3%\), 1 flat \(33\.3%\), 1 deteriorating \(33\.3%\)/,
+    })
+    const segments = Array.from(bar.children) as HTMLElement[]
+
+    expect(segments).toHaveLength(3)
+    expect(segments.map((segment) => segment.style.flexGrow)).toEqual(['1', '1', '1'])
+    expect(segments.map((segment) => segment.style.backgroundColor)).toEqual([
+      'rgb(52, 211, 153)',
+      'rgb(250, 204, 21)',
+      'rgb(220, 38, 38)',
+    ])
+    expect(bar.className).not.toContain('gap-')
+    expect(segments[0].className).toContain('rounded-l-full')
+    expect(segments[1].className).toContain('border-l')
+    expect(segments[2].className).toContain('rounded-r-full')
   })
 
   it('limits issue graph nodes to matching meetings and labels corpus-wide insight text', async () => {
