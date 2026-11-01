@@ -10,7 +10,8 @@ This is a take-home style analysis app, not a production deployment.
 2. **Theme validation pass** — an evidence-based review that checks each theme assignment against title, summary, provided topics, and quote support, with a human-review queue when evidence is weak.
 3. **Confidence and evidence** — low/medium/high operational confidence for call type, theme, sentiment, and risk. Meeting detail shows evidence; low confidence is a review cue.
 4. **Sentiment** — duration-weighted utterance polarity, **customer-side** on mixed calls, weekly trends, module heatmap, filtered trajectory distributions, and provided-label vs utterance-polarity alignment with linked conflicts by call type. The comparison is a consistency check, not independent model validation.
-5. **Bonus insights**
+5. **Review queue** — prioritize meetings with a risk score of at least 0.50, low-confidence outputs, or taxonomy evidence flagged for review. Mark or reopen records; status is saved in this browser only.
+6. **Bonus insights**
    - Risk radar (churn, competitive, escalation)
    - Cross-surface issue graph (candidate shared-theme conversations across support, AM, and eng; not proof of a shared incident or causality)
    - Voice-of-customer backlog by module
@@ -18,6 +19,8 @@ This is a take-home style analysis app, not a production deployment.
 The dashboard has shared stakeholder presets (Support, Sales, Product, Engineering) and composable call-type, product-module, account, and date filters. Selections are encoded in the URL and retained when navigating to meeting details. Overview metrics, theme counts/examples, sentiment aggregates, risk rows, and graph nodes reflect matching meetings. Corpus-wide narratives and other non-filtered summaries are labeled when a filter is active. Open an account from Overview or Risk radar for a filter-aware account summary, risk evidence, sentiment, themes/modules, and chronological call history with meeting links.
 
 Aggregate summaries and subgroups below the low-sample threshold display a warning; treat them as descriptive signals, not conclusive findings. Set the threshold in the dashboard controls to fewer than 3, 5 (default), or 10 meetings; this preference is saved in the current browser.
+
+Open **Review queue** to work through flagged meetings. Risk scores are heuristic, confidence is not calibrated, and review status is local to this browser rather than shared with other analysts. Open a meeting title to inspect its evidence and transcript context.
 
 Processed artifacts live in `data/processed/` so the dashboard runs without an LLM key.
 Rebuild artifacts with `./scripts/process-data.sh` after updating the pipeline; the resulting `meetings.json` and `risk_radar.json` include confidence metadata, and `run_manifest.json` records run/data/code lineage.

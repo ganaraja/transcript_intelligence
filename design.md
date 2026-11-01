@@ -388,6 +388,7 @@ MeetingRecord
 | `/graph` | Filtered force-directed graph with labeled meeting/theme/module nodes, distinct assignment/shared-theme edges, and persistent non-causality guidance (insight B) |
 | `/accounts` | Risk radar filtered to matching meetings; account explanations remain corpus-wide rule summaries |
 | `/accounts/:account` | Account drill-in with filter-aware risk metrics, evidence, sentiment, themes/modules, and chronological call history |
+| `/review` | Filter-aware queue of high-risk or uncertain meetings with explicit review cues and browser-local review status |
 | `/meetings/:id` | Meeting record, summary, themes, quotes, provided vs computed sentiment, and confidence/evidence for call type, theme, sentiment, and risk |
 
 ### 8.2 UX constraints (take-home)
@@ -402,6 +403,7 @@ MeetingRecord
 - Risk radar and Overview account links open `/accounts/:account`; the detail page carries active filters, summarizes only matching calls, and links through to each meeting. It states when filters exclude all calls for the selected account.
 - Corpus-wide narratives, taxonomy validation metrics, VOC group counts, and account explanation text are explicitly identified when a filtered view is active; filtered graph edges indicate association, not causality.
 - Aggregate metrics and comparison groups below the configurable low-sample threshold show a visible warning; users can select fewer than 3, 5, or 10 meetings (default 5), with the choice saved in the browser. Subgroup labels retain the sample count and indicate that the result is descriptive, not conclusive.
+- The review queue includes meetings scoring at least 0.50 on the heuristic risk score, any low-confidence output, or taxonomy validation flagged for review. Reviewers can mark or reopen a record; status is browser-local and is not shared across analysts.
 - Example transcripts are the evaluation requirement: theme detail must show **title + quote + why**.
 
 ---
@@ -588,7 +590,7 @@ runs without an LLM key; optional OpenAI refinement is available separately.
 The following items in the original proposal are **not implemented** and should
 not be mistaken for current behavior:
 
-1. Human review of taxonomy labels and representative quotes.
+1. Human adjudication/editing of taxonomy labels and representative quotes; the review queue currently tracks review status but does not edit analysis outputs.
 2. Embedding/clustering-based taxonomy audit or scatterplot.
 3. Independent transformer sentiment comparison and reported agreement.
 4. Strict 14-day gating for cross-surface graph edges.

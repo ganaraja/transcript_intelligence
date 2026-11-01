@@ -5,6 +5,7 @@ import AccountDetail from './pages/AccountDetail'
 import GraphPage from './pages/GraphPage'
 import MeetingDetail from './pages/MeetingDetail'
 import Overview from './pages/Overview'
+import ReviewQueue from './pages/ReviewQueue'
 import Sentiment from './pages/Sentiment'
 import Themes from './pages/Themes'
 
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/sentiment" element={<Sentiment />} />
         <Route path="/graph" element={<GraphPage />} />
         <Route path="/accounts" element={<Accounts />} />
+        <Route path="/review" element={<ReviewQueue />} />
         <Route path="/accounts/:account" element={<AccountDetail />} />
         <Route path="/meetings/:id" element={<MeetingDetail />} />
       </Route>

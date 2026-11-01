@@ -40,6 +40,7 @@ Dashboard interaction requirements (implemented extension):
 - Compare provided meeting-level sentiment labels with duration-weighted utterance polarity by direction, showing alignment rates and linked conflicts by call type. Treat this as a consistency check, not independent model validation or an accuracy metric.
 - Label issue-graph nodes and edges clearly and show a persistent interpretation note that shared-theme links are associations, not proof of a shared incident, root cause, or causality.
 - Show configurable low-sample warnings for aggregate conclusions, including when dashboard filters reduce a subgroup below the threshold; describe these results as descriptive, not conclusive. Provide thresholds of fewer than 3, 5, or 10 meetings, default to 5, and save the user's choice in the browser.
+- Provide a human review queue for meetings with a risk score of at least 0.50, any low-confidence output, or taxonomy evidence flagged for review. Let reviewers mark and reopen records; state that review status is saved only in the current browser.
 
 How to Present Your Work
 Submit three deliverables:

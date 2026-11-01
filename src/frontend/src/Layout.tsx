@@ -9,6 +9,7 @@ const links = [
   { to: '/sentiment', label: 'Sentiment' },
   { to: '/graph', label: 'Issue graph' },
   { to: '/accounts', label: 'Risk radar' },
+  { to: '/review', label: 'Review queue' },
 ]
 
 export default function Layout() {
@@ -18,11 +19,11 @@ export default function Layout() {
       <div className="min-h-screen">
         <header className="sticky top-0 z-20 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
           <div className="mx-auto flex max-w-7xl items-center gap-6 px-6 py-3">
-            <div className="flex items-center gap-2 text-sky-300">
+            <div className="flex shrink-0 items-center gap-2 text-sky-300">
               <AudioLines size={20} />
               <span className="font-semibold tracking-tight text-slate-100">Transcript Intelligence</span>
             </div>
-            <nav className="flex gap-1 text-sm">
+            <nav className="flex min-w-0 flex-1 flex-wrap gap-1 text-sm">
               {links.map((l) => (
                 <NavLink
                   key={l.to}
