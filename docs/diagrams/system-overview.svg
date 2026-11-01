@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1540" viewBox="0 0 1600 1540">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1 1L11 6L1 11Z" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-violet" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1 1L11 6L1 11Z" fill="#8b5cf6"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#0f172a" flood-opacity=".08"/>
+    </filter>
+    <style>
+      text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; }
+      .eyebrow { font-size: 15px; font-weight: 750; letter-spacing: 2.2px; }
+      .title { font-size: 34px; font-weight: 760; }
+      .subtitle { font-size: 17px; fill: #475569; }
+      .card-title { font-size: 21px; font-weight: 740; }
+      .body { font-size: 17px; fill: #334155; }
+      .small { font-size: 14px; fill: #475569; }
+      .chip { font-size: 14px; font-weight: 650; fill: #334155; }
+      .step { font-size: 14px; font-weight: 760; fill: #fff; text-anchor: middle; dominant-baseline: middle; }
+    </style>
+  </defs>
+  <rect width="1600" height="1540" fill="#f8fafc"/>
+  <circle cx="1450" cy="90" r="95" fill="#eff6ff"/>
+  <circle cx="1510" cy="110" r="48" fill="#fef3c7" opacity=".8"/>
+  <text x="120" y="82" class="eyebrow" fill="#2563eb">TRANSCRIPT INTELLIGENCE</text>
+  <text x="120" y="132" class="title">From conversations to coordinated action</text>
+  <text x="120" y="166" class="subtitle">A local-first analysis pipeline turns meeting evidence into reviewable cross-functional insights.</text>
+
+  <!-- Source -->
+  <rect x="120" y="210" width="1360" height="142" rx="22" fill="#dbeafe" stroke="#60a5fa" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="174" cy="281" r="26" fill="#3b82f6"/>
+  <text x="174" y="282" class="step">01</text>
+  <text x="220" y="260" class="card-title">SOURCE MEETINGS</text>
+  <text x="220" y="294" class="body">Meeting folders bring together metadata, transcripts, summaries, and speaker information.</text>
+  <g transform="translate(1135 245)">
+    <rect width="275" height="72" rx="14" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="22" y="30" class="chip">100 sample meetings</text>
+    <text x="22" y="53" class="small">Support · external · internal</text>
+  </g>
+  <path d="M800 354V389" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Analysis -->
+  <rect x="120" y="400" width="1360" height="270" rx="22" fill="#ccfbf1" stroke="#2dd4bf" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="174" cy="452" r="26" fill="#0f766e"/>
+  <text x="174" y="453" class="step">02</text>
+  <text x="220" y="459" class="card-title">OFFLINE ANALYSIS</text>
+  <text x="220" y="489" class="small">Deterministic, evidence-bearing baseline; optional refinement never blocks the workflow.</text>
+  <g transform="translate(220 520)">
+    <rect width="260" height="58" rx="13" fill="#f0fdfa" stroke="#99f6e4"/>
+    <text x="130" y="36" class="chip" text-anchor="middle">Ingest &amp; normalize</text>
+    <path d="M269 29H300" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <rect x="315" width="260" height="58" rx="13" fill="#f0fdfa" stroke="#99f6e4"/>
+    <text x="445" y="36" class="chip" text-anchor="middle">Classify &amp; score</text>
+    <path d="M584 29H615" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <rect x="630" width="260" height="58" rx="13" fill="#f0fdfa" stroke="#99f6e4"/>
+    <text x="760" y="36" class="chip" text-anchor="middle">Validate evidence</text>
+    <path d="M899 29H930" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <rect x="945" width="260" height="58" rx="13" fill="#f0fdfa" stroke="#99f6e4"/>
+    <text x="1075" y="36" class="chip" text-anchor="middle">Aggregate insights</text>
+  </g>
+  <text x="220" y="623" class="small">Themes · sentiment · risk · issue graph · voice of customer · provenance</text>
+  <rect x="1035" y="600" width="390" height="44" rx="12" fill="#ede9fe" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="1230" y="628" class="small" text-anchor="middle">Optional OpenAI theme refinement · local cache</text>
+  <path d="M800 672V707" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Artifacts -->
+  <rect x="120" y="718" width="1360" height="142" rx="22" fill="#fef3c7" stroke="#fbbf24" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="174" cy="789" r="26" fill="#d97706"/>
+  <text x="174" y="790" class="step">03</text>
+  <text x="220" y="769" class="card-title">FILE-BACKED OUTPUT</text>
+  <text x="220" y="803" class="body">Ten reusable JSON artifacts in <tspan font-family="ui-monospace, monospace" font-weight="700">data/processed/</tspan></text>
+  <text x="220" y="830" class="small">Per-meeting records · aggregate views · run manifest</text>
+  <g transform="translate(1170 758)">
+    <rect width="240" height="62" rx="14" fill="#fffbeb" stroke="#fde68a"/>
+    <text x="120" y="27" class="chip" text-anchor="middle">No database</text>
+    <text x="120" y="48" class="small" text-anchor="middle">Simple local review</text>
+  </g>
+  <path d="M800 862V897" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- Product experience -->
+  <rect x="120" y="908" width="1360" height="278" rx="22" fill="#ffe4e6" stroke="#fb7185" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="174" cy="960" r="26" fill="#e11d48"/>
+  <text x="174" y="961" class="step">04</text>
+  <text x="220" y="967" class="card-title">DASHBOARD EXPERIENCE</text>
+  <text x="220" y="997" class="small">FastAPI serves artifacts to a React dashboard; the browser does not run analysis.</text>
+  <g transform="translate(220 1025)">
+    <rect width="790" height="86" rx="15" fill="#fff1f2" stroke="#fecdd3"/>
+    <text x="24" y="31" class="chip">Explore insights</text>
+    <text x="24" y="59" class="body">Overview · Themes · Sentiment · Risk Radar · Issue Graph</text>
+    <text x="24" y="80" class="small">Account drill-in · Meeting detail · Evidence</text>
+  </g>
+  <g transform="translate(1035 1025)">
+    <rect width="390" height="86" rx="15" fill="#fff1f2" stroke="#fecdd3"/>
+    <text x="22" y="31" class="chip">Review queue</text>
+    <text x="22" y="57" class="small">High risk · low confidence</text>
+    <text x="22" y="77" class="small">Weak theme evidence · mark / reopen</text>
+  </g>
+  <rect x="220" y="1125" width="1205" height="38" rx="11" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="240" y="1150" class="small">Dashboard state: shareable URL filters · browser-local threshold and review status (not shared across analysts)</text>
+  <path d="M800 1188V1221" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- People -->
+  <rect x="120" y="1232" width="1360" height="138" rx="22" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="174" cy="1301" r="26" fill="#475569"/>
+  <text x="174" y="1302" class="step">05</text>
+  <text x="220" y="1287" class="card-title">ANALYST WORKFLOW</text>
+  <text x="220" y="1321" class="body">Product · Support · Sales · Engineering</text>
+  <text x="220" y="1348" class="small">Turn explainable signals into focused investigation and coordinated follow-up.</text>
+  <g transform="translate(1190 1274)">
+    <circle cx="28" cy="28" r="24" fill="#cbd5e1"/>
+    <circle cx="88" cy="28" r="24" fill="#cbd5e1"/>
+    <circle cx="148" cy="28" r="24" fill="#cbd5e1"/>
+    <path d="M7 72c2-17 13-27 21-27s19 10 21 27M67 72c2-17 13-27 21-27s19 10 21 27M127 72c2-17 13-27 21-27s19 10 21 27" fill="#94a3b8"/>
+  </g>
+
+  <text x="120" y="1460" class="small">Solid arrows show the default data path. Optional enrichment is clearly identified in the analysis stage.</text>
+</svg>
