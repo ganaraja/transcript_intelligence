@@ -167,50 +167,49 @@ discussion. Solid paths are the default deterministic flow; dashed paths are
 optional or browser-local behavior.
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph SOURCE["01 · SOURCE"]
         direction TB
-        DATASET[("Meeting folders<br/>metadata · transcript<br/>summary · speaker info")]
+        DATASET[("Meeting folders<br/>Metadata · transcript<br/>Summary · speaker info")]
     end
 
     subgraph ANALYSIS["02 · OFFLINE ANALYSIS"]
         direction TB
-        PIPELINE["Ingest · classify · enrich<br/>Deterministic baseline"]
-        OPTIONAL["Optional theme refinement<br/>OpenAI + local cache"]
-        AGGREGATES["Aggregate insights<br/>themes · sentiment · risk<br/>graph · VOC · provenance"]
+        PIPELINE["Ingest · classify · enrich<br/>Explainable deterministic baseline"]
+        OPTIONAL["Optional theme refinement<br/>OpenAI · local response cache"]
+        AGGREGATES["Aggregate insights<br/>Themes · sentiment · risk<br/>Issue graph · VOC · provenance"]
     end
 
     subgraph ARTIFACTS["03 · FILE-BACKED OUTPUT"]
         direction TB
-        JSON[("data/processed<br/>10 JSON artifacts")]
+        JSON[("data/processed/<br/>10 reusable JSON artifacts")]
     end
 
     subgraph EXPERIENCE["04 · DASHBOARD EXPERIENCE"]
         direction TB
         API["FastAPI<br/>read API"]
-        APP["React dashboard<br/>overview · themes · sentiment<br/>risk · graph · meeting detail"]
-        QUEUE["Analyst review queue"]
+        APP["React dashboard<br/>Overview · themes · sentiment<br/>Risk radar · graph · meeting detail"]
+        QUEUE["Review queue<br/>High risk · low confidence · weak theme evidence"]
     end
 
     subgraph PEOPLE["05 · REVIEW"]
         direction TB
         ANALYST["Product · Support<br/>Sales · Engineering"]
-        LOCAL[("Browser-local<br/>filters · preferences<br/>review status")]
+        LOCAL[("Browser-local<br/>URL filters · threshold preference<br/>Review status")]
     end
 
-    DATASET --> PIPELINE --> AGGREGATES --> JSON --> API --> APP --> ANALYST
-    PIPELINE -. "when enabled" .-> OPTIONAL
+    DATASET --> PIPELINE --> AGGREGATES --> JSON --> API --> APP --> QUEUE --> ANALYST
+    PIPELINE -. "optional · when enabled" .-> OPTIONAL
     OPTIONAL -. "refined theme fields" .-> AGGREGATES
-    APP --> QUEUE
-    APP -. "URL filters + saved settings" .-> LOCAL
-    QUEUE -. "reviewed / reopen status" .-> LOCAL
+    APP -. "shareable filters · saved preference" .-> LOCAL
+    QUEUE -. "mark reviewed · reopen" .-> LOCAL
 
-    classDef source fill:#172554,stroke:#60a5fa,color:#eff6ff,stroke-width:2px
-    classDef process fill:#123b3a,stroke:#2dd4bf,color:#ecfeff,stroke-width:2px
-    classDef optional fill:#312e81,stroke:#a78bfa,color:#f5f3ff,stroke-width:2px,stroke-dasharray:5 5
-    classDef store fill:#422006,stroke:#fbbf24,color:#fffbeb,stroke-width:2px
-    classDef experience fill:#3f1d2e,stroke:#fb7185,color:#fff1f2,stroke-width:2px
-    classDef people fill:#1e293b,stroke:#cbd5e1,color:#f8fafc,stroke-width:2px
+    classDef source fill:#dbeafe,stroke:#60a5fa,color:#0f172a,stroke-width:2px
+    classDef process fill:#ccfbf1,stroke:#2dd4bf,color:#0f172a,stroke-width:2px
+    classDef optional fill:#ede9fe,stroke:#a78bfa,color:#1e1b4b,stroke-width:2px,stroke-dasharray:5 5
+    classDef store fill:#fef3c7,stroke:#fbbf24,color:#422006,stroke-width:2px
+    classDef experience fill:#ffe4e6,stroke:#fb7185,color:#4c0519,stroke-width:2px
+    classDef people fill:#e2e8f0,stroke:#94a3b8,color:#0f172a,stroke-width:2px
     class DATASET source
     class PIPELINE,AGGREGATES process
     class OPTIONAL optional
