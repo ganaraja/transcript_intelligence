@@ -10,13 +10,30 @@ import {
   YAxis,
 } from 'recharts'
 import { api } from '../api'
-import { CALL_COLORS, Card, Err, Loading, fmtSent } from '../lib'
+import { CALL_COLORS, Card, Err, Loading, MeetingLink, fmtSent } from '../lib'
 import type { CallType } from '../types'
 import { useDashboardFilters } from '../useDashboardFilters'
 
 const callTypes: CallType[] = ['support', 'external', 'internal']
 const trajectoryTypes = ['recovering', 'flat', 'deteriorating'] as const
 type Trajectory = (typeof trajectoryTypes)[number]
+type Polarity = 'positive' | 'neutral' | 'negative'
+
+const providedPolarity: Record<string, Polarity> = {
+  'very-positive': 'positive',
+  positive: 'positive',
+  'mixed-positive': 'positive',
+  neutral: 'neutral',
+  'mixed-negative': 'negative',
+  negative: 'negative',
+  'very-negative': 'negative',
+}
+
+function classifyPolarity(score: number): Polarity {
+  if (score < -0.15) return 'negative'
+  if (score > 0.15) return 'positive'
+  return 'neutral'
+}
 
 const trajectoryLabels: Record<Trajectory, string> = {
   recovering: 'Recovering',
@@ -103,6 +120,29 @@ export default function Sentiment() {
       trajectoryRows.reduce((total, row) => total + row.counts[trajectory], 0),
     ]),
   ) as Record<Trajectory, number>
+  const sentimentComparisons = filteredMeetings.flatMap((meeting) => {
+    const providedLabel = meeting.provided_overall_sentiment?.trim().toLowerCase()
+    const provided =
+      providedLabel && Object.hasOwn(providedPolarity, providedLabel)
+        ? providedPolarity[providedLabel]
+        : undefined
+    if (!provided || meeting.utterance_count === 0) return []
+    const computed = classifyPolarity(meeting.utterance_sentiment_mean)
+    return [{ meeting, provided, computed, agrees: provided === computed }]
+  })
+  const agreementRows = callTypes.map((callType) => {
+    const comparisons = sentimentComparisons.filter((item) => item.meeting.call_type === callType)
+    const aligned = comparisons.filter((item) => item.agrees).length
+    return {
+      callType,
+      compared: comparisons.length,
+      aligned,
+      conflicts: comparisons.length - aligned,
+      alignmentRate: comparisons.length ? (aligned / comparisons.length) * 100 : 0,
+    }
+  })
+  const alignedTotal = sentimentComparisons.filter((item) => item.agrees).length
+  const conflictRows = sentimentComparisons.filter((item) => !item.agrees)
 
   return (
     <div className="space-y-6">
@@ -181,6 +221,104 @@ export default function Sentiment() {
               </li>
             ))}
           </ul>
+        </Card>
+
+        <Card title="Provided label vs utterance-level sentiment" className="lg:col-span-2">
+          <p className="mb-4 max-w-3xl text-sm leading-relaxed text-slate-400">
+            Polarity-level consistency check between the provided meeting label and the duration-weighted
+            utterance score. Mixed labels map to their positive or negative direction; scores from -0.15
+            to 0.15 count as neutral. This is not an independent model evaluation or an accuracy measure.
+          </p>
+          <div className="mb-4 flex flex-wrap gap-3 text-xs">
+            <span className="rounded-full border border-emerald-900/70 bg-emerald-950/40 px-3 py-1.5 text-emerald-300">
+              {alignedTotal} aligned
+            </span>
+            <span className="rounded-full border border-rose-900/70 bg-rose-950/40 px-3 py-1.5 text-rose-300">
+              {conflictRows.length} conflicts
+            </span>
+            <span className="rounded-full border border-slate-700 bg-slate-950/70 px-3 py-1.5 text-slate-300">
+              {sentimentComparisons.length} compared
+            </span>
+            {filteredMeetings.length > sentimentComparisons.length ? (
+              <span className="rounded-full border border-slate-700 bg-slate-950/70 px-3 py-1.5 text-slate-400">
+                {filteredMeetings.length - sentimentComparisons.length} not compared
+              </span>
+            ) : null}
+          </div>
+          <div className="overflow-x-auto rounded-lg border border-slate-800">
+            <table aria-label="Sentiment agreement by call type" className="w-full min-w-[32rem] text-sm">
+              <thead className="bg-slate-950/70 text-[11px] uppercase tracking-wide text-slate-400">
+                <tr>
+                  <th scope="col" className="px-4 py-3 text-left">Call type</th>
+                  <th scope="col" className="px-3 py-3 text-right">Compared</th>
+                  <th scope="col" className="px-3 py-3 text-right">Aligned</th>
+                  <th scope="col" className="px-3 py-3 text-right">Conflicts</th>
+                  <th scope="col" className="px-4 py-3 text-right">Alignment</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800/80">
+                {agreementRows.map((row) => (
+                  <tr key={row.callType} className="text-slate-300">
+                    <th scope="row" className="px-4 py-3 text-left font-medium capitalize text-slate-200">{row.callType}</th>
+                    <td className="px-3 py-3 text-right tabular-nums">{row.compared}</td>
+                    <td className="px-3 py-3 text-right tabular-nums text-emerald-300">{row.aligned}</td>
+                    <td className="px-3 py-3 text-right tabular-nums text-rose-300">{row.conflicts}</td>
+                    <td className="px-4 py-3 text-right tabular-nums">
+                      {row.compared ? `${row.alignmentRate.toFixed(1)}%` : '—'}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot className="border-t border-slate-700 bg-slate-950/50">
+                <tr className="font-semibold text-slate-100">
+                  <th scope="row" className="px-4 py-3 text-left">All types</th>
+                  <td className="px-3 py-3 text-right tabular-nums">{sentimentComparisons.length}</td>
+                  <td className="px-3 py-3 text-right tabular-nums text-emerald-300">{alignedTotal}</td>
+                  <td className="px-3 py-3 text-right tabular-nums text-rose-300">{conflictRows.length}</td>
+                  <td className="px-4 py-3 text-right tabular-nums">
+                    {sentimentComparisons.length
+                      ? `${((alignedTotal / sentimentComparisons.length) * 100).toFixed(1)}%`
+                      : '—'}
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div className="mt-5">
+            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+              Calls with conflicting polarity ({conflictRows.length})
+            </h3>
+            {conflictRows.length ? (
+              <div className="max-h-80 overflow-auto rounded-lg border border-slate-800">
+                <table aria-label="Sentiment polarity conflicts" className="w-full min-w-[38rem] text-sm">
+                  <thead className="sticky top-0 bg-slate-950 text-[11px] uppercase tracking-wide text-slate-400">
+                    <tr>
+                      <th scope="col" className="px-4 py-3 text-left">Call</th>
+                      <th scope="col" className="px-3 py-3 text-left">Call type</th>
+                      <th scope="col" className="px-3 py-3 text-left">Provided label</th>
+                      <th scope="col" className="px-4 py-3 text-right">Utterance score</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800/80">
+                    {conflictRows.map(({ meeting, computed }) => (
+                      <tr key={meeting.meeting_id} className="text-slate-300">
+                        <td className="px-4 py-3"><MeetingLink id={meeting.meeting_id} title={meeting.title} /></td>
+                        <td className="px-3 py-3 capitalize">{meeting.call_type}</td>
+                        <td className="px-3 py-3">{meeting.provided_overall_sentiment}</td>
+                        <td className="px-4 py-3 text-right tabular-nums">
+                          <span className="capitalize">{computed}</span> ({fmtSent(meeting.utterance_sentiment_mean)})
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <p className="rounded-lg border border-slate-800 bg-slate-950/40 p-3 text-sm text-slate-400">
+                No conflicting calls in this selection.
+              </p>
+            )}
+          </div>
         </Card>
       </div>
 

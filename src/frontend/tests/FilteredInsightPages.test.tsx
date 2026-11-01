@@ -219,6 +219,93 @@ describe('filtered insight pages', () => {
     expect(segments[2].className).toContain('rounded-r-full')
   })
 
+  it('compares provided sentiment polarity with utterance sentiment and lists conflicts', async () => {
+    vi.mocked(api.meetings).mockResolvedValue([
+      makeMeeting({
+        meeting_id: 'negative-agreement',
+        provided_overall_sentiment: 'mixed-negative',
+        utterance_sentiment_mean: -0.5,
+      }),
+      makeMeeting({
+        meeting_id: 'positive-conflict',
+        call_type: 'external',
+        title: 'Positive label, negative utterances',
+        provided_overall_sentiment: 'very-positive',
+        utterance_sentiment_mean: -0.4,
+      }),
+      makeMeeting({
+        meeting_id: 'neutral-agreement',
+        call_type: 'internal',
+        provided_overall_sentiment: 'neutral',
+        utterance_sentiment_mean: 0.15,
+      }),
+      makeMeeting({
+        meeting_id: 'positive-agreement',
+        provided_overall_sentiment: 'mixed-positive',
+        utterance_sentiment_mean: 0.16,
+      }),
+      makeMeeting({
+        meeting_id: 'no-utterances',
+        call_type: 'internal',
+        provided_overall_sentiment: 'negative',
+        utterance_count: 0,
+      }),
+      makeMeeting({ meeting_id: 'no-provided-label' }),
+    ])
+    renderPage(<Sentiment />, '/sentiment')
+
+    expect(await screen.findByText('4 compared')).toBeInTheDocument()
+    expect(screen.getByText('3 aligned')).toBeInTheDocument()
+    expect(screen.getByText('1 conflicts')).toBeInTheDocument()
+    expect(screen.getByText('2 not compared')).toBeInTheDocument()
+
+    const table = screen.getByRole('table', { name: 'Sentiment agreement by call type' })
+    expect(within(within(table).getByRole('row', { name: /support/i }))
+      .getAllByRole('cell').map((cell) => cell.textContent)).toEqual(['2', '2', '0', '100.0%'])
+    expect(within(within(table).getByRole('row', { name: /external/i }))
+      .getAllByRole('cell').map((cell) => cell.textContent)).toEqual(['1', '0', '1', '0.0%'])
+    expect(within(within(table).getByRole('row', { name: /internal/i }))
+      .getAllByRole('cell').map((cell) => cell.textContent)).toEqual(['1', '1', '0', '100.0%'])
+
+    const conflicts = screen.getByRole('table', { name: 'Sentiment polarity conflicts' })
+    expect(within(conflicts).getByRole('link', { name: 'Positive label, negative utterances' })).toHaveAttribute(
+      'href',
+      '/meetings/positive-conflict',
+    )
+    expect(within(conflicts).getByText('very-positive')).toBeInTheDocument()
+    expect(within(conflicts).getByRole('cell', { name: /negative.*-0\.40/ })).toBeInTheDocument()
+    expect(within(conflicts).queryByText('no-utterances')).not.toBeInTheDocument()
+    expect(within(conflicts).queryByText('no-provided-label')).not.toBeInTheDocument()
+  })
+
+  it('recomputes sentiment agreement and conflicts with active dashboard filters', async () => {
+    vi.mocked(api.meetings).mockResolvedValue([
+      makeMeeting({
+        meeting_id: 'support-agreement',
+        provided_overall_sentiment: 'negative',
+        utterance_sentiment_mean: -0.5,
+      }),
+      makeMeeting({
+        meeting_id: 'external-conflict',
+        call_type: 'external',
+        title: 'External sentiment conflict',
+        provided_overall_sentiment: 'positive',
+        utterance_sentiment_mean: -0.5,
+      }),
+    ])
+    renderPage(<Sentiment />, '/sentiment?callType=external')
+
+    expect(await screen.findByText('1 compared')).toBeInTheDocument()
+    expect(screen.getByText('0 aligned')).toBeInTheDocument()
+    expect(screen.getByText('1 conflicts')).toBeInTheDocument()
+    const conflicts = screen.getByRole('table', { name: 'Sentiment polarity conflicts' })
+    expect(within(conflicts).getByRole('link', { name: 'External sentiment conflict' })).toHaveAttribute(
+      'href',
+      '/meetings/external-conflict?callType=external',
+    )
+    expect(within(conflicts).queryByRole('link', { name: 'Support identity call' })).not.toBeInTheDocument()
+  })
+
   it('limits issue graph nodes to matching meetings and labels corpus-wide insight text', async () => {
     renderPage(<GraphPage />, '/graph?callType=support')
 

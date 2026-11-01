@@ -9,7 +9,7 @@ This is a take-home style analysis app, not a production deployment.
 1. **Themes** — support / external / internal from title + attendee domains; primary themes from a title-weighted keyword taxonomy (optional OpenAI refine).
 2. **Theme validation pass** — an evidence-based review that checks each theme assignment against title, summary, provided topics, and quote support, with a human-review queue when evidence is weak.
 3. **Confidence and evidence** — low/medium/high operational confidence for call type, theme, sentiment, and risk. Meeting detail shows evidence; low confidence is a review cue.
-4. **Sentiment** — duration-weighted utterance polarity, **customer-side** on mixed calls, weekly trends, module heatmap, and filtered recovering/flat/deteriorating trajectory distributions by call type.
+4. **Sentiment** — duration-weighted utterance polarity, **customer-side** on mixed calls, weekly trends, module heatmap, filtered trajectory distributions, and provided-label vs utterance-polarity alignment with linked conflicts by call type. The comparison is a consistency check, not independent model validation.
 5. **Bonus insights**
    - Risk radar (churn, competitive, escalation)
    - Cross-surface issue graph (same theme across support, AM, and eng)

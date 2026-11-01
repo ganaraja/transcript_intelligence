@@ -37,6 +37,7 @@ Dashboard interaction requirements (implemented extension):
 - Recompute displayed aggregates from the matching meetings. Clearly label corpus-wide narratives or validation summaries that are not recomputed for the active filters.
 - Provide an account-focused drill-in from risk views, including the matching call history, risk evidence, customer sentiment, and related themes/modules.
 - Show sentiment trajectory counts and within-call-type percentages, updating both with active dashboard filters; explain that trajectory labels are heuristics rather than confirmed resolutions.
+- Compare provided meeting-level sentiment labels with duration-weighted utterance polarity by direction, showing alignment rates and linked conflicts by call type. Treat this as a consistency check, not independent model validation or an accuracy metric.
 
 How to Present Your Work
 Submit three deliverables:

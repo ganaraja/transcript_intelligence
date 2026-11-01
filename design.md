@@ -128,13 +128,16 @@ Do not “just chart” `summary.sentimentScore`.
 1. **Utterance baseline:** map `sentimentType` → {-1, 0, +1}; duration-weighted average.
 2. **Role-aware score:** compute customer and Aegis speaker means separately. Customer-side sentiment is null when no customer utterances are identified; trend/heatmap visualizations fall back to all-utterance sentiment for internal calls.
 3. **Trajectory:** first-third vs last-third of all utterances (did the call recover?).
-4. **Independent check (deferred):** compare against an independent sentiment model or score and report agreement with the vendor-provided meeting-level labels.
-5. **Trends:** weekly mean of meeting-level scores by call type; product-module × call-type heatmap; call out Detect-outage patterns where supported by the data. The dashboard compares vendor-provided meeting sentiment fields on meeting detail, but does not calculate an independent model agreement score.
+4. **Label consistency check:** compare the direction of the duration-weighted utterance score with the provided meeting-level sentiment label. Map mixed-positive/positive/very-positive to positive, mixed-negative/negative/very-negative to negative, and neutral to neutral; utterance scores in [-0.15, 0.15] are neutral. Report alignment by call type and link polarity conflicts to their meetings. This is not an independent model evaluation or an accuracy measure.
+5. **Trends:** weekly mean of meeting-level scores by call type; product-module × call-type heatmap; call out Detect-outage patterns where supported by the data. The dashboard provides a polarity consistency check, but does not run or compare an independent sentiment model.
 
 Scores are descriptive polarity indices over pre-existing transcript annotations,
-not a validated emotion model. The pipeline duration-weights utterances within a
-meeting, then aggregates meeting scores without weighting longer meetings more
-heavily. Weekly sample sizes vary and should be shown alongside comparisons.
+not a validated emotion model. The agreement view checks consistency between
+the meeting-level label and utterance-level annotations; these are not
+independent ground-truth/model outputs. The pipeline duration-weights utterances
+within a meeting, then aggregates meeting scores without weighting longer
+meetings more heavily. Weekly sample sizes vary and should be shown alongside
+comparisons.
 
 Interpretation is first-class: the pipeline generates takeaway strings from aggregate statistics; they are not generated live by an LLM.
 
@@ -381,7 +384,7 @@ MeetingRecord
 | --- | --- |
 | `/` Overview | Filtered KPI cards (meeting count, call-type mix, mean utterance polarity, high-risk accounts), call-type mix, takeaways, VOC backlog, top risks |
 | `/themes` | Filtered theme codebook, counts, stacked bar by call type, corpus-wide taxonomy validation summary, confidence/review badges on filtered examples |
-| `/sentiment` | Filtered weekly trends, module heatmap, trajectory distribution by call type (counts and percentages), and corpus-wide written takeaways |
+| `/sentiment` | Filtered weekly trends, module heatmap, trajectory distribution, provided-label vs utterance-polarity alignment by call type with linked conflicts, and corpus-wide written takeaways |
 | `/graph` | Force-directed issue graph filtered to matching meetings (insight B) |
 | `/accounts` | Risk radar filtered to matching meetings; account explanations remain corpus-wide rule summaries |
 | `/accounts/:account` | Account drill-in with filter-aware risk metrics, evidence, sentiment, themes/modules, and chronological call history |
