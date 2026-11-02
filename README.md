@@ -159,12 +159,12 @@ Call type is deterministic from metadata, so we do not spend an LLM on it. Theme
 
 ## Web pages - screen shots
 
-<img width="1308" height="1480" alt="image" src="https://github.com/user-attachments/assets/b07d3ed8-f239-484c-94e9-f6cad88d1f06" />
-<img width="1692" height="1868" alt="image" src="https://github.com/user-attachments/assets/4eb5d516-2643-4b16-8a8b-ac266bb37a16" />
-<img width="2054" height="1754" alt="image" src="https://github.com/user-attachments/assets/f717e310-c4ff-4a2e-abcb-56fa7e8b6cf6" />
-<img width="2542" height="1750" alt="image" src="https://github.com/user-attachments/assets/ac1d3d0f-a14f-4646-ba56-f498e8a9cef2" />
-<img width="1802" height="766" alt="image" src="https://github.com/user-attachments/assets/2e4805fa-c730-4e8a-9077-77b26d5f77bd" />
-<img width="2484" height="1632" alt="image" src="https://github.com/user-attachments/assets/e8cb0488-35db-40e5-bf47-a739e030197c" />
+<img width="1286" height="1818" alt="image" src="https://github.com/user-attachments/assets/76db32f8-0c0e-455b-a16c-fed7c9bc5a0b" />
+<img width="1296" height="1794" alt="image" src="https://github.com/user-attachments/assets/40c1fe56-1856-4068-bc7e-740a9cf2a4f3" />
+<img width="868" height="1784" alt="image" src="https://github.com/user-attachments/assets/47a194ad-44d6-41ad-a9bb-16effcc594d0" />
+<img width="2028" height="1802" alt="image" src="https://github.com/user-attachments/assets/9b3d0e79-a2c4-4b6e-9970-5a058b7ff024" />
+<img width="900" height="1754" alt="image" src="https://github.com/user-attachments/assets/34f5f294-76a9-4ee1-b502-ce97aced7354" />
+<img width="986" height="1818" alt="image" src="https://github.com/user-attachments/assets/3c2a1d20-547c-42a0-b8f3-6be9cad642c8" />
 <img width="706" height="1894" alt="image" src="https://github.com/user-attachments/assets/69b1d059-b1df-4c10-b471-67e876e1c650" />
 
 
